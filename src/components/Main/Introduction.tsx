@@ -1,14 +1,38 @@
 import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
 import ProfileImage from 'components/Main/ProfileImage';
+import { INTRODUCTION_TEXTS } from 'utils/constants';
 
-const Background = styled.div`
+type IntroductionProps = {
+  title?: string;
+  subTitle?: string;
+};
+
+const Introduction: FunctionComponent<IntroductionProps> = function ({ subTitle, title }) {
+  return (
+    <IntroductionLayout>
+      <IntroductionBox>
+        <ProfileImage />
+        <TextBox>
+          <SubTitleText>{subTitle ?? INTRODUCTION_TEXTS.subTitle}</SubTitleText>
+          <TitleText>{title ?? INTRODUCTION_TEXTS.title}</TitleText>
+        </TextBox>
+      </IntroductionBox>
+    </IntroductionLayout>
+  );
+};
+
+export default Introduction;
+
+const IntroductionLayout = styled.div`
   width: 100%;
   background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
   color: #ffffff;
 `;
 
-const Wrapper = styled.div`
+const TextBox = styled.div``;
+
+const IntroductionBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,30 +42,13 @@ const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
-const SubTitle = styled.div`
+const SubTitleText = styled.p`
   font-size: 20px;
   font-weight: 400;
 `;
 
-const Title = styled.div`
+const TitleText = styled.p`
   margin-top: 5px;
   font-size: 35px;
   font-weight: 700;
 `;
-
-const Introduction: FunctionComponent = function () {
-  return (
-    <Background>
-      <Wrapper>
-        <ProfileImage />
-
-        <div>
-          <SubTitle>Nice to Meet You,</SubTitle>
-          <Title>I'm Junior Frontend Developer Rano.</Title>
-        </div>
-      </Wrapper>
-    </Background>
-  );
-};
-
-export default Introduction;
