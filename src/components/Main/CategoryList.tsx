@@ -4,13 +4,13 @@ import CategoryItem from './CatogoryItem';
 
 const CategoryList: FunctionComponent<CategoryListProps> = function ({ selectedCategory, categoryList }) {
   return (
-    <CategoryListWrapper>
+    <CategoryListLayout>
       {Object.entries(categoryList).map(([name, count]) => (
         <CategoryItem to={`/?category=${name}`} active={name === selectedCategory} key={name}>
           #{name}({count})
         </CategoryItem>
       ))}
-    </CategoryListWrapper>
+    </CategoryListLayout>
   );
 };
 
@@ -23,7 +23,7 @@ type CategoryListProps = {
   };
 };
 
-const CategoryListWrapper = styled.div`
+const CategoryListLayout = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 768px;
