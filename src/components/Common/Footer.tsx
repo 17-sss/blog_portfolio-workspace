@@ -29,4 +29,10 @@ const FooterLayout = styled.div`
   font-size: 15px;
   text-align: center;
   line-height: 1.5;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    width: 100%;
+    padding: 50px 20px;
+  }
 `;

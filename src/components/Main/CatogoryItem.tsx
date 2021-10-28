@@ -32,4 +32,8 @@ const CategoryItemLayout = styled(({ active, to, ...props }: CategoryItemProps) 
   &:last-of-type {
     margin-right: 0;
   }
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
 `;
