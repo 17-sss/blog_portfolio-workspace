@@ -1,28 +1,4 @@
-import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
-import ProfileImage from 'components/Main/ProfileImage';
-import { INTRODUCTION_TEXTS } from 'utils/constants';
-
-type IntroductionProps = {
-  title?: string;
-  subTitle?: string;
-};
-
-const Introduction: FunctionComponent<IntroductionProps> = function ({ subTitle, title }) {
-  return (
-    <IntroductionLayout>
-      <IntroductionBox>
-        <ProfileImage />
-        <TextBox>
-          <SubTitleText>{subTitle ?? INTRODUCTION_TEXTS.subTitle}</SubTitleText>
-          <TitleText>{title ?? INTRODUCTION_TEXTS.title}</TitleText>
-        </TextBox>
-      </IntroductionBox>
-    </IntroductionLayout>
-  );
-};
-
-export default Introduction;
 
 const IntroductionLayout = styled.div`
   width: 100%;
@@ -66,3 +42,5 @@ const TitleText = styled.p`
     font-size: 25px;
   }
 `;
+
+export { IntroductionLayout, TextBox, IntroductionBox, SubTitleText, TitleText };

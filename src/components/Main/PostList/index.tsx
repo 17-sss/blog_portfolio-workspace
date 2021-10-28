@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
 import PostItem from 'components/Main/PostItem';
 import { PostListItemType } from 'utils/types/PostItem.types';
@@ -7,7 +7,18 @@ type PostListProps = {
   posts: PostListItemType[];
 };
 
-const PostListWrapper = styled.div`
+const PostList: FunctionComponent<PostListProps> = function ({ posts }) {
+  return (
+    <PostListLayout>
+      {posts.map(({ node: { id, frontmatter } }: PostListItemType) => (
+        <PostItem {...frontmatter} link="https://www.google.co.kr/" key={id} />
+      ))}
+    </PostListLayout>
+  );
+};
+export default PostList;
+
+const PostListLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
@@ -21,15 +32,3 @@ const PostListWrapper = styled.div`
     padding: 50px 20px;
   }
 `;
-
-const PostList: FunctionComponent<PostListProps> = function ({ posts }) {
-  return (
-    <PostListWrapper>
-      {posts.map(({ node: { id, frontmatter } }: PostListItemType) => (
-        <PostItem {...frontmatter} link="https://www.google.co.kr/" key={id} />
-      ))}
-    </PostListWrapper>
-  );
-};
-
-export default PostList;

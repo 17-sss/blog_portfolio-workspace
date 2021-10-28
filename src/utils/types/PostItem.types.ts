@@ -1,4 +1,4 @@
-export type PostFrontmatterType = {
+type PostFrontmatterType = {
   title: string;
   date: string;
   categories: string[];
@@ -8,9 +8,11 @@ export type PostFrontmatterType = {
   };
 };
 
-export type PostListItemType = {
+type PostListItemType = {
   node: {
     id: string;
     frontmatter: PostFrontmatterType;
   };
 };
+
+export type { PostFrontmatterType, PostListItemType };

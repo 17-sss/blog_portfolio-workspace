@@ -1,23 +1,19 @@
-import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
+import { CategoryItemProps } from './props';
 
-type CategoryItemProps = {
-  active: boolean;
-  to: string;
-  children: React.ReactNode;
-  className?: string;
-};
+const CategoryListLayout = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 768px;
+  margin: 100px auto 0;
 
-const CategoryItem: FunctionComponent<CategoryItemProps> = function ({ active, to, children, className }) {
-  return (
-    <CategoryItemLayout to={to} active={active} className={className}>
-      {children}
-    </CategoryItemLayout>
-  );
-};
-
-export default CategoryItem;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 50px;
+    padding: 0 20px;
+  }
+`;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const CategoryItemLayout = styled(({ active, to, ...props }: CategoryItemProps) => <Link to={to} {...props} />)<
@@ -37,3 +33,5 @@ const CategoryItemLayout = styled(({ active, to, ...props }: CategoryItemProps) 
     font-size: 15px;
   }
 `;
+
+export { CategoryListLayout, CategoryItemLayout };

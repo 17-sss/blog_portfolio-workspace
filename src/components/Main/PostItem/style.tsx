@@ -1,11 +1,7 @@
-import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import { PostFrontmatterType } from 'utils/types/PostItem.types';
 
-type PostItemProps = PostFrontmatterType & { link: string };
-
-const PostItemWrapper = styled(Link)`
+const PostItemLayout = styled(Link)`
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -25,14 +21,14 @@ const ThumbnailImage = styled.img`
   object-fit: cover;
 `;
 
-const PostItemContent = styled.div`
+const PostItemContentBox = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
   padding: 15px;
 `;
 
-const Title = styled.div`
+const TitleBox = styled.div`
   display: -webkit-box;
   overflow: hidden;
   margin-bottom: 3px;
@@ -45,20 +41,20 @@ const Title = styled.div`
   font-weight: 700;
 `;
 
-const Date = styled.div`
+const DateBox = styled.div`
   font-size: 14px;
   font-weight: 400;
   opacity: 0.7;
 `;
 
-const Category = styled.div`
+const CategoryBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-top: 10px;
   margin: 10px -5px;
 `;
 
-const CategoryItem = styled.div`
+const CategoryItemBox = styled.div`
   margin: 2.5px 5px;
   padding: 3px 5px;
   border-radius: 3px;
@@ -68,7 +64,7 @@ const CategoryItem = styled.div`
   color: white;
 `;
 
-const Summary = styled.div`
+const SummaryBox = styled.div`
   display: -webkit-box;
   overflow: hidden;
   margin-top: auto;
@@ -81,30 +77,4 @@ const Summary = styled.div`
   opacity: 0.8;
 `;
 
-const PostItem: FunctionComponent<PostItemProps> = function ({
-  title,
-  date,
-  categories,
-  summary,
-  thumbnail: { publicURL },
-  link,
-}) {
-  return (
-    <PostItemWrapper to={link}>
-      <ThumbnailImage src={publicURL} alt="Post Item Image" />
-
-      <PostItemContent>
-        <Title>{title}</Title>
-        <Date>{date}</Date>
-        <Category>
-          {categories.map(category => (
-            <CategoryItem key={category}>{category}</CategoryItem>
-          ))}
-        </Category>
-        <Summary>{summary}</Summary>
-      </PostItemContent>
-    </PostItemWrapper>
-  );
-};
-
-export default PostItem;
+export { PostItemLayout, ThumbnailImage, PostItemContentBox, TitleBox, DateBox, CategoryBox, CategoryItemBox, SummaryBox };
