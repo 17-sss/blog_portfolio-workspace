@@ -9,12 +9,14 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
   date,
   categories,
   summary,
-  thumbnail: { publicURL },
+  thumbnail: {
+    childImageSharp: { gatsbyImageData },
+  },
   link,
 }) {
   return (
     <S.PostItemLayout to={link}>
-      <S.ThumbnailImage src={publicURL} alt="Post Item Image" />
+      <S.ThumbnailImage image={gatsbyImageData} alt="Post Item Image" />
 
       <S.PostItemContentBox>
         <S.TitleBox>{title}</S.TitleBox>

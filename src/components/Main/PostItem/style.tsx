@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const PostItemLayout = styled(Link)`
   display: flex;
@@ -14,11 +15,10 @@ const PostItemLayout = styled(Link)`
   }
 `;
 
-const ThumbnailImage = styled.img`
+const ThumbnailImage = styled(GatsbyImage)`
   width: 100%;
   height: 200px;
   border-radius: 10px 10px 0 0;
-  object-fit: cover;
 `;
 
 const PostItemContentBox = styled.div`
@@ -77,4 +77,13 @@ const SummaryBox = styled.div`
   opacity: 0.8;
 `;
 
-export { PostItemLayout, ThumbnailImage, PostItemContentBox, TitleBox, DateBox, CategoryBox, CategoryItemBox, SummaryBox };
+export {
+  PostItemLayout,
+  ThumbnailImage,
+  PostItemContentBox,
+  TitleBox,
+  DateBox,
+  CategoryBox,
+  CategoryItemBox,
+  SummaryBox,
+};

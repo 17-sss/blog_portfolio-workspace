@@ -5,6 +5,7 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    // 기본 (TypeScript, Emotion 등) - START
     {
       resolve: 'gatsby-plugin-typescript',
       options: {
@@ -21,8 +22,18 @@ module.exports = {
         path: `${__dirname}/contents`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/static`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    // 기본 (TypeScript, Emotion 등) - END
+
+    // 마크다운 관련 - START
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -61,6 +72,22 @@ module.exports = {
         ],
       },
     },
+    // 마크다운 관련 - END
+
+    // 이미지 관련 - START
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: ['auto', 'webp'],
+          quality: 100,
+          placeholder: 'blurred',
+        },
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
+    // 이미지 관련 - END
 
     /* (gatsby-plugin-manifest 사용안함 / 제거됨)
     {
