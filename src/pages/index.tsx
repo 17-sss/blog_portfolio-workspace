@@ -49,14 +49,9 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
   const categoryList = useMemo(
     () =>
       edges.reduce(
-        (
-          list: CategoryListProps['categoryList'],
-          {
-            node: {
-              frontmatter: { categories },
-            },
-          }: PostListItemType,
-        ) => {
+        (list: CategoryListProps['categoryList'], data: PostListItemType) => {
+          const { node } = data;
+          const categories = node.frontmatter.categories;
           categories.forEach(category => {
             if (list[category] === undefined) list[category] = 1;
             else list[category]++;

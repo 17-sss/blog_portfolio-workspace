@@ -18,7 +18,7 @@ const CategoryList: FunctionComponent<CategoryListProps> = function ({ selectedC
           #{name}({count})
         </CategoryItem>
       )),
-    [],
+    [selectedCategory],
   );
 
   return <S.CategoryListLayout>{categoryItems}</S.CategoryListLayout>;
