@@ -13,8 +13,8 @@ const PostList: FunctionComponent<PostListProps> = function ({ selectedCategory,
   const { containerRef, postList } = useInfiniteScroll(selectedCategory, posts);
   const postItems = useMemo(
     () =>
-      postList.map(({ node: { id, frontmatter } }: PostListItemType) => (
-        <PostItem {...frontmatter} link="https://www.google.co.kr/" key={id} />
+      postList.map(({ node: { id, frontmatter, fields: { slug } } }: PostListItemType) => (
+        <PostItem {...frontmatter} link={slug} key={id} />
       )),
     [postList],
   );

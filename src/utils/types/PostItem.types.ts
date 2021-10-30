@@ -11,10 +11,12 @@ type PostFrontmatterType = {
     };
   };
 };
-
 type PostListItemType = {
   node: {
     id: string;
+    fields: {
+      slug: string;
+    };
     frontmatter: PostFrontmatterType;
   };
 };
