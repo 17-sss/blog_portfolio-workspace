@@ -6,7 +6,7 @@ const MarkdownRenderer = styled.div`
   flex-direction: column;
   width: 768px;
   margin: 0 auto;
-  padding: 100px 0;
+  padding: 100px 0 40px 0;
   word-break: break-all;
 
   // Markdown Style
@@ -69,7 +69,7 @@ const MarkdownRenderer = styled.div`
   // Adjust Horizontal Rule style
   hr {
     border: 1px solid #000000;
-    margin: 100px 0;
+    margin: 30px 0;
   }
 
   // Adjust Link Element Style

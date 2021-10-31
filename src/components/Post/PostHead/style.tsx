@@ -11,7 +11,7 @@ const PostHeadLayout = styled.div`
 const BackgroundImage = styled((props: GatsbyImgProps) => <GatsbyImage {...props} style={{ position: 'absolute' }} />)`
   z-index: -1;
   width: 100%;
-  min-height: 400px;
+  height: 400px;
   object-fit: cover;
   filter: brightness(0.25);
 `;
