@@ -1,5 +1,6 @@
 import React, { createRef, FunctionComponent, useEffect } from 'react';
 import { UTTERANCES_ATTR } from 'utils/constants';
+import * as S from './style';
 
 const CommentWidget: FunctionComponent = function () {
   const element = createRef<HTMLDivElement>();
@@ -11,7 +12,7 @@ const CommentWidget: FunctionComponent = function () {
     element.current.appendChild(utterances);
   }, []);
 
-  return <div ref={element} />;
+  return <S.UtterancesLayout ref={element} />;
 };
 
 export default CommentWidget;
