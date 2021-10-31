@@ -2,7 +2,8 @@ import React, { FunctionComponent } from 'react';
 import { graphql } from 'gatsby';
 
 import Template from 'components/Common/Template';
-import { PostHead, PostContent } from 'components/Post';
+import { PostHead, PostContent, CommentWidget } from 'components/Post';
+import { PostPageItemType } from 'utils/types';
 
 type PostTemplateProps = {
   data: {
@@ -26,6 +27,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
     <Template>
       <PostHead title={title} date={date} categories={categories} thumbnail={gatsbyImageData} />
       <PostContent html={html} />
+      <CommentWidget />
     </Template>
   );
 };
