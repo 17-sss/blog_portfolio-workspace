@@ -5,7 +5,7 @@ import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 import { CategoryList, CategoryListProps, Introduction, PostList } from 'components/Main';
 import Template from 'components/Common/Template';
-import { PostListItemType } from 'utils/types/PostItem.types';
+import { PostListItemType } from 'utils/types';
 
 type IndexPageProps = {
   location: {

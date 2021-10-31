@@ -1,1 +1,1 @@
-export * from './PostItem.types';
+export * from './post';

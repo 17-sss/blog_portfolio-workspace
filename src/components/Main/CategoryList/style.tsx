@@ -16,9 +16,7 @@ const CategoryListLayout = styled.div`
 `;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const CategoryItemLayout = styled(({ active, to, ...props }: CategoryItemProps) => <Link to={to} {...props} />)<
-  Pick<CategoryItemProps, 'active'>
->`
+const CategoryItemLayout = styled(({ active, to, ...props }: CategoryItemProps) => <Link to={to} {...props} />)<Pick<CategoryItemProps, 'active'>>`
   margin-right: 20px;
   padding: 5px 0;
   font-size: 18px;
