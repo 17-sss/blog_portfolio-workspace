@@ -3,13 +3,9 @@ import queryString, { ParsedQuery } from 'query-string';
 import { graphql } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
-import CategoryList from 'components/Main/CategoryList';
-import Introduction from 'components/Main/Introduction';
-import PostList from 'components/Main/PostList';
-import { CategoryListProps } from 'components/Main/CategoryList/props';
+import { CategoryList, CategoryListProps, Introduction, PostList } from 'components/Main';
 import Template from 'components/Common/Template';
 import { PostListItemType } from 'utils/types/PostItem.types';
-
 
 type IndexPageProps = {
   location: {

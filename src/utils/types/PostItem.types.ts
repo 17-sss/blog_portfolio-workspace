@@ -21,4 +21,11 @@ type PostListItemType = {
   };
 };
 
-export type { PostFrontmatterType, PostListItemType };
+type PostPageItemType = {
+  node: {
+    html: string;
+    frontmatter: PostFrontmatterType;
+  };
+};
+
+export type { PostFrontmatterType, PostListItemType, PostPageItemType };

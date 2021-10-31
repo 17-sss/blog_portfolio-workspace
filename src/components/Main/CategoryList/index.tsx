@@ -24,4 +24,5 @@ const CategoryList: FunctionComponent<CategoryListProps> = function ({ selectedC
   return <S.CategoryListLayout>{categoryItems}</S.CategoryListLayout>;
 };
 
+export type { CategoryListProps };
 export default CategoryList;
