@@ -9,6 +9,7 @@ type PostFrontmatterType = {
     childImageSharp: {
       gatsbyImageData: IGatsbyImageData;
     };
+    publicURL: string;
   };
 };
 type PostListItemType = {

@@ -6,4 +6,11 @@ const INTRODUCTION_TEXTS = {
 
 const FOOTER_DESCRIPTION = ['Thank You for Visiting My Blog, Have a Good Day 😆', '© 2021 Rano, Powered By Gatsby.'];
 
-export { PROFILE_IMAGE_LINK, INTRODUCTION_TEXTS, FOOTER_DESCRIPTION };
+const META_DATA = {
+  twitter: {
+    site: `@17-sss`, // 사용자 이름
+    creator: `@17-sss`, // 사용자 이름
+  },
+};
+
+export { PROFILE_IMAGE_LINK, INTRODUCTION_TEXTS, FOOTER_DESCRIPTION, META_DATA };
