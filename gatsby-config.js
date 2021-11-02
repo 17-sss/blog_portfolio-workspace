@@ -6,6 +6,16 @@ module.exports = {
     siteUrl: `https://17-sss.github.io`,
   },
   plugins: [
+    // canonical 설정 (검색 엔진 관련) - START
+    {
+      resolve: 'gatsby-plugin-canonical-urls',
+      options: {
+        siteUrl: 'https://my-website.com/', // 임시
+        stripQueryString: true,
+      },
+    },
+    // canonical 설정 (검색 엔진 관련) - END
+
     // 기본 (TypeScript, Emotion 등) - START
     {
       resolve: 'gatsby-plugin-typescript',
