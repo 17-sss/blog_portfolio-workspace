@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: `코딩하는 농사꾼 라노의 개발 블로그`,
-    description: `꾸준함이 곧 발전이라 생각하는 주니어 개발자입니다.`,
+    description: `꾸준함이라는 덕목이 최고의 미덕이라고 생각하는 주니어 개발자입니다.`,
     author: `Hoyoung Son <Rano>`,
-    siteUrl: `https://17-sss.github.io`,
+    siteUrl: `https://17-sss.github.io/`,
   },
   plugins: [
     // robots.txt 파일 - START
@@ -19,7 +19,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://my-website.com/', // 임시
+        siteUrl: 'https://17-sss.github.io/',
         stripQueryString: true,
       },
     },
