@@ -6,6 +6,14 @@ module.exports = {
     siteUrl: `https://17-sss.github.io`,
   },
   plugins: [
+    // robots.txt 파일 - START
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
+    // robots.txt 파일 - END
     'gatsby-plugin-sitemap', // sitemap 설정
     // canonical 설정 (검색 엔진 관련) - START
     {
