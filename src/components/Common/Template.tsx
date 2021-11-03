@@ -40,6 +40,8 @@ const Template: FunctionComponent<TemplateProps> = function ({ title, descriptio
         <meta name="twitter:image" content={image} />
         <meta name="twitter:site" content={site} />
         <meta name="twitter:creator" content={creator} />
+
+        <html lang="ko"/>
       </Helmet>
 
       <GlobalStyle />
@@ -51,7 +53,7 @@ const Template: FunctionComponent<TemplateProps> = function ({ title, descriptio
 
 export default Template;
 
-const Container = styled.div`
+const Container = styled.main`
   display: flex;
   flex-direction: column;
   height: 100%;

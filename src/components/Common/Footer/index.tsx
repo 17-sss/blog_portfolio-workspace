@@ -13,7 +13,7 @@ const Footer: FunctionComponent<FooterProps> = function ({ text }) {
 
 export default Footer;
 
-const FooterLayout = styled.div`
+const FooterLayout = styled.footer`
   display: grid;
   place-items: center;
   margin-top: auto;
