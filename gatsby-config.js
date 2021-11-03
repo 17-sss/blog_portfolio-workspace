@@ -6,6 +6,7 @@ module.exports = {
     siteUrl: `https://17-sss.github.io`,
   },
   plugins: [
+    'gatsby-plugin-sitemap', // sitemap 설정
     // canonical 설정 (검색 엔진 관련) - START
     {
       resolve: 'gatsby-plugin-canonical-urls',
