@@ -11,6 +11,10 @@ const META_DATA = {
     site: `@17-sss`, // 사용자 이름
     creator: `@17-sss`, // 사용자 이름
   },
+  webMasterKeys: {
+    google: 'EnJH07IqCza2RRsk3dnbayCSB08fnsvqpMhawDSsOFU',
+    naver: 'e2504342f5b1a3a3a9360c2ca831fa1881e6e5b6',
+  },
 };
 
 export { PROFILE_IMAGE_LINK, INTRODUCTION_TEXTS, FOOTER_DESCRIPTION, META_DATA };

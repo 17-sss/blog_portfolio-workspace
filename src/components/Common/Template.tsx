@@ -16,6 +16,7 @@ type TemplateProps = {
 const Template: FunctionComponent<TemplateProps> = function ({ title, description, image, url, children }) {
   const {
     twitter: { site, creator },
+    webMasterKeys: { google, naver },
   } = META_DATA;
 
   return (
@@ -41,7 +42,10 @@ const Template: FunctionComponent<TemplateProps> = function ({ title, descriptio
         <meta name="twitter:site" content={site} />
         <meta name="twitter:creator" content={creator} />
 
-        <html lang="ko"/>
+        <meta name="google-site-verification" content={google} />
+        <meta name="naver-site-verification" content={naver} />
+
+        <html lang="ko" />
       </Helmet>
 
       <GlobalStyle />
