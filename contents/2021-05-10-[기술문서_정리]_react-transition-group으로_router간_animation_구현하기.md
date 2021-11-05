@@ -2,7 +2,7 @@
 date: '2021-05-10'
 title: '[Tech Article] react-transition-group으로 router간 animation 구현하기'
 categories: ['Tech Article']
-thumbnail: './_background_tech_article.jpg'
+thumbnail: './background_tech_article.jpg'
 ---
 
 # 기술 문서 읽기 챌린지 [2021년 5월 10일]

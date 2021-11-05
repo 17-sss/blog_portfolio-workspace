@@ -2,7 +2,7 @@
 date: '2021-05-18'
 title: '[Algorithm] LeetCode : Binary Search, Move Zeroes, Find Pivot Index'
 categories: ['Algorithm']
-thumbnail: './_background_algorithm.png'
+thumbnail: './background_algorithm.png'
 ---
 
 

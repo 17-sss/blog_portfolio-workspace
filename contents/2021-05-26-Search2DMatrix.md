@@ -2,7 +2,7 @@
 date: '2021-05-26'
 title: '[Algorithm] LeetCode : Search a 2D Matrix, Search a 2D Matrix II'
 categories: ['Algorithm']
-thumbnail: './_background_algorithm.png'
+thumbnail: './background_algorithm.png'
 ---
 
 ## 알고리즘 기초 다지기 프로젝트 (feat. 코드없는 프로그래밍) \[2021년 05월 26일\]

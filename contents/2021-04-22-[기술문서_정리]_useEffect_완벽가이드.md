@@ -2,7 +2,7 @@
 date: '2021-04-22'
 title: '[Tech Article] useEffect 완벽가이드'
 categories: ['Tech Article']
-thumbnail: './_background_tech_article.jpg'
+thumbnail: './background_tech_article.jpg'
 ---
 
 # 기술 문서 읽기 챌린지 [2021년 4월 22일]

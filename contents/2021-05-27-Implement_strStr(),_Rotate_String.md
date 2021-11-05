@@ -2,7 +2,7 @@
 date: '2021-05-27'
 title: '[Algorithm] LeetCode : Implement strStr(), Rotate String'
 categories: ['Algorithm']
-thumbnail: './_background_algorithm.png'
+thumbnail: './background_algorithm.png'
 ---
 
 ## 알고리즘 기초 다지기 프로젝트 (feat. 코드없는 프로그래밍) \[2021년 05월 27일\]

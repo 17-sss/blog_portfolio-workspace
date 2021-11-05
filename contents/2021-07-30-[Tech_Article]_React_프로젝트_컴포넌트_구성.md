@@ -2,7 +2,7 @@
 date: '2021-07-30'
 title: '[Tech Article] React 프로젝트 컴포넌트 구성'
 categories: ['Tech Article']
-thumbnail: './_background_tech_article.jpg'
+thumbnail: './background_tech_article.jpg'
 ---
 
 # 📃 React 프로젝트 컴포넌트 구성 

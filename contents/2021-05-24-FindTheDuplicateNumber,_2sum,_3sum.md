@@ -2,7 +2,7 @@
 date: '2021-05-24'
 title: '[Algorithm] LeetCode : Find the Duplicate Number, 2Sum, 3sum'
 categories: ['Algorithm']
-thumbnail: './_background_algorithm.png'
+thumbnail: './background_algorithm.png'
 ---
 
 ## 알고리즘 기초 다지기 프로젝트 (feat. 코드없는 프로그래밍) [2021년 05월 24일]

@@ -2,7 +2,7 @@
 date: '2021-05-25'
 title: '[Algorithm] LeetCode : 3Sum Closest, 4Sum'
 categories: ['Algorithm']
-thumbnail: './_background_algorithm.png'
+thumbnail: './background_algorithm.png'
 ---
 
 ## 알고리즘 기초 다지기 프로젝트 (feat. 코드없는 프로그래밍) [2021년 05월 25일]

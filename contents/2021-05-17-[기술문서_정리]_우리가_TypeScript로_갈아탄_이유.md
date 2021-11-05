@@ -2,7 +2,7 @@
 date: '2021-05-17'
 title: '[Tech Article] 우리가 TypeScript로 갈아탄 이유'
 categories: ['Tech Article']
-thumbnail: './_background_tech_article.jpg'
+thumbnail: './background_tech_article.jpg'
 ---
 
 # 기술 문서 읽기 챌린지 [2021년 5월 17일]
