@@ -1,8 +1,16 @@
 import React, { FunctionComponent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { PostHeadInfoProps } from './props';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 import * as S from './style';
+
+export type PostHeadInfoProps = {
+  title: string;
+  date: string;
+  categories: string[];
+  thumbnail?: IGatsbyImageData;
+};
+
 
 const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({ title, date, categories }) {
   const goBackPage = () => window.history.back();
@@ -21,5 +29,4 @@ const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({ title, da
   );
 };
 
-export type { PostHeadInfoProps };
 export default PostHeadInfo;

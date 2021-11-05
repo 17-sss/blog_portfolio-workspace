@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import { CategoryItemProps } from './props';
+import { CategoryItemProps } from '.';
 
 const CategoryListLayout = styled.div`
   display: flex;

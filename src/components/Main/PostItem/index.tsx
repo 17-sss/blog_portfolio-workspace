@@ -4,19 +4,12 @@ import * as S from './style';
 
 type PostItemProps = PostFrontmatterType & { link: string };
 
-const PostItem: FunctionComponent<PostItemProps> = function ({
-  title,
-  date,
-  categories,
-  summary,
-  thumbnail: {
-    childImageSharp: { gatsbyImageData },
-  },
-  link,
-}) {
+const PostItem: FunctionComponent<PostItemProps> = function ({ title, date, categories, summary, thumbnail, link }) {
+  const gatsbyImageData = thumbnail?.childImageSharp.gatsbyImageData;
+
   return (
     <S.PostItemLayout to={link}>
-      <S.ThumbnailImage image={gatsbyImageData} alt="Post Item Image" />
+      {gatsbyImageData && <S.ThumbnailImage image={gatsbyImageData} alt="Post Item Image" />}
 
       <S.PostItemContentBox>
         <S.TitleBox>{title}</S.TitleBox>
@@ -26,7 +19,7 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
             <S.CategoryItemBox key={category}>{category}</S.CategoryItemBox>
           ))}
         </S.CategoryBox>
-        <S.SummaryBox>{summary}</S.SummaryBox>
+        {summary && <S.SummaryBox>{summary}</S.SummaryBox>}
       </S.PostItemContentBox>
     </S.PostItemLayout>
   );

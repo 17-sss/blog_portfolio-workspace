@@ -1,11 +1,13 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { GatsbyImgProps } from './props';
+import { GatsbyImgProps, PostHeadProps } from '.';
 
-const PostHeadLayout = styled.div`
+const PostHeadLayout = styled.div<Pick<PostHeadProps, "thumbnail">>`
   position: relative;
   width: 100%;
   height: 400px;
+  ${({thumbnail}) => !thumbnail && css`background-color: #000;`}
 
   @media (max-width: 768px) {
     height: 300px;

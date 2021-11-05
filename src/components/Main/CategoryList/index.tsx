@@ -1,6 +1,20 @@
 import { FunctionComponent, useMemo } from 'react';
-import { CategoryItemProps, CategoryListProps } from './props';
 import * as S from './style';
+
+export type CategoryListProps = {
+  selectedCategory: string;
+  categoryList: {
+    [key: string]: number;
+  };
+};
+
+export type CategoryItemProps = {
+  active: boolean;
+  to: string;
+  children: React.ReactNode;
+  className?: string;
+};
+
 
 const CategoryItem: FunctionComponent<CategoryItemProps> = function ({ active, to, children, className }) {
   return (
@@ -24,5 +38,4 @@ const CategoryList: FunctionComponent<CategoryListProps> = function ({ selectedC
   return <S.CategoryListLayout>{categoryItems}</S.CategoryListLayout>;
 };
 
-export type { CategoryListProps };
 export default CategoryList;

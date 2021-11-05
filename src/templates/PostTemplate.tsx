@@ -25,8 +25,8 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   const { node } = edges[0];
   const { html, frontmatter } = node;
   const { title, summary, date, categories, thumbnail } = frontmatter;
-  const { childImageSharp, publicURL } = thumbnail;
-  const gatsbyImageData = childImageSharp.gatsbyImageData;
+  const publicURL = thumbnail?.publicURL;
+  const gatsbyImageData = thumbnail?.childImageSharp.gatsbyImageData;
 
   return (
     <Template title={title} description={summary} url={href} image={publicURL}>

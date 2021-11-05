@@ -13,9 +13,10 @@ const PostList: FunctionComponent<PostListProps> = function ({ selectedCategory,
   const { containerRef, postList } = useInfiniteScroll(selectedCategory, posts);
   const postItems = useMemo(
     () =>
-      postList.map(({ node: { id, frontmatter, fields: { slug } } }: PostListItemType) => (
-        <PostItem {...frontmatter} link={slug} key={id} />
-      )),
+      postList.map(({ node }: PostListItemType) => {
+        const { id, frontmatter, fields } = node;
+        return <PostItem {...frontmatter} link={fields.slug} key={id} />;
+      }),
     [postList],
   );
 
@@ -25,14 +26,13 @@ export default PostList;
 
 const PostListLayout = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 20px;
   width: 768px;
   margin: 0 auto;
   padding: 50px 0 100px;
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
     width: 100%;
     padding: 50px 20px;
   }

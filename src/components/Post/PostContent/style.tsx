@@ -6,7 +6,7 @@ const MarkdownRenderer = styled.div`
   flex-direction: column;
   width: 768px;
   margin: 0 auto;
-  padding: 100px 0 40px 0;
+  padding: 40px 0;
   word-break: break-all;
 
   // Markdown Style
@@ -19,24 +19,28 @@ const MarkdownRenderer = styled.div`
     padding: 3px 0;
   }
 
+  br {
+    display: none;
+  }
+
   // Adjust Heading Element Style
   h1,
   h2,
   h3 {
     font-weight: 800;
-    margin-bottom: 30px;
-  }
-
-  * + h1,
-  * + h2,
-  * + h3 {
-    margin-top: 80px;
+    margin-bottom: 12px;
   }
 
   hr + h1,
   hr + h2,
   hr + h3 {
     margin-top: 0;
+  }
+
+  * + h1,
+  * + h2,
+  * + h3 {
+    margin-top: 36px;
   }
 
   h1 {
@@ -63,7 +67,7 @@ const MarkdownRenderer = styled.div`
   ol,
   ul {
     margin-left: 20px;
-    padding: 30px 0;
+    padding: 8px 0;
   }
 
   // Adjust Horizontal Rule style
@@ -94,6 +98,7 @@ const MarkdownRenderer = styled.div`
   code[class*='language-'],
   pre[class*='language-'] {
     tab-size: 2;
+    font-family: Roboto, system-ui, Apple SD Gothic Neo, AppleGothic, sans-serif, 'Nanum Myeongjo', serif;
   }
 
   // Markdown Responsive Design
