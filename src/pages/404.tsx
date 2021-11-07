@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import GlobalStyle from 'components/Common/GlobalStyle';
+import GlobalStyle from 'components/blog/Common/GlobalStyle';
 import { NOTFOUND_DESCRIPTION, NOTFOUND_TEXTS } from 'utils/constants';
 
 const NotFoundPage: FunctionComponent = function () {

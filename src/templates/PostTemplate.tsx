@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { graphql } from 'gatsby';
 
-import Template from 'components/Common/Template';
-import { PostHead, PostContent, CommentWidget } from 'components/Post';
+import Template from 'components/blog/Common/Template';
+import { PostHead, PostContent, CommentWidget } from 'components/blog/Post';
 import { PostPageItemType } from 'utils/types';
 
 type PostTemplateProps = {

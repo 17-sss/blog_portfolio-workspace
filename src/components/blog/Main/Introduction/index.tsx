@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import ProfileImage from 'components/Main/ProfileImage';
+import ProfileImage from 'components/blog/Main/ProfileImage';
 import { INTRODUCTION_TEXTS } from 'utils/constants';
 import * as S from './style';
 import { IGatsbyImageData } from 'gatsby-plugin-image';

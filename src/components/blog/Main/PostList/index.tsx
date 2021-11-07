@@ -1,6 +1,6 @@
 import { FunctionComponent, useMemo } from 'react';
 import styled from '@emotion/styled';
-import PostItem from 'components/Main/PostItem';
+import PostItem from 'components/blog/Main/PostItem';
 import { PostListItemType } from 'utils/types';
 import useInfiniteScroll from 'hooks/useInfiniteScroll';
 
