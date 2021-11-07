@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { graphql } from 'gatsby';
 
-import Template from 'components/blog/Common/Template';
 import { PostHead, PostContent, CommentWidget } from 'components/blog/Post';
 import { PostPageItemType } from 'utils/types';
+import BlogTemplate from 'templates/BlogTemplate';
 
 type PostTemplateProps = {
   data: {
@@ -29,11 +29,11 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   const gatsbyImageData = thumbnail?.childImageSharp.gatsbyImageData;
 
   return (
-    <Template title={title} description={summary} url={href} image={publicURL}>
+    <BlogTemplate title={title} description={summary} url={href} image={publicURL}>
       <PostHead title={title} date={date} categories={categories} thumbnail={gatsbyImageData} />
       <PostContent html={html} />
       <CommentWidget />
-    </Template>
+    </BlogTemplate>
   );
 };
 

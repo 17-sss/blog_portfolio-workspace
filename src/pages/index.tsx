@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 import { CategoryList, CategoryListProps, Introduction, PostList } from 'components/blog/Main';
-import Template from 'components/blog/Common/Template';
+import BlogTemplate from 'templates/BlogTemplate';
 import { PostListItemType } from 'utils/types';
 
 type IndexPageProps = {
@@ -71,11 +71,11 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
   );
 
   return (
-    <Template title={title} description={description} url={siteUrl} image={publicURL}>
+    <BlogTemplate title={title} description={description} url={siteUrl} image={publicURL}>
       <Introduction profileImage={gatsbyImageData} />
       <CategoryList selectedCategory={selectedCategory} categoryList={categoryList} />
       <PostList selectedCategory={selectedCategory} posts={edges} />
-    </Template>
+    </BlogTemplate>
   );
 };
 

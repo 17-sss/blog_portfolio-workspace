@@ -1,11 +1,8 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import styled from '@emotion/styled';
-import GlobalStyle from 'components/blog/Common/GlobalStyle';
-import Footer from 'components/blog/Common/Footer';
 import { Helmet } from 'react-helmet';
 import { META_DATA } from 'utils/constants';
 
-type TemplateProps = {
+export type TemplateProps = {
   title: string;
   description: string;
   url: string;
@@ -20,7 +17,7 @@ const Template: FunctionComponent<TemplateProps> = function ({ title, descriptio
   } = META_DATA;
 
   return (
-    <Container>
+    <>
       <Helmet>
         <title>{title}</title>
 
@@ -47,18 +44,9 @@ const Template: FunctionComponent<TemplateProps> = function ({ title, descriptio
 
         <html lang="ko" />
       </Helmet>
-
-      <GlobalStyle />
       {children}
-      <Footer />
-    </Container>
+    </>
   );
 };
 
 export default Template;
-
-const Container = styled.main`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-`;
