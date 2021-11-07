@@ -19,13 +19,20 @@ const useInfiniteScroll = function (selectedCategory: string, posts: PostListIte
         ? posts.filter((postListItemData: PostListItemType) => {
             const { node } = postListItemData;
             const categories = node.frontmatter.categories;
-            return categories.includes(selectedCategory);
+            const categoryTmp = categories.reduce((result, category) => {
+              if (result) result += `/${category}`;
+              else result = `${category}`;
+              return result;
+            }, '');
+
+            const isSameCategory = categoryTmp === selectedCategory;
+            return isSameCategory || categories.includes(selectedCategory);
           })
         : posts,
     [selectedCategory],
   );
 
-  // IntersectionObserver 설정 
+  // IntersectionObserver 설정
   // (gatsby는 기본적으로 빌드 시 node.js 환경애서 진행됨, 브라우저 API들을 사용할 수 없으니 useEffect를 통해 Ref에 생성해주고 지정 )
   useEffect(() => {
     observer.current = new IntersectionObserver((entries, observer) => {

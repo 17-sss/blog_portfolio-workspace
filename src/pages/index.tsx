@@ -53,9 +53,13 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
         (list: CategoryListProps['categoryList'], data: PostListItemType) => {
           const { node } = data;
           const categories = node.frontmatter.categories;
+          let categoryTmp = '';
           categories.forEach(category => {
-            if (list[category] === undefined) list[category] = 1;
-            else list[category]++;
+            if (categoryTmp) categoryTmp += `/${category}`;
+            else categoryTmp = `${category}`;
+
+            if (list[categoryTmp] === undefined) list[categoryTmp] = 1;
+            else list[categoryTmp]++;
           });
 
           list['All']++;
