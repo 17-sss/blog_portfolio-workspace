@@ -19,6 +19,10 @@ const MarkdownRenderer = styled.div`
     padding: 3px 0;
   }
 
+  strong {
+    font-weight: 900;
+  }
+
   br {
     display: none;
   }
