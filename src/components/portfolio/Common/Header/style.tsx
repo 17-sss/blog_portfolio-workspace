@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { css, Theme } from '@emotion/react';
 import { AppBar } from '@material-ui/core';
 
-import { MAX_WIDTH_INFO } from 'utils/constants';
+import { MAX_WIDTH_INFO, PORTFOLIO_HEADER } from 'utils/constants';
 import { flexSet, media, theme } from 'utils/style';
 
 export const HeaderLayout = styled(AppBar)`
@@ -15,7 +15,7 @@ export const HeaderInnerBox = styled.div`
 
   width: 100%;
   max-width: ${`${MAX_WIDTH_INFO.inner.desktop}px`};
-  height: 60px;
+  height: ${`${PORTFOLIO_HEADER.height}px`};
 
   ${flexSet({ justifyContent: 'space-between', alignItems: 'center' })};
 `;

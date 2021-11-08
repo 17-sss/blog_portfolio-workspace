@@ -1,7 +1,7 @@
 import { FunctionComponent, useMemo } from 'react';
 import { Button } from '@material-ui/core';
 
-import { PORTFOLIO_HEADER } from 'utils/constants/portfolio';
+import { PORTFOLIO_HEADER } from 'utils/constants';
 import * as S from './style';
 
 const Header: FunctionComponent = function () {
