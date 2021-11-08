@@ -1,11 +1,8 @@
-import { Section } from 'components/portfolio/Common';
 import { FunctionComponent } from 'react';
+import * as S from './style';
 
 const ProjectSection: FunctionComponent = function ({ ...props }) {
-  return (
-    <Section {...props}>
-    </Section>
-  );
+  return <S.ProjectSectionLayout {...props}></S.ProjectSectionLayout>;
 };
 
 export default ProjectSection;
