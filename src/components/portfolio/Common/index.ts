@@ -1,6 +1,7 @@
 import Header from './Header';
 import Footer from './Footer';
-import Section from './Section';
+import MainContainer from './MainContainer';
+import InnerContainer from './InnerContainer';
 import GlobalStyle from './GlobalStyle';
 
-export { Header, Footer, Section, GlobalStyle };
+export { Header, Footer, MainContainer, InnerContainer, GlobalStyle };
