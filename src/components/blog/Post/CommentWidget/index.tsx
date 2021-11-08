@@ -1,5 +1,5 @@
 import React, { createRef, FunctionComponent, useEffect } from 'react';
-import { UTTERANCES_ATTR } from 'utils/constants';
+import { BLOG_UTTERANCES_ATTR } from 'utils/constants';
 import * as S from './style';
 
 const CommentWidget: FunctionComponent = function () {
@@ -8,7 +8,7 @@ const CommentWidget: FunctionComponent = function () {
   useEffect(() => {
     if (element.current === null) return;
     const utterances: HTMLScriptElement = document.createElement('script');
-    Object.entries(UTTERANCES_ATTR).forEach(([key, value]) => utterances.setAttribute(key, value));
+    Object.entries(BLOG_UTTERANCES_ATTR).forEach(([key, value]) => utterances.setAttribute(key, value));
     element.current.appendChild(utterances);
   }, []);
 

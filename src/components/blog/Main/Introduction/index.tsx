@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import ProfileImage from 'components/blog/Main/ProfileImage';
-import { INTRODUCTION_TEXTS } from 'utils/constants';
+import { BLOG_INTRODUCTION_TEXTS } from 'utils/constants';
 import * as S from './style';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
@@ -16,8 +16,8 @@ const Introduction: FunctionComponent<IntroductionProps> = function ({ subTitle,
       <S.IntroductionBox>
         <ProfileImage profileImage={profileImage} />
         <S.TextBox>
-          <S.SubTitleText>{subTitle ?? INTRODUCTION_TEXTS.subTitle}</S.SubTitleText>
-          <S.TitleText>{title ?? INTRODUCTION_TEXTS.title}</S.TitleText>
+          <S.SubTitleText>{subTitle ?? BLOG_INTRODUCTION_TEXTS.subTitle}</S.SubTitleText>
+          <S.TitleText>{title ?? BLOG_INTRODUCTION_TEXTS.title}</S.TitleText>
         </S.TextBox>
       </S.IntroductionBox>
     </S.IntroductionLayout>

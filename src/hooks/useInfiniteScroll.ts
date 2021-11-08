@@ -1,5 +1,5 @@
 import { MutableRefObject, useEffect, useMemo, useRef, useState } from 'react';
-import { INFINITE_SCROLL_NUM_OF_ITEMS_PER_PAGE } from 'utils/constants';
+import { BLOG_NUM_ITEMS_PER_PAGE } from 'utils/constants';
 import { PostListItemType } from 'utils/types';
 
 export type useInfiniteScrollType = {
@@ -50,7 +50,7 @@ const useInfiniteScroll = function (selectedCategory: string, posts: PostListIte
 
   // 마지막 요소 관찰 (IntersectionObserver)
   useEffect(() => {
-    const LAST_SIZE = INFINITE_SCROLL_NUM_OF_ITEMS_PER_PAGE * count;
+    const LAST_SIZE = BLOG_NUM_ITEMS_PER_PAGE * count;
     const isOverSize = LAST_SIZE >= postListByCategory.length;
     if (!containerRef.current || !containerRef.current.children.length || !observer.current || isOverSize) return;
 
@@ -59,7 +59,7 @@ const useInfiniteScroll = function (selectedCategory: string, posts: PostListIte
     observer.current.observe(lastChild);
   }, [count, selectedCategory]);
 
-  const postList = postListByCategory.slice(0, count * INFINITE_SCROLL_NUM_OF_ITEMS_PER_PAGE);
+  const postList = postListByCategory.slice(0, count * BLOG_NUM_ITEMS_PER_PAGE);
   return { containerRef, postList };
 };
 

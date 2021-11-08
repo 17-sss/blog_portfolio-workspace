@@ -1,10 +1,10 @@
-const PROFILE_IMAGE_LINK = 'https://avatars.githubusercontent.com/u/33610315?v=4'; // 현재 사용안함. (static 폴더에 있는 이미지 불러옴)
-const INTRODUCTION_TEXTS = {
+const BLOG_PROFILE_IMAGE_LINK = 'https://avatars.githubusercontent.com/u/33610315?v=4'; // 현재 사용안함. (static 폴더에 있는 이미지 불러옴)
+const BLOG_INTRODUCTION_TEXTS = {
   subTitle: `Nice to Meet You,`,
   title: `I'm Junior Frontend Developer Rano.`,
 };
 
-const FOOTER_DESCRIPTION = ['Thank You for Visiting My Blog, Have a Good Day 😆', '© 2021 Rano, Powered By Gatsby.'];
+const BLOG_FOOTER_DESCRIPTION = ['Thank You for Visiting My Blog, Have a Good Day 😆', '© 2021 Rano, Powered By Gatsby.'];
 
 const META_DATA = {
   twitter: {
@@ -17,4 +17,4 @@ const META_DATA = {
   },
 };
 
-export { PROFILE_IMAGE_LINK, INTRODUCTION_TEXTS, FOOTER_DESCRIPTION, META_DATA };
+export { BLOG_PROFILE_IMAGE_LINK, BLOG_INTRODUCTION_TEXTS, BLOG_FOOTER_DESCRIPTION, META_DATA };

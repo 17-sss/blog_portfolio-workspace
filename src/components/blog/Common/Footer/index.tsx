@@ -1,13 +1,13 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import styled from '@emotion/styled';
-import { FOOTER_DESCRIPTION } from 'utils/constants';
+import { BLOG_FOOTER_DESCRIPTION } from 'utils/constants';
 
 type FooterProps = {
   text?: string;
 };
 
 const Footer: FunctionComponent<FooterProps> = function ({ text }) {
-  const defaultDesc = useMemo(() => FOOTER_DESCRIPTION.map((text, idx) => <p key={idx}>{text}</p>), []);
+  const defaultDesc = useMemo(() => BLOG_FOOTER_DESCRIPTION.map((text, idx) => <p key={idx}>{text}</p>), []);
   return <FooterLayout>{text ?? defaultDesc}</FooterLayout>;
 };
 
