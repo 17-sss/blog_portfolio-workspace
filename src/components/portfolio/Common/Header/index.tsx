@@ -1,14 +1,24 @@
 import { FunctionComponent, useMemo } from 'react';
-import { PORTFOLIO_HEADER_ITEMS } from 'utils/constants/portfolio';
+import { Button } from '@material-ui/core';
+
+import { PORTFOLIO_HEADER } from 'utils/constants/portfolio';
 import * as S from './style';
 
 const Header: FunctionComponent = function () {
-  const menuItems = useMemo(() => PORTFOLIO_HEADER_ITEMS.map((name, i) => <li key={i}>{name}</li>), []);
+  const menuItems = useMemo(
+    () =>
+      PORTFOLIO_HEADER.items.map((name, i) => (
+        <S.HeaderMenuListItem key={i}>
+          <Button color="inherit">{name}</Button>
+        </S.HeaderMenuListItem>
+      )),
+    [],
+  );
   return (
-    <S.HeaderLayout>
+    <S.HeaderLayout position="sticky" color="transparent">
       <S.HeaderInnerBox>
-        <S.HeaderLogoBox>1</S.HeaderLogoBox>
-        <S.HeaderMenuBox>{menuItems}</S.HeaderMenuBox>
+        <S.HeaderLogoBox>{PORTFOLIO_HEADER.logo}</S.HeaderLogoBox>
+        <S.HeaderMenuList>{menuItems}</S.HeaderMenuList>
       </S.HeaderInnerBox>
     </S.HeaderLayout>
   );

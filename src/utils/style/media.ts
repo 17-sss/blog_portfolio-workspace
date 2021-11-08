@@ -1,4 +1,4 @@
-import { MAX_WIDTH_INFO } from "utils/constants";
+import { MAX_WIDTH_INFO } from 'utils/constants';
 
 type CreateResponseType = {
   minWidth?: number;
@@ -25,23 +25,24 @@ const createResponse = ({ minWidth, maxWidth }: CreateResponseType) => {
   }
 };
 
-const { setDesktop: desktopMax, setTablet: tabletMax } = MAX_WIDTH_INFO;
+const { set: { desktop, tablet, mobile } } = MAX_WIDTH_INFO;
 const media = {
-  desktop: createResponse({ minWidth: desktopMax }),
-  tablet: createResponse({ minWidth: tabletMax, maxWidth: desktopMax }),
-  mobile: createResponse({ maxWidth: tabletMax }),
+  desktop: createResponse({ maxWidth: desktop }),
+  tablet: createResponse({ maxWidth: tablet }),
+  mobile: createResponse({ maxWidth: mobile }),
 };
+/*
+  @media screen and (max-width:1299px) {
+    // 일반 데스크탑
+  }
 
-/* 
-${media.desktop} {
-  max-width: ${`${MAX_WIDTH_INFO.desktop}px`};
-}
+  @media screen and (max-width:1023px) {
+    // 타블렛
+  }
 
-${media.tablet} {
-  max-width: ${`${MAX_WIDTH_INFO.tablet}px`};
-}
+  @media screen and (max-width:767px) {
+    // 모바일
+  }
+*/
 
-${media.mobile} {
-}
- */
 export { createResponse, media };

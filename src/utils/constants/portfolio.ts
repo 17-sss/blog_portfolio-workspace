@@ -1,1 +1,4 @@
-export const PORTFOLIO_HEADER_ITEMS = ['Home', 'About', 'Skills', 'Project'];
+export const PORTFOLIO_HEADER = {
+  logo: 'PORTFOLIO',
+  items: ['Home', 'About', 'Skills', 'Project'],
+};
