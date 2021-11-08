@@ -1,6 +1,13 @@
 import { FunctionComponent } from 'react';
 import { graphql } from 'gatsby';
+import { ThemeProvider } from '@emotion/react';
+import { StylesProvider } from '@material-ui/core/styles';
+
 import PortfolioTemplate from 'templates/PortfolioTemplate';
+import { PortfolioContextProvider } from 'utils/contexts/PortfolioContext';
+import { HomeSection } from 'components/portfolio/Main';
+
+import { theme } from 'utils/style';
 
 type PortfolioPageProps = {
   data: {
@@ -11,20 +18,40 @@ type PortfolioPageProps = {
         siteUrl: string;
       };
     };
-    file: {
+    profileImg: {
+      publicURL: string;
+    };
+    waveImg: {
+      publicURL: string;
+    };
+    waveBackImg: {
       publicURL: string;
     };
   };
 };
 
 const PortfolioPage: FunctionComponent<PortfolioPageProps> = function ({ data, ...props }) {
-  const { site, file } = data;
+  const { site, profileImg, waveImg, waveBackImg } = data;
   const { title_portfolio, description, siteUrl } = site.siteMetadata;
-  const { publicURL } = file;
+  const profileImgUrl = profileImg.publicURL;
+  const waveImages = { waveImgUrl: waveImg.publicURL, waveBackImgUrl: waveBackImg.publicURL };
 
   return (
-    <PortfolioTemplate {...props} title={title_portfolio} description={description} url={siteUrl} image={publicURL}>
-    </PortfolioTemplate>
+    <StylesProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <PortfolioContextProvider>
+          <PortfolioTemplate
+            {...{ waveImages, ...props }}
+            title={title_portfolio}
+            description={description}
+            url={siteUrl}
+            image={profileImgUrl}
+          >
+            <HomeSection />
+          </PortfolioTemplate>
+        </PortfolioContextProvider>
+      </ThemeProvider>
+    </StylesProvider>
   );
 };
 
@@ -39,7 +66,13 @@ export const getMetaData = graphql`
         siteUrl
       }
     }
-    file(name: { eq: "profile-image" }) {
+    profileImg: file(name: { eq: "profile-image" }) {
+      publicURL
+    }
+    waveImg: file(name: { eq: "wave" }) {
+      publicURL
+    }
+    waveBackImg: file(name: { eq: "wave_background" }) {
       publicURL
     }
   }

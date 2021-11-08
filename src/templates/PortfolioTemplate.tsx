@@ -1,33 +1,35 @@
-import { FunctionComponent } from 'react';
-import styled from '@emotion/styled';
-
-import { Header, Footer, GlobalStyle } from 'components/portfolio/Common';
+import { FunctionComponent, useEffect } from 'react';
+import { usePortfolioDispatch } from 'utils/contexts/PortfolioContext';
+import { Header, Footer, MainContainer, GlobalStyle } from 'components/portfolio/Common';
 import Template, { TemplateProps } from './Template';
-import { ThemeProvider } from '@emotion/react';
-import { theme } from 'utils/style';
 
-const PortfolioTemplate: FunctionComponent<TemplateProps> = ({
+type PortfolioTemplateProps = TemplateProps & {
+  waveImages: {
+    waveImgUrl: string;
+    waveBackImgUrl: string;
+  };
+};
+
+const PortfolioTemplate: FunctionComponent<PortfolioTemplateProps> = ({
   title,
   description,
   url,
   image,
+  waveImages,
   children,
   ...props
-}) => (
-  <PortfolioTemplateLayout {...props}>
-    <Template title={title} description={description} url={url} image={image}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Header />
-        {children}
-        <Footer />
-      </ThemeProvider>
+}) => {
+  const portfolioDispatch = usePortfolioDispatch();
+  useEffect(() => portfolioDispatch({ type: 'SET_WAVE_IMG_URL', payload: waveImages }), [waveImages]);
+
+  return (
+    <Template title={title} description={description} url={url} image={image} {...props}>
+      <GlobalStyle />
+      <Header />
+      <MainContainer>{children}</MainContainer>
+      <Footer />
     </Template>
-  </PortfolioTemplateLayout>
-);
+  );
+};
 
 export default PortfolioTemplate;
-
-const PortfolioTemplateLayout = styled.main`
-  display: flex;
-`;
