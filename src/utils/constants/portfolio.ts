@@ -1,0 +1,1 @@
+export const PORTFOLIO_HEADER_ITEMS = ['Home', 'About', 'Skills', 'Project'];
