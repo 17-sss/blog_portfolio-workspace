@@ -54,4 +54,19 @@ const resetStyle = css`
   }
 `;
 
-export { resetStyle };
+type FlexSetCommonType = "inherit" | "initial" | "unset";
+type FlexSetSortCommonType = FlexSetCommonType | "baseline" | "flex-start" | "flex-end" | "center" | "stretch";
+type FlexSetType = {
+  flexDirection?: FlexSetCommonType | "row" | "row-reverse" | "column" | "column-reverse";
+  alignItems?: FlexSetSortCommonType;
+  justifyContent?: FlexSetSortCommonType | "first baseline" | "last baseline" | "left" | "right" | "start" | "end" 
+    | "safe" | "unsafe" | "space-around" | "space-between" | "space-evenly";
+};
+const flexSet = ({ flexDirection = "row", alignItems = "stretch", justifyContent = "flex-start" }: FlexSetType) => css`
+  display: flex;
+  flex-direction: ${flexDirection};
+  align-items: ${alignItems};
+  justify-content: ${justifyContent};
+`;
+
+export { resetStyle, flexSet };

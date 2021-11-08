@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `코딩 농사꾼 라노의 개발 블로그`,
+    title_portfolio: `코딩 농사꾼 라노의 포트폴리오`,
     description: `꾸준함이라는 덕목이 최고의 미덕이라고 생각하는 주니어 개발자입니다.`,
     author: `Hoyoung Son <Rano>`,
     siteUrl: `https://17-sss.github.io/`,
