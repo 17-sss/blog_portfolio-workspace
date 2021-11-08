@@ -1,8 +1,7 @@
 import { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
 
-import GlobalStyle from 'components/blog/Common/GlobalStyle';
-import Footer from 'components/blog/Common/Footer';
+import { GlobalStyle, Footer } from 'components/blog/Common';
 import Template, { TemplateProps } from './Template';
 
 const BlogTemplate: FunctionComponent<TemplateProps> = ({ title, description, url, image, children, ...props }) => (
