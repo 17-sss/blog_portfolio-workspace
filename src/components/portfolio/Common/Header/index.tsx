@@ -15,7 +15,7 @@ const Header: FunctionComponent = function () {
     [],
   );
   return (
-    <S.HeaderLayout position="sticky" color="transparent">
+    <S.HeaderLayout position="sticky">
       <S.HeaderInnerBox>
         <S.HeaderLogoBox>{PORTFOLIO_HEADER.logo}</S.HeaderLogoBox>
         <S.HeaderMenuList>{menuItems}</S.HeaderMenuList>

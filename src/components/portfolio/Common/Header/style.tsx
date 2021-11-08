@@ -7,6 +7,7 @@ import { flexSet, media, theme } from 'utils/style';
 
 export const HeaderLayout = styled(AppBar)`
   padding: 0 48px;
+  background-color: ${({ theme }) => theme.grayScaleColors.offWhite};
 `;
 
 export const HeaderInnerBox = styled.div`
@@ -21,6 +22,7 @@ export const HeaderInnerBox = styled.div`
 
 const cssHeaderBox = ((theme: Theme) => css`
   ${flexSet({ justifyContent: 'center', alignItems: 'center' })};
+  color: ${theme.grayScaleColors.titleActive};
   font-size: ${theme.fontSizes['16']};
 `)(theme);
 
@@ -39,7 +41,7 @@ export const HeaderMenuList = styled.ul`
 
 export const HeaderMenuListItem = styled.li`
   ${cssHeaderBox};
-  button {
-    font-size: ${({theme}) => theme.fontSizes['12']};
+  .MuiButtonBase-root .MuiButton-label {
+    font-size: ${({ theme }) => theme.fontSizes['12']};
   }
 `;
