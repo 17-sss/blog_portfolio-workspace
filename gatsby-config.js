@@ -7,6 +7,7 @@ module.exports = {
     siteUrl: `https://17-sss.github.io/`,
   },
   plugins: [
+    `gatsby-plugin-material-ui`,
     // robots.txt 파일 - START
     {
       resolve: 'gatsby-plugin-robots-txt',
