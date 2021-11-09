@@ -1,3 +1,5 @@
+import { MAX_WIDTH_INFO } from 'utils/constants';
+
 type CreateResponseType = {
   minWidth?: number;
   maxWidth?: number;
@@ -25,3 +27,33 @@ export const createResponse = ({ minWidth, maxWidth, isAtMedia }: CreateResponse
     return null;
   }
 };
+
+// ------
+
+export type MediaTypes = 'tabletDesktop' | 'desktop' | 'tablet' | 'mobile';
+export const getMediaQueries = (type: MediaTypes, isAtMedia: boolean = false) => {
+  const {
+    set: { MAX_TABLET, MAX_MOBILE },
+  } = MAX_WIDTH_INFO;
+  const stringMediaQueries = {
+    tabletDesktop: createResponse({ minWidth: MAX_MOBILE + 1, isAtMedia }) ?? '',
+    desktop: createResponse({ minWidth: MAX_TABLET + 1, isAtMedia }) ?? '',
+    tablet: createResponse({ maxWidth: MAX_TABLET, isAtMedia }) ?? '',
+    mobile: createResponse({ maxWidth: MAX_MOBILE, isAtMedia }) ?? '',
+  };
+  return stringMediaQueries[type];
+};
+/*
+  [1]
+    - 타블렛 & 데스크탑 768 ~
+      @media (min-width: 768px)
+    - 데스크탑 1024 ~
+      @media (min-width: 1024px)
+  [2]
+    - 타블렛 768 ~ 1023
+      @media (max-width:1023px)
+    - 모바일 0 ~ 767
+      @media (max-width:767px)
+*/
+
+// ------

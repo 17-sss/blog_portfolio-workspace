@@ -1,16 +1,24 @@
 // react-responsive 라이브러리 활용
-import { FunctionComponent } from 'react';
+import { FunctionComponent, Fragment } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { stringMediaQueries as media } from 'utils/style';
+import { getMediaQueries } from 'utils/style';
 
-const Tablet: FunctionComponent = function ({ children }) {
-  const isTablet = useMediaQuery({ query: media.tablet });
-  return <>{isTablet && children}</>;
+export const TabletDesktop: FunctionComponent = function ({ children }) {
+  const isTabletDesktop = useMediaQuery({ query: getMediaQueries('tabletDesktop') });
+  return <Fragment>{isTabletDesktop && children}</Fragment>;
 };
 
-const Mobile: FunctionComponent = function ({ children }) {
-  const isMobile = useMediaQuery({ query: media.mobile });
-  return <>{isMobile && children}</>;
+export const Desktop: FunctionComponent = function ({ children }) {
+  const isDesktop = useMediaQuery({ query: getMediaQueries('desktop') });
+  return <Fragment>{isDesktop && children}</Fragment>;
 };
 
-export { Tablet, Mobile };
+export const Tablet: FunctionComponent = function ({ children }) {
+  const isTablet = useMediaQuery({ query: getMediaQueries('tablet') });
+  return <Fragment>{isTablet && children}</Fragment>;
+};
+
+export const Mobile: FunctionComponent = function ({ children }) {
+  const isMobile = useMediaQuery({ query: getMediaQueries('mobile') });
+  return <Fragment>{isMobile && children}</Fragment>;
+};
