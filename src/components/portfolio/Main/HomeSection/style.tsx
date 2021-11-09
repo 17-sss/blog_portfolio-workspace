@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
+import { Typography } from '@material-ui/core';
 
 import { InnerContainer } from 'components/portfolio/Common';
 import { PORTFOLIO_HEADER } from 'utils/constants';
-import { flexSet } from 'utils/style';
+import { flexSet, getMediaQueries } from 'utils/style';
 
 export const HomeSectionLayout = styled.section`
   position: relative;
@@ -20,12 +21,17 @@ export const SectionInnerBox = styled(InnerContainer)`
   top: 0;
   left: 0;
   right: 0;
-  bottom: 18%;
+  bottom: 15%;
 `;
 
-export const IntroParagraph = styled.p`
+export const IntroParagraph = styled(({ ...props }) => <Typography paragraph align="center" {...props} />)`
   font-family: 'Nanum Myeongjo', serif, Noto Sans KR, sans-serif;
-  font-size: 3vw;
+  font-size: 3.3vw;
+  padding: 0 24px;
+  ${getMediaQueries('mobile', true)} {
+    font-size: 3.5vh;
+  }
+
   color: ${({ theme }) => theme.grayScaleColors.font};
 
   animation: blink 1.5s ease-in-out infinite alternate;
