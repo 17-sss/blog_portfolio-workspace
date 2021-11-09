@@ -25,7 +25,6 @@ export const SectionInnerBox = styled(InnerContainer)`
 `;
 
 export const IntroParagraph = styled(({ ...props }) => <Typography paragraph align="center" {...props} />)`
-  @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&display=swap');
   font-family: 'Nanum Myeongjo', serif, Noto Sans KR, sans-serif;
   font-size: 3.3vw;
   padding: 0 24px;
