@@ -36,7 +36,7 @@ export const HeaderMenuList = styled.ul`
 `;
 
 export const HeaderMenuItem = styled(MenuItem)`
-  font-size: ${({ theme }) => theme.fontSizes['12']};
+  font-size: ${({ theme }) => theme.fontSizes['14']};
 `;
 
 export const MenuOpenButton = styled(Button)`

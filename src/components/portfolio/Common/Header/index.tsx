@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback, useMemo } from 'react';
+import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
 import { Menu } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
@@ -7,11 +7,19 @@ import { PORTFOLIO_HEADER } from 'utils/constants';
 import * as S from './style';
 
 const Header: FunctionComponent = function () {
-  const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   // Mobile 전용 이벤트
-  const handleMobileMenuClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget), []);
+  const handleMobileMenuClick = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget),
+    [],
+  );
   const handleMobileMenuClose = useCallback(() => setAnchorEl(null), []);
+  const handleMobileMenuMouseOver = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLUListElement;
+    const closestTarget = target.closest('ul');
+    if (!closestTarget) setAnchorEl(null); // 이 부분 material-ui 제거.. 생각해보기
+  }, []);
   // --
 
   const menuItems = useMemo(() => {
@@ -31,12 +39,19 @@ const Header: FunctionComponent = function () {
           <S.HeaderMenuList>{menuItems}</S.HeaderMenuList>
         </TabletDesktop>
         <Mobile>
-          <S.MenuOpenButton onClick={handleMobileMenuClick}><MenuIcon/></S.MenuOpenButton>
-          <Menu anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleMobileMenuClose}>
+          <S.MenuOpenButton onClick={handleMobileMenuClick}>
+            <MenuIcon />
+          </S.MenuOpenButton>
+          <Menu
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleMobileMenuClose}
+            onMouseOver={handleMobileMenuMouseOver}
+          >
             {menuItems}
           </Menu>
         </Mobile>
-
       </S.HeaderInnerBox>
     </S.HeaderLayout>
   );
