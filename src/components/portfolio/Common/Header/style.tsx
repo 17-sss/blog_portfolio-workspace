@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { css, Theme } from '@emotion/react';
-import { AppBar } from '@material-ui/core';
+import { AppBar, Button, MenuItem } from '@material-ui/core';
 
 import { MAX_WIDTH_INFO, PORTFOLIO_HEADER } from 'utils/constants';
 import { flexSet, theme } from 'utils/style';
@@ -35,9 +35,13 @@ export const HeaderMenuList = styled.ul`
   column-gap: 4px;
 `;
 
-export const HeaderMenuListItem = styled.li`
-  ${cssHeaderBox};
-  .MuiButtonBase-root .MuiButton-label {
-    font-size: ${({ theme }) => theme.fontSizes['12']};
+export const HeaderMenuItem = styled(MenuItem)`
+  font-size: ${({ theme }) => theme.fontSizes['12']};
+`;
+
+export const MenuOpenButton = styled(Button)`
+  min-width: initial;
+  svg {
+    font-size: ${({ theme }) => theme.fontSizes['24']};
   }
 `;
