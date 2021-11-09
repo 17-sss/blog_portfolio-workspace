@@ -15,11 +15,6 @@ const Header: FunctionComponent = function () {
     [],
   );
   const handleMobileMenuClose = useCallback(() => setAnchorEl(null), []);
-  const handleMobileMenuMouseOver = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const target = e.target as HTMLUListElement;
-    const closestTarget = target.closest('ul');
-    if (!closestTarget) setAnchorEl(null); // 이 부분 material-ui 제거.. 생각해보기
-  }, []);
   // --
 
   const menuItems = useMemo(() => {
@@ -47,7 +42,7 @@ const Header: FunctionComponent = function () {
             keepMounted
             open={Boolean(anchorEl)}
             onClose={handleMobileMenuClose}
-            onMouseOver={handleMobileMenuMouseOver}
+            MenuListProps={{ onMouseLeave: handleMobileMenuClose }}
           >
             {menuItems}
           </Menu>
