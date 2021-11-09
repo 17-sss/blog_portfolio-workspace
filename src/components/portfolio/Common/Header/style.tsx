@@ -3,7 +3,7 @@ import { css, Theme } from '@emotion/react';
 import { AppBar } from '@material-ui/core';
 
 import { MAX_WIDTH_INFO, PORTFOLIO_HEADER } from 'utils/constants';
-import { flexSet, media, theme } from 'utils/style';
+import { flexSet, theme } from 'utils/style';
 
 export const HeaderLayout = styled(AppBar)`
   padding: 0 48px;
@@ -33,10 +33,6 @@ export const HeaderLogoBox = styled.div`
 export const HeaderMenuList = styled.ul`
   ${cssHeaderBox};
   column-gap: 4px;
-
-  ${media.mobile} {
-    display: none;
-  }
 `;
 
 export const HeaderMenuListItem = styled.li`
