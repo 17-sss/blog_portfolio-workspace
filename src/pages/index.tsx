@@ -53,10 +53,9 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
     () =>
       edges.reduce(
         (list: CategoryListProps['categoryList'], data: PostListItemType) => {
-          const { node } = data;
-          const categories = node.frontmatter.categories;
+          const { node: { frontmatter: { categories, options } } } = data;
 
-          const isHide = node.frontmatter.hide;
+          const isHide = options?.hide;
           if (isHide) return list;
 
           let categoryTmp = '';
@@ -111,7 +110,10 @@ export const getPostList = graphql`
             summary
             date(formatString: "YYYY.MM.DD.")
             categories
-            hide
+            options {
+              isPortfolio
+              hide
+            }
             thumbnail {
               childImageSharp {
                 gatsbyImageData(width: 768, height: 400)

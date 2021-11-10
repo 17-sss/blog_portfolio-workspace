@@ -5,7 +5,10 @@ type PostFrontmatterType = {
   date: string;
   categories: string[];
   summary?: string;
-  hide?: boolean;
+  options?: {
+    isPortfolio?: boolean;
+    hide?: boolean;
+  };
   thumbnail: {
     childImageSharp: {
       gatsbyImageData: IGatsbyImageData;

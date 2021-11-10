@@ -25,15 +25,17 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
 }) {
   const { node } = edges[0];
   const { html, frontmatter } = node;
-  const { title, summary, date, categories, thumbnail, hide } = frontmatter;
+  const { title, summary, date, categories, thumbnail, options } = frontmatter;
   const publicURL = thumbnail?.publicURL;
   const gatsbyImageData = thumbnail?.childImageSharp.gatsbyImageData;
 
   useEffect(() => {
-    if (!categories || hide) window.location.href = '/404';
-  }, [categories, hide]);
+    if (!options) return;
+    const { hide, isPortfolio } = options;
+    if (!categories || hide || isPortfolio) window.location.href = '/404';
+  }, [categories, options]);
 
-  return !categories || hide ? (
+  return !categories || options?.hide || options?.isPortfolio ? (
     <></>
   ) : (
     <BlogTemplate title={title} description={summary || ''} url={href} image={publicURL}>
@@ -57,7 +59,10 @@ export const queryMarkdownDataBySlug = graphql`
             summary
             date(formatString: "YYYY.MM.DD.")
             categories
-            hide
+            options {
+              isPortfolio
+              hide
+            }
             thumbnail {
               childImageSharp {
                 gatsbyImageData
