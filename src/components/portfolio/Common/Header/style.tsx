@@ -2,22 +2,18 @@ import styled from '@emotion/styled';
 import { css, Theme } from '@emotion/react';
 import { AppBar, Button, MenuItem } from '@material-ui/core';
 
-import { MAX_WIDTH_INFO, PORTFOLIO_HEADER } from 'utils/constants';
+import InnerContainer from '../InnerContainer';
+import { PORTFOLIO_HEADER } from 'utils/constants';
 import { flexSet, theme } from 'utils/style';
 
 export const HeaderLayout = styled(AppBar)`
-  padding: 0 48px;
   background-color: ${({ theme }) => theme.grayScaleColors.offWhite};
+  padding: 0 48px;
 `;
 
-export const HeaderInnerBox = styled.div`
-  margin: 0 auto;
-
-  width: 100%;
-  max-width: ${`${MAX_WIDTH_INFO.inner.desktop}px`};
-  height: ${`${PORTFOLIO_HEADER.height}px`};
-
+export const HeaderInnerBox = styled(InnerContainer)`
   ${flexSet({ justifyContent: 'space-between', alignItems: 'center' })};
+  height: ${`${PORTFOLIO_HEADER.height}px`};
 `;
 
 const cssHeaderBox = ((theme: Theme) => css`

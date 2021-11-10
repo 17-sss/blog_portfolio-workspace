@@ -6,6 +6,7 @@ export const HomeSectionLayout = styled.section`
   ${flexSet({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })};
   row-gap: 6vh;
   height: 100%;
+  padding: 0 48px;
 `;
 
 export const IntroParagraph = styled(({ ...props }) => <Typography paragraph align="center" {...props} />)`

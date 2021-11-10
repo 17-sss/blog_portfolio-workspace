@@ -1,9 +1,33 @@
-export const PORTFOLIO_HEADER = {
+export type PortfolioSectionNames = 'home' | 'about' | 'skills' | 'project';
+
+type PortfolioHeaderType = {
+  logo: string;
+  items: PortfolioSectionNames[];
+  height: number;
+};
+export const PORTFOLIO_HEADER : PortfolioHeaderType = {
   logo: 'PORTFOLIO',
-  items: ['Home', 'About', 'Skills', 'Project'],
+  items: ['home', 'about', 'skills', 'project'],
   height: 60,
 };
 
-export const PORTFOLIO_HOME_SECTION = {
-  greetingText: `Developer Hoyoung's portfolio.`,
+type PortfolioSectionInfoType = {
+  [type in PortfolioSectionNames]: {
+    layoutId: string;
+    texts?: {
+      [key: string]: string;
+    };
+  };
+};
+
+export const PORTFOLIO_SECTION_INFO: PortfolioSectionInfoType = {
+  home: {
+    layoutId: 'section--home',
+    texts: {
+      greetingText: `Developer Hoyoung's portfolio.`,
+    },
+  },
+  about: { layoutId: 'section--about' },
+  skills: { layoutId: 'section--skills' },
+  project: { layoutId: 'section--project' },
 };
