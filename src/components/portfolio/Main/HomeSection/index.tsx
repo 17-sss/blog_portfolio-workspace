@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useCallback } from 'react';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
 import WaveGraphic from '../WaveGraphic';
@@ -11,9 +11,22 @@ const HomeSection: FunctionComponent = function ({ ...props }) {
   const { waveImages } = usePortfolioState();
   const { layoutId, texts } = PORTFOLIO_SECTION_INFO.home;
 
+  const handleScrollDownButtonClick = useCallback((e : React.MouseEvent<HTMLButtonElement>) => {
+    const closestTarget = (e.target as HTMLElement).closest("button");
+    if (!closestTarget) return;
+
+    const layoutId = PORTFOLIO_SECTION_INFO["about"].layoutId;
+    const sectionEle = document.querySelector(`#${layoutId}`) as HTMLElement;
+    if (!sectionEle) return;
+
+    window.scrollTo({
+      top: sectionEle.offsetTop,
+      behavior: 'smooth',
+    });
+  }, []);
+
   return (
     <S.HomeSectionLayout id={layoutId} {...props}>
-
       <S.WaveGraphicBox>
         <WaveGraphic waveImages={waveImages} />
       </S.WaveGraphicBox>
@@ -22,12 +35,11 @@ const HomeSection: FunctionComponent = function ({ ...props }) {
         <S.IntroParagraph>{texts?.greetingText ?? ''}</S.IntroParagraph>
         <S.ScrollInfoBox>
           <span>Scroll Down</span>
-          <S.ScrollDownButton>
+          <S.ScrollDownButton onClick={handleScrollDownButtonClick}>
             <KeyboardArrowDownIcon />
           </S.ScrollDownButton>
         </S.ScrollInfoBox>
       </S.HomeSectionInnerBox>
-
     </S.HomeSectionLayout>
   );
 };
