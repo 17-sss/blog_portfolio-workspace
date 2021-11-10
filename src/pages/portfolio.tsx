@@ -15,7 +15,7 @@ type PortfolioPageProps = {
       siteMetadata: {
         title_portfolio: string;
         description: string;
-        siteUrl: string;
+        siteUrl_portfolio: string;
       };
     };
     profileImg: {
@@ -32,7 +32,7 @@ type PortfolioPageProps = {
 
 const PortfolioPage: FunctionComponent<PortfolioPageProps> = function ({ data, ...props }) {
   const { site, profileImg, waveImg, waveBackImg } = data;
-  const { title_portfolio, description, siteUrl } = site.siteMetadata;
+  const { title_portfolio, description, siteUrl_portfolio } = site.siteMetadata;
   const profileImgUrl = profileImg.publicURL;
   const waveImages = { waveImgUrl: waveImg.publicURL, waveBackImgUrl: waveBackImg.publicURL };
 
@@ -44,7 +44,7 @@ const PortfolioPage: FunctionComponent<PortfolioPageProps> = function ({ data, .
             {...{ waveImages, ...props }}
             title={title_portfolio}
             description={description}
-            url={siteUrl}
+            url={siteUrl_portfolio}
             image={profileImgUrl}
           >
             <PortfolioComposition />
@@ -63,7 +63,7 @@ export const getMetaData = graphql`
       siteMetadata {
         title_portfolio
         description
-        siteUrl
+        siteUrl_portfolio
       }
     }
     profileImg: file(name: { eq: "profile-image" }) {
