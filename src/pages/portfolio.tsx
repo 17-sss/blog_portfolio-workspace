@@ -2,10 +2,10 @@ import { FunctionComponent } from 'react';
 import { graphql } from 'gatsby';
 import { ThemeProvider } from '@emotion/react';
 import { StylesProvider } from '@material-ui/core/styles';
+import { PortfolioContextProvider } from 'utils/contexts/PortfolioContext';
 
 import PortfolioTemplate from 'templates/PortfolioTemplate';
-import { PortfolioContextProvider } from 'utils/contexts/PortfolioContext';
-import { HomeSection } from 'components/portfolio/Main';
+import { PortfolioComposition } from 'compositions';
 
 import { theme } from 'utils/style';
 
@@ -47,7 +47,7 @@ const PortfolioPage: FunctionComponent<PortfolioPageProps> = function ({ data, .
             url={siteUrl}
             image={profileImgUrl}
           >
-            <HomeSection />
+            <PortfolioComposition />
           </PortfolioTemplate>
         </PortfolioContextProvider>
       </ThemeProvider>

@@ -3,8 +3,10 @@ import queryString, { ParsedQuery } from 'query-string';
 import { graphql } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
-import { CategoryList, CategoryListProps, Introduction, PostList } from 'components/blog/Main';
 import BlogTemplate from 'templates/BlogTemplate';
+import { BlogComposition } from 'compositions';
+
+import { CategoryListProps } from 'components/blog/Main';
 import { PostListItemType } from 'utils/types';
 
 type IndexPageProps = {
@@ -72,9 +74,12 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
 
   return (
     <BlogTemplate title={title} description={description} url={siteUrl} image={publicURL}>
-      <Introduction profileImage={gatsbyImageData} />
-      <CategoryList selectedCategory={selectedCategory} categoryList={categoryList} />
-      <PostList selectedCategory={selectedCategory} posts={edges} />
+      <BlogComposition
+        profileImage={gatsbyImageData}
+        categoryList={categoryList}
+        selectedCategory={selectedCategory}
+        posts={edges}
+      />
     </BlogTemplate>
   );
 };
