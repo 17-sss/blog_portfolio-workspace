@@ -25,27 +25,20 @@ type PortfolioPageProps = {
     profileImg: {
       publicURL: string;
     };
-    waveImg: {
-      publicURL: string;
-    };
-    waveBackImg: {
-      publicURL: string;
-    };
   };
 };
 
 const PortfolioPage: FunctionComponent<PortfolioPageProps> = function ({ data, ...props }) {
-  const { site, profileImg, waveImg, waveBackImg, allMarkdownRemark: { edges } } = data;
+  const { site, profileImg, allMarkdownRemark: { edges } } = data;
   const { title_portfolio, description, siteUrl_portfolio } = site.siteMetadata;
   const profileImgUrl = profileImg.publicURL;
-  const waveImages = { waveImgUrl: waveImg.publicURL, waveBackImgUrl: waveBackImg.publicURL };
 
   return (
     <StylesProvider injectFirst>
       <ThemeProvider theme={theme}>
         <PortfolioContextProvider>
           <PortfolioTemplate
-            {...{ waveImages, ...props }}
+            { ...props }
             markdownData={edges}
             title={title_portfolio}
             description={description}
@@ -83,12 +76,6 @@ export const getPortpolioData = graphql`
       }
     }
     profileImg: file(name: { eq: "profile-image" }) {
-      publicURL
-    }
-    waveImg: file(name: { eq: "wave" }) {
-      publicURL
-    }
-    waveBackImg: file(name: { eq: "wave_background" }) {
       publicURL
     }
   }
