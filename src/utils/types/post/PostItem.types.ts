@@ -4,7 +4,8 @@ type PostFrontmatterType = {
   title: string;
   date: string;
   categories: string[];
-  summary: string;
+  summary?: string;
+  hide?: boolean;
   thumbnail: {
     childImageSharp: {
       gatsbyImageData: IGatsbyImageData;

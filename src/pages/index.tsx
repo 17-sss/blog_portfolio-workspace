@@ -55,6 +55,10 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
         (list: CategoryListProps['categoryList'], data: PostListItemType) => {
           const { node } = data;
           const categories = node.frontmatter.categories;
+
+          const isHide = node.frontmatter.hide;
+          if (isHide) return list;
+
           let categoryTmp = '';
           categories.forEach(category => {
             if (categoryTmp) categoryTmp += `/${category}`;
@@ -107,6 +111,7 @@ export const getPostList = graphql`
             summary
             date(formatString: "YYYY.MM.DD.")
             categories
+            hide
             thumbnail {
               childImageSharp {
                 gatsbyImageData(width: 768, height: 400)

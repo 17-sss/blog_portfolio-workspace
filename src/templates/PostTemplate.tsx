@@ -1,7 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { graphql } from 'gatsby';
 
-import { PostHead, PostContent, CommentWidget } from 'components/blog/Post';
+import { MarkdownRenderer } from 'components/common';
+import { PostHead, CommentWidget } from 'components/blog/Post';
 import { PostPageItemType } from 'utils/types';
 import BlogTemplate from 'templates/BlogTemplate';
 
@@ -24,14 +25,20 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
 }) {
   const { node } = edges[0];
   const { html, frontmatter } = node;
-  const { title, summary, date, categories, thumbnail } = frontmatter;
+  const { title, summary, date, categories, thumbnail, hide } = frontmatter;
   const publicURL = thumbnail?.publicURL;
   const gatsbyImageData = thumbnail?.childImageSharp.gatsbyImageData;
 
-  return (
-    <BlogTemplate title={title} description={summary} url={href} image={publicURL}>
+  useEffect(() => {
+    if (!categories || hide) window.location.href = '/404';
+  }, [categories, hide]);
+
+  return !categories || hide ? (
+    <></>
+  ) : (
+    <BlogTemplate title={title} description={summary || ''} url={href} image={publicURL}>
       <PostHead title={title} date={date} categories={categories} thumbnail={gatsbyImageData} />
-      <PostContent html={html} />
+      <MarkdownRenderer html={html} />
       <CommentWidget />
     </BlogTemplate>
   );
@@ -50,6 +57,7 @@ export const queryMarkdownDataBySlug = graphql`
             summary
             date(formatString: "YYYY.MM.DD.")
             categories
+            hide
             thumbnail {
               childImageSharp {
                 gatsbyImageData

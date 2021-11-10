@@ -19,6 +19,10 @@ const useInfiniteScroll = function (selectedCategory: string, posts: PostListIte
         ? posts.filter((postListItemData: PostListItemType) => {
             const { node } = postListItemData;
             const categories = node.frontmatter.categories;
+
+            const isHide = node.frontmatter.hide;
+            if (isHide) return false;
+
             const categoryTmp = categories.reduce((result, category) => {
               if (result) result += `/${category}`;
               else result = `${category}`;

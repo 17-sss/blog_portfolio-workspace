@@ -23,10 +23,6 @@ const MarkdownRenderer = styled.div`
     font-weight: 900;
   }
 
-  br {
-    display: none;
-  }
-
   // Adjust Heading Element Style
   h1,
   h2,

@@ -15,7 +15,8 @@ const PostList: FunctionComponent<PostListProps> = function ({ selectedCategory,
     () =>
       postList.map(({ node }: PostListItemType) => {
         const { id, frontmatter, fields } = node;
-        return <PostItem {...frontmatter} link={fields.slug} key={id} />;
+        const isHide = frontmatter.hide;
+        return isHide || <PostItem {...frontmatter} link={fields.slug} key={id} />;
       }),
     [postList],
   );
