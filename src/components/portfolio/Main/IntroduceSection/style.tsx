@@ -5,8 +5,8 @@ import { PORTFOLIO_HEADER } from 'utils/constants';
 import { flexSet, getMediaQueries } from 'utils/style';
 import { css } from '@emotion/react';
 
-// AboutSection : Default
-export const AboutSectionLayout = styled.section`
+// IntroduceSection : Default
+export const IntroduceSectionLayout = styled.section`
   padding: 0 48px;
 
   background-image: url(/curvyLines.png);
@@ -16,7 +16,7 @@ export const AboutSectionLayout = styled.section`
   font-family: 'Do Hyeon', 'Nanum Myeongjo', Noto Sans KR, sans-serif;
 `;
 
-export const AboutSectionInnerBox = styled(InnerContainer)`
+export const IntroduceSectionInnerBox = styled(InnerContainer)`
   height: ${`calc(100vh - ${PORTFOLIO_HEADER.height}px)`};
 `;
 

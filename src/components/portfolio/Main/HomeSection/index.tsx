@@ -15,7 +15,7 @@ const HomeSection: FunctionComponent = function ({ ...props }) {
     const closestTarget = (e.target as HTMLElement).closest("button");
     if (!closestTarget) return;
 
-    const layoutId = PORTFOLIO_SECTION_INFO["about"].layoutId;
+    const layoutId = PORTFOLIO_SECTION_INFO["introduce"].layoutId;
     const sectionEle = document.querySelector(`#${layoutId}`) as HTMLElement;
     if (!sectionEle) return;
 

@@ -1,4 +1,4 @@
-export type PortfolioSectionNames = 'home' | 'about' | 'skills' | 'project';
+export type PortfolioSectionNames = 'home' | 'introduce' | 'skills' | 'project';
 
 type PortfolioHeaderType = {
   logo: string;
@@ -7,7 +7,7 @@ type PortfolioHeaderType = {
 };
 export const PORTFOLIO_HEADER: PortfolioHeaderType = {
   logo: 'PORTFOLIO',
-  items: ['home', 'about', 'skills', 'project'],
+  items: ['home', 'introduce', 'skills', 'project'],
   height: 60,
 };
 
@@ -27,10 +27,10 @@ export const PORTFOLIO_SECTION_INFO: PortfolioSectionInfoType = {
       greetingText: `Developer Hoyoung's portfolio.`,
     },
   },
-  about: {
-    layoutId: 'section--about',
+  introduce: {
+    layoutId: 'section--introduce',
     texts: {
-      aboutTexts: [
+      introduceTexts: [
         `끊임없는 성장을 이뤄나가는 Frontend 개발자 손호영입니다.`,
         `기억과 학습은 꾸준함이 중요하다고 생각하여 매일 기록하고 일기를 써나갑니다.`,
         `분야를 가리지 않고 학습하며 개발에 대한 관심사를 넓혀나갑니다.`,
