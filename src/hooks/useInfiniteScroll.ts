@@ -36,7 +36,7 @@ const useInfiniteScroll = function (selectedCategory: string, posts: PostListIte
   );
 
   // IntersectionObserver 설정
-  // (gatsby는 기본적으로 빌드 시 node.js 환경애서 진행됨, 브라우저 API들을 사용할 수 없으니 useEffect를 통해 Ref에 생성해주고 지정 )
+  // (gatsby는 기본적으로 빌드 시 node.js 환경에서 진행됨, 브라우저 API들을 사용할 수 없으니 useEffect를 통해 Ref에 생성해주고 지정 )
   useEffect(() => {
     observer.current = new IntersectionObserver((entries, observer) => {
       // 여기서 쓰이는 IntersectionObserverEntry는 단 하나뿐!

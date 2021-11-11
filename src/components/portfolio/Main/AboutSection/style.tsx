@@ -3,7 +3,7 @@ import { InnerContainer } from 'components/portfolio/Common';
 import { Card } from '@material-ui/core';
 import { PORTFOLIO_HEADER } from 'utils/constants';
 import { flexSet, getMediaQueries } from 'utils/style';
-import { TextItemProps } from '.';
+import { css } from '@emotion/react';
 
 // AboutSection : Default
 export const AboutSectionLayout = styled.section`
@@ -20,14 +20,30 @@ export const AboutSectionInnerBox = styled(InnerContainer)`
   height: ${`calc(100vh - ${PORTFOLIO_HEADER.height}px)`};
 `;
 
-export const TextList = styled.ul`
-  ${flexSet({ flexDirection: 'column', justifyContent: 'space-evenly' })};
+type TextListProps = {
+  dataLength?: number;
+};
+export const TextList = styled.ul<TextListProps>`
+  ${({ dataLength }) =>
+    dataLength
+      ? css`
+          display: grid;
+          align-items: center;
+          grid-template-rows: ${`repeat(${dataLength}, 1fr)`};
+        `
+      : flexSet({ flexDirection: 'column', justifyContent: 'space-evenly' })}
+
   position: relative;
   height: 100%;
   margin: 0 5%;
   overflow: hidden;
 `;
 
+type TextItemProps = {
+  idx: number;
+  duration?: number;
+  useIdx?: boolean;
+};
 export const TextItem = styled.li<TextItemProps>`
   width: fit-content;
   position: relative;
@@ -35,7 +51,7 @@ export const TextItem = styled.li<TextItemProps>`
   &:nth-of-type(2n - 1) {
     margin-right: auto;
 
-    animation: ${({idx}) => `${(idx + 1) * 0.4}s slide-right`};
+    animation: ${({ useIdx, duration = 1.5, idx }) => `${useIdx ? (idx + 1) * duration : duration}s slide-right`};
     @keyframes slide-right {
       from {
         right: 100%;
@@ -50,7 +66,7 @@ export const TextItem = styled.li<TextItemProps>`
 
   &:nth-of-type(2n) {
     margin-left: auto;
-    animation: ${({idx}) => `${(idx + 1) * 0.4}s slide-left`};
+    animation: ${({ useIdx, duration = 1.5, idx }) => `${useIdx ? (idx + 1) * duration : duration}s slide-left`};
     @keyframes slide-left {
       from {
         left: 100%;
