@@ -6,9 +6,27 @@ import InnerContainer from '../InnerContainer';
 import { PORTFOLIO_HEADER } from 'utils/constants';
 import { flexSet, theme } from 'utils/style';
 
-export const HeaderLayout = styled(AppBar)`
-  background-color: ${({ theme }) => theme.grayScaleColors.offWhite};
+type HeaderLayoutProps = {
+  isHeaderTop: boolean;
+};
+export const HeaderLayout = styled(({ isHeaderTop, ...props }: HeaderLayoutProps) => <AppBar position="fixed" {...props} />)`
   padding: 0 48px;
+  background-color: ${({ isHeaderTop, theme }) => (isHeaderTop ? 'transparent' : theme.grayScaleColors.offWhite)};
+  transition: background-color 0.7s;
+  ${({ isHeaderTop }) =>
+    isHeaderTop &&
+    css`
+      box-shadow: none;
+      div, li, svg {
+        color: ${theme.grayScaleColors.offWhite};
+      }
+      div, li {
+        text-shadow: 0.5px 1px 3px black;
+      }
+      svg {
+        filter: drop-shadow(1px 1px 3px rgb(0 0 0 / 0.4));
+      }
+    `}
 `;
 
 export const HeaderInnerBox = styled(InnerContainer)`

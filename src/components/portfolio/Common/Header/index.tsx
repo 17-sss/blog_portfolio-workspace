@@ -1,14 +1,16 @@
-import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
+import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react';
 import { Menu } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { Mobile, TabletDesktop } from 'components/common/MediaQuery';
 import { changeFirstCharUpperCase } from 'utils/functions';
 import { PortfolioSectionNames, PORTFOLIO_HEADER, PORTFOLIO_SECTION_INFO } from 'utils/constants';
+
 import * as S from './style';
 
 const Header: FunctionComponent = function () {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [isHeaderTop, setIsHeaderTop] = useState<boolean>(true);
 
   // Mobile 전용 이벤트
   const handleMobileMenuClick = useCallback(
@@ -35,6 +37,9 @@ const Header: FunctionComponent = function () {
     });
   }, []);
 
+  // window scroll 이벤트용
+  const handleScroll = useCallback(() => setIsHeaderTop(window.scrollY === 0), []);
+
   // --
 
   const menuItems = useMemo(() => {
@@ -45,8 +50,13 @@ const Header: FunctionComponent = function () {
     ));
   }, []);
 
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <S.HeaderLayout position="sticky">
+    <S.HeaderLayout isHeaderTop={isHeaderTop}>
       <S.HeaderInnerBox>
         <S.HeaderLogoBox>{PORTFOLIO_HEADER.logo}</S.HeaderLogoBox>
         <TabletDesktop>
