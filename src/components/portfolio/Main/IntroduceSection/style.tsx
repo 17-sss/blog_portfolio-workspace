@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
-import { InnerContainer } from 'components/portfolio/Common';
+import { css } from '@emotion/react';
 import { Card } from '@material-ui/core';
+import { InnerContainer } from 'components/portfolio/Common';
 import { PORTFOLIO_HEADER } from 'utils/constants';
 import { flexSet, getMediaQueries } from 'utils/style';
-import { css } from '@emotion/react';
 
 // IntroduceSection : Default
 export const IntroduceSectionLayout = styled.section`
-  padding: 0 48px;
+  padding: ${`${PORTFOLIO_HEADER.height}px`} 48px 0;
 
   background-image: url(/curvyLines.png);
   background-repeat: no-repeat;

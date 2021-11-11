@@ -3,7 +3,7 @@ import { InnerContainer } from 'components/portfolio/Common';
 import { PORTFOLIO_HEADER } from 'utils/constants';
 
 export const SkillSectionLayout = styled.section`
-  padding: 0 48px;
+  padding: ${`${PORTFOLIO_HEADER.height}px`} 48px 0;
 `;
 
 export const SkillSectionInnerBox = styled(InnerContainer)`

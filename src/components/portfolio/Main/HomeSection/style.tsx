@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { Button, Typography } from '@material-ui/core';
 import { InnerContainer } from 'components/portfolio/Common';
-import { PORTFOLIO_HEADER } from 'utils/constants';
 import { flexSet, getMediaQueries, theme } from 'utils/style';
 
 export const HomeSectionLayout = styled.section`
@@ -15,7 +14,7 @@ export const WaveGraphicBox = styled.div`
 
   margin: 0 auto;
   width: 100%;
-  height: ${`calc(100vh - ${PORTFOLIO_HEADER.height}px)`};
+  height: 100vh;
 
   background-color: ${({ theme }) => theme.grayScaleColors.background};
   opacity: 0.75;
@@ -25,7 +24,7 @@ export const WaveGraphicBox = styled.div`
 export const HomeSectionInnerBox = styled(InnerContainer)`
   ${flexSet({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })};
   row-gap: 6vh;
-  height: ${`calc(100vh - ${PORTFOLIO_HEADER.height}px)`};
+  height: 100vh;
 `;
 
 export const IntroParagraph = styled(({ ...props }) => <Typography paragraph align="center" {...props} />)`
