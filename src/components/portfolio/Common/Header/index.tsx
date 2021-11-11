@@ -13,10 +13,7 @@ const Header: FunctionComponent = function () {
   const [isHeaderTop, setIsHeaderTop] = useState<boolean>(true);
 
   // Mobile 전용 이벤트
-  const handleMobileMenuClick = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget),
-    [],
-  );
+  const handleMobileMenuClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget), []);
   const handleMobileMenuClose = useCallback(() => setAnchorEl(null), []);
 
   // 메뉴 아이템 클릭시, 해당하는 Section으로 자연스럽게 스크롤링됨.
@@ -37,11 +34,6 @@ const Header: FunctionComponent = function () {
     });
   }, []);
 
-  // window scroll 이벤트용
-  const handleScroll = useCallback(() => setIsHeaderTop(window.scrollY === 0), []);
-
-  // --
-
   const menuItems = useMemo(() => {
     return PORTFOLIO_HEADER.items.map((name, i) => (
       <S.HeaderMenuItem key={i} id={name} onClick={handleMobileItemClick}>
@@ -50,10 +42,14 @@ const Header: FunctionComponent = function () {
     ));
   }, []);
 
+  // window scroll 이벤트 관련 - 추후 throttle 적용
+  const handleScroll = useCallback(() => setIsHeaderTop(() => window.scrollY === 0), []);
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  // --
 
   return (
     <S.HeaderLayout isHeaderTop={isHeaderTop}>

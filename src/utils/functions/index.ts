@@ -1,1 +1,1 @@
-export * from './stringUtil';
+export * from './utils';

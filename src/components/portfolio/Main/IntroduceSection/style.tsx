@@ -51,7 +51,7 @@ export const TextItem = styled.li<TextItemProps>`
   &:nth-of-type(2n - 1) {
     margin-right: auto;
 
-    animation: ${({ useIdx, duration = 1.5, idx }) => `${useIdx ? (idx + 1) * duration : duration}s slide-right`};
+    animation: ${({ useIdx, duration = 1.2, idx }) => `${useIdx ? (idx + 1) * duration : duration}s slide-right`};
     @keyframes slide-right {
       from {
         right: 100%;

@@ -12,7 +12,10 @@ const IntroduceSection: FunctionComponent = function ({ ...props }) {
     return texts.introduceTexts;
   }, [texts]);
 
-  const { ref, sliceData } = useObserveItems<HTMLUListElement>({ data: introduceTexts });
+  const { ref, sliceData } = useObserveItems<HTMLUListElement>({
+    data: introduceTexts,
+    observeOptions: { threshold: 1 },
+  });
 
   const textItems = useMemo(() => {
     if (!sliceData || !sliceData.length) return null;
@@ -26,7 +29,9 @@ const IntroduceSection: FunctionComponent = function ({ ...props }) {
   return (
     <S.IntroduceSectionLayout id={layoutId} {...props}>
       <S.IntroduceSectionInnerBox>
-        <S.TextList ref={ref} dataLength={introduceTexts.length}>{textItems ?? <></>}</S.TextList>
+        <S.TextList ref={ref} dataLength={introduceTexts.length}>
+          {textItems ?? <></>}
+        </S.TextList>
       </S.IntroduceSectionInnerBox>
     </S.IntroduceSectionLayout>
   );
