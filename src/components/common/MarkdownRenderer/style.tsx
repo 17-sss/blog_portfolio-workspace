@@ -93,14 +93,16 @@ const MarkdownRenderer = styled.div`
       background: rgba(255, 255, 255, 0.5);
       border-radius: 3px;
     }
+
+    * {
+      font-family: 'Roboto', 'Noto Sans KR', system-ui, Apple SD Gothic Neo, AppleGothic, 'Nanum Myeongjo', sans-serif,
+        serif;
+    }
   }
 
   code[class*='language-'],
   pre[class*='language-'] {
     tab-size: 2;
-
-    font-family: 'Roboto', 'Noto Sans KR', system-ui, Apple SD Gothic Neo, AppleGothic, 'Nanum Myeongjo', sans-serif,
-      serif;
   }
 
   // Markdown Responsive Design
