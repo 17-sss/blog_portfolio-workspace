@@ -98,7 +98,9 @@ const MarkdownRenderer = styled.div`
   code[class*='language-'],
   pre[class*='language-'] {
     tab-size: 2;
-    font-family: Roboto, system-ui, Apple SD Gothic Neo, AppleGothic, sans-serif, 'Nanum Myeongjo', serif;
+
+    font-family: 'Roboto', 'Noto Sans KR', system-ui, Apple SD Gothic Neo, AppleGothic, 'Nanum Myeongjo', sans-serif,
+      serif;
   }
 
   // Markdown Responsive Design

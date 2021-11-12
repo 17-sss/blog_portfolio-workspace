@@ -46,6 +46,7 @@ const Header: FunctionComponent = function () {
   const handleScroll = useCallback(() => setIsHeaderTop(() => window.scrollY === 0), []);
 
   useEffect(() => {
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
