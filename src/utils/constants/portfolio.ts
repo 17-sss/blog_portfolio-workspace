@@ -1,4 +1,4 @@
-export type PortfolioSectionNames = 'home' | 'introduce' | 'skills' | 'project';
+export type PortfolioSectionNames = 'home' | 'introduce' | 'profile' | 'project';
 
 type PortfolioHeaderType = {
   logo: string;
@@ -7,7 +7,7 @@ type PortfolioHeaderType = {
 };
 export const PORTFOLIO_HEADER: PortfolioHeaderType = {
   logo: 'PORTFOLIO',
-  items: ['home', 'introduce', 'skills', 'project'],
+  items: ['home', 'introduce', 'profile', 'project'],
   height: 60,
 };
 
@@ -32,7 +32,7 @@ type UnspecifiedInfo = RequiredType & { texts?: [key: string] };
 type PortfolioSectionInfoType = {
   home: HomeSectionInfo;
   introduce: IntroduceSectionInfo;
-  skills: UnspecifiedInfo;
+  profile: UnspecifiedInfo;
   project: UnspecifiedInfo;
 };
 
@@ -59,6 +59,6 @@ export const PORTFOLIO_SECTION_INFO: PortfolioSectionInfoType = {
       },
     },
   },
-  skills: { layoutId: 'section--skills' },
+  profile: { layoutId: 'section--profile' },
   project: { layoutId: 'section--project' },
 };

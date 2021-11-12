@@ -1,5 +1,5 @@
 import HomeSection from './HomeSection';
 import IntroduceSection from './IntroduceSection';
-import SkillSection from './SkillSection';
+import ProfileSection from './ProfileSection';
 import ProjectSection from './ProjectSection';
-export { HomeSection, IntroduceSection, SkillSection, ProjectSection };
+export { HomeSection, IntroduceSection, ProfileSection, ProjectSection };
