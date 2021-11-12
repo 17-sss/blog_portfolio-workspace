@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 import { TypographyTypeMap } from '@material-ui/core';
 import * as S from './style';
 
-export type ParagrphProps = TypographyTypeMap['props'] & { isContent?: boolean };
+export type ParagrphProps = TypographyTypeMap['props'] & { isContent?: boolean, isTitle?: boolean };
 const Paragrph: FunctionComponent<ParagrphProps> = function ({ children, ...props }) {
   return <S.ParagraphLayout {...props}>{children}</S.ParagraphLayout>;
 };

@@ -15,7 +15,7 @@ const PortfolioTemplate: FunctionComponent<PortfolioTemplateProps> = ({ title, d
   useEffect(() => {
     portfolioDispatch({
       type: 'SET_WAVE_IMG_URL',
-      payload: { waveBackImgUrl: 'wave_background.jpg', waveImgUrl: 'wave.png' },
+      payload: { waveBackImgUrl: '/wave_background.jpg', waveImgUrl: '/wave.png' },
     });
     portfolioDispatch({ type: 'SET_MARKDOWN_DATA', payload: markdownData });
   }, [markdownData]);
