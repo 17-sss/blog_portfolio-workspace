@@ -21,8 +21,8 @@ export const IntroduceSectionInnerBox = styled(InnerContainer)`
   row-gap: 8px;
 
   * {
-    font-family: 'Noto Sans KR', 'Do Hyeon', 'Roboto', 'Nanum Myeongjo', sans-serif;
-    font-weight: 500;
+    font-family: 'Noto Sans KR', 'Roboto', 'Helvetica', 'Arial', 'Do Hyeon', 'Nanum Myeongjo', sans-serif;
+    font-weight: 400;
   }
 `;
 

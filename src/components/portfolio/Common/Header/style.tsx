@@ -29,7 +29,7 @@ export const HeaderLayout = styled(({ isHeaderTop, ...props }: HeaderLayoutProps
     `}
 
   * {
-    font-family: 'Roboto', 'Noto Sans KR', sans-serif, serif;
+    font-family: 'Noto Sans KR', 'Roboto', 'Helvetica', 'Arial', 'Do Hyeon', 'Nanum Myeongjo', sans-serif;
   }
 `;
 
