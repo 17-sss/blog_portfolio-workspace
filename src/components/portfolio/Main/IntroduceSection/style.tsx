@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Card, CardContent, Typography } from '@material-ui/core';
 import { Variant } from '@material-ui/core/styles/createTypography';
-import { InnerContainer } from 'components/portfolio/Common';
+import { InnerContainer, SubTitleBox } from 'components/portfolio/Common';
 import { PORTFOLIO_HEADER } from 'utils/constants';
 import { setFlex, getMediaQueries } from 'utils/style';
 import { setFadeInAnimation, setSlideAnimation } from 'utils/style/animation';
@@ -83,7 +83,7 @@ export const IntroduceCardContent = styled(CardContent)`
   }
 `;
 
-export const IntroduceSubTitleBox = styled.div`
+export const IntroduceSubTitleBox = styled(SubTitleBox)`
   ${setFadeInAnimation()}
 `;
 

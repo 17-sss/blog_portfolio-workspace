@@ -27,6 +27,10 @@ export const HeaderLayout = styled(({ isHeaderTop, ...props }: HeaderLayoutProps
         filter: drop-shadow(1px 1px 3px rgb(0 0 0 / 0.4));
       }
     `}
+
+  * {
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif, serif;
+  }
 `;
 
 export const HeaderInnerBox = styled(InnerContainer)`
