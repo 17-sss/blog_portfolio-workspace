@@ -4,7 +4,7 @@ import { AppBar, Button, MenuItem } from '@material-ui/core';
 
 import InnerContainer from '../InnerContainer';
 import { PORTFOLIO_HEADER } from 'utils/constants';
-import { flexSet, theme } from 'utils/style';
+import { setFlex, theme } from 'utils/style';
 
 type HeaderLayoutProps = {
   isHeaderTop: boolean;
@@ -30,12 +30,12 @@ export const HeaderLayout = styled(({ isHeaderTop, ...props }: HeaderLayoutProps
 `;
 
 export const HeaderInnerBox = styled(InnerContainer)`
-  ${flexSet({ justifyContent: 'space-between', alignItems: 'center' })};
+  ${setFlex({ justifyContent: 'space-between', alignItems: 'center' })};
   height: ${`${PORTFOLIO_HEADER.height}px`};
 `;
 
 const cssHeaderBox = ((theme: Theme) => css`
-  ${flexSet({ justifyContent: 'center', alignItems: 'center' })};
+  ${setFlex({ justifyContent: 'center', alignItems: 'center' })};
   color: ${theme.grayScaleColors.titleActive};
   font-size: ${theme.fontSizes['16']};
 `)(theme);
