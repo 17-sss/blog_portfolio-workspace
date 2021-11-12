@@ -1,37 +1,46 @@
-import useObserveItems from 'hooks/useObserveItems';
 import React, { FunctionComponent, useMemo } from 'react';
+
+import DirectionsWalkRoundedIcon from '@material-ui/icons/DirectionsWalkRounded';
+import DirectionsRunRoundedIcon from '@material-ui/icons/DirectionsRunRounded';
+import DirectionsBikeRoundedIcon from '@material-ui/icons/DirectionsBikeRounded';
+
 import { PORTFOLIO_SECTION_INFO } from 'utils/constants';
 import * as S from './style';
 
 const IntroduceSection: FunctionComponent = function ({ ...props }) {
-  const { layoutId, texts } = PORTFOLIO_SECTION_INFO.introduce;
+  const { layoutId, itemTexts, subTitleText } = PORTFOLIO_SECTION_INFO.introduce;
 
-  const introduceTexts = useMemo<string[]>(() => {
-    if (!texts || !texts.introduceTexts) return [];
-    if (!Array.isArray(texts.introduceTexts)) return [texts.introduceTexts];
-    return texts.introduceTexts;
-  }, [texts]);
-
-  const { ref, sliceData } = useObserveItems<HTMLUListElement>({
-    data: introduceTexts,
-    observeOptions: { threshold: 1 },
-  });
-
-  const textItems = useMemo(() => {
-    if (!sliceData || !sliceData.length) return null;
-    return (sliceData as string[]).map((text, i) => (
-      <S.TextItem key={i} idx={i}>
-        <S.TextCard>{text}</S.TextCard>
-      </S.TextItem>
-    ));
-  }, [sliceData]);
+  const introduceItems = useMemo(
+    () =>
+      Object.values(itemTexts).map(({ subject, contents }, i) => {
+        const icons = [<DirectionsWalkRoundedIcon />, <DirectionsRunRoundedIcon />, <DirectionsBikeRoundedIcon />];
+        return (
+          <S.IntroduceItem key={i} idx={i}>
+            <S.IntroduceCard>
+              <S.IntroduceCardContent>
+                <S.IntroduceIconBox>
+                  <span className="inner">{icons.find((_, iconIdx) => i === iconIdx) ?? <></>}</span>
+                </S.IntroduceIconBox>
+                <S.IntroduceParagraph variant="h3">{subject}</S.IntroduceParagraph>
+                <S.IntroduceParagraph variant="h5" isContent>
+                  {contents}
+                </S.IntroduceParagraph>
+              </S.IntroduceCardContent>
+            </S.IntroduceCard>
+          </S.IntroduceItem>
+        );
+      }),
+    [itemTexts],
+  );
 
   return (
     <S.IntroduceSectionLayout id={layoutId} {...props}>
       <S.IntroduceSectionInnerBox>
-        <S.TextList ref={ref} dataLength={introduceTexts.length}>
-          {textItems ?? <></>}
-        </S.TextList>
+        <S.IntroduceSubTitleBox>
+          <S.IntroduceParagraph variant="h2">소개</S.IntroduceParagraph>
+          <S.IntroduceParagraph variant="h4">{subTitleText}</S.IntroduceParagraph>
+        </S.IntroduceSubTitleBox>
+        <S.IntroduceList dataLength={introduceItems.length}>{introduceItems}</S.IntroduceList>
       </S.IntroduceSectionInnerBox>
     </S.IntroduceSectionLayout>
   );

@@ -1,92 +1,119 @@
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { Card } from '@material-ui/core';
+import styled from '@emotion/styled';
+import { Card, CardContent, Typography } from '@material-ui/core';
+import { Variant } from '@material-ui/core/styles/createTypography';
 import { InnerContainer } from 'components/portfolio/Common';
 import { PORTFOLIO_HEADER } from 'utils/constants';
-import { flexSet, getMediaQueries } from 'utils/style';
+import { setFlex, getMediaQueries } from 'utils/style';
+import { setFadeInAnimation, setSlideAnimation } from 'utils/style/animation';
 
 // IntroduceSection : Default
 export const IntroduceSectionLayout = styled.section`
-  padding: ${`${PORTFOLIO_HEADER.height}px`} 48px 0;
+  padding: ${`${PORTFOLIO_HEADER.height}px`} 48px 0px;
 
   background-image: url(/curvyLines.png);
   background-repeat: no-repeat;
   background-size: cover;
-
-  font-family: 'Do Hyeon', 'Nanum Myeongjo', Noto Sans KR, sans-serif;
 `;
 
 export const IntroduceSectionInnerBox = styled(InnerContainer)`
-  height: ${`calc(100vh - ${PORTFOLIO_HEADER.height}px)`};
+  min-height: ${`calc(100vh - ${PORTFOLIO_HEADER.height}px)`};
+
+  ${setFlex({ justifyContent: 'center', alignItems: 'center', flexDirection: 'column' })}
+  row-gap: 8px;
+
+  * {
+    font-family: 'Noto Sans KR', 'Do Hyeon', 'Roboto', 'Nanum Myeongjo', sans-serif;
+    font-weight: 500;
+  }
 `;
 
-type TextListProps = {
+type IntroduceListProps = {
   dataLength?: number;
 };
-export const TextList = styled.ul<TextListProps>`
-  ${({ dataLength }) =>
-    dataLength
-      ? css`
-          display: grid;
-          align-items: center;
-          grid-template-rows: ${`repeat(${dataLength}, 1fr)`};
-        `
-      : flexSet({ flexDirection: 'column', justifyContent: 'space-evenly' })}
+export const IntroduceList = styled.ul<IntroduceListProps>`
+  display: grid;
 
-  position: relative;
-  height: 100%;
-  margin: 0 5%;
+  padding: 0 12px;
   overflow: hidden;
+
+  gap: 1.2vh;
+  ${getMediaQueries('tabletDesktop')} {
+    grid-template-columns: ${({ dataLength }) => `repeat(3, calc(100% / ${dataLength ?? 3}))`};
+  }
+
+  ${getMediaQueries('mobile')} {
+    grid-template-rows: ${({ dataLength }) => `repeat(3, calc(100% / ${dataLength ?? 3}))`};
+    padding-bottom: 24px;
+  }
 `;
 
-type TextItemProps = {
-  idx: number;
+type IntroduceItemProps = {
+  idx?: number;
   duration?: number;
-  useIdx?: boolean;
 };
-export const TextItem = styled.li<TextItemProps>`
-  width: fit-content;
+export const IntroduceItem = styled.li<IntroduceItemProps>`
+  margin: 0 16px;
+  padding: 12px 0;
+
   position: relative;
-
-  &:nth-of-type(2n - 1) {
-    margin-right: auto;
-
-    animation: ${({ useIdx, duration = 1.2, idx }) => `${useIdx ? (idx + 1) * duration : duration}s slide-right`};
-    @keyframes slide-right {
-      from {
-        right: 100%;
-        opacity: 0;
-      }
-      to {
-        right: 0%;
-        opacity: 1;
-      }
-    }
+  ${getMediaQueries('tabletDesktop')} {
+    ${setFadeInAnimation()}
   }
 
-  &:nth-of-type(2n) {
-    margin-left: auto;
-    animation: ${({ useIdx, duration = 1.5, idx }) => `${useIdx ? (idx + 1) * duration : duration}s slide-left`};
-    @keyframes slide-left {
-      from {
-        left: 100%;
-        opacity: 0;
-      }
-      to {
-        left: 0%;
-        opacity: 1;
-      }
+  ${getMediaQueries('mobile')} {
+    &:nth-of-type(2n - 1) {
+      ${({ duration, idx }) => setSlideAnimation({ direction: 'right', duration, idx })}
+    }
+
+    &:nth-of-type(2n) {
+      ${({ duration, idx }) => setSlideAnimation({ direction: 'left', duration, idx })}
     }
   }
 `;
 
-export const TextCard = styled(Card)`
-  font-size: 2.1vh;
-  padding: 24px;
+export const IntroduceCard = styled(({ ...props }) => <Card elevation={4} {...props} />)`
   border-radius: 20px;
+  height: 100%;
+`;
 
-  ${getMediaQueries('mobile', true)} {
-    font-size: 1.4vh;
-    padding: 16px;
+export const IntroduceCardContent = styled(CardContent)`
+  &:last-child {
+    padding-bottom: 16px;
   }
+`;
+
+export const IntroduceSubTitleBox = styled.div`
+  ${setFadeInAnimation()}
+`;
+
+export const IntroduceIconBox = styled.div`
+  width: 100%;
+  ${setFlex({ justifyContent: 'center', alignItems: 'center' })};
+  .inner {
+    text-align: center;
+
+    background-color: ${({ theme }) => theme.grayScaleColors.font};
+    border-radius: 50%;
+    svg {
+      color: ${({ theme }) => theme.grayScaleColors.offWhite};
+      font-size: 10vh;
+    }
+  }
+`;
+
+type IntroduceParagraphProps = { variant?: Variant | 'srOnly'; isContent?: boolean };
+export const IntroduceParagraph = styled(({ isContent, ...props }: IntroduceParagraphProps) => (
+  <Typography {...props} />
+))`
+  color: ${({ theme }) => theme.grayScaleColors.titleActive};
+  text-align: center;
+  padding: 12px 0;
+
+  ${({ isContent, theme }) =>
+    isContent &&
+    css`
+      color: ${theme.grayScaleColors.font};
+      text-align: initial;
+    `};
 `;
