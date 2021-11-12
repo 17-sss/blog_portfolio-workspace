@@ -11,34 +11,52 @@ export const PORTFOLIO_HEADER: PortfolioHeaderType = {
   height: 60,
 };
 
-type PortfolioSectionInfoType = {
-  [type in PortfolioSectionNames]: {
-    layoutId: string;
-    texts?: {
-      [key: string]: string | string[];
-    };
+// PortfolioSectionInfoType을 위한 type들
+type RequiredType = {
+  layoutId: string;
+};
+type HomeSectionInfo = RequiredType & {
+  greetingText: string;
+};
+type introduceTextNames = 'motivation' | 'goal' | 'direction';
+type IntroduceSectionInfo = RequiredType & {
+  subTitleText: string;
+  itemTexts: {
+    [type in introduceTextNames]: { subject: string; contents: string };
   };
+};
+
+type UnspecifiedInfo = RequiredType & { texts?: [key: string] };
+// ------------
+
+type PortfolioSectionInfoType = {
+  home: HomeSectionInfo;
+  introduce: IntroduceSectionInfo;
+  skills: UnspecifiedInfo;
+  project: UnspecifiedInfo;
 };
 
 export const PORTFOLIO_SECTION_INFO: PortfolioSectionInfoType = {
   home: {
     layoutId: 'section--home',
-    texts: {
-      greetingText: `Developer Hoyoung's portfolio.`,
-    },
+    greetingText: `Developer Hoyoung's portfolio.`,
   },
   introduce: {
     layoutId: 'section--introduce',
-    texts: {
-      introduceTexts: [
-        `끊임없는 성장을 이뤄나가는 Frontend 개발자 손호영입니다.`,
-        `기억과 학습은 꾸준함이 중요하다고 생각하여 매일 기록하고 일기를 써나갑니다.`,
-        `분야를 가리지 않고 학습하며 개발에 대한 관심사를 넓혀나갑니다.`,
-        `한 곳에 안주하지 않도록 스스로 새로운 과제를 내어줌으로써 발전해 나아갑니다.`,
-        `다양한 교육을 통해 협업 경험과 실무 능력을 쌓았습니다.`,
-        `협업에 필요한 클린 코드 작성에 대해 고민합니다.`,
-        `재사용 가능한 구성요소를 만드는 데 관심이 있습니다.`,
-      ],
+    subTitleText: '꾸준함이라는 덕목이 최고의 미덕이라고 생각하는 주니어 개발자입니다.',
+    itemTexts: {
+      motivation: {
+        subject: '동기',
+        contents: '저는 과거에 운동선수를 했던 경험이 있습니다. 선수 시절에 병상에서 개발자 도구를 통해 웹이 문자로만 되어 있는 것을 보고 흥미를 가지게 되었고, 꿈을 품게 되었습니다.',
+      },
+      goal: {
+        subject: '목표',
+        contents: '그저 흥미로 시작했고 지금도 여전히 좋아하는 분야입니다. 현재 프론트엔드 개발자가 되기 위해 다양한 교육과정을 수료했으며, 프론트엔드 개발자라는 꿈을 이루고 더 나아가 풀스택 개발자가 되는 것이 목표입니다.',
+      },
+      direction: {
+        subject: '방향',
+        contents: '무엇보다 꾀 많은 토끼보다는 포기하지 않는 거북이가 옳다고 생각합니다. 지금처럼 꾸준하게 학습하며 프론트엔드 개발자라는 하나의 목표가 이루어지고 더욱 성장하기 위해 필요 지식을 습득하여 다음 목표를 향해 나아갈 것입니다.',
+      },
     },
   },
   skills: { layoutId: 'section--skills' },

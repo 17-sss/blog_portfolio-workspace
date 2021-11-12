@@ -9,7 +9,7 @@ import * as S from './style';
 
 const HomeSection: FunctionComponent = function ({ ...props }) {
   const { waveImages } = usePortfolioState();
-  const { layoutId, texts } = PORTFOLIO_SECTION_INFO.home;
+  const { layoutId, greetingText } = PORTFOLIO_SECTION_INFO.home;
 
   const handleScrollDownButtonClick = useCallback((e : React.MouseEvent<HTMLButtonElement>) => {
     const closestTarget = (e.target as HTMLElement).closest("button");
@@ -32,7 +32,7 @@ const HomeSection: FunctionComponent = function ({ ...props }) {
       </S.WaveGraphicBox>
 
       <S.HomeSectionInnerBox>
-        <S.IntroParagraph>{texts?.greetingText ?? ''}</S.IntroParagraph>
+        <S.IntroParagraph>{greetingText}</S.IntroParagraph>
         <S.ScrollInfoBox>
           <span>Scroll Down</span>
           <S.ScrollDownButton onClick={handleScrollDownButtonClick}>
