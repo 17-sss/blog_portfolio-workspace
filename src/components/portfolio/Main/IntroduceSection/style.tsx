@@ -18,11 +18,6 @@ export const IntroduceSectionInnerBox = styled(InnerContainer)`
 
   ${setFlex({ justifyContent: 'center', alignItems: 'center', flexDirection: 'column' })}
   row-gap: 8px;
-
-  * {
-    font-family: 'Noto Sans KR', 'Roboto', 'Helvetica', 'Arial', 'Do Hyeon', 'Nanum Myeongjo', sans-serif;
-    font-weight: 400;
-  }
 `;
 
 export const IntroduceTitleBox = styled(TitleBox)`

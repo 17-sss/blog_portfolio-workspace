@@ -4,11 +4,14 @@ import { Typography } from '@material-ui/core';
 import { ParagrphProps } from '.';
 
 export const ParagraphLayout = styled(({ isTitle, isContent, ...props }: ParagrphProps) => <Typography {...props} />)`
+  font-family: ${({ isTitle }) =>
+    (isTitle ? 'Comfortaa,' : '') +
+    `'Noto Sans KR', 'Roboto', 'Helvetica', 'Arial', 'Do Hyeon', 'Nanum Myeongjo', sans-serif`};
+
   color: ${({ theme }) => theme.grayScaleColors.titleActive};
   text-align: center;
   padding: 12px 0;
 
-  ${({ isTitle }) => isTitle && css`font-family: 'Comfortaa', 'Roboto', 'Helvetica', 'Arial', sans-serif, serif;`};
   ${({ isContent, theme }) =>
     isContent &&
     css`
