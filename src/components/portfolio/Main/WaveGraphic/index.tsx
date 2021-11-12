@@ -8,11 +8,6 @@ export type WaveGraphicProps = {
   };
 };
 
-export type WaveProps = {
-  idx: number;
-  imageUrl: string;
-};
-
 const WaveGraphic: FunctionComponent<WaveGraphicProps> = function ({
   waveImages: { waveImgUrl = '', waveBackImgUrl = '' } = { waveImgUrl: '', waveBackImgUrl: '' },
 }) {

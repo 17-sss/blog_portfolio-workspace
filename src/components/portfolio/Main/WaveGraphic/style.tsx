@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { WaveGraphicProps, WaveProps } from '.';
+import { WaveGraphicProps } from '.';
+import { setWaveAnimation } from 'utils/style/animation';
 
 // WaveGraphicLayout
 export const WaveGraphicLayout = styled.div<Pick<WaveGraphicProps['waveImages'], 'waveBackImgUrl'>>`
@@ -17,21 +17,10 @@ export const WaveGraphicLayout = styled.div<Pick<WaveGraphicProps['waveImages'],
 `;
 
 // Wave
-type CreateWaveAnimationType = {
-  animation: string;
-  zIndex: number;
-  opacity: number;
-  animationDelay: number;
-  bottom: number;
+type WaveProps = {
+  idx: number;
+  imageUrl: string;
 };
-const createWaveAnimation = ({ animation, zIndex, opacity, animationDelay, bottom }: CreateWaveAnimationType) => css`
-  animation: ${animation};
-  z-index: ${zIndex};
-  opacity: ${opacity};
-  animation-delay: ${`${animationDelay}s`};
-  bottom: ${`${bottom}px`};
-`;
-
 export const Wave = styled.div<WaveProps>`
   position: absolute;
   width: 100%;
@@ -42,55 +31,36 @@ export const Wave = styled.div<WaveProps>`
   bottom: 0;
   left: 0;
 
-  // Animation -- START
-  @keyframes animate1 {
-    0% {
-      background-position-x: 0;
-    }
-    100% {
-      background-position-x: 1000px;
-    }
-  }
-
-  @keyframes animate2 {
-    0% {
-      background-position-x: 0;
-    }
-    100% {
-      background-position-x: -1000px;
-    }
-  }
-
   ${({ idx }) => {
     switch (idx) {
       case 0:
-        return createWaveAnimation({
-          animation: `animate1 30s linear infinite`,
-          animationDelay: 0,
+        return setWaveAnimation({
+          direction: 'right',
+          animationProps: { duration: 30, timingFunction: 'linear', delay: 0 },
           bottom: 0,
           zIndex: 1000,
           opacity: 0.8,
         });
       case 1:
-        return createWaveAnimation({
-          animation: `animate2 15s linear infinite`,
-          animationDelay: -5,
+        return setWaveAnimation({
+          direction: 'left',
+          animationProps: { duration: 15, timingFunction: 'linear', delay: -5 },
           bottom: 10,
           zIndex: 999,
           opacity: 0.4,
         });
       case 2:
-        return createWaveAnimation({
-          animation: `animate1 30s linear infinite`,
-          animationDelay: -2,
+        return setWaveAnimation({
+          direction: 'right',
+          animationProps: { duration: 30, timingFunction: 'linear', delay: -2 },
           bottom: 15,
           zIndex: 998,
           opacity: 0.2,
         });
       case 3:
-        return createWaveAnimation({
-          animation: `animate2 5s linear infinite`,
-          animationDelay: -5,
+        return setWaveAnimation({
+          direction: 'left',
+          animationProps: { duration: 5, timingFunction: 'linear', delay: -5 },
           bottom: 20,
           zIndex: 997,
           opacity: 0.6,
@@ -99,5 +69,4 @@ export const Wave = styled.div<WaveProps>`
         return;
     }
   }};
-  // Animation -- END
 `;

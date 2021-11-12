@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 import { Button, Typography } from '@material-ui/core';
 import { InnerContainer } from 'components/portfolio/Common';
-import { flexSet, getMediaQueries, theme } from 'utils/style';
+import { setFlex, getMediaQueries, theme } from 'utils/style';
+import { setFadeInAnimation } from 'utils/style/animation';
 
 export const HomeSectionLayout = styled.section`
   padding: 0 48px;
@@ -22,17 +23,17 @@ export const WaveGraphicBox = styled.div`
 `;
 
 export const HomeSectionInnerBox = styled(InnerContainer)`
-  ${flexSet({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })};
+  ${setFlex({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })};
   row-gap: 6vh;
   height: 100vh;
 `;
 
 export const IntroParagraph = styled(({ ...props }) => <Typography paragraph align="center" {...props} />)`
-  font-family: 'Nanum Myeongjo', serif, Noto Sans KR, sans-serif;
+  font-family: 'Nanum Myeongjo', 'Noto Sans KR', 'Roboto', sans-serif, serif;
   font-size: 3.3vw;
   padding: 24px;
 
-  ${getMediaQueries('mobile', true)} {
+  ${getMediaQueries('mobile')} {
     font-size: 3.5vh;
   }
 
@@ -48,20 +49,12 @@ export const IntroParagraph = styled(({ ...props }) => <Typography paragraph ali
 `;
 
 export const ScrollInfoBox = styled.div`
-  ${flexSet({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })};
+  ${setFlex({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })};
 
   color: ${theme.grayScaleColors.font};
   font-size: 2vh;
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  animation: fadeIn 2s;
+  ${setFadeInAnimation()}
 `;
 export const ScrollDownButton = styled(Button)`
   padding: 0;

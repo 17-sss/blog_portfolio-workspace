@@ -31,7 +31,7 @@ export const createResponse = ({ minWidth, maxWidth, isAtMedia }: CreateResponse
 // ------
 
 export type MediaTypes = 'tabletDesktop' | 'desktop' | 'tablet' | 'mobile';
-export const getMediaQueries = (type: MediaTypes, isAtMedia: boolean = false) => {
+export const getMediaQueries = (type: MediaTypes, isAtMedia: boolean = true) => {
   const {
     set: { MAX_TABLET, MAX_MOBILE },
   } = MAX_WIDTH_INFO;
