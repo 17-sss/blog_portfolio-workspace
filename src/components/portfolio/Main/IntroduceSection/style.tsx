@@ -1,7 +1,5 @@
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Card, CardContent, Typography } from '@material-ui/core';
-import { Variant } from '@material-ui/core/styles/createTypography';
+import { Card, CardContent } from '@material-ui/core';
 import { InnerContainer, SubTitleBox } from 'components/portfolio/Common';
 import { PORTFOLIO_HEADER } from 'utils/constants';
 import { setFlex, getMediaQueries } from 'utils/style';
@@ -100,20 +98,4 @@ export const IntroduceIconBox = styled.div`
       font-size: 10vh;
     }
   }
-`;
-
-type IntroduceParagraphProps = { variant?: Variant | 'srOnly'; isContent?: boolean };
-export const IntroduceParagraph = styled(({ isContent, ...props }: IntroduceParagraphProps) => (
-  <Typography {...props} />
-))`
-  color: ${({ theme }) => theme.grayScaleColors.titleActive};
-  text-align: center;
-  padding: 12px 0;
-
-  ${({ isContent, theme }) =>
-    isContent &&
-    css`
-      color: ${theme.grayScaleColors.font};
-      text-align: initial;
-    `};
 `;

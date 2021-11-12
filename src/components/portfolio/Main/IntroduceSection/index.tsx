@@ -6,6 +6,7 @@ import DirectionsBikeRoundedIcon from '@material-ui/icons/DirectionsBikeRounded'
 
 import { PORTFOLIO_SECTION_INFO } from 'utils/constants';
 import * as S from './style';
+import Paragrph from 'components/portfolio/Common/Paragraph';
 
 const IntroduceSection: FunctionComponent = function ({ ...props }) {
   const { layoutId, itemTexts, subTitleText } = PORTFOLIO_SECTION_INFO.introduce;
@@ -21,10 +22,10 @@ const IntroduceSection: FunctionComponent = function ({ ...props }) {
                 <S.IntroduceIconBox>
                   <span className="inner">{icons.find((_, iconIdx) => i === iconIdx) ?? <></>}</span>
                 </S.IntroduceIconBox>
-                <S.IntroduceParagraph variant="h3">{subject}</S.IntroduceParagraph>
-                <S.IntroduceParagraph variant="h5" isContent>
+                <Paragrph variant="h3">{subject}</Paragrph>
+                <Paragrph variant="h5" isContent>
                   {contents}
-                </S.IntroduceParagraph>
+                </Paragrph>
               </S.IntroduceCardContent>
             </S.IntroduceCard>
           </S.IntroduceItem>
@@ -37,8 +38,8 @@ const IntroduceSection: FunctionComponent = function ({ ...props }) {
     <S.IntroduceSectionLayout id={layoutId} {...props}>
       <S.IntroduceSectionInnerBox>
         <S.IntroduceSubTitleBox>
-          <S.IntroduceParagraph variant="h2">소개</S.IntroduceParagraph>
-          <S.IntroduceParagraph variant="h4">{subTitleText}</S.IntroduceParagraph>
+          <Paragrph variant="h2">소개</Paragrph>
+          <Paragrph variant="h4">{subTitleText}</Paragrph>
         </S.IntroduceSubTitleBox>
         <S.IntroduceList dataLength={introduceItems.length}>{introduceItems}</S.IntroduceList>
       </S.IntroduceSectionInnerBox>
