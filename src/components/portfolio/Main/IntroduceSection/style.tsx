@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
-import { Card, CardContent } from '@material-ui/core';
-import { InnerContainer, SubTitleBox } from 'components/portfolio/Common';
+import { InnerContainer, TitleBox } from 'components/portfolio/Common';
 import { PORTFOLIO_HEADER } from 'utils/constants';
-import { setFlex, getMediaQueries } from 'utils/style';
-import { setFadeInAnimation, setSlideAnimation } from 'utils/style/animation';
+import { setFlex } from 'utils/style';
+import { setFadeInAnimation } from 'utils/style/animation';
 
 // IntroduceSection : Default
 export const IntroduceSectionLayout = styled.section`
@@ -26,62 +25,7 @@ export const IntroduceSectionInnerBox = styled(InnerContainer)`
   }
 `;
 
-type IntroduceListProps = {
-  dataLength?: number;
-};
-export const IntroduceList = styled.ul<IntroduceListProps>`
-  display: grid;
-
-  padding: 0 12px;
-  overflow: hidden;
-
-  gap: 1.2vh;
-  ${getMediaQueries('tabletDesktop')} {
-    grid-template-columns: ${({ dataLength }) => `repeat(3, calc(100% / ${dataLength ?? 3}))`};
-  }
-
-  ${getMediaQueries('mobile')} {
-    grid-template-rows: ${({ dataLength }) => `repeat(3, calc(100% / ${dataLength ?? 3}))`};
-    padding-bottom: 24px;
-  }
-`;
-
-type IntroduceItemProps = {
-  idx?: number;
-  duration?: number;
-};
-export const IntroduceItem = styled.li<IntroduceItemProps>`
-  margin: 0 16px;
-  padding: 12px 0;
-
-  position: relative;
-  ${getMediaQueries('tabletDesktop')} {
-    ${setFadeInAnimation()}
-  }
-
-  ${getMediaQueries('mobile')} {
-    &:nth-of-type(2n - 1) {
-      ${({ duration, idx }) => setSlideAnimation({ direction: 'right', duration, idx })}
-    }
-
-    &:nth-of-type(2n) {
-      ${({ duration, idx }) => setSlideAnimation({ direction: 'left', duration, idx })}
-    }
-  }
-`;
-
-export const IntroduceCard = styled(({ ...props }) => <Card elevation={4} {...props} />)`
-  border-radius: 20px;
-  height: 100%;
-`;
-
-export const IntroduceCardContent = styled(CardContent)`
-  &:last-child {
-    padding-bottom: 16px;
-  }
-`;
-
-export const IntroduceSubTitleBox = styled(SubTitleBox)`
+export const IntroduceTitleBox = styled(TitleBox)`
   ${setFadeInAnimation()}
 `;
 
