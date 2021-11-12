@@ -1,12 +1,12 @@
 import { Fragment, FunctionComponent } from 'react';
-import { HomeSection, IntroduceSection, ProfileSection, ProjectSection } from 'components/portfolio/Main';
+import { HomeSection, IntroduceSection, SkillSection, ProjectSection } from 'components/portfolio/Main';
 
 const PortfolioComposition: FunctionComponent = function () {
   return (
     <Fragment>
       <HomeSection />
       <IntroduceSection />
-      <ProfileSection />
+      <SkillSection />
       <ProjectSection />
     </Fragment>
   );
