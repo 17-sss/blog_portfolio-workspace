@@ -4,9 +4,14 @@ type CreateResponseType = {
   minWidth?: number;
   maxWidth?: number;
   isAtMedia?: boolean;
-  minusPercent?: number; // 인자로 들어오는 minWidth나 maxWidth를 기준으로하여 비율(minusPercent)만큼 빼냄
+
+  // 인자로 들어오는 minWidth나 maxWidth를 기준으로하여 비율빼거나 더함.
+  percentOption?: {
+    percent: number;
+    calcType: 'plus' | 'minus';
+  };
 };
-export const createResponse = ({ minWidth, maxWidth, isAtMedia, minusPercent }: CreateResponseType) => {
+export const createResponse = ({ minWidth, maxWidth, isAtMedia, percentOption }: CreateResponseType) => {
   const WRONG_INPUT = '잘못된 입력입니다.';
   try {
     if (!maxWidth && !minWidth) throw Error('[!] maxWidth와 minWidth 모두 정의되지 않았습니다.');
@@ -21,16 +26,22 @@ export const createResponse = ({ minWidth, maxWidth, isAtMedia, minusPercent }: 
       return `${strAtMedia}(min-width: ${minWidth}px) and (max-width: ${maxWidth}px)`;
     }
 
-    if (minusPercent && minusPercent > 100) minusPercent = 100;
-    if (isMinWidth)
-      return `${strAtMedia}(min-width: ${
-        minusPercent ? minWidth - Math.floor(minWidth * (minusPercent * 0.01)) : minWidth
-      }px)`;
+    if (percentOption && percentOption.percent > 100) percentOption.percent = 100;
+    const isPlus = percentOption?.calcType === 'plus';
 
-    if (isMaxWidth)
-      return `${strAtMedia}(max-width: ${
-        minusPercent ? maxWidth - Math.floor(maxWidth * (minusPercent * 0.01)) : maxWidth
+    if (isMinWidth) {
+      const calcMinWidth = percentOption && Math.floor(minWidth * (percentOption.percent * 0.01));
+      return `${strAtMedia}(min-width: ${
+        calcMinWidth ? minWidth + (isPlus ? calcMinWidth : -calcMinWidth) : minWidth
       }px)`;
+    }
+
+    if (isMaxWidth) {
+      const calcMaxWidth = percentOption && Math.floor(maxWidth * (percentOption.percent * 0.01));
+      return `${strAtMedia}(max-width: ${
+        calcMaxWidth ? maxWidth + (isPlus ? calcMaxWidth : -calcMaxWidth) : maxWidth
+      }px)`;
+    }
 
     throw new Error(`[!] ${WRONG_INPUT}`);
   } catch (e) {
@@ -43,18 +54,18 @@ export const createResponse = ({ minWidth, maxWidth, isAtMedia, minusPercent }: 
 // ------
 
 export type MediaTypes = 'tabletDesktop' | 'desktop' | 'tablet' | 'mobile';
-type GetMediaQueriesProps = Pick<CreateResponseType, 'isAtMedia' | 'minusPercent'> & {
+type GetMediaQueriesProps = Pick<CreateResponseType, 'isAtMedia' | 'percentOption'> & {
   type: MediaTypes;
 };
-export const getMediaQueries = ({ type, isAtMedia = true, minusPercent }: GetMediaQueriesProps) => {
+export const getMediaQueries = ({ type, isAtMedia = true, percentOption }: GetMediaQueriesProps) => {
   const {
     set: { MAX_TABLET, MAX_MOBILE },
   } = MAX_WIDTH_INFO;
   const stringMediaQueries = {
-    tabletDesktop: createResponse({ minWidth: MAX_MOBILE + 1, isAtMedia, minusPercent }) ?? '',
-    desktop: createResponse({ minWidth: MAX_TABLET + 1, isAtMedia, minusPercent }) ?? '',
-    tablet: createResponse({ maxWidth: MAX_TABLET, isAtMedia, minusPercent }) ?? '',
-    mobile: createResponse({ maxWidth: MAX_MOBILE, isAtMedia, minusPercent }) ?? '',
+    tabletDesktop: createResponse({ minWidth: MAX_MOBILE + 1, isAtMedia, percentOption }) ?? '',
+    desktop: createResponse({ minWidth: MAX_TABLET + 1, isAtMedia, percentOption }) ?? '',
+    tablet: createResponse({ maxWidth: MAX_TABLET, isAtMedia, percentOption }) ?? '',
+    mobile: createResponse({ maxWidth: MAX_MOBILE, isAtMedia, percentOption }) ?? '',
   };
   return stringMediaQueries[type];
 };
