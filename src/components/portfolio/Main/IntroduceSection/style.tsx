@@ -22,6 +22,9 @@ export const IntroduceSectionInnerBox = styled(InnerContainer)`
 
 export const IntroduceTitleBox = styled(TitleBox)`
   ${setFadeInAnimation()}
+  .subTitle {
+    font-size: ${({ theme }) => theme.fontSizes["16"]};
+  }
 `;
 
 export const IntroduceIconBox = styled.div`

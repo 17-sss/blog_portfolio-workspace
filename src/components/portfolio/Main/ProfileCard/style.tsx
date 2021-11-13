@@ -12,7 +12,7 @@ export const ProfileCardLayout = styled.div`
 export const ProfileCard = styled(Card)`
   margin: 0 20px;
   ${setFadeInAnimation()}
-  ${getMediaQueries({type: "mobile"})} {
+  ${getMediaQueries({ type: 'mobile' })} {
     margin: 0 12px;
   }
 `;
@@ -37,7 +37,7 @@ export const ProfileCardContent = styled(({ ...props }) => <CardContent {...prop
         justify-content: center;
         grid-template-columns: ${`repeat(${childrenLength}, calc(100% / ${childrenLength}))`};
 
-        ${getMediaQueries({type: "tablet", minusPercent: 10})} {
+        ${getMediaQueries({ type: 'tablet', percentOption: { calcType: 'minus', percent: 5 } })} {
           grid-template-columns: none;
         }
       `
@@ -52,7 +52,7 @@ export const ImageAvatar = styled(Avatar)`
   min-width: 210px;
   min-height: 210px;
   border: 1px solid ${({ theme }) => theme.grayScaleColors.line};
-  ${getMediaQueries({type: "mobile"})} {
+  ${getMediaQueries({ type: 'mobile' })} {
     min-width: 180px;
     min-height: 180px;
   }
@@ -65,7 +65,7 @@ export const InfoBox = styled(ImageBox)`
 export const AntecedentItem = styled.li`
   color: ${({ theme }) => theme.grayScaleColors.font};
   font-size: ${({ theme }) => theme.fontSizes['16']};
-  ${getMediaQueries({type: "mobile"})} {
+  ${getMediaQueries({ type: 'mobile' })} {
     font-size: ${({ theme }) => theme.fontSizes['14']};
   }
 

@@ -9,13 +9,12 @@ export const IntroduceItemLayout = styled.li<IntroduceItemLayoutProps>`
   padding: 12px 0;
 
   position: relative;
-  ${getMediaQueries({type: "tabletDesktop"})} {
+  ${getMediaQueries({ type: 'tabletDesktop' })} {
     ${setFadeInAnimation()};
     margin: 0 8px;
-
   }
 
-  ${getMediaQueries({type: "mobile"})} {
+  ${getMediaQueries({ type: 'mobile' })} {
     &:nth-of-type(2n - 1) {
       ${({ duration, idx }) => setSlideAnimation({ direction: 'right', duration, idx })}
     }
@@ -32,8 +31,10 @@ export const IntroduceCard = styled(({ ...props }) => <Card elevation={4} {...pr
 `;
 
 export const IntroduceCardContent = styled(CardContent)`
-  &:last-child {
-    padding-bottom: 16px;
+  ${getMediaQueries({ type: 'tabletDesktop' })} {
+    &:last-child {
+      padding-bottom: 16px;
+    }
   }
 `;
 
