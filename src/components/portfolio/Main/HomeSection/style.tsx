@@ -33,7 +33,7 @@ export const IntroParagraph = styled(({ ...props }) => <Typography paragraph ali
   font-size: 3.3vw;
   padding: 24px;
 
-  ${getMediaQueries('mobile')} {
+  ${getMediaQueries({type: "mobile"})} {
     font-size: 3.5vh;
   }
 

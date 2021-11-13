@@ -4,8 +4,9 @@ type CreateResponseType = {
   minWidth?: number;
   maxWidth?: number;
   isAtMedia?: boolean;
+  minusPercent?: number; // 인자로 들어오는 minWidth나 maxWidth를 기준으로하여 비율(minusPercent)만큼 빼냄
 };
-export const createResponse = ({ minWidth, maxWidth, isAtMedia }: CreateResponseType) => {
+export const createResponse = ({ minWidth, maxWidth, isAtMedia, minusPercent }: CreateResponseType) => {
   const WRONG_INPUT = '잘못된 입력입니다.';
   try {
     if (!maxWidth && !minWidth) throw Error('[!] maxWidth와 minWidth 모두 정의되지 않았습니다.');
@@ -15,11 +16,22 @@ export const createResponse = ({ minWidth, maxWidth, isAtMedia }: CreateResponse
     const strAtMedia = isAtMedia ? `@media ` : '';
 
     if (minWidth && maxWidth) {
+      // 이 경우 minusPercent는 작동하지 않음
       if (minWidth > maxWidth) throw new Error(`[!] ${WRONG_INPUT} maxWidth보다 minWidth가 더 큽니다.`);
       return `${strAtMedia}(min-width: ${minWidth}px) and (max-width: ${maxWidth}px)`;
     }
-    if (isMinWidth) return `${strAtMedia}(min-width: ${minWidth}px)`;
-    if (isMaxWidth) return `${strAtMedia}(max-width: ${maxWidth}px)`;
+
+    if (minusPercent && minusPercent > 100) minusPercent = 100;
+    if (isMinWidth)
+      return `${strAtMedia}(min-width: ${
+        minusPercent ? minWidth - Math.floor(minWidth * (minusPercent * 0.01)) : minWidth
+      }px)`;
+
+    if (isMaxWidth)
+      return `${strAtMedia}(max-width: ${
+        minusPercent ? maxWidth - Math.floor(maxWidth * (minusPercent * 0.01)) : maxWidth
+      }px)`;
+
     throw new Error(`[!] ${WRONG_INPUT}`);
   } catch (e) {
     const { message } = e as Error;
@@ -30,17 +42,19 @@ export const createResponse = ({ minWidth, maxWidth, isAtMedia }: CreateResponse
 
 // ------
 
-export type MediaTypes = 'tabletDesktop' | 'desktop' | 'tablet1' | 'tablet2' | 'mobile';
-export const getMediaQueries = (type: MediaTypes, isAtMedia: boolean = true) => {
+export type MediaTypes = 'tabletDesktop' | 'desktop' | 'tablet' | 'mobile';
+type GetMediaQueriesProps = Pick<CreateResponseType, 'isAtMedia' | 'minusPercent'> & {
+  type: MediaTypes;
+};
+export const getMediaQueries = ({ type, isAtMedia = true, minusPercent }: GetMediaQueriesProps) => {
   const {
     set: { MAX_TABLET, MAX_MOBILE },
   } = MAX_WIDTH_INFO;
   const stringMediaQueries = {
-    tabletDesktop: createResponse({ minWidth: MAX_MOBILE + 1, isAtMedia }) ?? '',
-    desktop: createResponse({ minWidth: MAX_TABLET + 1, isAtMedia }) ?? '',
-    tablet1: createResponse({ maxWidth: MAX_TABLET, isAtMedia }) ?? '',
-    tablet2: createResponse({ maxWidth: MAX_TABLET - Math.floor(MAX_TABLET * 0.1), isAtMedia }) ?? '',
-    mobile: createResponse({ maxWidth: MAX_MOBILE, isAtMedia }) ?? '',
+    tabletDesktop: createResponse({ minWidth: MAX_MOBILE + 1, isAtMedia, minusPercent }) ?? '',
+    desktop: createResponse({ minWidth: MAX_TABLET + 1, isAtMedia, minusPercent }) ?? '',
+    tablet: createResponse({ maxWidth: MAX_TABLET, isAtMedia, minusPercent }) ?? '',
+    mobile: createResponse({ maxWidth: MAX_MOBILE, isAtMedia, minusPercent }) ?? '',
   };
   return stringMediaQueries[type];
 };
@@ -48,13 +62,12 @@ export const getMediaQueries = (type: MediaTypes, isAtMedia: boolean = true) => 
   [1]
     - 타블렛 & 데스크탑 768 ~
       @media (min-width: 768px)
-    - 데스크탑 1024 ~
+    - 데스크탑  1024 ~
       @media (min-width: 1024px)
   [2]
-    - 타블렛1,  0 ~ 1023 
+    - 타블렛  0 ~ 1023
       @media (max-width:1023px)
-    - 타블렛2,  0 ~ 1023 - (1023 * 0.1)
-    - 모바일,   0 ~ 767
+    - 모바일  0 ~ 767
       @media (max-width:767px)
 */
 

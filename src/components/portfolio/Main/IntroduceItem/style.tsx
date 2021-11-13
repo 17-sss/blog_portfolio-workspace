@@ -9,13 +9,13 @@ export const IntroduceItemLayout = styled.li<IntroduceItemLayoutProps>`
   padding: 12px 0;
 
   position: relative;
-  ${getMediaQueries('tabletDesktop')} {
+  ${getMediaQueries({type: "tabletDesktop"})} {
     ${setFadeInAnimation()};
     margin: 0 8px;
 
   }
 
-  ${getMediaQueries('mobile')} {
+  ${getMediaQueries({type: "mobile"})} {
     &:nth-of-type(2n - 1) {
       ${({ duration, idx }) => setSlideAnimation({ direction: 'right', duration, idx })}
     }

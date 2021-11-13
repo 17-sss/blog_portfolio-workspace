@@ -13,11 +13,11 @@ export const IntroduceListLayout = styled.ul<IntroduceListProps>`
     const isArray = Array.isArray(children);
     const childrenLength = isArray ? children.length : +(Boolean(children));
     return css`
-      ${getMediaQueries('tabletDesktop')} {
+      ${getMediaQueries({type: "tabletDesktop"})} {
         grid-template-columns: ${`repeat(${childrenLength}, calc(100% / ${childrenLength}))`};
       }
 
-      ${getMediaQueries('mobile')} {
+      ${getMediaQueries({type: "mobile"})} {
         grid-template-rows: ${`repeat(${childrenLength}, calc(100% / ${childrenLength}))`};
         padding-bottom: 24px;
       }
