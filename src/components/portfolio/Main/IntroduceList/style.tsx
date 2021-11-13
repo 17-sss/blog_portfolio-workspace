@@ -9,10 +9,9 @@ export const IntroduceListLayout = styled.ul<IntroduceListProps>`
   padding: 0 12px;
   overflow: hidden;
 
-  gap: 1.2vh;
   ${({ children }) => {
     const isArray = Array.isArray(children);
-    const childrenLength = isArray ? children.length : Number(children);
+    const childrenLength = isArray ? children.length : +(Boolean(children));
     return css`
       ${getMediaQueries('tabletDesktop')} {
         grid-template-columns: ${`repeat(${childrenLength}, calc(100% / ${childrenLength}))`};

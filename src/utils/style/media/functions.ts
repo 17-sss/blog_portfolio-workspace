@@ -30,7 +30,7 @@ export const createResponse = ({ minWidth, maxWidth, isAtMedia }: CreateResponse
 
 // ------
 
-export type MediaTypes = 'tabletDesktop' | 'desktop' | 'tablet' | 'mobile';
+export type MediaTypes = 'tabletDesktop' | 'desktop' | 'tablet1' | 'tablet2' | 'mobile';
 export const getMediaQueries = (type: MediaTypes, isAtMedia: boolean = true) => {
   const {
     set: { MAX_TABLET, MAX_MOBILE },
@@ -38,7 +38,8 @@ export const getMediaQueries = (type: MediaTypes, isAtMedia: boolean = true) => 
   const stringMediaQueries = {
     tabletDesktop: createResponse({ minWidth: MAX_MOBILE + 1, isAtMedia }) ?? '',
     desktop: createResponse({ minWidth: MAX_TABLET + 1, isAtMedia }) ?? '',
-    tablet: createResponse({ maxWidth: MAX_TABLET, isAtMedia }) ?? '',
+    tablet1: createResponse({ maxWidth: MAX_TABLET, isAtMedia }) ?? '',
+    tablet2: createResponse({ maxWidth: MAX_TABLET - Math.floor(MAX_TABLET * 0.1), isAtMedia }) ?? '',
     mobile: createResponse({ maxWidth: MAX_MOBILE, isAtMedia }) ?? '',
   };
   return stringMediaQueries[type];
@@ -50,9 +51,10 @@ export const getMediaQueries = (type: MediaTypes, isAtMedia: boolean = true) => 
     - 데스크탑 1024 ~
       @media (min-width: 1024px)
   [2]
-    - 타블렛 768 ~ 1023
+    - 타블렛1,  0 ~ 1023 
       @media (max-width:1023px)
-    - 모바일 0 ~ 767
+    - 타블렛2,  0 ~ 1023 - (1023 * 0.1)
+    - 모바일,   0 ~ 767
       @media (max-width:767px)
 */
 

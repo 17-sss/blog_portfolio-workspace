@@ -6,12 +6,13 @@ import { IntroduceItemProps } from '.';
 
 type IntroduceItemLayoutProps = Pick<IntroduceItemProps, 'idx' | 'duration'>;
 export const IntroduceItemLayout = styled.li<IntroduceItemLayoutProps>`
-  margin: 0 16px;
   padding: 12px 0;
 
   position: relative;
   ${getMediaQueries('tabletDesktop')} {
-    ${setFadeInAnimation()}
+    ${setFadeInAnimation()};
+    margin: 0 8px;
+
   }
 
   ${getMediaQueries('mobile')} {
@@ -26,7 +27,7 @@ export const IntroduceItemLayout = styled.li<IntroduceItemLayoutProps>`
 `;
 
 export const IntroduceCard = styled(({ ...props }) => <Card elevation={4} {...props} />)`
-  border-radius: 20px;
+  border-radius: 8px;
   height: 100%;
 `;
 

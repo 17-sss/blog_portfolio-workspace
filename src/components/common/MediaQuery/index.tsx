@@ -13,8 +13,13 @@ export const Desktop: FunctionComponent = function ({ children }) {
   return <Fragment>{isDesktop && children}</Fragment>;
 };
 
-export const Tablet: FunctionComponent = function ({ children }) {
-  const isTablet = useMediaQuery({ query: getMediaQueries('tablet', false) });
+export const Tablet1: FunctionComponent = function ({ children }) {
+  const isTablet = useMediaQuery({ query: getMediaQueries('tablet1', false) });
+  return <Fragment>{isTablet && children}</Fragment>;
+};
+
+export const Tablet2: FunctionComponent = function ({ children }) {
+  const isTablet = useMediaQuery({ query: getMediaQueries('tablet2', false) });
   return <Fragment>{isTablet && children}</Fragment>;
 };
 

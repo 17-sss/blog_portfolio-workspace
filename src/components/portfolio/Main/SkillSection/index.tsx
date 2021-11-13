@@ -4,14 +4,14 @@ import { PORTFOLIO_SECTION_INFO } from 'utils/constants';
 import * as S from './style';
 
 const SkillSection: FunctionComponent = function ({ ...props }) {
-  const { layoutId, subTitleText } = PORTFOLIO_SECTION_INFO.skills;
+  const { layoutId, subTitle } = PORTFOLIO_SECTION_INFO.skills;
 
   return (
     <S.SkillSectionLayout id={layoutId} {...props}>
       <S.SkillSectionInnerBox>
         <S.SkillTitleBox>
           <Paragraph variant="h2" isTitle>Skill</Paragraph>
-          <Paragraph variant="h4">{subTitleText}</Paragraph>
+          <Paragraph variant="h4">{subTitle}</Paragraph>
         </S.SkillTitleBox>
       </S.SkillSectionInnerBox>
     </S.SkillSectionLayout>
