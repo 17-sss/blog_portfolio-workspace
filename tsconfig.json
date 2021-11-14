@@ -3,6 +3,8 @@
     "target": "es5",
     "module": "commonjs",
     "allowJs": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "downlevelIteration": true,
     "jsx": "preserve",
     "strict": true,
     "noUnusedLocals": true,
