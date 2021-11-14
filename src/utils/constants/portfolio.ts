@@ -22,7 +22,7 @@ type HomeSectionInfo = RequiredType & {
 type ContentRequiredType = RequiredType & { subTitle: string };
 
 type ContactType = 'github' | 'instagram' | 'email';
-type IntroduceItemType = 'motivation' | 'goal' | 'direction';
+type IntroduceListItemType = 'motivation' | 'goal' | 'direction';
 export type ProfileCardTypes = {
   name: string;
   antecedents: string[];
@@ -34,7 +34,7 @@ type IntroduceSectionInfo = ContentRequiredType & {
   profileCard: ProfileCardTypes;
   introduceList: {
     items: {
-      [type in IntroduceItemType]: { subject: string; contents: string };
+      [type in IntroduceListItemType]: { subject: string; contents: string };
     };
   };
 };

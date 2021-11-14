@@ -2,10 +2,10 @@ import styled from '@emotion/styled';
 import { Card, CardContent } from '@material-ui/core';
 import { setFlex, getMediaQueries } from 'utils/style';
 import { setFadeInAnimation, setSlideAnimation } from 'utils/style/animation';
-import { IntroduceItemProps } from '.';
+import { IntroduceListItemProps } from '.';
 
-type IntroduceItemLayoutProps = Pick<IntroduceItemProps, 'idx' | 'duration'>;
-export const IntroduceItemLayout = styled.li<IntroduceItemLayoutProps>`
+type IntroduceListItemLayoutProps = Pick<IntroduceListItemProps, 'idx' | 'duration'>;
+export const IntroduceListItemLayout = styled.li<IntroduceListItemLayoutProps>`
   padding: 12px 0;
 
   position: relative;

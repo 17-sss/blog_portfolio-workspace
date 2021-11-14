@@ -5,7 +5,7 @@ import DirectionsRunRoundedIcon from '@material-ui/icons/DirectionsRunRounded';
 import DirectionsBikeRoundedIcon from '@material-ui/icons/DirectionsBikeRounded';
 
 import IntroduceList from '../IntroduceList';
-import IntroduceItem from '../IntroduceItem';
+import IntroduceListItem from '../IntroduceListItem';
 import ProfileCard from '../ProfileCard';
 
 import { PORTFOLIO_SECTION_INFO } from 'utils/constants';
@@ -15,11 +15,11 @@ const IntroduceSection: FunctionComponent = function ({ ...props }) {
   const { layoutId, subTitle, introduceList, profileCard } = PORTFOLIO_SECTION_INFO.introduce;
   const itemTexts = introduceList.items;
 
-  const introduceItems = useMemo(
+  const IntroduceListItems = useMemo(
     () =>
       Object.values(itemTexts).map(({ subject, contents }, i) => {
         const icons = [<DirectionsWalkRoundedIcon />, <DirectionsRunRoundedIcon />, <DirectionsBikeRoundedIcon />];
-        return <IntroduceItem key={i} idx={i} subject={subject} contents={contents} icon={icons[i]} />;
+        return <IntroduceListItem key={i} idx={i} subject={subject} contents={contents} icon={icons[i]} />;
       }),
     [itemTexts],
   );
@@ -29,7 +29,7 @@ const IntroduceSection: FunctionComponent = function ({ ...props }) {
       <S.IntroduceSectionInnerBox>
         <S.IntroduceTitleBox title={"Introduce"} subTitle={subTitle} />
         <ProfileCard {...{ ...profileCard }} />
-        <IntroduceList>{introduceItems}</IntroduceList>
+        <IntroduceList>{IntroduceListItems}</IntroduceList>
       </S.IntroduceSectionInnerBox>
     </S.IntroduceSectionLayout>
   );

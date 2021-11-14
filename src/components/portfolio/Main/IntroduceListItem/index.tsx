@@ -3,16 +3,16 @@ import React, { FunctionComponent } from 'react';
 import { Paragraph } from 'components/portfolio/Common';
 import * as S from './style';
 
-export type IntroduceItemProps = {
+export type IntroduceListItemProps = {
   subject?: string;
   contents?: string;
   icon?: JSX.Element;
   idx?: number;
   duration?: number;
 };
-const IntroduceItem: FunctionComponent<IntroduceItemProps> = function ({ subject, contents, icon, ...props }) {
+const IntroduceListItem: FunctionComponent<IntroduceListItemProps> = function ({ subject, contents, icon, ...props }) {
   return (
-    <S.IntroduceItemLayout {...props}>
+    <S.IntroduceListItemLayout {...props}>
       <S.IntroduceCard>
         <S.IntroduceCardContent>
           {icon ? <S.IntroduceIconBox><div className="inner">{icon}</div></S.IntroduceIconBox> : <></>}
@@ -20,7 +20,7 @@ const IntroduceItem: FunctionComponent<IntroduceItemProps> = function ({ subject
           {contents ? <Paragraph paragraph variant="h5" isContent>{contents}</Paragraph> : <></>}
         </S.IntroduceCardContent>
       </S.IntroduceCard>
-    </S.IntroduceItemLayout>
+    </S.IntroduceListItemLayout>
   );
 };
-export default IntroduceItem;
+export default IntroduceListItem;
