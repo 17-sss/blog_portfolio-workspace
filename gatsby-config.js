@@ -8,7 +8,19 @@ module.exports = {
     siteUrl_portfolio: `https://17-sss.github.io/portfolio`,
   },
   plugins: [
+    // svg 사용할 수 있도록 추가.
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /svg/,
+        },
+      },
+    },
+
+    // material ui를 사용한 컴포넌트가 정상적인 배포가 이루어질 수 있도록 함
     `gatsby-plugin-material-ui`,
+
     // robots.txt 파일 - START
     {
       resolve: 'gatsby-plugin-robots-txt',

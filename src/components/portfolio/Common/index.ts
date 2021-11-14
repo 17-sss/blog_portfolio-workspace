@@ -7,6 +7,7 @@ import Paragraph from './Paragraph';
 import TitleBox from './TitleBox';
 import NormalGridList from './NormalGridList';
 import CircleProgress from './CircleProgress';
+import CustomIcon from './CustomIcon';
 
 export {
   GlobalStyle,
@@ -18,4 +19,5 @@ export {
   TitleBox,
   NormalGridList,
   CircleProgress,
+  CustomIcon,
 };
