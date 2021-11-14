@@ -21,12 +21,20 @@ type HomeSectionInfo = RequiredType & {
 
 type ContentRequiredType = RequiredType & { subTitle: string };
 
-type introduceTextNames = 'motivation' | 'goal' | 'direction';
+type ContactType = 'github' | 'instagram' | 'email';
+type IntroduceItemType = 'motivation' | 'goal' | 'direction';
+export type ProfileCardTypes = {
+  name: string;
+  antecedents: string[];
+  imageInfo: { alt: string; staticSrc: string };
+  contactInfo: { [type in ContactType]?: string };
+};
+
 type IntroduceSectionInfo = ContentRequiredType & {
-  profileCard: { name: string; antecedents: string[]; imageInfo: { alt: string; staticSrc: string } };
+  profileCard: ProfileCardTypes;
   introduceList: {
     items: {
-      [type in introduceTextNames]: { subject: string; contents: string };
+      [type in IntroduceItemType]: { subject: string; contents: string };
     };
   };
 };
@@ -58,6 +66,11 @@ export const PORTFOLIO_SECTION_INFO: PortfolioSectionInfoType = {
         '2017.11 ~ 2018.04|Java & SpringFramework 기반 국비지원 교육과정 수료',
       ],
       imageInfo: { staticSrc: '/profile-image.jpeg', alt: `Hoyoung's profile image` },
+      contactInfo: {
+        github: `https://github.com/17-sss`,
+        instagram: `https://www.instagram.com/17__sss/`,
+        email: `mailto:xzxking17@gmail.com`,
+      },
     },
     introduceList: {
       items: {

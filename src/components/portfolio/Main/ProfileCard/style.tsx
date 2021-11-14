@@ -81,3 +81,11 @@ export const AntecedentItem = styled.li`
     margin-top: 12px;
   }
 `;
+
+export const IconButtonBox = styled.div`
+  ${setFlex({ alignItems: 'center', justifyContent: 'center' })};
+  svg {
+    font-size: 3vh;
+    color: ${({ theme }) => theme.grayScaleColors.font};
+  }
+`;
