@@ -1,28 +1,37 @@
 import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
 import { CircularProgressProps } from '@material-ui/core/CircularProgress';
-import * as S from './style';
+import CustomIcon, { IconNameType } from 'components/portfolio/Common/CustomIcon';
 import { getSeparateNumStr } from 'utils/functions';
+import * as S from './style';
 
 export type CircleProgressProps = CircularProgressProps & {
   value: number;
   customColor?: { text?: string; progress?: string };
+  iconName?: IconNameType;
 };
-const CircleProgress: FunctionComponent<CircleProgressProps> = function ({ value, customColor, ...props }) {
+const CircleProgress: FunctionComponent<CircleProgressProps> = function ({ iconName, value, customColor, ...props }) {
   const [progressValue, setProgressValue] = useState<number>(0);
 
-  // S.InfoParagraph의 fontSize는 (size / 7)
-  const fontSize = useMemo(() => {
+  const sizeInfo = useMemo(() => {
     if (!props.size) return;
-
     const { size } = props;
-    const DIV_UNIT = 7;
-    if (typeof size === 'number') return `${size / DIV_UNIT}px`;
+
+    const FONT_DIV_UNIT = 9;
+    const ICON_DIV_UNIT = 2.5;
+    if (typeof size === 'number')
+      return {
+        fontSize: `${size / FONT_DIV_UNIT}px`,
+        iconSize: `${size / ICON_DIV_UNIT}px`,
+      };
 
     const separateNumStr = getSeparateNumStr(size);
     if (!separateNumStr) return;
 
     const { num, str } = separateNumStr;
-    return `${num / DIV_UNIT}${str}`;
+    return {
+      fontSize: `${num / FONT_DIV_UNIT}${str}`,
+      iconSize: `${num / ICON_DIV_UNIT}${str}`,
+    };
   }, [props.size]);
 
   useEffect(() => {
@@ -35,7 +44,10 @@ const CircleProgress: FunctionComponent<CircleProgressProps> = function ({ value
     <S.CircleProgressLayout>
       <S.Progress variant="determinate" customColor={customColor?.progress} value={progressValue} {...props} />
       <S.ProgressInfoBox>
-        <S.InfoParagraph fontSize={fontSize} customColor={customColor?.text}>{`${Math.round(value)}%`}</S.InfoParagraph>
+        {iconName && <CustomIcon type={iconName} color={customColor?.progress} size={sizeInfo?.iconSize} />}
+        <S.InfoParagraph fontSize={sizeInfo?.fontSize} customColor={customColor?.text}>
+          {`${Math.round(value)}%`}
+        </S.InfoParagraph>
       </S.ProgressInfoBox>
     </S.CircleProgressLayout>
   );

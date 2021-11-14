@@ -34,8 +34,6 @@ export const InfoParagraph = styled(({ customColor, fontSize, ...props }: InfoPa
   <Paragraph variant="caption" component="div" {...props} />
 ))`
   padding: 0;
-  padding-bottom: 4px;
-
   ${({ fontSize }) =>
     fontSize &&
     css`
