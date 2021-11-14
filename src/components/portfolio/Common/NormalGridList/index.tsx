@@ -1,8 +1,12 @@
-import { FunctionComponent } from 'react';
+import { forwardRef } from 'react';
 import * as S from './style';
 
-const NormalGridList: FunctionComponent = function ({ children, ...props }) {
-  return <S.NormalGridListLayout {...props}>{children}</S.NormalGridListLayout>;
-};
-
+export type NormalGridListProps = React.HTMLProps<HTMLUListElement>;
+export const NormalGridList = forwardRef<HTMLUListElement, NormalGridListProps>((props, ref) => {
+  return (
+    <S.NormalGridListLayout {...{ props }} ref={ref}>
+      {props.children}
+    </S.NormalGridListLayout>
+  );
+});
 export default NormalGridList;

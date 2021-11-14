@@ -3,7 +3,7 @@ import { CircularProgressProps } from '@material-ui/core/CircularProgress';
 import * as S from './style';
 import { getSeparateNumStr } from 'utils/functions';
 
-type CircleProgressProps = CircularProgressProps & {
+export type CircleProgressProps = CircularProgressProps & {
   value: number;
   customColor?: { text?: string; progress?: string };
 };

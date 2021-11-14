@@ -1,20 +1,26 @@
-import { CircleProgress } from 'components/portfolio/Common';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useMemo } from 'react';
+import { NormalGridList } from 'components/portfolio/Common';
+import CircularSkillItem from '../CircularSkillItem';
 import { PORTFOLIO_SECTION_INFO } from 'utils/constants';
 import * as S from './style';
 
 const SkillSection: FunctionComponent = function ({ ...props }) {
-  const { layoutId, subTitle } = PORTFOLIO_SECTION_INFO.skills;
+  const { layoutId, subTitle, topSkills } = PORTFOLIO_SECTION_INFO.skills;
+
+  const topSkillItems = useMemo(() => {
+    if (!topSkills.length) return;
+    const SIZE = '13vh';
+    return topSkills.map((v, i) => {
+      const { name, color, percent: value } = v;
+      return <CircularSkillItem key={i} size={SIZE} {...{ name, value, color }} />;
+    });
+  }, [topSkills]);
 
   return (
     <S.SkillSectionLayout id={layoutId} {...props}>
       <S.SkillSectionInnerBox>
         <S.SkillTitleBox title={'Skills'} subTitle={subTitle} />
-        <div>
-          <CircleProgress value={100} size={"10vh"} />
-          <CircleProgress value={40} />
-        </div>
-        <div></div>
+        <NormalGridList>{topSkillItems}</NormalGridList>
       </S.SkillSectionInnerBox>
     </S.SkillSectionLayout>
   );

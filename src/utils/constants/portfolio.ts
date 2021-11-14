@@ -38,6 +38,17 @@ type IntroduceSectionInfo = ContentRequiredType & {
     };
   };
 };
+
+type SkillInfoType = {
+  name: string;
+  percent: number;
+  color: string;
+};
+type SkillSectionInfo = ContentRequiredType & {
+  topSkills: SkillInfoType[];
+  skills: Pick<SkillInfoType, 'name'>[];
+};
+
 type UnspecifiedInfo = ContentRequiredType & { texts?: [key: string] };
 
 // ------------
@@ -45,7 +56,7 @@ type UnspecifiedInfo = ContentRequiredType & { texts?: [key: string] };
 type PortfolioSectionInfoType = {
   home: HomeSectionInfo;
   introduce: IntroduceSectionInfo;
-  skills: UnspecifiedInfo;
+  skills: SkillSectionInfo;
   project: UnspecifiedInfo;
 };
 
@@ -92,6 +103,17 @@ export const PORTFOLIO_SECTION_INFO: PortfolioSectionInfoType = {
       },
     },
   },
-  skills: { layoutId: 'section--skills', subTitle: '지금까지 사용했던 기술들을 나타낸 공간입니다.' },
+  skills: {
+    layoutId: 'section--skills',
+    subTitle: '지금까지 사용했던 기술들을 나타낸 공간입니다.',
+    topSkills: [
+      { name: 'HTML', percent: 70, color: '#E34F26' },
+      { name: 'CSS', percent: 60, color: '#1572B6' },
+      { name: 'JavaScript', percent: 60, color: '#F7DF1E' },
+      { name: 'TypeScript', percent: 50, color: '#3178C6' },
+      { name: 'React', percent: 65, color: '#61DAFB' },
+    ],
+    skills: [{ name: '' }],
+  },
   project: { layoutId: 'section--project', subTitle: '' },
 };

@@ -8,4 +8,14 @@ import TitleBox from './TitleBox';
 import NormalGridList from './NormalGridList';
 import CircleProgress from './CircleProgress';
 
-export { GlobalStyle, Header, Footer, MainContainer, InnerContainer, Paragraph, TitleBox, NormalGridList, CircleProgress };
+export {
+  GlobalStyle,
+  Header,
+  Footer,
+  MainContainer,
+  InnerContainer,
+  Paragraph,
+  TitleBox,
+  NormalGridList,
+  CircleProgress,
+};
