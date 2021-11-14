@@ -4,7 +4,6 @@ import DirectionsWalkRoundedIcon from '@material-ui/icons/DirectionsWalkRounded'
 import DirectionsRunRoundedIcon from '@material-ui/icons/DirectionsRunRounded';
 import DirectionsBikeRoundedIcon from '@material-ui/icons/DirectionsBikeRounded';
 
-import { Paragraph } from 'components/portfolio/Common';
 import IntroduceList from '../IntroduceList';
 import IntroduceItem from '../IntroduceItem';
 import ProfileCard from '../ProfileCard';
@@ -28,10 +27,7 @@ const IntroduceSection: FunctionComponent = function ({ ...props }) {
   return (
     <S.IntroduceSectionLayout id={layoutId} {...props}>
       <S.IntroduceSectionInnerBox>
-        <S.IntroduceTitleBox>
-          <Paragraph variant="h2" isTitle>Introduce</Paragraph>
-          <Paragraph paragraph variant="h4" className="subTitle">{subTitle}</Paragraph>
-        </S.IntroduceTitleBox>
+        <S.IntroduceTitleBox title={"Introduce"} subTitle={subTitle} />
         <ProfileCard {...{ ...profileCard }} />
         <IntroduceList>{introduceItems}</IntroduceList>
       </S.IntroduceSectionInnerBox>
