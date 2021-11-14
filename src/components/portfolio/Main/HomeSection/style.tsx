@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { Button, Typography } from '@material-ui/core';
-import { InnerContainer } from 'components/portfolio/Common';
+import { Button } from '@material-ui/core';
+import { InnerContainer, Paragraph } from 'components/portfolio/Common';
 import { setFlex, getMediaQueries, theme } from 'utils/style';
 import { setFadeInAnimation } from 'utils/style/animation';
 
@@ -28,7 +28,7 @@ export const HomeSectionInnerBox = styled(InnerContainer)`
   height: 100vh;
 `;
 
-export const IntroParagraph = styled(({ ...props }) => <Typography paragraph align="center" {...props} />)`
+export const IntroParagraph = styled(Paragraph)`
   font-family: 'Nanum Myeongjo', 'Noto Sans KR', 'Roboto', sans-serif, serif;
   font-size: 3.3vw;
   padding: 24px;

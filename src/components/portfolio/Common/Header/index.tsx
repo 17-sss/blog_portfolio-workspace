@@ -36,7 +36,7 @@ const Header: FunctionComponent = function () {
 
   const menuItems = useMemo(() => {
     return PORTFOLIO_HEADER.items.map((name, i) => (
-      <S.HeaderMenuItem key={i} id={name} onClick={handleMobileItemClick}>
+      <S.HeaderMenuItem key={i} id={name} onClick={handleMobileItemClick} role="listitem">
         {changeFirstCharUpperCase(name)}
       </S.HeaderMenuItem>
     ));

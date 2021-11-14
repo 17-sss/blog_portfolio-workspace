@@ -27,7 +27,7 @@ const ProfileBox: FunctionComponent<ProfileBoxProps> = function ({ imageInfo, na
             <S.ImageAvatar src={imageInfo.staticSrc} alt={imageInfo.alt} />
           </S.ImageBox>
           <S.InfoBox>
-            <Paragraph variant="h4">{name}</Paragraph>
+            <Paragraph paragraph variant="h4">{name}</Paragraph>
             <ul>{antecedentitems}</ul>
           </S.InfoBox>
         </S.ProfileCardContent>

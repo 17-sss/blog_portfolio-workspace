@@ -35,7 +35,7 @@ const HomeSection: FunctionComponent = function ({ ...props }) {
         <S.IntroParagraph>{greetingText}</S.IntroParagraph>
         <S.ScrollInfoBox>
           <span>Scroll Down</span>
-          <S.ScrollDownButton onClick={handleScrollDownButtonClick}>
+          <S.ScrollDownButton onClick={handleScrollDownButtonClick} aria-label={'Scroll Down'}>
             <KeyboardArrowDownIcon />
           </S.ScrollDownButton>
         </S.ScrollInfoBox>

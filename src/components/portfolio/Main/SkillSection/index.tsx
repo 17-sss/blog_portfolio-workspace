@@ -11,7 +11,7 @@ const SkillSection: FunctionComponent = function ({ ...props }) {
       <S.SkillSectionInnerBox>
         <S.SkillTitleBox>
           <Paragraph variant="h2" isTitle>Skill</Paragraph>
-          <Paragraph variant="h4">{subTitle}</Paragraph>
+          <Paragraph paragraph variant="h4">{subTitle}</Paragraph>
         </S.SkillTitleBox>
       </S.SkillSectionInnerBox>
     </S.SkillSectionLayout>

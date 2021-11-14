@@ -30,7 +30,7 @@ const IntroduceSection: FunctionComponent = function ({ ...props }) {
       <S.IntroduceSectionInnerBox>
         <S.IntroduceTitleBox>
           <Paragraph variant="h2" isTitle>Introduce</Paragraph>
-          <Paragraph variant="h4" className="subTitle">{subTitle}</Paragraph>
+          <Paragraph paragraph variant="h4" className="subTitle">{subTitle}</Paragraph>
         </S.IntroduceTitleBox>
         <ProfileCard {...{ ...profileCard }} />
         <IntroduceList>{introduceItems}</IntroduceList>
