@@ -2,7 +2,7 @@
 date: '2021-06-14'
 title: '[상태관리] React의 또 다른 상태관리 라이브러리, Recoil'
 categories: ['JavaScript', 'State Management']
-thumbnail: './background_recoil.jpg'
+thumbnail: './background_recoil.png'
 ---
 
 ## React의 또 다른 상태관리 라이브러리, Recoil

@@ -2,7 +2,7 @@
 date: '2021-07-08'
 title: '[상태관리] Redux와 Recoil..?'
 categories: ['JavaScript', 'State Management']
-thumbnail: './background_redux.png'
+thumbnail: './background_redux.jpeg'
 summary: '리덕스와 리코일의 차이는 무엇일까?'
 ---
 

@@ -109,8 +109,8 @@ export const PORTFOLIO_SECTION_INFO: PortfolioSectionInfoType = {
     topSkills: [
       { name: 'HTML', percent: 70, color: '#E34F26' },
       { name: 'CSS', percent: 60, color: '#1572B6' },
-      { name: 'JavaScript', percent: 60, color: '#F7DF1E' },
-      { name: 'TypeScript', percent: 50, color: '#3178C6' },
+      { name: 'JavaScript', percent: 65, color: '#F7DF1E' },
+      { name: 'TypeScript', percent: 60, color: '#3178C6' },
       { name: 'React', percent: 65, color: '#61DAFB' },
     ],
     skills: [{ name: '' }],
