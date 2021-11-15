@@ -1,5 +1,4 @@
 import { FunctionComponent, useMemo } from 'react';
-import { NormalGridList } from 'components/portfolio/Common';
 import CircularSkillItem from '../CircularSkillItem';
 import { PORTFOLIO_SECTION_INFO } from 'utils/constants';
 import * as S from './style';
@@ -9,7 +8,7 @@ const SkillSection: FunctionComponent = function ({ ...props }) {
 
   const topSkillItems = useMemo(() => {
     if (!topSkills.length) return;
-    const SIZE = '13vh';
+    const SIZE = '15vh';
     return topSkills.map((v, i) => {
       const { name, color, percent: value } = v;
       return <CircularSkillItem key={i} size={SIZE} {...{ name, value, color }} />;
@@ -20,7 +19,7 @@ const SkillSection: FunctionComponent = function ({ ...props }) {
     <S.SkillSectionLayout id={layoutId} {...props}>
       <S.SkillSectionInnerBox>
         <S.SkillTitleBox title={'Skills'} subTitle={subTitle} />
-        <NormalGridList>{topSkillItems}</NormalGridList>
+        <S.TopSkillList>{topSkillItems}</S.TopSkillList>
       </S.SkillSectionInnerBox>
     </S.SkillSectionLayout>
   );
