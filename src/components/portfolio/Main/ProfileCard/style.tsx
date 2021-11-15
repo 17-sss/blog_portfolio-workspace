@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Avatar, Card, CardContent, PropTypes } from '@material-ui/core';
-import { getMediaQueries, setFlex } from 'utils/style';
+import { getMediaQueries, GetMediaQueriesProps, setFlex } from 'utils/style';
 import { setFadeInAnimation } from 'utils/style/animation';
 
 export const ProfileCardLayout = styled.div`
@@ -30,6 +30,12 @@ export const ProfileCardContent = styled(({ ...props }) => <CardContent {...prop
   ${({ children }) => {
     const isArray = Array.isArray(children);
     const childrenLength = isArray ? children.length : +Boolean(children);
+    const mediaParams: GetMediaQueriesProps = {
+      type: 'tablet',
+      customWidth: { minWidth: 0 },
+      percentOption: { calcType: 'minus', percent: 5 },
+    };
+
     return (
       childrenLength &&
       css`
@@ -37,7 +43,7 @@ export const ProfileCardContent = styled(({ ...props }) => <CardContent {...prop
         justify-content: center;
         grid-template-columns: ${`repeat(${childrenLength}, calc(100% / ${childrenLength}))`};
 
-        ${getMediaQueries({ type: 'tablet', percentOption: { calcType: 'minus', percent: 5 } })} {
+        ${getMediaQueries(mediaParams)} {
           grid-template-columns: none;
         }
       `

@@ -14,3 +14,5 @@ export const getSeparateNumStr = (str: string) => {
   };
   return result;
 };
+
+export const isNullOrUndefined = (param: any) => param === null || typeof param === 'undefined';
