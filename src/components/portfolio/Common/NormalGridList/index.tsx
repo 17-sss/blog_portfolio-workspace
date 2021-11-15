@@ -1,10 +1,10 @@
-import { forwardRef } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import * as S from './style';
 
-export type NormalGridListProps = React.HTMLProps<HTMLUListElement>;
+export type NormalGridListProps = HTMLAttributes<HTMLUListElement> & { isUseTabletSize?: boolean };
 export const NormalGridList = forwardRef<HTMLUListElement, NormalGridListProps>((props, ref) => {
   return (
-    <S.NormalGridListLayout {...{ props }} ref={ref}>
+    <S.NormalGridListLayout {...props} ref={ref}>
       {props.children}
     </S.NormalGridListLayout>
   );
