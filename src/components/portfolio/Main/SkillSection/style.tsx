@@ -1,5 +1,5 @@
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { Card } from '@material-ui/core';
 import { InnerContainer, NormalGridList, Paragraph, TitleBox } from 'components/portfolio/Common';
 import { PORTFOLIO_HEADER } from 'utils/constants';
 import { getMediaQueries, setFlex } from 'utils/style';
@@ -10,7 +10,8 @@ export const SkillSectionLayout = styled.section`
 `;
 
 export const SkillSectionInnerBox = styled(InnerContainer)`
-  height: ${`calc(100vh - ${PORTFOLIO_HEADER.height}px)`};
+  min-height: ${`calc(100vh - ${PORTFOLIO_HEADER.height}px)`};
+  ${setFlex({ justifyContent: 'center', alignItems: 'center', flexDirection: 'column' })};
 `;
 
 export const SkillTitleBox = styled(TitleBox)`
@@ -20,6 +21,20 @@ export const SubTitleParagraph = styled(({ ...props }) => <Paragraph paragraph {
   font-size: ${({ theme }) => theme.fontSizes['16']};
 `;
 
+export const TopSkillCard = styled(({ ...props }) => <Card elevation={2} {...props} />)`
+  ${setFadeInAnimation()}
+  width: 100%;
+  padding: 24px 0;
+  ${getMediaQueries({ type: 'desktop' })} {
+    margin: 0 auto 16px;
+  }
+  ${getMediaQueries({ type: 'tablet' })} {
+    margin: 0 auto 8px;
+  }
+  ${getMediaQueries({ type: 'mobile' })} {
+    margin: 0 auto;
+  }
+`;
 export const TopSkillList = styled(({ ...props }) => <NormalGridList isUseTabletSize {...props} />)`
   ${getMediaQueries({ type: 'tablet' })} {
     ${setFlex({ alignItems: 'center', justifyContent: 'center' })};
@@ -35,5 +50,17 @@ export const TopSkillList = styled(({ ...props }) => <NormalGridList isUseTablet
     li {
       flex-basis: ${`calc(100% / 2)`};
     }
+  }
+`;
+
+export const SkillContainerBox = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, calc(100% / 4));
+  ${getMediaQueries({ type: 'tablet' })} {
+    grid-template-columns: repeat(2, calc(100% / 2));
+  }
+  ${getMediaQueries({ type: 'mobile' })} {
+    grid-template-columns: none;
   }
 `;

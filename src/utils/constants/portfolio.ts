@@ -41,12 +41,14 @@ type IntroduceSectionInfo = ContentRequiredType & {
 
 type SkillInfoType = {
   name: string;
-  percent: number;
+  percent?: number;
   color: string;
 };
+export type SkillCategoryNames = 'Front-end' | 'Back-end' | 'Communication' | 'Tools';
 type SkillSectionInfo = ContentRequiredType & {
-  topSkills: SkillInfoType[];
-  skills: Pick<SkillInfoType, 'name'>[];
+  skillList: {
+    [categoryName in SkillCategoryNames]: SkillInfoType[];
+  };
 };
 
 type UnspecifiedInfo = ContentRequiredType & { texts?: [key: string] };
@@ -105,15 +107,36 @@ export const PORTFOLIO_SECTION_INFO: PortfolioSectionInfoType = {
   },
   skills: {
     layoutId: 'section--skills',
-    subTitle: '지금까지 사용했던 기술들을 나타낸 공간입니다.',
-    topSkills: [
-      { name: 'HTML', percent: 70, color: '#E34F26' },
-      { name: 'CSS', percent: 60, color: '#1572B6' },
-      { name: 'JavaScript', percent: 65, color: '#F7DF1E' },
-      { name: 'TypeScript', percent: 60, color: '#3178C6' },
-      { name: 'React', percent: 65, color: '#61DAFB' },
-    ],
-    skills: [{ name: '' }],
+    subTitle: '주로 사용하는 기술과 한번씩은 접해봤던 기술들을 나열한 공간입니다.',
+    skillList: {
+      'Front-end': [
+        { name: 'HTML', percent: 70, color: '#E34F26' },
+        { name: 'CSS', percent: 60, color: '#1572B6' },
+        { name: 'JavaScript', percent: 65, color: '#F7DF1E' },
+        { name: 'TypeScript', percent: 60, color: '#3178C6' },
+        { name: 'React', percent: 65, color: '#61DAFB' },
+
+        { name: 'Sass', color: '#CC6699' },
+        { name: 'Recoil', color: '#3577E5' },
+        { name: 'Bootstrap', color: '#7952B3' },
+        { name: 'Material-UI', color: '#0081CB' },
+      ],
+      'Back-end': [
+        { name: 'express', color: '#000' },
+        { name: 'Sequelize', color: '#52B0E7' },
+        { name: 'MySQL', color: '#4479A1' },
+      ],
+      Communication: [
+        { name: 'Jira', color: '#0052CC' },
+        { name: 'Confluence', color: '#172B4D' },
+        { name: 'Slack', color: '#4A154B' },
+      ],
+      Tools: [
+        { name: 'Git', color: '#F05032' },
+        { name: 'GitHub', color: '#181717' },
+        { name: 'VSCode', color: '#007ACC' },
+      ],
+    },
   },
   project: { layoutId: 'section--project', subTitle: '' },
 };
