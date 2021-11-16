@@ -5,8 +5,8 @@ type MarkdownRendererProps = {
   html: string;
 };
 
-const MarkdownRenderer: FunctionComponent<MarkdownRendererProps> = function ({ html }) {
-  return <S.MarkdownRenderer dangerouslySetInnerHTML={{ __html: html }} />;
+const MarkdownRenderer: FunctionComponent<MarkdownRendererProps> = function ({ html, ...props }) {
+  return <S.MarkdownRenderer {...props} dangerouslySetInnerHTML={{ __html: html }} />;
 };
 
 export default MarkdownRenderer;

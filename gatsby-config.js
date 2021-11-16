@@ -55,6 +55,14 @@ module.exports = {
       options: {
         name: `contents`,
         path: `${__dirname}/contents`,
+        ignore: [`**/[\.|\_]*`], // 파일 앞에 ., _ 붙어있는 파일은 무시
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `portfolioContents`,
+        path: `${__dirname}/portfolio_contents`,
       },
     },
     {
