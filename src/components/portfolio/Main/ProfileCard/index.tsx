@@ -7,9 +7,9 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import { Paragraph } from 'components/portfolio/Common';
 import { IconButton } from '@material-ui/core';
 import { ProfileCardTypes as ProfileCardProps } from 'utils/constants';
+import { changeFirstCharUpperCase } from 'utils/functions';
 
 import * as S from './style';
-import { changeFirstCharUpperCase } from 'utils/functions';
 
 type IconKeys = keyof ProfileCardProps['contactInfo'];
 type IconType = { [key in IconKeys]: JSX.Element };

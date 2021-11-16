@@ -16,7 +16,7 @@ const CircleProgress: FunctionComponent<CircleProgressProps> = function ({ iconN
     if (!props.size) return;
     const { size } = props;
 
-    const FONT_DIV_UNIT = 9;
+    const FONT_DIV_UNIT = 10;
     const ICON_DIV_UNIT = 2.5;
     if (typeof size === 'number')
       return {
