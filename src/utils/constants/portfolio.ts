@@ -137,5 +137,5 @@ export const PORTFOLIO_SECTION_INFO: PortfolioSectionInfoType = {
       ],
     },
   },
-  projects: { layoutId: 'section--projects', subTitle: '저의 프로젝트 목록입니다.' },
+  projects: { layoutId: 'section--projects', subTitle: '그동안 작업한 프로젝트 & 라이브러리 입니다.' },
 };

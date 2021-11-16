@@ -1,13 +1,24 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useMemo } from 'react';
+import { usePortfolioState } from 'utils/contexts/PortfolioContext';
 import { PORTFOLIO_SECTION_INFO } from 'utils/constants';
+import ProjectItem from '../ProjectItem';
 import * as S from './style';
 
 const ProjectSection: FunctionComponent = function ({ ...props }) {
-  const { layoutId } = PORTFOLIO_SECTION_INFO.project;
+  const { markdownData } = usePortfolioState();
+  const { layoutId, subTitle } = PORTFOLIO_SECTION_INFO.projects;
+
+  const projectItems = useMemo(
+    () => markdownData.map(({ node }, i) => <ProjectItem key={i} {...node} />),
+    [markdownData],
+  );
 
   return (
     <S.ProjectSectionLayout id={layoutId} {...props}>
-      <S.ProjectSectionInnerBox>프로젝트</S.ProjectSectionInnerBox>
+      <S.ProjectSectionInnerBox>
+        <S.ProjectTitleBox title={'Projects'} subTitle={subTitle} />
+        <S.ProjectList>{projectItems}</S.ProjectList>
+      </S.ProjectSectionInnerBox>
     </S.ProjectSectionLayout>
   );
 };

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { InnerContainer } from 'components/portfolio/Common';
+import { InnerContainer, TitleBox } from 'components/portfolio/Common';
+import { setFlex, setFadeInAnimation } from 'utils/style';
 import { PORTFOLIO_HEADER } from 'utils/constants';
 
 export const ProjectSectionLayout = styled.section`
@@ -7,5 +8,16 @@ export const ProjectSectionLayout = styled.section`
 `;
 
 export const ProjectSectionInnerBox = styled(InnerContainer)`
-  height: ${`calc(100vh - ${PORTFOLIO_HEADER.height}px)`};
+  min-height: ${`calc(100vh - ${PORTFOLIO_HEADER.height}px)`};
+  ${setFlex({ justifyContent: 'center', alignItems: 'center', flexDirection: 'column' })};
+`;
+
+export const ProjectTitleBox = styled(TitleBox)`
+  ${setFadeInAnimation()}
+`;
+
+export const ProjectList = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(1, 100%);
+  width: 100%;
 `;
