@@ -1,16 +1,16 @@
 ---
-title: 'Airbnb 클론 프로젝트'
-duration: { startDate: '2021-05-17', endDate: '2021-06-04' }
-memberInfo: '프론트엔드 2명, 백엔드 2명'
-skills: [React, TypeScript, Webpack]
-images: ['']
-type: 'project'
+portfolioInfo:
+  {
+    title: 'Airbnb 클론 프로젝트',
+    subTitle: '코드스쿼드에서 진행한 3주간의 프로젝트',
+    duration: { startDate: '2021-05-17', endDate: '2021-06-04' },
+    memberInfo: '프론트엔드 2명, 백엔드 2명',
+    skills: [React, TypeScript, Webpack],
+    images: [''],
+    type: 'project',
+  }
 options: { isPortfolio: true, hide: true }
 ---
-
-<div align="center">
-  <h3>코드스쿼드에서 진행한 3주간의 프로젝트</h3>
-</div>
 
 #### 🤝 협업
 

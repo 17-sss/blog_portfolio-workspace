@@ -3,10 +3,11 @@ import styled from '@emotion/styled';
 import { Typography } from '@material-ui/core';
 import { ParagraphProps } from '.';
 
-export const ParagraphLayout = styled(({ isTitle, isContent, ...props }: ParagraphProps) => (<Typography {...props} />))<ParagraphProps>`
-  font-family: ${({ isTitle }) =>
+export const ParagraphLayout = styled(({ isTitle, isContent, additionalFonts, ...props }: ParagraphProps) => (<Typography {...props} />))`
+  font-family: ${({ isTitle, additionalFonts }) =>
     (isTitle ? 'Comfortaa,' : '') +
-    `'Noto Sans KR', 'Roboto', 'Helvetica', 'Arial', 'Do Hyeon', 'Nanum Myeongjo', sans-serif`};
+    (additionalFonts ? `${additionalFonts.join(',')},` : '') +
+    `'Noto Sans KR', 'Roboto', 'Helvetica', 'Arial', sans-serif, serif`};
 
   color: ${({ theme }) => theme.grayScaleColors.titleActive};
   text-align: center;

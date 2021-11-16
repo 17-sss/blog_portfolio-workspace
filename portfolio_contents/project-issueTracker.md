@@ -1,17 +1,16 @@
 ---
-title: 'Issue Tracker'
-duration: { startDate: '2021-06-07', endDate: '2021-06-25' }
-memberInfo: '프론트엔드 3명, 백엔드 2명, iOS 2명'
-skills: [React, TypeScript, Recoil, Material UI]
-images: ['']
-type: 'project'
+portfolioInfo:
+  {
+    title: 'Issue Tracker',
+    subTitle: '코드스쿼드에서 진행한 3주간의 프로젝트',
+    duration: { startDate: '2021-06-07', endDate: '2021-06-25' },
+    memberInfo: '프론트엔드 3명, 백엔드 2명, iOS 2명',
+    skills: [React, TypeScript, Recoil, Material UI],
+    images: [''],
+    type: 'project',
+  }
 options: { isPortfolio: true, hide: true }
 ---
-
-<div align="center">
-    <h3>코드스쿼드에서 진행한 3주간의 프로젝트</h3>
-    <p style="color: #484653;">git의 issue 기능을 기반으로 만든 프로젝트</p>
-</div>
 
 #### 🤝 협업
 

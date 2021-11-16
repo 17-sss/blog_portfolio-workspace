@@ -1,4 +1,4 @@
-export type PortfolioSectionNames = 'home' | 'introduce' | 'skills' | 'project';
+export type PortfolioSectionNames = 'home' | 'introduce' | 'skills' | 'projects';
 
 type PortfolioHeaderType = {
   logo: string;
@@ -7,7 +7,7 @@ type PortfolioHeaderType = {
 };
 export const PORTFOLIO_HEADER: PortfolioHeaderType = {
   logo: 'PORTFOLIO',
-  items: ['home', 'introduce', 'skills', 'project'],
+  items: ['home', 'introduce', 'skills', 'projects'],
   height: 60,
 };
 
@@ -51,7 +51,6 @@ type SkillSectionInfo = ContentRequiredType & {
   };
 };
 
-type UnspecifiedInfo = ContentRequiredType & { texts?: [key: string] };
 
 // ------------
 
@@ -59,7 +58,7 @@ type PortfolioSectionInfoType = {
   home: HomeSectionInfo;
   introduce: IntroduceSectionInfo;
   skills: SkillSectionInfo;
-  project: UnspecifiedInfo;
+  projects: ContentRequiredType;  // 기본적인 데이터만 있고, 나머지는 마크다운에서 가져옴
 };
 
 export const PORTFOLIO_SECTION_INFO: PortfolioSectionInfoType = {
@@ -138,5 +137,5 @@ export const PORTFOLIO_SECTION_INFO: PortfolioSectionInfoType = {
       ],
     },
   },
-  project: { layoutId: 'section--project', subTitle: '' },
+  projects: { layoutId: 'section--projects', subTitle: '저의 프로젝트 목록입니다.' },
 };

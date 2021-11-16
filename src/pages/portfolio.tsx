@@ -29,7 +29,11 @@ type PortfolioPageProps = {
 };
 
 const PortfolioPage: FunctionComponent<PortfolioPageProps> = function ({ data, ...props }) {
-  const { site, profileImg, allMarkdownRemark: { edges } } = data;
+  const {
+    site,
+    profileImg,
+    allMarkdownRemark: { edges },
+  } = data;
   const { title_portfolio, description, siteUrl_portfolio } = site.siteMetadata;
   const profileImgUrl = profileImg.publicURL;
 
@@ -38,7 +42,7 @@ const PortfolioPage: FunctionComponent<PortfolioPageProps> = function ({ data, .
       <ThemeProvider theme={theme}>
         <PortfolioContextProvider>
           <PortfolioTemplate
-            { ...props }
+            {...props}
             markdownData={edges}
             title={title_portfolio}
             description={description}
@@ -57,13 +61,25 @@ export default PortfolioPage;
 
 export const getPortpolioData = graphql`
   query getPortpolioData {
-    allMarkdownRemark(filter: { frontmatter: { options: { isPortfolio: { eq: true } } } }) {
+    allMarkdownRemark(
+      filter: { frontmatter: { options: { isPortfolio: { eq: true } } } }
+      sort: {order: DESC, fields: frontmatter___portfolioInfo___duration___startDate}
+    ) {
       edges {
         node {
           html
           frontmatter {
-            title
-            date
+            portfolioInfo {
+              title
+              duration {
+                startDate
+                endDate
+              }
+              memberInfo
+              skills
+              images
+              type
+            }
           }
         }
       }

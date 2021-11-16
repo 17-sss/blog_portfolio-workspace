@@ -1,16 +1,16 @@
 ---
-title: 'Rano Portfolio'
-duration: { startDate: '2021-11-08', endDate: '2021-11-18' }
-memberInfo: '개인 프로젝트'
-skills: [gatsby, React, TypeScript, emotion, material-ui]
-images: ['']
-type: 'project'
+portfolioInfo:
+  {
+    title: 'Rano Portfolio',
+    subTitle: '나만의 포트폴리오 프로젝트',
+    duration: { startDate: '2021-11-08', endDate: '2021-11-18' },
+    memberInfo: '개인 프로젝트',
+    skills: [gatsby, React, TypeScript, emotion, material-ui],
+    images: [''],
+    type: 'project',
+  }
 options: { isPortfolio: true, hide: true }
 ---
-
-<div align="center">
-  <h3>나만의 포트폴리오 프로젝트</h3>
-</div>
 
 #### 🧚🏻 구현
 

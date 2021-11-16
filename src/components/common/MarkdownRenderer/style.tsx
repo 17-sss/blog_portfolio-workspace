@@ -55,6 +55,18 @@ const MarkdownRenderer = styled.div`
     font-size: 20px;
   }
 
+  h4 {
+    font-size: 18px;
+  }
+
+  h5 {
+    font-size: 17px;
+  }
+
+  h6 {
+    font-size: 16px;
+  }
+
   // Adjust Quotation Element Style
   blockquote {
     margin: 30px 0;
@@ -122,6 +134,18 @@ const MarkdownRenderer = styled.div`
 
     h3 {
       font-size: 17px;
+    }
+
+    h4 {
+      font-size: 15px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      font-size: 13px;
     }
 
     img {
