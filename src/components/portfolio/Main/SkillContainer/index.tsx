@@ -1,7 +1,7 @@
 import { FunctionComponent, HTMLAttributes } from 'react';
 import * as S from './style';
 
-type SkillContainerProps = HTMLAttributes<HTMLDivElement> & { subject?: string };
+export type SkillContainerProps = HTMLAttributes<HTMLDivElement> & { idx?: number; subject?: string };
 
 const SkillContainer: FunctionComponent<SkillContainerProps> = function ({ subject, children, ...props }) {
   return (

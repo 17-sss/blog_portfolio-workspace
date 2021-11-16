@@ -26,13 +26,13 @@ const SkillSection: FunctionComponent = function ({ ...props }) {
   // 접해봤던 기술들
   const skillContainers = useMemo(() => {
     const skillListKeys = Object.keys(skillList) as SkillCategoryNames[];
-    const result = skillListKeys.reduce((result, keyName) => {
+    const result = skillListKeys.reduce((result, keyName, i) => {
       const currData = skillList[keyName];
       const arrEle = currData.map(({ name, color }, i) => {
         const findName = findIconName(name);
         return <SkillItem key={i} iconType={findName} color={color} />;
       });
-      result[keyName] = <SkillContainer subject={keyName}>{arrEle}</SkillContainer>;
+      result[keyName] = <SkillContainer idx={i} subject={keyName}>{arrEle}</SkillContainer>;
       return result;
     }, {} as SkillItemsType);
     return result;
