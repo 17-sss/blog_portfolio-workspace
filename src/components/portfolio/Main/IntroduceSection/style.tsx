@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 import { InnerContainer, TitleBox } from 'components/portfolio/Common';
 import { PORTFOLIO_HEADER } from 'utils/constants';
-import { setFlex } from 'utils/style';
-import { setFadeInAnimation } from 'utils/style/animation';
+import { setFlex, setFadeInAnimation } from 'utils/style';
 
 // IntroduceSection : Default
 export const IntroduceSectionLayout = styled.section`

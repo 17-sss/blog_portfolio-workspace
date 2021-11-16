@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
+import { setWaveAnimation } from 'utils/style';
 import { WaveGraphicProps } from '.';
-import { setWaveAnimation } from 'utils/style/animation';
 
 // WaveGraphicLayout
 export const WaveGraphicLayout = styled.div<Pick<WaveGraphicProps['waveImages'], 'waveBackImgUrl'>>`
