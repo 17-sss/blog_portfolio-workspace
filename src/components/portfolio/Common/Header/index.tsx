@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react';
-import { Menu } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { Mobile, TabletDesktop } from 'components/common/MediaQuery';
@@ -17,15 +16,15 @@ const Header: FunctionComponent = function () {
   const handleMobileMenuClose = useCallback(() => setAnchorEl(null), []);
 
   // 메뉴 아이템 클릭시, 해당하는 Section으로 자연스럽게 스크롤링됨.
-  const handleMobileItemClick = useCallback((e: React.MouseEvent<HTMLLIElement>) => {
+  const handleHeaderItemClick = useCallback((targetName?: PortfolioSectionNames) => (e: React.MouseEvent<HTMLLIElement | HTMLElement>) =>  {
     handleMobileMenuClose();
 
     const target = e.target as HTMLLIElement;
     const targetId = target.id as PortfolioSectionNames;
-    if (!target || !targetId) return;
+    if ((!target || !targetId) && !targetName) return;
 
-    const layoutId = PORTFOLIO_SECTION_INFO[targetId].layoutId;
-    const sectionEle = document.querySelector(`#${layoutId}`) as HTMLElement;
+    const layoutId = PORTFOLIO_SECTION_INFO[targetName || targetId].layoutId;
+    const sectionEle = document.querySelector(`#${ layoutId}`) as HTMLElement;
     if (!sectionEle) return;
 
     window.scrollTo({
@@ -36,7 +35,7 @@ const Header: FunctionComponent = function () {
 
   const menuItems = useMemo(() => {
     return PORTFOLIO_HEADER.items.map((name, i) => (
-      <S.HeaderMenuItem key={i} id={name} onClick={handleMobileItemClick} role="listitem">
+      <S.HeaderMenuItem key={i} id={name} onClick={handleHeaderItemClick()} role="listitem">
         {changeFirstCharUpperCase(name)}
       </S.HeaderMenuItem>
     ));
@@ -55,7 +54,7 @@ const Header: FunctionComponent = function () {
   return (
     <S.HeaderLayout isHeaderTop={isHeaderTop}>
       <S.HeaderInnerBox>
-        <S.HeaderLogoBox>{PORTFOLIO_HEADER.logo}</S.HeaderLogoBox>
+        <S.HeaderLogoBox onClick={handleHeaderItemClick("home")}>{PORTFOLIO_HEADER.logo}</S.HeaderLogoBox>
         <TabletDesktop>
           <S.HeaderMenuList>{menuItems}</S.HeaderMenuList>
         </TabletDesktop>
@@ -63,7 +62,7 @@ const Header: FunctionComponent = function () {
           <S.MenuOpenButton onClick={handleMobileMenuClick}>
             <MenuIcon />
           </S.MenuOpenButton>
-          <Menu
+          <S.MobileMenu
             anchorEl={anchorEl}
             keepMounted
             open={Boolean(anchorEl)}
@@ -71,7 +70,7 @@ const Header: FunctionComponent = function () {
             MenuListProps={{ onMouseLeave: handleMobileMenuClose }}
           >
             {menuItems}
-          </Menu>
+          </S.MobileMenu>
         </Mobile>
       </S.HeaderInnerBox>
     </S.HeaderLayout>

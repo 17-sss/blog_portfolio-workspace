@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { css, Theme } from '@emotion/react';
-import { AppBar, Button, MenuItem } from '@material-ui/core';
+import { AppBar, Button, Menu, MenuItem } from '@material-ui/core';
 
 import InnerContainer from '../InnerContainer';
 import { PORTFOLIO_HEADER } from 'utils/constants';
@@ -9,7 +9,7 @@ import { setFlex, theme } from 'utils/style';
 type HeaderLayoutProps = {
   isHeaderTop: boolean;
 };
-export const HeaderLayout = styled(({ isHeaderTop, ...props }: HeaderLayoutProps) => <AppBar position="fixed" {...props} />)`
+export const HeaderLayout = styled(({ isHeaderTop, ...props }: HeaderLayoutProps) => <AppBar position="fixed" elevation={2} {...props} />)`
   padding: 0 48px;
   background-color: ${({ isHeaderTop, theme }) => (isHeaderTop ? 'transparent' : theme.grayScaleColors.offWhite)};
   transition: background-color 0.7s;
@@ -29,7 +29,7 @@ export const HeaderLayout = styled(({ isHeaderTop, ...props }: HeaderLayoutProps
     `}
 
   * {
-    font-family: 'Noto Sans KR', 'Roboto', 'Helvetica', 'Arial', 'Do Hyeon', 'Nanum Myeongjo', sans-serif;
+    font-family:'Comfortaa', 'Noto Sans KR', 'Roboto', 'Helvetica', 'Arial', sans-serif, serif;
   }
 `;
 
@@ -46,6 +46,7 @@ const cssHeaderBox = ((theme: Theme) => css`
 
 export const HeaderLogoBox = styled.div`
   ${cssHeaderBox};
+  cursor: pointer;
 `;
 
 export const HeaderMenuList = styled.ul`
@@ -55,6 +56,12 @@ export const HeaderMenuList = styled.ul`
 
 export const HeaderMenuItem = styled(MenuItem)`
   font-size: ${({ theme }) => theme.fontSizes['14']};
+`;
+
+export const MobileMenu = styled(Menu)`
+  * {
+    font-family: 'Comfortaa', 'Noto Sans KR', 'Roboto', 'Helvetica', 'Arial', sans-serif, serif;
+  }
 `;
 
 export const MenuOpenButton = styled(Button)`
