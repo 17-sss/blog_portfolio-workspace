@@ -10,7 +10,6 @@ export const ParagraphLayout = styled(({ isTitle, isContent, additionalFonts, ..
     `'Noto Sans KR', 'Roboto', 'Helvetica', 'Arial', sans-serif, serif`};
 
   color: ${({ theme }) => theme.grayScaleColors.titleActive};
-  text-align: center;
   padding: 12px 0;
 
   ${({ isContent, theme }) =>

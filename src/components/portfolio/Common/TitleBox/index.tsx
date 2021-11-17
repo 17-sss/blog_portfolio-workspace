@@ -7,7 +7,7 @@ const TitleBox: FunctionComponent<TitleBoxProps> = function ({ title, subTitle, 
   return (
     <S.TitleBoxLayout {...props}>
       {title && (
-        <Paragraph variant="h2" isTitle>
+        <Paragraph align="center" variant="h2" isTitle>
           {title}
         </Paragraph>
       )}

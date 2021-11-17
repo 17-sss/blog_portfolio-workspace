@@ -32,7 +32,7 @@ const HomeSection: FunctionComponent = function ({ ...props }) {
       </S.WaveGraphicBox>
 
       <S.HomeSectionInnerBox>
-        <S.IntroParagraph>{greetingText}</S.IntroParagraph>
+        <S.IntroParagraph align="center">{greetingText}</S.IntroParagraph>
         <S.ScrollInfoBox>
           <span>Scroll Down</span>
           <S.ScrollDownButton onClick={handleScrollDownButtonClick} aria-label={'Scroll Down'}>

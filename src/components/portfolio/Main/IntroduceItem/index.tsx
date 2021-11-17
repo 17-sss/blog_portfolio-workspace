@@ -16,7 +16,7 @@ const IntroduceListItem: FunctionComponent<IntroduceItemProps> = function ({ sub
       <S.IntroduceCard>
         <S.IntroduceCardContent>
           {icon ? <S.IntroduceIconBox><div className="inner">{icon}</div></S.IntroduceIconBox> : <></>}
-          {subject ? <Paragraph variant="h3">{subject}</Paragraph> : <></>}
+          {subject ? <Paragraph align="center" variant="h3">{subject}</Paragraph> : <></>}
           {contents ? <Paragraph paragraph variant="h5" isContent>{contents}</Paragraph> : <></>}
         </S.IntroduceCardContent>
       </S.IntroduceCard>
