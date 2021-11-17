@@ -3,14 +3,23 @@ import { Accordion, AccordionSummary, Card, CardContent } from '@material-ui/cor
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { MarkdownRenderer } from 'components/common';
 import { Paragraph } from 'components/portfolio/Common';
-import { getMediaQueries, setFlex } from 'utils/style';
+import { getMediaQueries, setFadeInAnimation, setFlex, setSlideAnimation } from 'utils/style';
 
 export const ProjectItemLayout = styled(({ ...props }) => <Card component="li" elevation={2} {...props} />)`
   padding: 24px;
   margin-bottom: 24px;
 
+  ${setFadeInAnimation()};
   ${getMediaQueries({ type: 'mobile' })} {
     padding: 12px 18px;
+    position: relative;
+
+    &:nth-of-type(2n - 1) {
+      ${({ idx }) => setSlideAnimation({ direction: 'left', idx })}
+    }
+    &:nth-of-type(2n) {
+      ${({ idx }) => setSlideAnimation({ direction: 'right', idx })}
+    }
   }
 `;
 

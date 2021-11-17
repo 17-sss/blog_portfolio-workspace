@@ -6,7 +6,10 @@ import { PortfolioMarkdownNode } from 'utils/types';
 import { changeFirstCharUpperCase } from 'utils/functions';
 import * as S from './style';
 
-const ProjectItem: FunctionComponent<PortfolioMarkdownNode> = function (props) {
+export type ProjectItemProps = PortfolioMarkdownNode & {
+  idx?: number;
+}
+const ProjectItem: FunctionComponent<ProjectItemProps> = function ({idx, ...props}) {
   const { frontmatter: { portfolioInfo }, html } = props;
   const { title, subTitle, duration: { startDate, endDate }, memberInfo, skills, images, type, links } = portfolioInfo;
 
@@ -14,7 +17,7 @@ const ProjectItem: FunctionComponent<PortfolioMarkdownNode> = function (props) {
   const linkItems = useMemo(() => links.map(({name, href}, i) => <S.ExternalLink key={i} href={href}>{name}</S.ExternalLink>), [links]);
 
   return (
-    <S.ProjectItemLayout>
+    <S.ProjectItemLayout idx={idx}>
       <Paragraph paragraph align="center" variant="h3" additionalFonts={['Do Hyeon']}>
         {title}
       </Paragraph>

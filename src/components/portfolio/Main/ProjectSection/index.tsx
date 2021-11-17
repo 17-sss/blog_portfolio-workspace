@@ -9,7 +9,7 @@ const ProjectSection: FunctionComponent = function ({ ...props }) {
   const { layoutId, subTitle } = PORTFOLIO_SECTION_INFO.projects;
 
   const projectItems = useMemo(
-    () => markdownData.map(({ node }, i) => <ProjectItem key={i} {...node} />),
+    () => markdownData.map(({ node }, i) => <ProjectItem idx={i} key={i} {...node} />),
     [markdownData],
   );
 
