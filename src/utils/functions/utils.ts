@@ -16,3 +16,9 @@ export const getSeparateNumStr = (str: string) => {
 };
 
 export const isNullOrUndefined = (param: any) => param === null || typeof param === 'undefined';
+
+export const getExtension = (str: string) => {
+  const match = str.match(/\.\w+$/gi);
+  if (!match || !match.length) return;
+  return match[0];
+}
