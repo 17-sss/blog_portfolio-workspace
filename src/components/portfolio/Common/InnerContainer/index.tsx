@@ -1,8 +1,12 @@
-import { FunctionComponent } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import * as S from './style';
 
-const InnerContainer: FunctionComponent = function ({ children, ...props }) {
-  return <S.InnerContainerLayout {...props}>{children}</S.InnerContainerLayout>;
-};
-
+export type InnerContainerProps = HTMLAttributes<HTMLDivElement>;
+export const InnerContainer = forwardRef<HTMLDivElement, InnerContainerProps>(({ children, ...props }, ref) => {
+  return (
+    <S.InnerContainerLayout ref={ref} {...props}>
+      {children}
+    </S.InnerContainerLayout>
+  );
+});
 export default InnerContainer;
