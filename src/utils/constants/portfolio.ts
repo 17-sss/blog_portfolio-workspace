@@ -11,6 +11,13 @@ export const PORTFOLIO_HEADER: PortfolioHeaderType = {
   height: 60,
 };
 
+type PortfolioFooterType = {
+  text: string;
+};
+export const PORTFOLIO_FOOTER: PortfolioFooterType = {
+  text: `© 2021. Hoyoung Son <Rano>. All rights reserved.`,
+};
+
 // PortfolioSectionInfoType을 위한 type들
 type RequiredType = {
   layoutId: string;
@@ -51,14 +58,13 @@ type SkillSectionInfo = ContentRequiredType & {
   };
 };
 
-
 // ------------
 
 type PortfolioSectionInfoType = {
   home: HomeSectionInfo;
   introduce: IntroduceSectionInfo;
   skills: SkillSectionInfo;
-  projects: ContentRequiredType;  // 기본적인 데이터만 있고, 나머지는 마크다운에서 가져옴
+  projects: ContentRequiredType; // 기본적인 데이터만 있고, 나머지는 마크다운에서 가져옴
 };
 
 export const PORTFOLIO_SECTION_INFO: PortfolioSectionInfoType = {
