@@ -6,7 +6,7 @@ portfolioInfo:
     duration: { startDate: '2021-06-07', endDate: '2021-06-25' },
     memberInfo: '프론트엔드 3명, 백엔드 2명, iOS 2명',
     skills: [React, TypeScript, Recoil, Material UI],
-    images: [''],
+    images: ['./issueTracker/01.gif', './issueTracker/02.gif', './issueTracker/03.gif'],
     type: 'project',
   }
 options: { isPortfolio: true, hide: true }

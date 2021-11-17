@@ -6,7 +6,7 @@ portfolioInfo:
     duration: { startDate: '2021-08-25', endDate: '2021-10-30' },
     memberInfo: '개인 프로젝트',
     skills: [React, TypeScript],
-    images: [''],
+    images: ['./carousel/01.gif'],
     type: 'library',
   }
 options: { isPortfolio: true, hide: true }
@@ -24,3 +24,5 @@ options: { isPortfolio: true, hide: true }
 - 자동으로 비율을 계산하여 요소 영역 설정 or 요소의 크기를 직접 지정
 - 일정 시간마다 캐러셀 동작
 - 버튼 클릭 시 설정한 아이템 개수만큼 이동
+
+> ⭐️ 지금 보고 계신 화면의 캐러셀도 이 <u>라이브러리</u> 입니다!

@@ -6,7 +6,7 @@ portfolioInfo:
     duration: { startDate: '2021-11-08', endDate: '2021-11-18' },
     memberInfo: '개인 프로젝트',
     skills: [gatsby, React, TypeScript, emotion, material-ui],
-    images: [''],
+    images: ['./portfolio/01.jpg', './portfolio/02.jpg', './portfolio/03.jpg', './portfolio/04.jpg'],
     type: 'project',
   }
 options: { isPortfolio: true, hide: true }

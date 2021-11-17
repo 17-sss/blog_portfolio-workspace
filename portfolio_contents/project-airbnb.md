@@ -6,7 +6,7 @@ portfolioInfo:
     duration: { startDate: '2021-05-17', endDate: '2021-06-04' },
     memberInfo: '프론트엔드 2명, 백엔드 2명',
     skills: [React, TypeScript, Webpack],
-    images: [''],
+    images: ['./airbnb/01.gif', './airbnb/02.gif'],
     type: 'project',
   }
 options: { isPortfolio: true, hide: true }
