@@ -42,7 +42,7 @@ const ProjectItem: FunctionComponent<PortfolioMarkdownNode> = function (props) {
         {/* Detail */}
         {html && (
           <S.AccordionBox elevation={0}>
-            <S.AccordionOpenSummary />
+            <S.AccordionOpenSummary aria-label={`ProjectItem - ${title}`} />
             <AccordionDetails children={<S.DetailRenderer html={html} />} />
           </S.AccordionBox>
         )}

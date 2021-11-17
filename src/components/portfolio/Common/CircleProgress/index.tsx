@@ -42,7 +42,13 @@ const CircleProgress: FunctionComponent<CircleProgressProps> = function ({ iconN
 
   return (
     <S.CircleProgressLayout>
-      <S.Progress variant="determinate" customColor={customColor?.progress} value={progressValue} {...props} />
+      <S.Progress
+        variant="determinate"
+        customColor={customColor?.progress}
+        value={progressValue}
+        aria-label={`${iconName} progressbar`}
+        {...props}
+      />
       <S.ProgressInfoBox>
         {iconName && <CustomIcon type={iconName} color={customColor?.progress} size={sizeInfo?.iconSize} />}
         <S.InfoParagraph fontSize={sizeInfo?.fontSize} customColor={customColor?.text}>
