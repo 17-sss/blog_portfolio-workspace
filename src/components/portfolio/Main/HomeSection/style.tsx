@@ -23,17 +23,20 @@ export const WaveGraphicBox = styled.div`
 
 export const HomeSectionInnerBox = styled(InnerContainer)`
   ${setFlex({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })};
-  row-gap: 6vh;
   height: 100vh;
 `;
 
 export const IntroParagraph = styled(Paragraph)`
   font-family: 'Nanum Myeongjo', 'Noto Sans KR', 'Roboto', sans-serif, serif;
-  font-size: 3.3vw;
+  font-size: ${({ theme }) => theme.fontSizes['56']};
   padding: 24px;
 
-  ${getMediaQueries({type: "mobile"})} {
-    font-size: 3.5vh;
+  ${getMediaQueries({ type: 'tablet' })} {
+    font-size: ${({ theme }) => theme.fontSizes['48']};
+  }
+
+  ${getMediaQueries({ type: 'mobile' })} {
+    font-size: ${({ theme }) => theme.fontSizes['32']};
   }
 
   animation: blink 1.5s ease-in-out infinite alternate;
@@ -49,17 +52,28 @@ export const IntroParagraph = styled(Paragraph)`
 
 export const ScrollInfoBox = styled.div`
   ${setFlex({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })};
+  ${setFadeInAnimation()}
 
   color: ${theme.grayScaleColors.font};
-  font-size: 2vh;
+  font-size: ${({ theme }) => theme.fontSizes['20']};
 
-  ${setFadeInAnimation()}
+  ${getMediaQueries({ type: 'tablet' })} {
+    font-size: ${({ theme }) => theme.fontSizes['18']};
+  }
+
+  ${getMediaQueries({ type: 'mobile' })} {
+    font-size: ${({ theme }) => theme.fontSizes['16']};
+  }
 `;
 export const ScrollDownButton = styled(Button)`
   padding: 0;
   min-width: fit-content;
   svg {
     color: ${theme.grayScaleColors.font};
-    font-size: 4.5vh;
+    font-size: ${({ theme }) => theme.fontSizes['40']};
+
+    ${getMediaQueries({ type: 'mobile' })} {
+      font-size: ${({ theme }) => theme.fontSizes['32']};
+    }
   }
 `;

@@ -22,7 +22,6 @@ export const ContentBox = styled(CardContent)`
     display: grid;
     grid-template-columns: repeat(2, calc(100% / 2));
     margin-bottom: 16px;
-    padding: 0 6vh;
 
     &:last-of-type {
       padding-bottom: 0;

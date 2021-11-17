@@ -15,7 +15,7 @@ const SkillSection: FunctionComponent = function ({ ...props }) {
   // 제일 많이 쓰는 기술들
   const topSkillItems = useMemo(() => {
     const frontendSkills = skillList['Front-end'];
-    const SIZE = '19vh';
+    const SIZE = 150;
     return frontendSkills.slice(0, 5).map((v, i) => {
       const { name, color, percent } = v;
       const value = percent ?? 0;

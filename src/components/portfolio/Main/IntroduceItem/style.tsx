@@ -47,7 +47,7 @@ export const IntroduceIconBox = styled.div`
     border-radius: 50%;
     svg {
       color: ${({ theme }) => theme.grayScaleColors.offWhite};
-      font-size: 8vh;
+      font-size: ${({ theme }) => theme.fontSizes["80"]};
     }
   }
 `;

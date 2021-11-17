@@ -90,7 +90,7 @@ export const AntecedentItem = styled.li`
 export const IconButtonBox = styled.div`
   ${setFlex({ alignItems: 'center', justifyContent: 'center' })};
   svg {
-    font-size: 3vh;
+    font-size: ${({ theme }) => theme.fontSizes['32']};
     color: ${({ theme }) => theme.grayScaleColors.font};
   }
 `;

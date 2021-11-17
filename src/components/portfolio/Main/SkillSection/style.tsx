@@ -7,6 +7,9 @@ import { setFadeInAnimation } from 'utils/style/animation';
 
 export const SkillSectionLayout = styled.section`
   padding: ${`${PORTFOLIO_HEADER.height}px`} 48px 0;
+  ${getMediaQueries({ type: 'mobile' })} {
+    padding: ${`${PORTFOLIO_HEADER.height}px`} 12px 0;
+  }
 `;
 
 export const SkillSectionInnerBox = styled(InnerContainer)`

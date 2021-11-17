@@ -3,7 +3,7 @@ import { Paragraph } from '..';
 
 export const TitleBoxLayout = styled.div`
   *:last-child {
-    margin-bottom: 2vh;
+    margin-bottom: 20px;
   }
 `;
 

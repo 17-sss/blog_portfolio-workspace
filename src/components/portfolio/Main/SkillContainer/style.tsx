@@ -19,6 +19,7 @@ export const SkillContainerLayout = styled(({ ...props }: SkillContainerProps) =
   }
 
   ${getMediaQueries({ type: 'tablet' })} {
+    margin: 12px 0;
     &:nth-of-type(2n - 1) {
       margin-right: 6px;
     }
@@ -26,8 +27,10 @@ export const SkillContainerLayout = styled(({ ...props }: SkillContainerProps) =
       margin-left: 6px;
     }
   }
+
   ${getMediaQueries({ type: 'mobile' })} {
     margin: 12px 0;
+    padding: 0 0 12px;
     position: relative;
     width: 100%;
 
