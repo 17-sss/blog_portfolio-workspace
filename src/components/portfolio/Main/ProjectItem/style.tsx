@@ -141,6 +141,21 @@ export const Code = styled.code`
   }
 `;
 
+// 3-1-2) links의 item들 디자인
+export const ExternalLink = styled.a`
+  color: ${({theme}) => theme.grayScaleColors.font};
+  font-weight: 500;
+  text-decoration: none;
+  outline: none;
+
+  border-bottom: 0.05em solid ${({theme}) => theme.grayScaleColors.font};
+  opacity: 0.7;
+
+  & + & {
+    margin-left: 6px;
+  }
+`;
+
 // --
 
 // 3-2) type 텍스트 전용
@@ -160,7 +175,9 @@ export const AccordionBox = styled(Accordion)`
   }
 `;
 
-export const AccordionOpenSummary = styled(({ ...props }) => (<AccordionSummary expandIcon={<ExpandMoreIcon />} {...props} />))`
+export const AccordionOpenSummary = styled(({ ...props }) => (
+  <AccordionSummary expandIcon={<ExpandMoreIcon />} {...props} />
+))`
   min-height: 48px;
   padding: 0;
   &.Mui-expanded {
@@ -170,7 +187,7 @@ export const AccordionOpenSummary = styled(({ ...props }) => (<AccordionSummary 
     margin: 0;
   }
   svg {
-    font-size: ${({ theme }) => theme.fontSizes['20']};
+    font-size: ${({ theme }) => theme.fontSizes['32']};
   }
 `;
 

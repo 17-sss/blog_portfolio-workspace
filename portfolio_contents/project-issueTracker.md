@@ -7,6 +7,7 @@ portfolioInfo:
     memberInfo: '프론트엔드 3명, 백엔드 2명, iOS 2명',
     skills: [React, TypeScript, Recoil, Material UI],
     images: ['./issueTracker/01.gif', './issueTracker/02.gif', './issueTracker/03.gif'],
+    links: [{ name: 'Github Repository', href: 'https://github.com/malaheaven/issue-tracker' }],
     type: 'project',
   }
 options: { isPortfolio: true, hide: true }

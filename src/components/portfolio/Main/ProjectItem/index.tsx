@@ -1,14 +1,17 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useMemo } from 'react';
 import { AccordionDetails } from '@material-ui/core';
 import { Paragraph } from 'components/portfolio/Common';
 import ImageCarousel from '../ImageCarousel';
 import { PortfolioMarkdownNode } from 'utils/types';
-import * as S from './style';
 import { changeFirstCharUpperCase } from 'utils/functions';
+import * as S from './style';
 
 const ProjectItem: FunctionComponent<PortfolioMarkdownNode> = function (props) {
   const { frontmatter: { portfolioInfo }, html } = props;
-  const { title, subTitle, duration: { startDate, endDate }, memberInfo, skills, images, type } = portfolioInfo;
+  const { title, subTitle, duration: { startDate, endDate }, memberInfo, skills, images, type, links } = portfolioInfo;
+
+  const skillItems = useMemo(() => skills.map((v, i) => <S.Code key={i}>{v}</S.Code>), [skills]);
+  const linkItems = useMemo(() => links.map(({name, href}, i) => <S.ExternalLink key={i} href={href}>{name}</S.ExternalLink>), [links]);
 
   return (
     <S.ProjectItemLayout>
@@ -32,11 +35,15 @@ const ProjectItem: FunctionComponent<PortfolioMarkdownNode> = function (props) {
           </S.TextBox>
           <S.TextBox>
             <S.NameText>사용 기술</S.NameText>
-            <S.ValueText>{skills.map((v, i) => <S.Code key={i}>{v}</S.Code>)}</S.ValueText>
+            <S.ValueText>{skillItems}</S.ValueText>
           </S.TextBox>
           <S.TextBox>
             <S.NameText>분류</S.NameText>
             <S.TypeText isLibrary={type === 'library'}>{changeFirstCharUpperCase(type)}</S.TypeText>
+          </S.TextBox>
+          <S.TextBox>
+            <S.NameText>링크</S.NameText>
+            <S.ValueText>{linkItems}</S.ValueText>
           </S.TextBox>
         </S.InfoBox>
         {/* Detail */}

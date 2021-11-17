@@ -78,6 +78,10 @@ export const getPortpolioData = graphql`
               }
               memberInfo
               skills
+              links {
+                name
+                href
+              }
               images {
                 childImageSharp {
                   gatsbyImageData

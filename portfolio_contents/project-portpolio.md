@@ -6,6 +6,12 @@ portfolioInfo:
     duration: { startDate: '2021-11-08', endDate: '2021-11-18' },
     memberInfo: '개인 프로젝트',
     skills: [gatsby, React, TypeScript, emotion, material-ui],
+    links:
+      [
+        { name: '배포 링크', href: 'https://17-sss.github.io/portfolio' },
+        { name: 'Github Repository ', href: 'https://github.com/17-sss/blog_portfolio-workspace' },
+        { name: '개발일지', href: 'https://boiled-feather-1c7.notion.site/b4fe56b733a64255aba72d3cce8defab?v=044c094f5c9f4bf1a8fa66248cf3e095' },
+      ],
     images: ['./portfolio/01.jpg', './portfolio/02.jpg', './portfolio/03.jpg', './portfolio/04.jpg'],
     type: 'project',
   }

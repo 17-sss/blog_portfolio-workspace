@@ -4,6 +4,16 @@ export type PortfolioMarkdownData = {
   node: PortfolioMarkdownNode;
 };
 
+type PortfolioDuration = {
+  startDate: string;
+  endDate?: string;
+};
+
+type PortfolioLinks = {
+  name: string;
+  href: string;
+};
+
 export type PortfolioImage = {
   childImageSharp: {
     gatsbyImageData: IGatsbyImageData;
@@ -16,16 +26,13 @@ export type PortfolioMarkdownNode = {
     portfolioInfo: {
       title: string;
       subTitle: string;
-      duration: {
-        startDate: string;
-        endDate?: string;
-      };
+      duration: PortfolioDuration;
       memberInfo: string;
       skills: string[];
+      links: PortfolioLinks[];
       images: PortfolioImage[];
       type: string;
     };
   };
   html: string;
 };
-

@@ -6,6 +6,15 @@ portfolioInfo:
     duration: { startDate: '2021-08-25', endDate: '2021-10-30' },
     memberInfo: '개인 프로젝트',
     skills: [React, TypeScript],
+    links:
+      [
+        { name: '배포 링크 - npm', href: 'https://www.npmjs.com/package/rano-react-carousel' },
+        { name: 'Github Repository ', href: 'https://github.com/17-sss/rano-carousel' },
+        {
+          name: '개발일지',
+          href: 'https://boiled-feather-1c7.notion.site/Rano-Carousel-f930ab78752e4f78b05c8c86c907622d',
+        },
+      ],
     images: ['./carousel/01.gif'],
     type: 'library',
   }
