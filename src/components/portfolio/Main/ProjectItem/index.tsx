@@ -3,7 +3,7 @@ import { Paragraph } from 'components/portfolio/Common';
 import * as S from './style';
 import { PortfolioMarkdownNode } from 'utils/types';
 
-import { AccordionDetails } from '@material-ui/core';
+import { Accordion, AccordionDetails } from '@material-ui/core';
 
 const ProjectItem: FunctionComponent<PortfolioMarkdownNode> = function (props) {
   const {
@@ -25,7 +25,7 @@ const ProjectItem: FunctionComponent<PortfolioMarkdownNode> = function (props) {
         {/* Content */}
         {html && (
           <S.AccordionBox elevation={0}>
-            <S.AccordionOpenButton />
+            <S.AccordionOpenSummary />
             <AccordionDetails children={<S.DetailRenderer html={html} />} />
           </S.AccordionBox>
         )}

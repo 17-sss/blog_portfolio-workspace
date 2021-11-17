@@ -35,12 +35,23 @@ export const ContentBox = styled(CardContent)`
 `;
 
 export const AccordionBox = styled(Accordion)`
+  &.Mui-expanded {
+    margin: 0;
+  }
   &:before {
     display: none;
   }
 `;
 
-export const AccordionOpenButton = styled(({ ...props }) => (<AccordionSummary expandIcon={<ExpandMoreIcon />} {...props} />))`
+export const AccordionOpenSummary = styled(({ ...props }) => (<AccordionSummary expandIcon={<ExpandMoreIcon />} {...props} />))`
+  min-height: 48px;
+  padding: 0;
+  &.Mui-expanded {
+    min-height: 48px;
+  }
+  .MuiAccordionSummary-content {
+    margin: 0;
+  }
   svg {
     font-size: ${({ theme }) => theme.fontSizes['20']};
   }
