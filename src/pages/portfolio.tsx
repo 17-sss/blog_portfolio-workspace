@@ -63,7 +63,7 @@ export const getPortpolioData = graphql`
   query getPortpolioData {
     allMarkdownRemark(
       filter: { frontmatter: { options: { isPortfolio: { eq: true } } } }
-      sort: {order: DESC, fields: frontmatter___portfolioInfo___duration___startDate}
+      sort: { order: DESC, fields: frontmatter___portfolioInfo___duration___startDate }
     ) {
       edges {
         node {
@@ -71,13 +71,19 @@ export const getPortpolioData = graphql`
           frontmatter {
             portfolioInfo {
               title
+              subTitle
               duration {
                 startDate
                 endDate
               }
               memberInfo
               skills
-              images
+              images {
+                childImageSharp {
+                  gatsbyImageData
+                }
+                publicURL
+              }
               type
             }
           }
