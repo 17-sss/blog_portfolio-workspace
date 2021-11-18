@@ -2,7 +2,7 @@ import { forwardRef, HTMLAttributes } from 'react';
 import * as S from './style';
 
 export type NormalGridListProps = HTMLAttributes<HTMLUListElement> & { isUseTabletSize?: boolean };
-export const NormalGridList = forwardRef<HTMLUListElement, NormalGridListProps>((props, ref) => {
+const NormalGridList = forwardRef<HTMLUListElement, NormalGridListProps>((props, ref) => {
   return (
     <S.NormalGridListLayout {...props} ref={ref}>
       {props.children}

@@ -5,7 +5,18 @@ type Props = {
   unit?: number;
   observeOptions?: IntersectionObserverInit;
 };
-const useObserveItems = function <T extends Element>({ data, unit = 1, observeOptions = { threshold: 0.7 } }: Props) {
+
+type ReturnDataType<T, ReturnType> = {
+  ref: MutableRefObject<T | null>;
+  sliceData: ReturnType[];
+};
+
+const useObserveItems = function <T extends Element, ReturnType>({
+  data,
+  unit = 1,
+  observeOptions = { threshold: 0.8 },
+}: Props) : ReturnDataType<T, ReturnType> {
+
   const [viewCount, setViewCount] = useState<number>(0);
   const ref: MutableRefObject<T | null> = useRef<T>(null);
   const observer: MutableRefObject<IntersectionObserver | null> = useRef<IntersectionObserver>(null);
@@ -27,6 +38,8 @@ const useObserveItems = function <T extends Element>({ data, unit = 1, observeOp
     if (viewCount <= 0 || !ref.current || !observer.current) return;
     const children = Array.from(ref.current.children);
     observer.current.observe(children[children.length - 1]);
+
+    if (data.length === children.length) observer.current.disconnect();
   }, [viewCount]);
 
   return { ref, sliceData: data?.slice(0, unit * viewCount) };
