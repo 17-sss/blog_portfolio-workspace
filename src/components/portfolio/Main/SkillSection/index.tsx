@@ -1,6 +1,7 @@
 import React, { Fragment, FunctionComponent, useMemo } from 'react';
 
-import useObserveItems from 'hooks/useObserveItems';
+import { useObserveItems, useCheckMediaQuery } from 'hooks';
+
 import CircularSkillItem from '../CircularSkillItem';
 import SkillContainer from '../SkillContainer';
 import SkillItem from '../SkillItem';
@@ -13,16 +14,19 @@ type SkillItemsType = { [name in SkillCategoryNames]: React.ReactNode };
 const SkillSection: FunctionComponent = function ({ ...props }) {
   const { layoutId, subTitle, skillList } = PORTFOLIO_SECTION_INFO.skills;
 
+  const isDesktop = useCheckMediaQuery("desktop");
+
   // 제일 많이 쓰는 기술들
   const topSkillItems = useMemo(() => {
     const frontendSkills = skillList['Front-end'];
-    const SIZE = 150;
+    const SIZE = isDesktop ? 160 : 150;
+
     return frontendSkills.slice(0, 5).map((v, i) => {
       const { name, color, percent } = v;
       const value = percent ?? 0;
       return <CircularSkillItem key={i} size={SIZE} {...{ name, value, color }} />;
     });
-  }, [skillList]);
+  }, [skillList, isDesktop]);
 
   // 접해봤던 기술들
   const skillContainers = useMemo(() => {

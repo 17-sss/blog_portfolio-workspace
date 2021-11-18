@@ -28,7 +28,9 @@ export const TopSkillCard = styled(({ ...props }) => <Card elevation={2} {...pro
   ${setFadeInAnimation()}
   width: 100%;
   padding: 24px 0;
+
   ${getMediaQueries({ type: 'desktop' })} {
+    padding: 32px 0;
     margin: 0 auto 16px;
   }
   ${getMediaQueries({ type: 'tablet' })} {
@@ -39,12 +41,10 @@ export const TopSkillCard = styled(({ ...props }) => <Card elevation={2} {...pro
   }
 `;
 export const TopSkillList = styled(({ ...props }) => <NormalGridList isUseTabletSize {...props} />)`
-  ${getMediaQueries({ type: 'tablet' })} {
-    ${setFlex({ alignItems: 'center', justifyContent: 'center' })};
-    flex-wrap: wrap;
-    li {
-      flex-basis: ${`calc(100% / 3)`};
-    }
+  ${setFlex({ alignItems: 'center', justifyContent: 'center' })};
+  flex-wrap: wrap;
+  li {
+    flex-basis: ${`calc(100% / 3)`};
   }
 
   ${getMediaQueries({ type: 'mobile' })} {
