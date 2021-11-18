@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Avatar, Card, CardContent, PropTypes } from '@material-ui/core';
-import { getMediaQueries, GetMediaQueriesProps, setFlex, setFadeInAnimation } from 'utils/style';
+import { getMediaQueries, GetMediaQueriesProps, setFlex } from 'utils/style';
 
 export const ProfileCardLayout = styled.div`
   margin: 0 auto;
@@ -10,7 +10,6 @@ export const ProfileCardLayout = styled.div`
 
 export const ProfileCard = styled(Card)`
   margin: 0 20px;
-  ${setFadeInAnimation()}
   ${getMediaQueries({ type: 'mobile' })} {
     margin: 0 12px;
   }

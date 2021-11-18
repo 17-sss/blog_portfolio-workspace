@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Button } from '@material-ui/core';
 import { InnerContainer, Paragraph } from 'components/portfolio/Common';
-import { setFlex, getMediaQueries, theme, setFadeInAnimation } from 'utils/style';
+import { setFlex, getMediaQueries, theme } from 'utils/style';
 
 export const HomeSectionLayout = styled.section`
   padding: 0 48px;
@@ -52,7 +52,6 @@ export const IntroParagraph = styled(Paragraph)`
 
 export const ScrollInfoBox = styled.div`
   ${setFlex({ alignItems: 'center', justifyContent: 'center', flexDirection: 'column' })};
-  ${setFadeInAnimation()}
 
   color: ${theme.grayScaleColors.font};
   font-size: ${({ theme }) => theme.fontSizes['20']};

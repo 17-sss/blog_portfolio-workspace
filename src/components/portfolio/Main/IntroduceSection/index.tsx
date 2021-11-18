@@ -1,10 +1,10 @@
-import React, { Fragment, FunctionComponent, useMemo } from 'react';
+import React, { FunctionComponent, MutableRefObject, useMemo, useRef } from 'react';
 
 import DirectionsWalkRoundedIcon from '@material-ui/icons/DirectionsWalkRounded';
 import DirectionsRunRoundedIcon from '@material-ui/icons/DirectionsRunRounded';
 import DirectionsBikeRoundedIcon from '@material-ui/icons/DirectionsBikeRounded';
 
-import useObserveItems from 'hooks/useObserveItems';
+import { useScrollAnimations } from 'hooks';
 import IntroduceItem from '../IntroduceItem';
 import ProfileCard from '../ProfileCard';
 import { NormalGridList } from 'components/portfolio/Common';
@@ -15,6 +15,9 @@ const IntroduceSection: FunctionComponent = function ({ ...props }) {
   const { layoutId, subTitle, introduceList, profileCard } = PORTFOLIO_SECTION_INFO.introduce;
   const itemTexts = introduceList.items;
 
+  const eleRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
+  useScrollAnimations({ eleRef });
+
   const introduceListItems = useMemo(
     () =>
       Object.values(itemTexts).map(({ subject, contents }, i) => {
@@ -24,29 +27,13 @@ const IntroduceSection: FunctionComponent = function ({ ...props }) {
     [itemTexts],
   );
 
-  // 최종적으로 렌더링 할 JSX.Elements
-  const resultElements = useMemo(() => {
-    if (!introduceListItems) return;
-    return [
-      <S.IntroduceTitleBox title={'Introduce'} subTitle={subTitle} />,
-      <ProfileCard {...{ ...profileCard }} />,
-      <NormalGridList>{introduceListItems}</NormalGridList>,
-    ];
-  }, [introduceListItems]);
-
-  const { ref, sliceData } = useObserveItems<HTMLDivElement, JSX.Element>({
-    data: resultElements ?? [],
-  });
-  // --
-
   return (
     <S.IntroduceSectionLayout id={layoutId} {...props}>
-      <S.IntroduceSectionInnerBox
-        ref={ref}
-        children={sliceData?.map((ele, i) => (
-          <Fragment key={i} children={ele} />
-        ))}
-      />
+      <S.IntroduceSectionInnerBox ref={eleRef}>
+        <S.IntroduceTitleBox title={'Introduce'} subTitle={subTitle} />
+        <ProfileCard {...{ ...profileCard }} />
+        <NormalGridList>{introduceListItems}</NormalGridList>
+      </S.IntroduceSectionInnerBox>
     </S.IntroduceSectionLayout>
   );
 };

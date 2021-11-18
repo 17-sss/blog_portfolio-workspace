@@ -3,7 +3,6 @@ import { Card } from '@material-ui/core';
 import { InnerContainer, NormalGridList, Paragraph, TitleBox } from 'components/portfolio/Common';
 import { PORTFOLIO_HEADER } from 'utils/constants';
 import { getMediaQueries, setFlex } from 'utils/style';
-import { setFadeInAnimation } from 'utils/style/animation';
 
 export const SkillSectionLayout = styled.section`
   padding: ${`${PORTFOLIO_HEADER.height}px`} 48px 0;
@@ -17,15 +16,12 @@ export const SkillSectionInnerBox = styled(InnerContainer)`
   ${setFlex({ justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'column' })}
 `;
 
-export const SkillTitleBox = styled(TitleBox)`
-  ${setFadeInAnimation()}
-`;
+export const SkillTitleBox = styled(TitleBox)``;
 export const SubTitleParagraph = styled(({ ...props }) => <Paragraph paragraph {...props} />)`
   font-size: ${({ theme }) => theme.fontSizes['16']};
 `;
 
 export const TopSkillCard = styled(({ ...props }) => <Card elevation={2} {...props} />)`
-  ${setFadeInAnimation()}
   width: 100%;
   padding: 24px 0;
 

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Card, CardContent } from '@material-ui/core';
-import { setFlex, getMediaQueries, setFadeInAnimation  } from 'utils/style';
+import { setFlex, getMediaQueries } from 'utils/style';
 import { IntroduceItemProps } from '.';
 
 type IntroduceItemLayoutProps = Pick<IntroduceItemProps, 'idx' | 'duration'>;
@@ -9,12 +9,7 @@ export const IntroduceItemLayout = styled.li<IntroduceItemLayoutProps>`
 
   position: relative;
   ${getMediaQueries({ type: 'tabletDesktop' })} {
-    ${setFadeInAnimation()};
     margin: 0 8px;
-  }
-
-  ${getMediaQueries({ type: 'mobile' })} {
-    ${({ duration, idx }) => setFadeInAnimation({ duration, idx })};
   }
 `;
 

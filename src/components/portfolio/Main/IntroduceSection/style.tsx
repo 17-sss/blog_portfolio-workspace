@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { InnerContainer, TitleBox } from 'components/portfolio/Common';
 import { PORTFOLIO_HEADER } from 'utils/constants';
-import { setFlex, setFadeInAnimation, getMediaQueries } from 'utils/style';
+import { setFlex, getMediaQueries } from 'utils/style';
 
 // IntroduceSection : Default
 export const IntroduceSectionLayout = styled.section`
@@ -22,10 +22,7 @@ export const IntroduceSectionInnerBox = styled(InnerContainer)`
   row-gap: 8px;
 `;
 
-export const IntroduceTitleBox = styled(TitleBox)`
-  ${setFadeInAnimation()}
-`;
-
+export const IntroduceTitleBox = styled(TitleBox)``;
 export const IntroduceIconBox = styled.div`
   width: 100%;
   ${setFlex({ justifyContent: 'center', alignItems: 'center' })};

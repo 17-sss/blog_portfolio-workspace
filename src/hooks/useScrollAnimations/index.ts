@@ -5,7 +5,7 @@ import './scrollAnimations.css';
 type ScrollAnimationsTypes = 'left' | 'right' | 'blink' | 'zigzag';
 type ScrollAnimationsOptionProps = {
   type: ScrollAnimationsTypes;
-  duration: number;
+  duration?: number;
   isIdxDelay?: boolean;
 };
 
@@ -18,10 +18,9 @@ type ExecAnmationProps = ScrollAnimationsOptionProps & { idx: number; target: HT
 
 const useScrollAnimations = function <T extends Element>({
   eleRef,
-  options = { duration: 2, type: 'blink' },
-  observeOptions = { threshold: 0.4 },
+  options: { type = "blink", duration = 1.5, isIdxDelay } = { duration: 2, type: 'blink' },
+  observeOptions = { threshold: 0.2 },
 }: Props<T>) {
-  const { type, duration, isIdxDelay } = options;
 
   const observer: MutableRefObject<IntersectionObserver | null> = useRef(null);
   const childrenInfoRef: MutableRefObject<HTMLElement[] | null> = useRef(null);

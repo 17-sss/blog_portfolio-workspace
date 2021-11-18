@@ -1,18 +1,15 @@
 import styled from '@emotion/styled';
 import { Card, CardContent } from '@material-ui/core';
 import { Paragraph } from 'components/portfolio/Common';
-import { getMediaQueries, setFadeInAnimation, setFlex } from 'utils/style';
+import { getMediaQueries, setFlex } from 'utils/style';
 
 export const ProjectItemLayout = styled(({ ...props }) => <Card component="li" elevation={2} {...props} />)`
   padding: 24px;
   margin-bottom: 24px;
 
-  ${setFadeInAnimation()};
   ${getMediaQueries({ type: 'mobile' })} {
     padding: 12px 18px;
     position: relative;
-
-    ${({ idx }) => setFadeInAnimation({ idx })};
   }
 `;
 

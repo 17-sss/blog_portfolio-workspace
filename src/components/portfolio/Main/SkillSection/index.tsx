@@ -1,6 +1,6 @@
-import React, { Fragment, FunctionComponent, useMemo } from 'react';
+import React, { Fragment, FunctionComponent, MutableRefObject, useMemo, useRef } from 'react';
 
-import { useObserveItems, useCheckMediaQuery } from 'hooks';
+import { useCheckMediaQuery, useScrollAnimations } from 'hooks';
 
 import CircularSkillItem from '../CircularSkillItem';
 import SkillContainer from '../SkillContainer';
@@ -14,7 +14,10 @@ type SkillItemsType = { [name in SkillCategoryNames]: React.ReactNode };
 const SkillSection: FunctionComponent = function ({ ...props }) {
   const { layoutId, subTitle, skillList } = PORTFOLIO_SECTION_INFO.skills;
 
-  const isDesktop = useCheckMediaQuery("desktop");
+  const eleRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
+  useScrollAnimations({ eleRef });
+
+  const isDesktop = useCheckMediaQuery('desktop');
 
   // 제일 많이 쓰는 기술들
   const topSkillItems = useMemo(() => {
@@ -47,35 +50,19 @@ const SkillSection: FunctionComponent = function ({ ...props }) {
     return result;
   }, [skillList]);
 
-  // 최종적으로 렌더링 할 JSX.Elements
-  const resultElements = useMemo(() => {
-    if (!topSkillItems || !skillContainers) return;
-    return [
-      <S.SkillTitleBox title={'Skills'} subTitle={subTitle} />,
-      <S.TopSkillCard>
-        <S.TopSkillList>{topSkillItems}</S.TopSkillList>
-      </S.TopSkillCard>,
-      <S.SkillContainerBox>
-        {(Object.keys(skillContainers) as SkillCategoryNames[]).map((key, i) => (
-          <Fragment key={i}>{skillContainers[key]}</Fragment>
-        ))}
-      </S.SkillContainerBox>,
-    ];
-  }, [topSkillItems, skillContainers]);
-
-  const { ref, sliceData } = useObserveItems<HTMLDivElement, JSX.Element>({
-    data: resultElements ?? [],
-  });
-  // --
-
   return (
     <S.SkillSectionLayout id={layoutId} {...props}>
-      <S.SkillSectionInnerBox
-        ref={ref}
-        children={sliceData?.map((ele, i) => (
-          <Fragment key={i} children={ele} />
-        ))}
-      />
+      <S.SkillSectionInnerBox ref={eleRef}>
+        <S.SkillTitleBox title={'Skills'} subTitle={subTitle} />,
+        <S.TopSkillCard>
+          <S.TopSkillList>{topSkillItems}</S.TopSkillList>
+        </S.TopSkillCard>
+        <S.SkillContainerBox>
+          {(Object.keys(skillContainers) as SkillCategoryNames[]).map((key, i) => (
+            <Fragment key={i}>{skillContainers[key]}</Fragment>
+          ))}
+        </S.SkillContainerBox>
+      </S.SkillSectionInnerBox>
     </S.SkillSectionLayout>
   );
 };
