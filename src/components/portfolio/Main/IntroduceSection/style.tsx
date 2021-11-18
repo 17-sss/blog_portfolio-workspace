@@ -18,7 +18,7 @@ export const IntroduceSectionLayout = styled.section`
 export const IntroduceSectionInnerBox = styled(InnerContainer)`
   min-height: ${`calc(100vh - ${PORTFOLIO_HEADER.height}px)`};
 
-  ${setFlex({ justifyContent: 'center', alignItems: 'center', flexDirection: 'column' })}
+  ${setFlex({ justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'column' })}
   row-gap: 8px;
 `;
 

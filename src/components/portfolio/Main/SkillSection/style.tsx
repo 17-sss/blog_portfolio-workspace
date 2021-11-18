@@ -14,7 +14,7 @@ export const SkillSectionLayout = styled.section`
 
 export const SkillSectionInnerBox = styled(InnerContainer)`
   min-height: ${`calc(100vh - ${PORTFOLIO_HEADER.height}px)`};
-  ${setFlex({ justifyContent: 'center', alignItems: 'center', flexDirection: 'column' })};
+  ${setFlex({ justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'column' })}
 `;
 
 export const SkillTitleBox = styled(TitleBox)`

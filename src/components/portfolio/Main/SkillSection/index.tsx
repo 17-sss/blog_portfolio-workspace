@@ -1,5 +1,6 @@
 import React, { Fragment, FunctionComponent, useMemo } from 'react';
 
+import useObserveItems from 'hooks/useObserveItems';
 import CircularSkillItem from '../CircularSkillItem';
 import SkillContainer from '../SkillContainer';
 import SkillItem from '../SkillItem';
@@ -32,25 +33,45 @@ const SkillSection: FunctionComponent = function ({ ...props }) {
         const findName = findIconName(name);
         return <SkillItem key={i} iconType={findName} color={color} />;
       });
-      result[keyName] = <SkillContainer idx={i} subject={keyName}>{arrEle}</SkillContainer>;
+      result[keyName] = (
+        <SkillContainer idx={i} subject={keyName}>
+          {arrEle}
+        </SkillContainer>
+      );
       return result;
     }, {} as SkillItemsType);
     return result;
   }, [skillList]);
 
+  // 최종적으로 렌더링 할 JSX.Elements
+  const resultElements = useMemo(() => {
+    if (!topSkillItems || !skillContainers) return;
+    return [
+      <S.SkillTitleBox title={'Skills'} subTitle={subTitle} />,
+      <S.TopSkillCard>
+        <S.TopSkillList>{topSkillItems}</S.TopSkillList>
+      </S.TopSkillCard>,
+      <S.SkillContainerBox>
+        {(Object.keys(skillContainers) as SkillCategoryNames[]).map((key, i) => (
+          <Fragment key={i}>{skillContainers[key]}</Fragment>
+        ))}
+      </S.SkillContainerBox>,
+    ];
+  }, [topSkillItems, skillContainers]);
+
+  const { ref, sliceData } = useObserveItems<HTMLDivElement, JSX.Element>({
+    data: resultElements ?? [],
+  });
+  // --
+
   return (
     <S.SkillSectionLayout id={layoutId} {...props}>
-      <S.SkillSectionInnerBox>
-        <S.SkillTitleBox title={'Skills'} subTitle={subTitle} />
-        <S.TopSkillCard>
-          <S.TopSkillList>{topSkillItems}</S.TopSkillList>
-        </S.TopSkillCard>
-        <S.SkillContainerBox>
-          {(Object.keys(skillContainers) as SkillCategoryNames[]).map((key, i) => (
-            <Fragment key={i}>{skillContainers[key]}</Fragment>
-          ))}
-        </S.SkillContainerBox>
-      </S.SkillSectionInnerBox>
+      <S.SkillSectionInnerBox
+        ref={ref}
+        children={sliceData?.map((ele, i) => (
+          <Fragment key={i} children={ele} />
+        ))}
+      />
     </S.SkillSectionLayout>
   );
 };
