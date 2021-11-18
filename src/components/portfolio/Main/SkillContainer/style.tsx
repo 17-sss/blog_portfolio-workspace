@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Card } from '@material-ui/core';
 import { Paragraph } from 'components/portfolio/Common';
-import { getMediaQueries, setFadeInAnimation, setSlideAnimation } from 'utils/style';
+import { getMediaQueries, setFadeInAnimation } from 'utils/style';
 import { SkillContainerProps } from '.';
 
 export const SkillContainerLayout = styled(({ ...props }: SkillContainerProps) => <Card elevation={2} {...props} />)`
@@ -34,12 +34,7 @@ export const SkillContainerLayout = styled(({ ...props }: SkillContainerProps) =
     position: relative;
     width: 100%;
 
-    &:nth-of-type(2n - 1) {
-      ${({ idx }) => setSlideAnimation({ direction: 'left', idx })}
-    }
-    &:nth-of-type(2n) {
-      ${({ idx }) => setSlideAnimation({ direction: 'right', idx })}
-    }
+    ${({ idx }) => setFadeInAnimation({ idx })};
   }
 `;
 

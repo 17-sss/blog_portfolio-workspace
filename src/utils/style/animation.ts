@@ -27,19 +27,23 @@ export const setSlideAnimation = ({ duration = 0.8, idx, direction, isMarginAuto
 
 type SetFadeInAnimationProps = {
   duration?: number;
+  idx?: number;
 };
-export const setFadeInAnimation = ({ duration }: SetFadeInAnimationProps = { duration: 2 }) => css`
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
+export const setFadeInAnimation = ({ idx, duration }: SetFadeInAnimationProps = { duration: 2 }) => {
+  duration = idx ? 1.3 : 2;
+  return css`
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
-    to {
-      opacity: 1;
-    }
-  }
 
-  animation: fadeIn ${duration}s;
-`;
+    animation: fadeIn ${idx && idx >= 0 ? (idx + 1) * duration : duration}s;
+  `;
+};
 
 type setWaveAnimationProps = {
   direction: "left" | "right";

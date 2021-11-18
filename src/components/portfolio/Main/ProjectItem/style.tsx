@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Card, CardContent } from '@material-ui/core';
 import { Paragraph } from 'components/portfolio/Common';
-import { getMediaQueries, setFadeInAnimation, setFlex, setSlideAnimation } from 'utils/style';
+import { getMediaQueries, setFadeInAnimation, setFlex } from 'utils/style';
 
 export const ProjectItemLayout = styled(({ ...props }) => <Card component="li" elevation={2} {...props} />)`
   padding: 24px;
@@ -12,12 +12,7 @@ export const ProjectItemLayout = styled(({ ...props }) => <Card component="li" e
     padding: 12px 18px;
     position: relative;
 
-    &:nth-of-type(2n - 1) {
-      ${({ idx }) => setSlideAnimation({ direction: 'left', idx })}
-    }
-    &:nth-of-type(2n) {
-      ${({ idx }) => setSlideAnimation({ direction: 'right', idx })}
-    }
+    ${({ idx }) => setFadeInAnimation({ idx })};
   }
 `;
 

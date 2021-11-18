@@ -14,7 +14,7 @@ type ReturnDataType<T, ReturnType> = {
 const useObserveItems = function <T extends Element, ReturnType>({
   data,
   unit = 1,
-  observeOptions = { threshold: 0.8 },
+  observeOptions = { threshold: 0.5 },
 }: Props) : ReturnDataType<T, ReturnType> {
 
   const [viewCount, setViewCount] = useState<number>(0);

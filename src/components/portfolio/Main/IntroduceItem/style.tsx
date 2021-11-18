@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Card, CardContent } from '@material-ui/core';
-import { setFlex, getMediaQueries, setFadeInAnimation, setSlideAnimation  } from 'utils/style';
+import { setFlex, getMediaQueries, setFadeInAnimation  } from 'utils/style';
 import { IntroduceItemProps } from '.';
 
 type IntroduceItemLayoutProps = Pick<IntroduceItemProps, 'idx' | 'duration'>;
@@ -14,13 +14,7 @@ export const IntroduceItemLayout = styled.li<IntroduceItemLayoutProps>`
   }
 
   ${getMediaQueries({ type: 'mobile' })} {
-    &:nth-of-type(2n - 1) {
-      ${({ duration, idx }) => setSlideAnimation({ direction: 'right', duration, idx })}
-    }
-
-    &:nth-of-type(2n) {
-      ${({ duration, idx }) => setSlideAnimation({ direction: 'left', duration, idx })}
-    }
+    ${({ duration, idx }) => setFadeInAnimation({ duration, idx })};
   }
 `;
 
