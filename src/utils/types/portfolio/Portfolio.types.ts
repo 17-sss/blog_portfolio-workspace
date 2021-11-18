@@ -4,6 +4,17 @@ export type PortfolioMarkdownData = {
   node: PortfolioMarkdownNode;
 };
 
+export type PortfolioInfo = {
+  title: string;
+  subTitle: string;
+  duration: PortfolioDuration;
+  memberInfo: string;
+  skills: string[];
+  links: PortfolioLinks[];
+  images: PortfolioImage[];
+  type: string;
+};
+
 type PortfolioDuration = {
   startDate: string;
   endDate?: string;
@@ -23,16 +34,7 @@ export type PortfolioImage = {
 
 export type PortfolioMarkdownNode = {
   frontmatter: {
-    portfolioInfo: {
-      title: string;
-      subTitle: string;
-      duration: PortfolioDuration;
-      memberInfo: string;
-      skills: string[];
-      links: PortfolioLinks[];
-      images: PortfolioImage[];
-      type: string;
-    };
+    portfolioInfo: PortfolioInfo;
   };
   html: string;
 };

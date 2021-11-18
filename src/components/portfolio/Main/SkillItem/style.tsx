@@ -16,7 +16,7 @@ export const SkillItemLayout = styled.li<Pick<SkillItemProps, 'color'>>`
   }
 
   svg {
-    max-width: ${({theme}) => theme.fontSizes["56"]};
+    max-width: 64px;
     height: auto;
     ${({ color }) =>
       color &&

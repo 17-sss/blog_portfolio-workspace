@@ -1,6 +1,5 @@
 import { FunctionComponent, useMemo } from 'react';
-import { AccordionDetails } from '@material-ui/core';
-import { Paragraph } from 'components/portfolio/Common';
+import { AccordionDetailRenderer, Paragraph } from 'components/portfolio/Common';
 import ImageCarousel from '../ImageCarousel';
 import { PortfolioMarkdownNode } from 'utils/types';
 import { changeFirstCharUpperCase } from 'utils/functions';
@@ -8,13 +7,21 @@ import * as S from './style';
 
 export type ProjectItemProps = PortfolioMarkdownNode & {
   idx?: number;
-}
-const ProjectItem: FunctionComponent<ProjectItemProps> = function ({idx, ...props}) {
+};
+const ProjectItem: FunctionComponent<ProjectItemProps> = function ({ idx, ...props }) {
   const { frontmatter: { portfolioInfo }, html } = props;
   const { title, subTitle, duration: { startDate, endDate }, memberInfo, skills, images, type, links } = portfolioInfo;
 
   const skillItems = useMemo(() => skills.map((v, i) => <S.Code key={i}>{v}</S.Code>), [skills]);
-  const linkItems = useMemo(() => links.map(({name, href}, i) => <S.ExternalLink key={i} href={href}>{name}</S.ExternalLink>), [links]);
+  const linkItems = useMemo(
+    () =>
+      links.map(({ name, href }, i) => (
+        <S.ExternalLink key={i} href={href}>
+          {name}
+        </S.ExternalLink>
+      )),
+    [links],
+  );
 
   return (
     <S.ProjectItemLayout idx={idx}>
@@ -50,12 +57,8 @@ const ProjectItem: FunctionComponent<ProjectItemProps> = function ({idx, ...prop
           </S.TextBox>
         </S.InfoBox>
         {/* Detail */}
-        {html && (
-          <S.AccordionBox elevation={0}>
-            <S.AccordionOpenSummary aria-label={`ProjectItem - ${title}`} />
-            <AccordionDetails children={<S.DetailRenderer html={html} />} />
-          </S.AccordionBox>
-        )}
+        {/* 마크다운의 상세 설명이 들어감. (Accordion, MarkdownRenderer 활용) */}
+        {html && <AccordionDetailRenderer ariaLabelText={`ProjectItem - ${title}`} html={html} />}
       </S.ContentBox>
     </S.ProjectItemLayout>
   );
