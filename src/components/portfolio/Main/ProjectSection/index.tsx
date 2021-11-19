@@ -10,7 +10,7 @@ const ProjectSection: FunctionComponent = function ({ ...props }) {
   const { layoutId, subTitle } = PORTFOLIO_SECTION_INFO.projects;
 
   const eleRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
-  useScrollAnimations({ eleRef });
+  useScrollAnimations({ eleRef, deps: [markdownData] });
 
   const projectItems = useMemo(
     () => markdownData.map(({ node }, i) => <ProjectItem idx={i} key={i} {...node} />),
