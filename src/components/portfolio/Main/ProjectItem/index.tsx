@@ -32,7 +32,7 @@ const ProjectItem: FunctionComponent<ProjectItemProps> = function ({ idx, ...pro
         {/* Images */}
         <S.ImageBox>
           <div className="inner">
-            <ImageCarousel title={title} images={images} />{' '}
+            <ImageCarousel title={title} images={images} />
           </div>
         </S.ImageBox>
         {/* Info */}

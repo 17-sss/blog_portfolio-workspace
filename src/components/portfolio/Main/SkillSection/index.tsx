@@ -53,7 +53,7 @@ const SkillSection: FunctionComponent = function ({ ...props }) {
   return (
     <S.SkillSectionLayout id={layoutId} {...props}>
       <S.SkillSectionInnerBox ref={eleRef}>
-        <S.SkillTitleBox title={'Skills'} subTitle={subTitle} />,
+        <S.SkillTitleBox title={'Skills'} subTitle={subTitle} />
         <S.TopSkillCard>
           <S.TopSkillList>{topSkillItems}</S.TopSkillList>
         </S.TopSkillCard>
