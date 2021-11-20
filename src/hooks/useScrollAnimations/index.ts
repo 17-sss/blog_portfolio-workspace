@@ -7,22 +7,27 @@ type ScrollAnimationsOptionProps = {
   type: ScrollAnimationsTypes;
   duration?: number;
   isIdxDelay?: boolean;
+  allowList?: string[];
 };
 
-type Props<T> = {
-  eleRef: MutableRefObject<T | null>;
+export type ScrollAnimationsProps = {
+  eleRef: MutableRefObject<Element | HTMLElement | null>;
   options?: ScrollAnimationsOptionProps;
   observeOptions?: IntersectionObserverInit;
   deps?: React.DependencyList;
 };
 type ExecAnmationProps = ScrollAnimationsOptionProps & { idx: number; target: HTMLElement };
 
-const useScrollAnimations = function <T extends Element>({
+const useScrollAnimations = function ({
   eleRef,
-  options: { type = 'blink', duration = 1.2, isIdxDelay } = { duration: 1.2, type: 'blink' },
+  options: { type = 'blink', duration = 1.2, isIdxDelay, allowList = ['div', 'ul', 'li'] } = {
+    duration: 1.2,
+    type: 'blink',
+    allowList: ['div', 'ul', 'li'],
+  },
   observeOptions = { threshold: 0.2 },
   deps = [],
-}: Props<T>) {
+}: ScrollAnimationsProps) {
   const observer: MutableRefObject<IntersectionObserver | null> = useRef(null);
 
   const execAnmations = useCallback(({ target, type, duration, ...props }: ExecAnmationProps) => {
@@ -46,14 +51,14 @@ const useScrollAnimations = function <T extends Element>({
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       const target = entry.target as HTMLElement;
-      const findIdx = (eleRef.current && DFSforFindElementIndex({ root: eleRef.current, target })) ?? 0;
+      const findIdx = (eleRef.current && isIdxDelay && DFSforFindElementIndex({ root: eleRef.current, target })) || 0;
       execAnmations({ target, duration, type, idx: findIdx, isIdxDelay });
 
       const MS = (isIdxDelay ? (findIdx + 1) * duration : duration) * 1000;
       window.setTimeout(() => setClearInlineStyle(target), MS);
       observer.unobserve(target);
     });
-  }, []);
+  }, [type, duration, isIdxDelay]);
 
   useEffect(() => {
     observer.current = new IntersectionObserver(handleScroll, observeOptions);
@@ -62,8 +67,8 @@ const useScrollAnimations = function <T extends Element>({
   useEffect(() => {
     if (!eleRef || !eleRef.current) return;
     const checkAlreadyObserve = deps && deps.length > 0;
-    DFSforObserve({ root: eleRef.current, observer: observer.current, allowTags: ['div', 'ul', 'li'], checkAlreadyObserve });
-  }, deps);
+    DFSforObserve({ root: eleRef.current, observer: observer.current, allowList, checkAlreadyObserve });
+  }, [...deps, handleScroll]);
 };
 
 export default useScrollAnimations;

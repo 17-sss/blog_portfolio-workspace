@@ -43,16 +43,16 @@ export const setClearInlineStyle = (target: HTMLElement) => {
 type DFSforObserveProps = {
   root: Element;
   observer?: IntersectionObserver | null;
-  allowTags?: string[];
+  allowList?: string[];
   checkAlreadyObserve?: boolean;
 };
-export const DFSforObserve = ({ root, observer, allowTags, checkAlreadyObserve }: DFSforObserveProps) => {
+export const DFSforObserve = ({ root, observer, allowList, checkAlreadyObserve }: DFSforObserveProps) => {
   const setObserve = (ele: Element, observer: IntersectionObserver) => {
     (ele as HTMLElement).style.visibility = 'hidden';
     const isExists = checkAlreadyObserve && observer.takeRecords().find(entry => entry.target === ele);
     isExists || observer.observe(ele);
   };
-  const arrAllowTags = allowTags?.map(v => v.toUpperCase());
+  const allowListTmp = allowList?.map(v => v.toUpperCase());
   const DFS = (element: Element) => {
     if (!element) return;
     const children = Array.from(element.children) as HTMLElement[];
@@ -62,7 +62,7 @@ export const DFSforObserve = ({ root, observer, allowTags, checkAlreadyObserve }
       DFS(ele);
       if (!observer) return;
       const { tagName } = ele;
-      if (arrAllowTags) arrAllowTags.includes(tagName) && setObserve(ele, observer);
+      if (allowListTmp) allowListTmp.includes(tagName) && setObserve(ele, observer);
       else setObserve(ele, observer);
     });
   };
