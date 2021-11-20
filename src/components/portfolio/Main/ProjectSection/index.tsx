@@ -1,5 +1,5 @@
 import { FunctionComponent, MutableRefObject, useMemo, useRef } from 'react';
-import { useCheckMediaQuery, useScrollAnimations, ScrollAnimationsProps } from 'hooks';
+import { useScrollAnimations, ScrollAnimationsProps } from 'hooks';
 import { usePortfolioState } from 'utils/contexts/PortfolioContext';
 import { PORTFOLIO_SECTION_INFO } from 'utils/constants';
 import ProjectItem from '../ProjectItem';
@@ -11,10 +11,9 @@ const ProjectSection: FunctionComponent = function ({ ...props }) {
   const { layoutId, subTitle } = PORTFOLIO_SECTION_INFO.projects;
 
   const eleRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
-  const isMobile = useCheckMediaQuery('mobile');
   const animationsProps: ScrollAnimationsProps = {
     eleRef,
-    options: { type: isMobile ? 'zigzag' : 'blink' },
+    options: { excludeSelectors: ['#image__carousel'] },
     deps: [markdownData],
   };
   useScrollAnimations(animationsProps);

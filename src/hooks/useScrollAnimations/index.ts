@@ -4,10 +4,11 @@ import './scrollAnimations.css';
 
 type ScrollAnimationsTypes = 'left' | 'right' | 'blink' | 'zigzag';
 type ScrollAnimationsOptionProps = {
-  type: ScrollAnimationsTypes;
+  type?: ScrollAnimationsTypes;
   duration?: number;
   isIdxDelay?: boolean;
   allowSelectors?: string[];
+  excludeSelectors?: string[];
 };
 
 export type ScrollAnimationsProps = {
@@ -20,7 +21,7 @@ type ExecAnmationProps = ScrollAnimationsOptionProps & { idx: number; target: HT
 
 const useScrollAnimations = function ({
   eleRef,
-  options: { type = 'blink', duration = 1.2, isIdxDelay, allowSelectors = ['div', 'ul', 'li'] } = {
+  options: { type = 'blink', duration = 1.2, isIdxDelay, allowSelectors = ['div', 'ul', 'li'], excludeSelectors } = {
     duration: 1.2,
     type: 'blink',
     allowSelectors: ['div', 'ul', 'li'],
@@ -67,7 +68,7 @@ const useScrollAnimations = function ({
   useEffect(() => {
     if (!eleRef || !eleRef.current) return;
     const checkAlreadyObserve = deps && deps.length > 0;
-    DFSforObserve({ root: eleRef.current, observer: observer.current, allowSelectors, checkAlreadyObserve });
+    DFSforObserve({ root: eleRef.current, observer: observer.current, allowSelectors, excludeSelectors, checkAlreadyObserve });
   }, [...deps, handleScroll]);
 };
 

@@ -11,10 +11,10 @@ export const FooterLayout = styled(({ ...props }) => <Card elevation={2} compone
 
 export const FooterParagraph = styled(({ ...props }) => <Paragraph paragraph {...props} />)`
   margin: 0;
-  font-size: ${({ theme }) => theme.fontSizes['16']};
+  font-size: ${({ theme }) => theme.fontSizes['14']};
   font-family: 'Comfortaa', 'Noto Sans KR', 'Roboto', 'Helvetica', 'Arial', sans-serif, serif;
 
   ${getMediaQueries({ type: 'mobile' })} {
-    font-size: ${({ theme }) => theme.fontSizes['14']};
+    font-size: ${({ theme }) => theme.fontSizes['12']};
   }
 `;

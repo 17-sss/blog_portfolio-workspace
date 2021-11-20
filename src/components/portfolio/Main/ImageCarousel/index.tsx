@@ -25,7 +25,7 @@ const ImageCarousel: FunctionComponent<ImageCarouselProps> = function ({ title, 
     additionalOptions: { isAllFluidSize: true },
   };
 
-  return <S.CarouselLayout {...carouselProps} />;
+  return <S.CarouselLayout id="image__carousel" {...carouselProps} />;
 };
 
 export default ImageCarousel;

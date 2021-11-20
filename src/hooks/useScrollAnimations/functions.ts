@@ -53,10 +53,10 @@ const execAnalyzeSelector = (selector: string) => {
   const matchs = [...selector.matchAll(REG_EX)];
   if (!matchs || !matchs.length) return null;
 
-  const filterMatchs = matchs.filter((match) => {
+  const filterMatchs = matchs.filter(match => {
     if (!match.groups) return;
     const groupValues = Object.values(match.groups);
-    return !(groupValues.every((v) => !v));
+    return !groupValues.every(v => !v);
   });
 
   const groups = (filterMatchs[0].groups as AnalyzeSelectorType) ?? null;
@@ -69,10 +69,10 @@ const getSelectorMatchTarget = (target: HTMLElement, analyzedSelectors: (Analyze
   const result = analyzedSelectors.find(analyzedSelector => {
     if (!analyzedSelector) return;
     const { TYPE, NAME } = analyzedSelector;
-    const TAG = (analyzedSelector.TAG)?.toUpperCase();
+    const TAG = analyzedSelector.TAG?.toUpperCase();
 
     const isIdOK = TYPE && TYPE === '#' && id === NAME;
-    const isClassName = TYPE && TYPE === '.' && (NAME && classList.contains(NAME));
+    const isClassName = TYPE && TYPE === '.' && NAME && classList.contains(NAME);
     if (!TAG) return isIdOK || isClassName;
     if (isIdOK || isClassName) return TAG === tagName && (isIdOK || isClassName);
     return TAG === tagName;
@@ -85,32 +85,35 @@ type DFSforObserveProps = {
   root: Element;
   observer?: IntersectionObserver | null;
   allowSelectors?: string[];
+  excludeSelectors?: string[];
   checkAlreadyObserve?: boolean;
 };
-export const DFSforObserve = ({ root, observer, allowSelectors, checkAlreadyObserve }: DFSforObserveProps) => {
+export const DFSforObserve = ({ root, observer, allowSelectors, excludeSelectors, checkAlreadyObserve }: DFSforObserveProps) => {
   const setObserve = (ele: Element, observer: IntersectionObserver) => {
     (ele as HTMLElement).style.visibility = 'hidden';
     const isExists = checkAlreadyObserve && observer.takeRecords().find(entry => entry.target === ele);
     isExists || observer.observe(ele);
   };
-  const analyzedSelectors = allowSelectors?.map(selector => execAnalyzeSelector(selector));
+  const allowAnalyzedSelectors = allowSelectors?.map(selector => execAnalyzeSelector(selector));
+  const excludeAnalyzedSelectors = excludeSelectors?.map(selector => execAnalyzeSelector(selector));
 
   const DFS = (element: Element) => {
-    if (!element) return;
+    if (!element || !observer) return;
     const children = Array.from(element.children) as HTMLElement[];
     if (!children || !children.length) return;
 
     children.forEach(ele => {
+      const isNotObserve = excludeAnalyzedSelectors && getSelectorMatchTarget(ele, excludeAnalyzedSelectors);
+      if (isNotObserve) return;
       DFS(ele);
-      if (!observer) return;
-      if (analyzedSelectors) {
-        const isMatch = getSelectorMatchTarget(ele, analyzedSelectors);
+
+      if (allowAnalyzedSelectors) {
+        const isMatch = getSelectorMatchTarget(ele, allowAnalyzedSelectors);
         isMatch && setObserve(ele, observer);
       } else setObserve(ele, observer);
     });
   };
 
-  if (!observer) return;
   DFS(root);
 };
 // 각 children내에서의 index 찾아 반환

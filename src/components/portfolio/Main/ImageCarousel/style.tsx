@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Carousel from 'rano-react-carousel';
 
-export const CarouselLayout = styled(Carousel)`
+export const CarouselLayout = styled(({...props}) => <Carousel {...props} />)`
   ul {
     width: 100%;
   }
