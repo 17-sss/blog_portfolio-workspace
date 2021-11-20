@@ -5,14 +5,16 @@ import { WaveGraphicProps } from '.';
 // WaveGraphicLayout
 export const WaveGraphicLayout = styled.div<Pick<WaveGraphicProps['waveImages'], 'waveBackImgUrl'>>`
   position: relative;
+  margin: 0 auto;
+
   width: 100%;
+  max-width: 3000px;
   height: inherit;
 
   background-image: ${({ waveBackImgUrl }) => `url(${waveBackImgUrl})`};
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
   overflow: hidden;
 `;
 

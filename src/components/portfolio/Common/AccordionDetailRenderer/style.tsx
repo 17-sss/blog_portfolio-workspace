@@ -1,8 +1,8 @@
-import styled from "@emotion/styled";
-import { Accordion, AccordionSummary } from "@material-ui/core";
+import styled from '@emotion/styled';
+import { Accordion, AccordionSummary } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { MarkdownRenderer } from 'components/common';
-import { getMediaQueries } from "utils/style";
+import { getMediaQueries } from 'utils/style';
 
 export const AccordionLayout = styled(Accordion)`
   &.Mui-expanded {
@@ -48,5 +48,8 @@ export const DetailRenderer = styled(MarkdownRenderer)`
 
   ${getMediaQueries({ type: 'mobile' })} {
     padding: 0;
+    li > br {
+      display: none;
+    }
   }
 `;
