@@ -7,7 +7,7 @@ type ScrollAnimationsOptionProps = {
   type: ScrollAnimationsTypes;
   duration?: number;
   isIdxDelay?: boolean;
-  allowList?: string[];
+  allowSelectors?: string[];
 };
 
 export type ScrollAnimationsProps = {
@@ -20,10 +20,10 @@ type ExecAnmationProps = ScrollAnimationsOptionProps & { idx: number; target: HT
 
 const useScrollAnimations = function ({
   eleRef,
-  options: { type = 'blink', duration = 1.2, isIdxDelay, allowList = ['div', 'ul', 'li'] } = {
+  options: { type = 'blink', duration = 1.2, isIdxDelay, allowSelectors = ['div', 'ul', 'li'] } = {
     duration: 1.2,
     type: 'blink',
-    allowList: ['div', 'ul', 'li'],
+    allowSelectors: ['div', 'ul', 'li'],
   },
   observeOptions = { threshold: 0.2 },
   deps = [],
@@ -51,7 +51,7 @@ const useScrollAnimations = function ({
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       const target = entry.target as HTMLElement;
-      const findIdx = (eleRef.current && isIdxDelay && DFSforFindElementIndex({ root: eleRef.current, target })) || 0;
+      const findIdx = (eleRef.current && DFSforFindElementIndex({ root: eleRef.current, target })) || 0;
       execAnmations({ target, duration, type, idx: findIdx, isIdxDelay });
 
       const MS = (isIdxDelay ? (findIdx + 1) * duration : duration) * 1000;
@@ -67,7 +67,7 @@ const useScrollAnimations = function ({
   useEffect(() => {
     if (!eleRef || !eleRef.current) return;
     const checkAlreadyObserve = deps && deps.length > 0;
-    DFSforObserve({ root: eleRef.current, observer: observer.current, allowList, checkAlreadyObserve });
+    DFSforObserve({ root: eleRef.current, observer: observer.current, allowSelectors, checkAlreadyObserve });
   }, [...deps, handleScroll]);
 };
 

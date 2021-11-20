@@ -15,7 +15,14 @@ type SetSlideInlineStyleProps = SetInlineStyleProps & {
   direction: 'left' | 'right';
   isMarginAuto?: boolean;
 };
-export const setSlideInlineStyle = ({ target, duration = 1, idx, direction, isMarginAuto, isIdxDelay }: SetSlideInlineStyleProps) => {
+export const setSlideInlineStyle = ({
+  target,
+  duration = 1,
+  idx,
+  direction,
+  isMarginAuto,
+  isIdxDelay,
+}: SetSlideInlineStyleProps) => {
   const isIdx = typeof idx !== 'undefined' && idx >= 0;
   const strDuration = `${isIdxDelay && isIdx ? (idx + 1) * duration : duration}s`;
   const isLeft = direction === 'left';
@@ -39,20 +46,55 @@ export const setClearInlineStyle = (target: HTMLElement) => {
 
 // ---
 
-// dfs를 활용하여 받아온 최상위 요소 (eleRef.current)의 모든 자식들을 탐색하여 허용된 노드만 감시하거나 전부 감시
+// 받아온 선택자들 분석 (DFSforObserve 함수에서 사용)
+type AnalyzeSelectorType = { [key in 'TAG' | 'TYPE' | 'NAME']?: string };
+const execAnalyzeSelector = (selector: string) => {
+  const REG_EX = /(?<TAG>\w+)?((?<TYPE>\.|\#)(?<NAME>\w+))?/gi;
+  const matchs = [...selector.matchAll(REG_EX)];
+  if (!matchs || !matchs.length) return null;
+
+  const filterMatchs = matchs.filter((match) => {
+    if (!match.groups) return;
+    const groupValues = Object.values(match.groups);
+    return !(groupValues.every((v) => !v));
+  });
+
+  const groups = (filterMatchs[0].groups as AnalyzeSelectorType) ?? null;
+  return groups;
+};
+
+// 분석된 선택자들과 현재 탐색하고 있는 target의 조건과 부합하다면 true (DFSforObserve 함수에서 사용)
+const getSelectorMatchTarget = (target: HTMLElement, analyzedSelectors: (AnalyzeSelectorType | null)[]) => {
+  const { tagName, classList, id } = target;
+  const result = analyzedSelectors.find(analyzedSelector => {
+    if (!analyzedSelector) return;
+    const { TYPE, NAME } = analyzedSelector;
+    const TAG = (analyzedSelector.TAG)?.toUpperCase();
+
+    const isIdOK = TYPE && TYPE === '#' && id === NAME;
+    const isClassName = TYPE && TYPE === '.' && (NAME && classList.contains(NAME));
+    if (!TAG) return isIdOK || isClassName;
+    if (isIdOK || isClassName) return TAG === tagName && (isIdOK || isClassName);
+    return TAG === tagName;
+  });
+  return Boolean(result);
+};
+
+// dfs를 활용하여 받아온 최상위 요소 (eleRef.current)의 모든 자식들을 탐색하여 허용된 요소만 감시하거나 전부 감시
 type DFSforObserveProps = {
   root: Element;
   observer?: IntersectionObserver | null;
-  allowList?: string[];
+  allowSelectors?: string[];
   checkAlreadyObserve?: boolean;
 };
-export const DFSforObserve = ({ root, observer, allowList, checkAlreadyObserve }: DFSforObserveProps) => {
+export const DFSforObserve = ({ root, observer, allowSelectors, checkAlreadyObserve }: DFSforObserveProps) => {
   const setObserve = (ele: Element, observer: IntersectionObserver) => {
     (ele as HTMLElement).style.visibility = 'hidden';
     const isExists = checkAlreadyObserve && observer.takeRecords().find(entry => entry.target === ele);
     isExists || observer.observe(ele);
   };
-  const allowListTmp = allowList?.map(v => v.toUpperCase());
+  const analyzedSelectors = allowSelectors?.map(selector => execAnalyzeSelector(selector));
+
   const DFS = (element: Element) => {
     if (!element) return;
     const children = Array.from(element.children) as HTMLElement[];
@@ -61,16 +103,16 @@ export const DFSforObserve = ({ root, observer, allowList, checkAlreadyObserve }
     children.forEach(ele => {
       DFS(ele);
       if (!observer) return;
-      const { tagName } = ele;
-      if (allowListTmp) allowListTmp.includes(tagName) && setObserve(ele, observer);
-      else setObserve(ele, observer);
+      if (analyzedSelectors) {
+        const isMatch = getSelectorMatchTarget(ele, analyzedSelectors);
+        isMatch && setObserve(ele, observer);
+      } else setObserve(ele, observer);
     });
   };
 
   if (!observer) return;
   DFS(root);
 };
-
 // 각 children내에서의 index 찾아 반환
 type DFSforFindElementIndexProps = {
   root: Element;
