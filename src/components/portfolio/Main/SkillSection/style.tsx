@@ -1,3 +1,4 @@
+import { HTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { Button, Card, CardProps } from '@material-ui/core';
 import { InnerContainer, NormalGridList, Paragraph, TitleBox } from 'components/portfolio/Common';
@@ -53,14 +54,18 @@ export const TopSkillList = styled(({ ...props }) => <NormalGridList isUseTablet
   }
 `;
 
-export const TopSkillDetailBox = styled.div`
+type TopSkillDetailBoxProps = HTMLAttributes<HTMLDivElement> & { isHover?: boolean };
+export const TopSkillDetailBox = styled(({ isHover, ...props }: TopSkillDetailBoxProps) => <div {...props} />)`
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: 10;
+  z-index: ${({ isHover }) => (isHover ? 10 : -1)};
   padding: 16px;
+
+  opacity: ${({ isHover }) => (isHover ? 1 : 0)};
+  transition: opacity 0.5s;
 
   ${setFlex({ justifyContent: 'center', alignItems: 'center' })};
   background-color: ${({ theme }) => theme.grayScaleColors.offWhite};

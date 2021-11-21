@@ -20,7 +20,7 @@ const SkillSection: FunctionComponent = function ({ ...props }) {
   const [isTopSkillHover, setIsTopSkillHover] = useState<boolean>(false);
 
   const eleRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
-  useScrollAnimations({ eleRef });
+  useScrollAnimations({ eleRef, options: { excludeSelectors: ['#top__detail__box'] } });
 
   const isDesktop = useCheckMediaQuery('desktop');
 
@@ -66,7 +66,7 @@ const SkillSection: FunctionComponent = function ({ ...props }) {
   }, [skillList]);
 
   // Events
-  const handleTopSkillCardMouseEnter = useCallback(() => window.setTimeout(() => setIsTopSkillHover(() => true), 200), []);
+  const handleTopSkillCardMouseEnter = useCallback(() => setIsTopSkillHover(() => true), []);
   const handleTopSkillCardMouseLeave = useCallback(() => setIsTopSkillHover(() => false), []);
   return (
     <S.SkillSectionLayout id={layoutId} {...props}>
@@ -76,14 +76,12 @@ const SkillSection: FunctionComponent = function ({ ...props }) {
         <S.TopSkillCard onMouseEnter={handleTopSkillCardMouseEnter} onMouseLeave={handleTopSkillCardMouseLeave}>
           <S.TopSkillList>{topSkillItems}</S.TopSkillList>
           <TabletDesktop>
-            {isTopSkillHover && (
-              <S.TopSkillDetailBox>
+              <S.TopSkillDetailBox id="top__detail__box" isHover={isTopSkillHover}>
                 <S.TopSkillDetailCloseButton onClick={handleTopSkillCardMouseLeave}>
                   <CloseIcon />
                 </S.TopSkillDetailCloseButton>
                 {topSkillDetailHtml && <DetailRenderer html={topSkillDetailHtml} />}
               </S.TopSkillDetailBox>
-            )}
           </TabletDesktop>
         </S.TopSkillCard>
 

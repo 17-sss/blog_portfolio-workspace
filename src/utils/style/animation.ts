@@ -25,25 +25,26 @@ export const setSlideAnimation = ({ duration = 0.8, idx, direction, isMarginAuto
   ${isMarginAuto && direction === 'left' ? css` margin-left: auto; ` : css` margin-right: auto; `}
 `;
 
-type SetFadeInAnimationProps = {
+type SetFadeAnimationProps = {
   duration?: number;
   idx?: number;
+  type?: 'fadeIn' | 'fadeOut';
 };
-export const setFadeInAnimation = ({ idx, duration }: SetFadeInAnimationProps = { duration: 2 }) => {
-  duration = idx ? 1.3 : 2;
-  return css`
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+export const setFadeAnimation = (
+  { idx, duration = 2, type = 'fadeIn' }: SetFadeAnimationProps = { duration: 2, type: 'fadeIn' },
+) => css`
+  @keyframes fade {
+    from {
+      opacity: ${type === 'fadeIn' ? 0 : 1};
     }
+    to {
+      opacity: ${type === 'fadeIn' ? 1 : 0};
+    }
+  }
 
-    animation: fadeIn ${idx && idx >= 0 ? (idx + 1) * duration : duration}s;
-  `;
-};
+  animation: fade ${idx && idx >= 0 ? (idx + 1) * duration : duration}s;
+`;
+
 
 type setWaveAnimationProps = {
   direction: "left" | "right";
