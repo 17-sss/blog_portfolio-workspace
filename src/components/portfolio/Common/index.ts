@@ -1,6 +1,7 @@
 import AccordionDetailRenderer from './AccordionDetailRenderer';
 import CircleProgress from './CircleProgress';
 import CustomIcon from './CustomIcon';
+import DetailRenderer from './DetailRenderer';
 import Footer from './Footer';
 import GlobalStyle from './GlobalStyle';
 import Header from './Header';
@@ -14,6 +15,7 @@ export {
   AccordionDetailRenderer,
   CircleProgress,
   CustomIcon,
+  DetailRenderer,
   Header,
   GlobalStyle,
   Footer,

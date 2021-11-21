@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'react';
 import { AccordionDetails } from '@material-ui/core';
 import { PortfolioMarkdownNode } from 'utils/types';
+import { DetailRenderer } from '..';
 import * as S from './style';
 
 export type AccordionDetailRendererProps = Pick<PortfolioMarkdownNode, 'html'> & {
@@ -11,7 +12,7 @@ const AccordionDetailRenderer: FunctionComponent<AccordionDetailRendererProps> =
     <S.AccordionLayout elevation={0} {...props}>
       <S.AccordionOpenSummary aria-label={ariaLabelText ?? 'AccordionDetailRenderer'} />
       <AccordionDetails>
-        <S.DetailRenderer html={html} />
+        <DetailRenderer html={html} />
       </AccordionDetails>
     </S.AccordionLayout>
   );
