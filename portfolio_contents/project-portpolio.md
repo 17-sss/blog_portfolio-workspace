@@ -16,7 +16,7 @@ portfolioInfo:
           href: 'https://boiled-feather-1c7.notion.site/b4fe56b733a64255aba72d3cce8defab?v=044c094f5c9f4bf1a8fa66248cf3e095',
         },
       ],
-    images: ['./portfolio/01.jpg', './portfolio/02.jpg', './portfolio/03.jpg', './portfolio/04.jpg'],
+    images: ['./portfolio/01.webp', './portfolio/02.webp', './portfolio/03.webp', './portfolio/04.webp', './portfolio/05.webp'],
     type: 'project',
   }
 options: { isPortfolio: true, hide: true }
