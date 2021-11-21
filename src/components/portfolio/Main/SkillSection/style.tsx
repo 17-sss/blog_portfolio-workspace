@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Card } from '@material-ui/core';
+import { Button, Card, CardProps } from '@material-ui/core';
 import { InnerContainer, NormalGridList, Paragraph, TitleBox } from 'components/portfolio/Common';
 import { PORTFOLIO_HEADER } from 'utils/constants';
 import { getMediaQueries, setFlex } from 'utils/style';
@@ -21,7 +21,8 @@ export const SubTitleParagraph = styled(({ ...props }) => <Paragraph paragraph {
   font-size: ${({ theme }) => theme.fontSizes['16']};
 `;
 
-export const TopSkillCard = styled(({ ...props }) => <Card elevation={2} {...props} />)`
+export const TopSkillCard = styled(({ ...props }: CardProps) => <Card elevation={2} {...props} />)`
+  position: relative;
   width: 100%;
   padding: 24px 0;
 
@@ -50,6 +51,26 @@ export const TopSkillList = styled(({ ...props }) => <NormalGridList isUseTablet
       flex-basis: ${`calc(100% / 2)`};
     }
   }
+`;
+
+export const TopSkillDetailBox = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  padding: 16px;
+
+  ${setFlex({ justifyContent: 'center', alignItems: 'center' })};
+  background-color: ${({ theme }) => theme.grayScaleColors.offWhite};
+`;
+
+export const TopSkillDetailCloseButton = styled(Button)`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  min-width: fit-content;
 `;
 
 export const SkillContainerBox = styled.div`

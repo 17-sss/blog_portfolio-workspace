@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 import { CircularProgressProps } from '@material-ui/core/CircularProgress';
 import CustomIcon, { IconNameType } from 'components/portfolio/Common/CustomIcon';
 import { getSeparateNumStr } from 'utils/functions';
@@ -10,8 +10,6 @@ export type CircleProgressProps = CircularProgressProps & {
   iconName?: IconNameType;
 };
 const CircleProgress: FunctionComponent<CircleProgressProps> = function ({ iconName, value, customColor, ...props }) {
-  const [progressValue, setProgressValue] = useState<number>(0);
-
   const sizeInfo = useMemo(() => {
     if (!props.size) return;
     const { size } = props;
@@ -34,18 +32,12 @@ const CircleProgress: FunctionComponent<CircleProgressProps> = function ({ iconN
     };
   }, [props.size]);
 
-  useEffect(() => {
-    if (progressValue >= value) return;
-    const timer = window.setTimeout(() => setProgressValue(progressValue => progressValue + 5), 20);
-    return () => clearTimeout(timer);
-  }, [progressValue]);
-
   return (
     <S.CircleProgressLayout>
       <S.Progress
         variant="determinate"
         customColor={customColor?.progress}
-        value={progressValue}
+        value={value}
         aria-label={`Technical proficiency for ${iconName}`}
         {...props}
       />

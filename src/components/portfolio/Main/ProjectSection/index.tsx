@@ -19,7 +19,13 @@ const ProjectSection: FunctionComponent = function ({ ...props }) {
   useScrollAnimations(animationsProps);
 
   const projectItems = useMemo(
-    () => markdownData.map(({ node }, i) => <ProjectItem idx={i} key={i} {...node} />),
+    () => markdownData.reduce((result, { node }, i) => {
+      const { frontmatter: { portfolioInfo } } = node;
+      const sectionType = portfolioInfo.sectionType;
+      if (sectionType !== 'projects') return result;
+      result.push(<ProjectItem idx={i} key={i} {...node} />);
+      return result;
+    }, [] as JSX.Element[]),
     [markdownData],
   );
 
