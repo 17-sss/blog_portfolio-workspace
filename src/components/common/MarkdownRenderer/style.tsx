@@ -117,6 +117,24 @@ const MarkdownRenderer = styled.div`
     tab-size: 2;
   }
 
+  tr {
+    background-color: #fefefe;
+  }
+
+  tr:nth-of-type(2n) {
+    background-color: #f6f8fa;
+  }
+
+  th,
+  td {
+    padding: 6px 13px;
+    border: 1px solid #d0d7de;
+  }
+
+  th {
+    font-weight: 600;
+  }
+
   // Markdown Responsive Design
   @media (max-width: 768px) {
     width: 100%;
