@@ -85,17 +85,24 @@ type DFSforObserveProps = {
   root: Element;
   observer?: IntersectionObserver | null;
   allowSelectors?: string[];
-  excludeSelectors?: string[];
+  excludeOptions?: {
+    excludeSelectors?: string[];
+    isExceptTarget?: boolean;
+  };
   checkAlreadyObserve?: boolean;
 };
-export const DFSforObserve = ({ root, observer, allowSelectors, excludeSelectors, checkAlreadyObserve }: DFSforObserveProps) => {
+export const DFSforObserve = ({ root, observer, allowSelectors, excludeOptions, checkAlreadyObserve }: DFSforObserveProps) => {
+  const excludeSelectors = excludeOptions?.excludeSelectors;
+  const isExceptTarget = excludeOptions?.isExceptTarget;
+
+  const allowAnalyzedSelectors = allowSelectors?.map(selector => execAnalyzeSelector(selector));
+  const excludeAnalyzedSelectors = excludeSelectors?.map(selector => execAnalyzeSelector(selector));
+
   const setObserve = (ele: Element, observer: IntersectionObserver) => {
     (ele as HTMLElement).style.visibility = 'hidden';
     const isExists = checkAlreadyObserve && observer.takeRecords().find(entry => entry.target === ele);
     isExists || observer.observe(ele);
   };
-  const allowAnalyzedSelectors = allowSelectors?.map(selector => execAnalyzeSelector(selector));
-  const excludeAnalyzedSelectors = excludeSelectors?.map(selector => execAnalyzeSelector(selector));
 
   const DFS = (element: Element) => {
     if (!element || !observer) return;
@@ -104,8 +111,12 @@ export const DFSforObserve = ({ root, observer, allowSelectors, excludeSelectors
 
     children.forEach(ele => {
       const isNotObserve = excludeAnalyzedSelectors && getSelectorMatchTarget(ele, excludeAnalyzedSelectors);
-      if (isNotObserve) return;
+      if (isNotObserve) {
+        if (isExceptTarget) DFS(ele); // 현재 타겟만 제외 (자식들은 제외하지 않음)
+        return;
+      };
       DFS(ele);
+
 
       if (allowAnalyzedSelectors) {
         const isMatch = getSelectorMatchTarget(ele, allowAnalyzedSelectors);

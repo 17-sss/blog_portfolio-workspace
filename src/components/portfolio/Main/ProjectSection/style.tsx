@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { InnerContainer, TitleBox } from 'components/portfolio/Common';
+import { InnerContainer } from 'components/portfolio/Common';
 import { setFlex, getMediaQueries } from 'utils/style';
 import { PORTFOLIO_HEADER } from 'utils/constants';
 
@@ -14,8 +14,6 @@ export const ProjectSectionInnerBox = styled(InnerContainer)`
   min-height: ${`calc(100vh - ${PORTFOLIO_HEADER.height}px)`};
   ${setFlex({ justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'column' })};
 `;
-
-export const ProjectTitleBox = styled(TitleBox)``;
 
 export const ProjectList = styled.ul`
   display: grid;

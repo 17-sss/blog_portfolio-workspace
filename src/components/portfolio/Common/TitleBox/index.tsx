@@ -1,11 +1,11 @@
-import { FunctionComponent } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import { Paragraph } from '..';
 import * as S from './style';
 
-type TitleBoxProps = { title?: string; subTitle?: string };
-const TitleBox: FunctionComponent<TitleBoxProps> = function ({ title, subTitle, children, ...props }) {
+type TitleBoxProps = HTMLAttributes<HTMLDivElement> & { title?: string; subTitle?: string };
+const TitleBox = forwardRef<HTMLDivElement, TitleBoxProps>(({ title, subTitle, children, ...props }, ref) => {
   return (
-    <S.TitleBoxLayout {...props}>
+    <S.TitleBoxLayout ref={ref} {...props}>
       {title && (
         <Paragraph align="center" variant="h2" isTitle>
           {title}
@@ -14,6 +14,6 @@ const TitleBox: FunctionComponent<TitleBoxProps> = function ({ title, subTitle, 
       <S.SubTitleParagraph>{subTitle}</S.SubTitleParagraph>
     </S.TitleBoxLayout>
   );
-};
+});
 
 export default TitleBox;

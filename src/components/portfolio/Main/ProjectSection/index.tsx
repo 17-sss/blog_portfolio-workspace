@@ -1,10 +1,10 @@
 import { FunctionComponent, MutableRefObject, useMemo, useRef } from 'react';
-import { useScrollAnimations, ScrollAnimationsProps } from 'hooks';
+import { TitleBox } from 'components/portfolio/Common';
 import { usePortfolioState } from 'utils/contexts/PortfolioContext';
+import { useScrollAnimations, ScrollAnimationsProps } from 'hooks';
 import { PORTFOLIO_SECTION_INFO } from 'utils/constants';
 import ProjectItem from '../ProjectItem';
 import * as S from './style';
-import {} from 'hooks/useScrollAnimations';
 
 const ProjectSection: FunctionComponent = function ({ ...props }) {
   const { markdownData } = usePortfolioState();
@@ -13,7 +13,7 @@ const ProjectSection: FunctionComponent = function ({ ...props }) {
   const eleRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const animationsProps: ScrollAnimationsProps = {
     eleRef,
-    options: { excludeSelectors: ['#image__carousel'] },
+    options: { excludeOptions: { excludeSelectors: ['#project__list'], isExceptTarget: true } },
     deps: [markdownData],
   };
   useScrollAnimations(animationsProps);
@@ -32,8 +32,8 @@ const ProjectSection: FunctionComponent = function ({ ...props }) {
   return (
     <S.ProjectSectionLayout id={layoutId} {...props}>
       <S.ProjectSectionInnerBox ref={eleRef}>
-        <S.ProjectTitleBox title={'Projects'} subTitle={subTitle} />
-        <S.ProjectList>{projectItems}</S.ProjectList>
+        <TitleBox title={'Projects'} subTitle={subTitle} />
+        <S.ProjectList id="project__list">{projectItems}</S.ProjectList>
       </S.ProjectSectionInnerBox>
     </S.ProjectSectionLayout>
   );
