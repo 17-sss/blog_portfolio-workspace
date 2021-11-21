@@ -1,6 +1,7 @@
 ---
 portfolioInfo:
   {
+    sectionType: 'projects',
     title: 'Airbnb 클론 프로젝트',
     subTitle: '코드스쿼드에서 진행한 3주간의 프로젝트',
     duration: { startDate: '2021-05-17', endDate: '2021-06-04' },

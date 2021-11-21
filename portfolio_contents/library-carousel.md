@@ -1,6 +1,7 @@
 ---
 portfolioInfo:
   {
+    sectionType: 'projects',
     title: 'Rano React Carousel',
     subTitle: 'React 환경에서 사용되는 캐러셀 라이브러리 제작',
     duration: { startDate: '2021-08-25', endDate: '2021-10-30' },

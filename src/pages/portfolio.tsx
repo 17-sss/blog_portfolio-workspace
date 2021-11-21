@@ -70,6 +70,7 @@ export const getPortpolioData = graphql`
           html
           frontmatter {
             portfolioInfo {
+              sectionType
               title
               subTitle
               duration {

@@ -1,6 +1,7 @@
 ---
 portfolioInfo:
   {
+    sectionType: 'projects',
     title: 'Rano Portfolio',
     subTitle: '나만의 포트폴리오 프로젝트',
     duration: { startDate: '2021-11-08', endDate: '2021-11-20' },

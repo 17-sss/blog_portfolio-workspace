@@ -5,6 +5,7 @@ export type PortfolioMarkdownData = {
 };
 
 export type PortfolioInfo = {
+  sectionType: string;
   title: string;
   subTitle: string;
   duration: PortfolioDuration;

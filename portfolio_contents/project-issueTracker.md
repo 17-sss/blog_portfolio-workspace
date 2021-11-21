@@ -1,6 +1,7 @@
 ---
 portfolioInfo:
   {
+    sectionType: 'projects',
     title: 'Issue Tracker',
     subTitle: '코드스쿼드에서 진행한 3주간의 프로젝트',
     duration: { startDate: '2021-06-07', endDate: '2021-06-25' },
