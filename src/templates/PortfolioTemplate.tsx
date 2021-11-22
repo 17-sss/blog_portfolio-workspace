@@ -4,18 +4,31 @@ import Template, { TemplateProps } from './Template';
 import { Header, Footer, MainContainer, GlobalStyle } from 'components/portfolio/Common';
 
 import { usePortfolioDispatch } from 'utils/contexts/PortfolioContext';
-import { PortfolioMarkdownData } from 'utils/types';
+import { PortfolioImage, PortfolioMarkdownData } from 'utils/types';
 
 type PortfolioTemplateProps = TemplateProps & {
   markdownData: PortfolioMarkdownData[];
+  waveImages: {
+    waveImg: PortfolioImage | null;
+    waveBackImg: PortfolioImage | null;
+  };
 };
 
-const PortfolioTemplate: FunctionComponent<PortfolioTemplateProps> = ({ title, description, url, image, markdownData, children, ...props }) => {
+const PortfolioTemplate: FunctionComponent<PortfolioTemplateProps> = ({
+  title,
+  description,
+  url,
+  image,
+  markdownData,
+  waveImages,
+  children,
+  ...props
+}) => {
   const portfolioDispatch = usePortfolioDispatch();
   useEffect(() => {
     portfolioDispatch({
       type: 'SET_WAVE_IMG_URL',
-      payload: { waveBackImgUrl: '/wave_background.webp', waveImgUrl: '/wave.png' },
+      payload: waveImages,
     });
     portfolioDispatch({ type: 'SET_MARKDOWN_DATA', payload: markdownData });
   }, [markdownData]);

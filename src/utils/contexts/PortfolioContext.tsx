@@ -1,18 +1,24 @@
 import { createContext, Dispatch, useReducer, useContext, FunctionComponent } from 'react';
-import { PortfolioMarkdownData } from 'utils/types';
+import { PortfolioImage, PortfolioMarkdownData } from 'utils/types';
+
+type WaveImageProps = {
+  waveImg: PortfolioImage | null;
+  waveBackImg: PortfolioImage | null;
+};
+// ---
 
 type PortfolioState = {
   waveImages: {
-    waveImgUrl: string;
-    waveBackImgUrl: string;
+    waveImg: PortfolioImage | null;
+    waveBackImg: PortfolioImage | null;
   };
   markdownData: PortfolioMarkdownData[];
 };
 
 const initState: PortfolioState = {
   waveImages: {
-    waveImgUrl: '',
-    waveBackImgUrl: '',
+    waveImg: null,
+    waveBackImg: null,
   },
   markdownData: [],
 };
@@ -21,10 +27,7 @@ const PortfolioStateContext = createContext<PortfolioState | undefined>(undefine
 type PortfolioAction =
   | {
       type: 'SET_WAVE_IMG_URL';
-      payload: {
-        waveImgUrl: string;
-        waveBackImgUrl: string;
-      };
+      payload: WaveImageProps;
     }
   | {
       type: 'SET_MARKDOWN_DATA';

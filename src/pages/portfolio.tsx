@@ -7,7 +7,7 @@ import { PortfolioContextProvider } from 'utils/contexts/PortfolioContext';
 import PortfolioTemplate from 'templates/PortfolioTemplate';
 import { PortfolioComposition } from 'compositions';
 
-import { PortfolioMarkdownData } from 'utils/types';
+import { PortfolioImage, PortfolioMarkdownData } from 'utils/types';
 import { theme } from 'utils/style';
 
 type PortfolioPageProps = {
@@ -25,6 +25,8 @@ type PortfolioPageProps = {
     profileImg: {
       publicURL: string;
     };
+    waveImg: PortfolioImage;
+    waveBackImg: PortfolioImage;
   };
 };
 
@@ -32,6 +34,8 @@ const PortfolioPage: FunctionComponent<PortfolioPageProps> = function ({ data, .
   const {
     site,
     profileImg,
+    waveImg,
+    waveBackImg,
     allMarkdownRemark: { edges },
   } = data;
   const { title_portfolio, description, siteUrl_portfolio } = site.siteMetadata;
@@ -43,6 +47,7 @@ const PortfolioPage: FunctionComponent<PortfolioPageProps> = function ({ data, .
         <PortfolioContextProvider>
           <PortfolioTemplate
             {...props}
+            waveImages={{waveImg, waveBackImg}}
             markdownData={edges}
             title={title_portfolio}
             description={description}
@@ -103,6 +108,18 @@ export const getPortpolioData = graphql`
       }
     }
     profileImg: file(name: { eq: "profile-image" }) {
+      publicURL
+    }
+    waveImg: file(name: { eq: "wave" }) {
+      childImageSharp {
+        gatsbyImageData
+      }
+      publicURL
+    }
+    waveBackImg: file(name: { eq: "wave_background" }) {
+      childImageSharp {
+        gatsbyImageData
+      }
       publicURL
     }
   }

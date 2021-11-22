@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { setWaveAnimation } from 'utils/style';
-import { WaveGraphicProps } from '.';
 
 // WaveGraphicLayout
-export const WaveGraphicLayout = styled.div<Pick<WaveGraphicProps['waveImages'], 'waveBackImgUrl'>>`
+export const WaveGraphicLayout = styled.div`
   position: relative;
   margin: 0 auto;
 
@@ -11,11 +11,13 @@ export const WaveGraphicLayout = styled.div<Pick<WaveGraphicProps['waveImages'],
   max-width: 3000px;
   height: inherit;
 
-  background-image: ${({ waveBackImgUrl }) => `url(${waveBackImgUrl})`};
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   overflow: hidden;
+`;
+
+// WaveGatsbyImage (Background Image)
+export const WaveGatsbyImage = styled(GatsbyImage)`
+  width: 100%;
+  height: 100%;
 `;
 
 // Wave
