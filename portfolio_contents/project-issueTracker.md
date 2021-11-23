@@ -5,7 +5,7 @@ portfolioInfo:
     title: 'Issue Tracker',
     subTitle: '코드스쿼드에서 진행한 3주간의 프로젝트',
     duration: { startDate: '2021-06-07', endDate: '2021-06-25' },
-    memberInfo: '프론트엔드 3명, 백엔드 2명, iOS 2명',
+    memberInfo: '프론트엔드 2명, 백엔드 2명, iOS 2명',
     skills: [React, TypeScript, Recoil, Material UI],
     images: ['./issueTracker/01.gif', './issueTracker/02.gif', './issueTracker/03.gif'],
     links: [{ name: 'Github Repository', href: 'https://github.com/malaheaven/issue-tracker' }],
