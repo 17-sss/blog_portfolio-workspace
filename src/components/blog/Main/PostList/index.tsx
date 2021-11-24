@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import PostItem from 'components/blog/Main/PostItem';
 import { PostListItemType } from 'utils/types';
 import useInfiniteScroll from 'hooks/useInfiniteScroll';
+import { BLOG_EXCLUDE_CATEGORIES } from 'utils/constants';
 
 type PostListProps = {
   selectedCategory: string;
@@ -15,8 +16,13 @@ const PostList: FunctionComponent<PostListProps> = function ({ selectedCategory,
     () =>
       postList.map(({ node }: PostListItemType) => {
         const { id, frontmatter, fields } = node;
-        const isHide = frontmatter.options?.hide;
-        return isHide || <PostItem {...frontmatter} link={fields.slug} key={id} />;
+        const { options, categories } = frontmatter;
+        const isHide = options?.hide;
+        const isExcludedCategory =
+          categories && categories.some(category => BLOG_EXCLUDE_CATEGORIES.includes(category));
+        if (isHide || isExcludedCategory) return;
+
+        return <PostItem {...frontmatter} link={fields.slug} key={id} />;
       }),
     [postList],
   );

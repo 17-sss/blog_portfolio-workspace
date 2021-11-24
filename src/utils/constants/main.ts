@@ -4,7 +4,12 @@ const BLOG_INTRODUCTION_TEXTS = {
   title: `I'm Junior Frontend Developer Hoyoung.`,
 };
 
-const BLOG_FOOTER_DESCRIPTION = ['Thank You for Visiting My Blog, Have a Good Day 😆', '© 2021 Rano, Powered By Gatsby.'];
+const BLOG_EXCLUDE_CATEGORIES = ['TIL'];
+
+const BLOG_FOOTER_DESCRIPTION = [
+  'Thank You for Visiting My Blog, Have a Good Day 😆',
+  '© 2021 Rano, Powered By Gatsby.',
+];
 
 const META_DATA = {
   twitter: {
@@ -17,4 +22,10 @@ const META_DATA = {
   },
 };
 
-export { BLOG_PROFILE_IMAGE_LINK, BLOG_INTRODUCTION_TEXTS, BLOG_FOOTER_DESCRIPTION, META_DATA };
+export {
+  BLOG_PROFILE_IMAGE_LINK,
+  BLOG_INTRODUCTION_TEXTS,
+  BLOG_EXCLUDE_CATEGORIES,
+  BLOG_FOOTER_DESCRIPTION,
+  META_DATA,
+};

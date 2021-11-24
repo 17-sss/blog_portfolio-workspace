@@ -117,7 +117,6 @@ export const DFSforObserve = ({ root, observer, allowSelectors, excludeOptions, 
       };
       DFS(ele);
 
-
       if (allowAnalyzedSelectors) {
         const isMatch = getSelectorMatchTarget(ele, allowAnalyzedSelectors);
         isMatch && setObserve(ele, observer);

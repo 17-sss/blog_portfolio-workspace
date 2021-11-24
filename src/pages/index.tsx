@@ -8,6 +8,7 @@ import { BlogComposition } from 'compositions';
 
 import { CategoryListProps } from 'components/blog/Main';
 import { PostListItemType } from 'utils/types';
+import { BLOG_EXCLUDE_CATEGORIES } from 'utils/constants';
 
 type IndexPageProps = {
   location: {
@@ -56,7 +57,9 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
           const { node: { frontmatter: { categories, options } } } = data;
 
           const isHide = options?.hide;
-          if (isHide) return list;
+          const isExcludedCategory =
+            categories && categories.some(category => BLOG_EXCLUDE_CATEGORIES.includes(category));
+          if (isHide || isExcludedCategory) return list;
 
           let categoryTmp = '';
           categories.forEach(category => {
