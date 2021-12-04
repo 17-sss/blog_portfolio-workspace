@@ -2,7 +2,7 @@ import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } f
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { Mobile, TabletDesktop } from 'components/common/MediaQuery';
-import { changeFirstCharUpperCase } from 'utils/functions';
+import { changeFirstCharUpperCase, throttle } from 'utils/functions';
 import { PortfolioSectionNames, PORTFOLIO_HEADER, PORTFOLIO_SECTION_INFO } from 'utils/constants';
 
 import * as S from './style';
@@ -10,6 +10,7 @@ import * as S from './style';
 const Header: FunctionComponent = function () {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [isHeaderTop, setIsHeaderTop] = useState<boolean>(true);
+  const [timer, setTimer] = useState<number | null>(null);
 
   // Mobile 전용 이벤트
   const handleMobileMenuClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget), []);
@@ -41,15 +42,13 @@ const Header: FunctionComponent = function () {
     ));
   }, []);
 
-  // window scroll 이벤트 관련 - 추후 throttle 적용
   const handleScroll = useCallback(() => setIsHeaderTop(() => window.scrollY === 0), []);
-
   useEffect(() => {
     handleScroll();
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  // --
+    const delay = 500;
+    window.addEventListener("scroll", throttle({ timer, setTimer, fn: handleScroll, delay }));
+    return () => window.removeEventListener("scroll", throttle({ timer, setTimer, fn: handleScroll, delay }));
+  }, [handleScroll]);
 
   return (
     <S.HeaderLayout isHeaderTop={isHeaderTop}>
