@@ -1,12 +1,13 @@
+// gastby-node.js에서 해당 파일 적용함 (블로그 글들)
 import React, { FunctionComponent, useEffect } from 'react';
 import { graphql } from 'gatsby';
 
+import BlogTemplate from 'templates/BlogTemplate';
 import { MarkdownRenderer } from 'components/common';
 import { PostHead, CommentWidget } from 'components/blog/Post';
 import { PostPageItemType } from 'utils/types';
-import BlogTemplate from 'templates/BlogTemplate';
 
-type PostTemplateProps = {
+type PostPageProps = {
   data: {
     allMarkdownRemark: {
       edges: PostPageItemType[];
@@ -17,7 +18,7 @@ type PostTemplateProps = {
   };
 };
 
-const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
+const PostPage: FunctionComponent<PostPageProps> = function ({
   data: {
     allMarkdownRemark: { edges },
   },
@@ -46,7 +47,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   );
 };
 
-export default PostTemplate;
+export default PostPage;
 
 export const queryMarkdownDataBySlug = graphql`
   query queryMarkdownDataBySlug($slug: String) {
