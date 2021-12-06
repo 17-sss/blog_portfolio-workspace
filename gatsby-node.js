@@ -76,8 +76,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       fields: { slug },
     },
   }) => {
+    const path = `/posts${slug}`;
     const pageOptions = {
-      path: slug,
+      path,
       component: PostTemplateComponent,
       context: { slug },
     };

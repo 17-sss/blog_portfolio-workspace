@@ -22,7 +22,9 @@ const PostList: FunctionComponent<PostListProps> = function ({ selectedCategory,
           categories && categories.some(category => BLOG_EXCLUDE_CATEGORIES.includes(category));
         if (isHide || isExcludedCategory) return;
 
-        return <PostItem {...frontmatter} link={fields.slug} key={id} />;
+        const link = `/posts${fields.slug}`;
+
+        return <PostItem {...{ ...frontmatter, link }} key={id} />;
       }),
     [postList],
   );

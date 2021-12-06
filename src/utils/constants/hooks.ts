@@ -1,3 +1,1 @@
-const BLOG_NUM_ITEMS_PER_PAGE = 10;
-
-export { BLOG_NUM_ITEMS_PER_PAGE };
+export const BLOG_NUM_ITEMS_PER_PAGE = 10;
