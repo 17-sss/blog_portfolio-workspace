@@ -29,21 +29,32 @@ type SetFadeAnimationProps = {
   duration?: number;
   idx?: number;
   type?: 'fadeIn' | 'fadeOut';
+  isBlink?: boolean;
+  opacityOptions?: {
+    from: number;
+    to: number;
+  };
 };
 export const setFadeAnimation = (
-  { idx, duration = 2, type = 'fadeIn' }: SetFadeAnimationProps = { duration: 2, type: 'fadeIn' },
-) => css`
-  @keyframes fade {
-    from {
-      opacity: ${type === 'fadeIn' ? 0 : 1};
-    }
-    to {
-      opacity: ${type === 'fadeIn' ? 1 : 0};
-    }
-  }
+  { idx, duration = 2, type = 'fadeIn', isBlink, opacityOptions }: SetFadeAnimationProps = { duration: 2, type: 'fadeIn' },
+) => {
+  const strDuration = `${idx && idx >= 0 ? (idx + 1) * duration : duration}s`;
+  const strBlink = `${isBlink ? 'ease-in-out infinite alternate' : ''}`;
+  const nOpacityFrom = opacityOptions?.from ?? (type === 'fadeIn' ? 0 : 1);
+  const nOpacityTo = opacityOptions?.to ?? (type === 'fadeIn' ? 1 : 0);
 
-  animation: fade ${idx && idx >= 0 ? (idx + 1) * duration : duration}s;
-`;
+  return css`
+    @keyframes fade {
+      from {
+        opacity: ${nOpacityFrom};
+      }
+      to {
+        opacity: ${nOpacityTo};
+      }
+    }
+    animation: fade ${strDuration} ${strBlink};
+  `;
+};
 
 
 type setWaveAnimationProps = {
