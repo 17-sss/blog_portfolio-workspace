@@ -123,7 +123,7 @@ export const PORTFOLIO_SECTION_INFO: PortfolioSectionInfoType = {
 
         { name: 'Sass', color: '#CC6699' },
         { name: 'Recoil', color: '#3577E5' },
-        { name: 'Bootstrap', color: '#7952B3' },
+        // { name: 'Bootstrap', color: '#7952B3' }, // 사용 안함
         { name: 'Material-UI', color: '#0081CB' },
       ],
       'Back-end': [
