@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { throttle } from 'utils/functions';
 
-const useisHeaderTop = function (delay: number = 100) {
+const useIsHeaderTop = function (delay: number = 100) {
   const [isHeaderTop, setIsHeaderTop] = useState<boolean>(false);
   const [timer, setTimer] = useState<number | null>(null);
 
@@ -15,4 +15,4 @@ const useisHeaderTop = function (delay: number = 100) {
   return isHeaderTop;
 };
 
-export default useisHeaderTop;
+export default useIsHeaderTop;
