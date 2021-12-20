@@ -54,6 +54,14 @@ export const TopSkillList = styled(({ ...props }) => <NormalGridList isUseTablet
   }
 `;
 
+export const TopSkillImageItem = styled.li`
+  ${setFlex({ alignItems: 'center', justifyContent: 'center' })};
+  img {
+    max-height: 200px;
+    width: auto;
+  }
+`;
+
 type TopSkillDetailBoxProps = HTMLAttributes<HTMLDivElement> & { isHover?: boolean };
 export const TopSkillDetailBox = styled(({ isHover, ...props }: TopSkillDetailBoxProps) => <div {...props} />)`
   position: absolute;

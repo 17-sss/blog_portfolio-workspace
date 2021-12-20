@@ -2,7 +2,7 @@ import React, { FunctionComponent, useCallback, useMemo, useState } from 'react'
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { Mobile, TabletDesktop } from 'components/common/MediaQuery';
-import { useisHeaderTop } from 'hooks';
+import { useIsHeaderTop } from 'hooks';
 import { changeFirstCharUpperCase } from 'utils/functions';
 import { PortfolioSectionNames, PORTFOLIO_HEADER, PORTFOLIO_SECTION_INFO } from 'utils/constants';
 
@@ -10,7 +10,7 @@ import * as S from './style';
 
 const Header: FunctionComponent = function () {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const isHeaderTop = useisHeaderTop();
+  const isHeaderTop = useIsHeaderTop();
 
   // Mobile 전용 이벤트
   const handleMobileMenuClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget), []);

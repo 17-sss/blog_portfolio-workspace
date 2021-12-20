@@ -53,6 +53,7 @@ type SkillInfoType = {
 };
 export type SkillCategoryNames = 'Front-end' | 'Back-end' | 'Communication' | 'Tools';
 type SkillSectionInfo = ContentRequiredType & {
+  topSkillImages?: { name: string; src: string }[];
   skillList: {
     [categoryName in SkillCategoryNames]: SkillInfoType[];
   };
@@ -113,6 +114,15 @@ export const PORTFOLIO_SECTION_INFO: PortfolioSectionInfoType = {
   skills: {
     layoutId: 'section--skills',
     subTitle: '주로 사용하는 기술과 한번씩은 접해봤던 기술들을 나열한 공간입니다.',
+/* // 사용안함
+    topSkillImages: [
+      { name: 'HTML Image', src: '/topskills/html.png' },
+      { name: 'CSS Image', src: '/topskills/css.png' },
+      { name: 'JavaScript Image', src: '/topskills/javascript.png' },
+      { name: 'React Image', src: '/topskills/react.png' },
+      { name: 'TypeScript Image', src: '/topskills/typescript.png' },
+    ],
+ */
     skillList: {
       'Front-end': [
         { name: 'HTML', percent: 70, color: '#E34F26' },
