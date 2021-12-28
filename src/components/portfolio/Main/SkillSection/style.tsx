@@ -89,10 +89,8 @@ export const TopSkillDetailCloseButton = styled(Button)`
 export const SkillContainerBox = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, calc(100% / 4));
-  ${getMediaQueries({ type: 'tablet' })} {
-    grid-template-columns: repeat(2, calc(100% / 2));
-  }
+  grid-template-columns: repeat(2, calc(100% / 2));
+
   ${getMediaQueries({ type: 'mobile' })} {
     grid-template-columns: none;
   }

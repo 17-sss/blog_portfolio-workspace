@@ -16,7 +16,14 @@ export const SkillItemLayout = styled.li<Pick<SkillItemProps, 'color'>>`
   }
 
   svg {
-    max-width: 64px;
+    max-width: 96px;
+    ${getMediaQueries({ type: 'tablet' })} {
+      max-width: 84px;
+    }
+    ${getMediaQueries({ type: 'mobile' })} {
+      max-width: 72px;
+    }
+
     height: auto;
     ${({ color }) =>
       color &&

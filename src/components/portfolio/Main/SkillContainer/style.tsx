@@ -36,7 +36,7 @@ export const SkillContainerLayout = styled(({ ...props }: SkillContainerProps) =
 `;
 
 export const SubjectParagraph = styled(({ ...props }) => <Paragraph paragraph align="center" isTitle {...props} />)`
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: ${({ theme }) => theme.colors.error};
 `;
 
