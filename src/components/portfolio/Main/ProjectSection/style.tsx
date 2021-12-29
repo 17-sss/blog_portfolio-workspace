@@ -4,6 +4,7 @@ import { setFlex, getMediaQueries } from 'utils/style';
 import { PORTFOLIO_HEADER } from 'utils/constants';
 
 export const ProjectSectionLayout = styled.section`
+  background-color: ${({ theme }) => theme.sectionColors.projects};
   padding: ${`${PORTFOLIO_HEADER.height}px`} 48px 0;
   ${getMediaQueries({type: 'mobile'})} {
     padding: ${`${PORTFOLIO_HEADER.height}px`} 12px 0;

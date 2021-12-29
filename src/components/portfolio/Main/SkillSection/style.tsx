@@ -6,6 +6,7 @@ import { PORTFOLIO_HEADER } from 'utils/constants';
 import { getMediaQueries, setFlex } from 'utils/style';
 
 export const SkillSectionLayout = styled.section`
+  background-color: ${({ theme }) => theme.sectionColors.skills};
   padding: ${`${PORTFOLIO_HEADER.height}px`} 48px 0;
   ${getMediaQueries({ type: 'mobile' })} {
     padding: ${`${PORTFOLIO_HEADER.height}px`} 12px 0;
