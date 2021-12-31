@@ -42,7 +42,7 @@ const PostPage: FunctionComponent<PostPageProps> = function ({
     <BlogTemplate title={title} description={summary || ''} url={href} image={publicURL}>
       <PostHead title={title} date={date} categories={categories} thumbnail={gatsbyImageData} />
       <MarkdownRenderer html={html} />
-      {/* <CommentWidget /> 잠시 비활성 */}
+      <CommentWidget />
     </BlogTemplate>
   );
 };
