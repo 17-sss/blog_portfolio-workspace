@@ -5,7 +5,7 @@ import { getMediaQueries } from 'utils/style';
 import { SkillContainerProps } from '.';
 
 export const SkillContainerLayout = styled(({ ...props }: SkillContainerProps) => <Card elevation={2} {...props} />)`
-  padding: 0 4px 12px;
+  padding: 16px 4px;
   margin: 12px 4px;
 
   ${getMediaQueries({ type: 'desktop' })} {

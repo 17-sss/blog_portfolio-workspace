@@ -7,15 +7,16 @@ import { getMediaQueries, setFlex } from 'utils/style';
 
 export const SkillSectionLayout = styled.section`
   background-color: ${({ theme }) => theme.sectionColors.skills};
-  padding: ${`${PORTFOLIO_HEADER.height}px`} 48px 0;
-  ${getMediaQueries({ type: 'mobile' })} {
-    padding: ${`${PORTFOLIO_HEADER.height}px`} 12px 0;
+
+  padding: ${`${PORTFOLIO_HEADER.height}px`} 48px ${`${Math.floor(PORTFOLIO_HEADER.height / 2)}px`};
+  ${getMediaQueries({type: 'mobile'})} {
+    padding: ${`${PORTFOLIO_HEADER.height}px`} 12px ${`${Math.floor(PORTFOLIO_HEADER.height / 2)}px`};
   }
 `;
 
 export const SkillSectionInnerBox = styled(InnerContainer)`
   min-height: ${`calc(100vh - ${PORTFOLIO_HEADER.height}px)`};
-  ${setFlex({ justifyContent: 'flex-start', alignItems: 'center', flexDirection: 'column' })}
+  ${setFlex({ justifyContent: 'center', alignItems: 'center', flexDirection: 'column' })}
 `;
 
 export const SkillTitleBox = styled(TitleBox)``;
