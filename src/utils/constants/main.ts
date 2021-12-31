@@ -4,7 +4,7 @@ export const BLOG_INTRODUCTION_TEXTS = {
   title: `I'm Junior Frontend Developer Hoyoung.`,
 };
 
-export const BLOG_EXCLUDE_CATEGORIES = ['TIL'];
+export const BLOG_EXCLUDE_CATEGORIES : string[] = []; // 전체적으로 비공개 할 카테고리가 있다면 여기에 추가
 
 export const BLOG_FOOTER_DESCRIPTION = [
   'Thank You for Visiting My Blog, Have a Good Day 😆',
