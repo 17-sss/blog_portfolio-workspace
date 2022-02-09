@@ -1,12 +1,6 @@
+const siteMetadata = require('./gatsby-meta-config');
 module.exports = {
-  siteMetadata: {
-    title: `Hoyoung's Library`,
-    title_portfolio: `Developer Hoyoung's portfolio`,
-    description: `꾸준함이라는 덕목이 최고의 미덕이라고 생각하는 주니어 개발자입니다.`,
-    author: `Hoyoung Son`,
-    siteUrl: `https://17-sss.github.io/`,
-    siteUrl_portfolio: `https://17-sss.github.io/portfolio`,
-  },
+  siteMetadata,
   plugins: [
     // svg 사용할 수 있도록 추가.
     {
@@ -55,14 +49,7 @@ module.exports = {
       options: {
         name: `contents`,
         path: `${__dirname}/contents`,
-        ignore: [`**/[\.|\_]*`], // 파일 앞에 ., _ 붙어있는 파일은 무시
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `portfolioContents`,
-        path: `${__dirname}/portfolio_contents`,
+        ignore: [`**/\.*`], // 파일 앞에 .(점) 붙어있는 폴더 무시
       },
     },
     {
