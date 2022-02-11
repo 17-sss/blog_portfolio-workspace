@@ -1,16 +1,16 @@
 import { FunctionComponent, useMemo } from 'react';
-import { AccordionDetailRenderer, Paragraph } from 'components/portfolio/Common';
 import ImageCarousel from '../ImageCarousel';
-import { PortfolioMarkdownNode } from 'utils/types';
-import { changeFirstCharUpperCase } from 'utils/functions';
+import { AccordionDetailRenderer, Paragraph } from 'src/components/portfolio/Common';
+import { changeFirstCharUpperCase } from 'src/utils/functions';
+import { PortfolioMarkdownNode } from 'src/queries';
 import * as S from './style';
 
-export type ProjectItemProps = PortfolioMarkdownNode & {
+export interface ProjectItemProps extends PortfolioMarkdownNode {
   idx?: number;
-};
+}
 const ProjectItem: FunctionComponent<ProjectItemProps> = function ({ idx, ...props }) {
   const { frontmatter: { portfolioInfo }, html } = props;
-  const { title, subTitle, duration: { startDate, endDate }, memberInfo, skills, images, type, links } = portfolioInfo;
+  const { title, subTitle, duration, memberInfo, skills, images, type, links } = portfolioInfo;
 
   const skillItems = useMemo(() => skills.map((v, i) => <S.Code key={i}>{v}</S.Code>), [skills]);
   const linkItems = useMemo(
@@ -41,7 +41,7 @@ const ProjectItem: FunctionComponent<ProjectItemProps> = function ({ idx, ...pro
           <S.MemberInfoText>{`(${memberInfo})`}</S.MemberInfoText>
           <S.TextBox>
             <S.NameText>기간</S.NameText>
-            <S.ValueText>{`${startDate} ~ ${endDate || 'ing'}`}</S.ValueText>
+            <S.ValueText>{`${duration.startDate} ~ ${duration.endDate || 'ing'}`}</S.ValueText>
           </S.TextBox>
           <S.TextBox>
             <S.NameText>사용 기술</S.NameText>

@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 
-import { Paragraph } from 'components/portfolio/Common';
+import { Paragraph } from 'src/components/portfolio/Common';
 import * as S from './style';
 
-export type IntroduceItemProps = {
+export interface IntroduceItemProps {
   subject?: string;
   contents?: string;
   icon?: JSX.Element;

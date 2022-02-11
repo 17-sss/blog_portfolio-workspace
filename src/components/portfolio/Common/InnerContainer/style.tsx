@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { MAX_WIDTH_INFO } from 'utils/constants';
+import { MAX_WIDTH_INFO } from 'src/utils/constants';
 
 export const InnerContainerLayout = styled.div`
   margin: 0 auto;

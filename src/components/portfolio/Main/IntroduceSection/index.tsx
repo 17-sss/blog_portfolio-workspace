@@ -4,27 +4,32 @@ import DirectionsWalkRoundedIcon from '@material-ui/icons/DirectionsWalkRounded'
 import DirectionsRunRoundedIcon from '@material-ui/icons/DirectionsRunRounded';
 import DirectionsBikeRoundedIcon from '@material-ui/icons/DirectionsBikeRounded';
 
-import { useScrollAnimations } from 'hooks';
 import IntroduceItem from '../IntroduceItem';
 import ProfileCard from '../ProfileCard';
-import { NormalGridList } from 'components/portfolio/Common';
-import { PORTFOLIO_SECTION_INFO } from 'utils/constants';
+
+import { useScrollAnimations } from 'src/hooks';
+import { NormalGridList } from 'src/components/portfolio/Common';
+import { PortfolioIntroduceType } from 'src/queries';
+
 import * as S from './style';
 
-const IntroduceSection: FunctionComponent = function ({ ...props }) {
-  const { layoutId, subTitle, introduceList, profileCard } = PORTFOLIO_SECTION_INFO.introduce;
-  const itemTexts = introduceList.items;
+interface IntroduceSectionProps extends PortfolioIntroduceType {
+  layoutId: string;
+}
+
+const IntroduceSection: FunctionComponent<IntroduceSectionProps> = function ({ ...props }) {
+  const { layoutId, text: subTitle, introduceList, profileCard } = props;
 
   const eleRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
   useScrollAnimations({ eleRef });
 
   const introduceListItems = useMemo(
     () =>
-      Object.values(itemTexts).map(({ subject, contents }, i) => {
+      Object.values(introduceList).map(({ subject, contents }, i) => {
         const icons = [<DirectionsWalkRoundedIcon />, <DirectionsRunRoundedIcon />, <DirectionsBikeRoundedIcon />];
         return <IntroduceItem key={i} idx={i} subject={subject} contents={contents} icon={icons[i]} />;
       }),
-    [itemTexts],
+    [introduceList],
   );
 
   return (

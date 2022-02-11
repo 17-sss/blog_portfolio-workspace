@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { getMediaQueries } from 'utils/style';
+import { getMediaQueries } from 'src/utils/style';
 import { NormalGridListProps } from '.';
 
 export const NormalGridListLayout = styled.ul<NormalGridListProps>`

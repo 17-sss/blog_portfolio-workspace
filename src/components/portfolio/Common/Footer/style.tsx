@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Card } from '@material-ui/core';
-import { getMediaQueries, setFlex } from 'utils/style';
+import { getMediaQueries, setFlex } from 'src/utils/style';
 import { Paragraph } from '..';
 
 export const FooterLayout = styled(({ ...props }) => <Card elevation={2} component="footer" {...props} />)`

@@ -1,5 +1,5 @@
 import { FunctionComponent, useMemo } from 'react';
-import { BLOG_EXCLUDE_CATEGORIES } from 'utils/constants';
+import { BLOG_EXCLUDE_CATEGORIES } from 'src/utils/constants';
 import * as S from './style';
 
 export type CategoryListProps = {

@@ -3,8 +3,8 @@ import { css, Theme } from '@emotion/react';
 import { AppBar, Button, Menu, MenuItem } from '@material-ui/core';
 
 import InnerContainer from '../InnerContainer';
-import { PORTFOLIO_HEADER } from 'utils/constants';
-import { setFlex, theme } from 'utils/style';
+import { setFlex, theme } from 'src/utils/style';
+import { PORTFOLIO_HEADER_HEIGHT } from 'src/utils/constants';
 
 type HeaderLayoutProps = {
   isHeaderTop: boolean;
@@ -35,7 +35,7 @@ export const HeaderLayout = styled(({ isHeaderTop, ...props }: HeaderLayoutProps
 
 export const HeaderInnerBox = styled(InnerContainer)`
   ${setFlex({ justifyContent: 'space-between', alignItems: 'center' })};
-  height: ${`${PORTFOLIO_HEADER.height}px`};
+  height: ${`${PORTFOLIO_HEADER_HEIGHT}px`};
 `;
 
 const cssHeaderBox = ((theme: Theme) => css`

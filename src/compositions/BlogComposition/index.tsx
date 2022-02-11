@@ -1,7 +1,7 @@
 import { Fragment, FunctionComponent } from 'react';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
-import { Introduction, CategoryList, PostList } from 'components/blog/Main';
-import { PostListItemType } from 'utils/types';
+import { Introduction, CategoryList, PostList } from 'src/components/blog/Main';
+import { PostListItemType } from 'src/utils/types';
 
 type BlogCompositionProps = {
   profileImage: IGatsbyImageData;

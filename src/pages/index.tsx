@@ -3,12 +3,12 @@ import queryString, { ParsedQuery } from 'query-string';
 import { graphql } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
-import BlogTemplate from 'templates/BlogTemplate';
-import { BlogComposition } from 'compositions';
+import BlogTemplate from 'src/templates/BlogTemplate';
+import { BlogComposition } from 'src/compositions';
 
-import { CategoryListProps } from 'components/blog/Main';
-import { PostListItemType } from 'utils/types';
-import { BLOG_EXCLUDE_CATEGORIES } from 'utils/constants';
+import { CategoryListProps } from 'src/components/blog/Main';
+import { PostListItemType } from 'src/utils/types';
+import { BLOG_EXCLUDE_CATEGORIES } from 'src/utils/constants';
 
 type IndexPageProps = {
   location: {
@@ -17,9 +17,13 @@ type IndexPageProps = {
   data: {
     site: {
       siteMetadata: {
-        title: string;
-        description: string;
-        siteUrl: string;
+        blog: {
+          metaData: {
+            title: string;
+            description: string;
+            siteUrl: string;
+          };
+        };
       };
     };
     allMarkdownRemark: {
@@ -38,7 +42,11 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
   location: { search },
   data: {
     site: {
-      siteMetadata: { title, description, siteUrl },
+      siteMetadata: {
+        blog: {
+          metaData: { title, description, siteUrl },
+        },
+      },
     },
     allMarkdownRemark: { edges },
     file: {
@@ -54,7 +62,11 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
     () =>
       edges.reduce(
         (list: CategoryListProps['categoryList'], data: PostListItemType) => {
-          const { node: { frontmatter: { categories, options } } } = data;
+          const {
+            node: {
+              frontmatter: { categories, options },
+            },
+          } = data;
 
           const isHide = options?.hide;
           const isExcludedCategory =
@@ -79,7 +91,7 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
   );
 
   return (
-    <BlogTemplate title={title} description={description} url={siteUrl} image={publicURL}>
+    <BlogTemplate title={title} description={description} siteUrl={siteUrl} image={publicURL}>
       <BlogComposition
         profileImage={gatsbyImageData}
         categoryList={categoryList}
@@ -96,9 +108,13 @@ export const getPostList = graphql`
   query getPostList {
     site {
       siteMetadata {
-        title
-        description
-        siteUrl
+        blog {
+          metaData {
+            title
+            description
+            siteUrl
+          }
+        }
       }
     }
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }) {

@@ -1,4 +1,4 @@
-import { UtterancesAttributesType } from 'utils/types';
+import { UtterancesAttributesType } from 'src/utils/types';
 
 export const BLOG_UTTERANCES_ATTR: UtterancesAttributesType = {
   src: 'https://utteranc.es/client.js',

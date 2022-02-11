@@ -1,14 +1,14 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import { CircularProgressProps } from '@material-ui/core/CircularProgress';
-import CustomIcon, { IconNameType } from 'components/portfolio/Common/CustomIcon';
-import { getSeparateNumStr } from 'utils/functions';
+import CustomIcon, { IconNameType } from '../CustomIcon';
+import { getSeparateNumStr } from 'src/utils/functions';
 import * as S from './style';
 
-export type CircleProgressProps = CircularProgressProps & {
+export interface CircleProgressProps extends CircularProgressProps {
   value: number;
   customColor?: { text?: string; progress?: string };
   iconName?: IconNameType;
-};
+}
 const CircleProgress: FunctionComponent<CircleProgressProps> = function ({ iconName, value, customColor, ...props }) {
   const sizeInfo = useMemo(() => {
     if (!props.size) return;

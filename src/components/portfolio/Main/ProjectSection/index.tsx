@@ -1,14 +1,18 @@
 import { FunctionComponent, MutableRefObject, useMemo, useRef } from 'react';
-import { TitleBox } from 'components/portfolio/Common';
-import { usePortfolioState } from 'utils/contexts/PortfolioContext';
-import { useScrollAnimations, ScrollAnimationsProps } from 'hooks';
-import { PORTFOLIO_SECTION_INFO } from 'utils/constants';
+import { TitleBox } from 'src/components/portfolio/Common';
+import { usePortfolioState } from 'src/utils/contexts/PortfolioContext';
+import { useScrollAnimations, ScrollAnimationsProps } from 'src/hooks';
 import ProjectItem from '../ProjectItem';
 import * as S from './style';
 
-const ProjectSection: FunctionComponent = function ({ ...props }) {
+interface ProjectSectionProps {
+  layoutId: string;
+  text: string;
+}
+
+const ProjectSection: FunctionComponent<ProjectSectionProps> = function ({ ...props }) {
+  const { layoutId, text: subTitle } = props;
   const { markdownData } = usePortfolioState();
-  const { layoutId, subTitle } = PORTFOLIO_SECTION_INFO.projects;
 
   const eleRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const animationsProps: ScrollAnimationsProps = {
@@ -19,13 +23,16 @@ const ProjectSection: FunctionComponent = function ({ ...props }) {
   useScrollAnimations(animationsProps);
 
   const projectItems = useMemo(
-    () => markdownData.reduce((result, { node }, i) => {
-      const { frontmatter: { portfolioInfo } } = node;
-      const sectionType = portfolioInfo.sectionType;
-      if (sectionType !== 'projects') return result;
-      result.push(<ProjectItem idx={i} key={i} {...node} />);
-      return result;
-    }, [] as JSX.Element[]),
+    () =>
+      markdownData.reduce((result, { node }, i) => {
+        const {
+          frontmatter: { portfolioInfo },
+        } = node;
+        const sectionType = portfolioInfo.sectionType;
+        if (sectionType !== 'projects') return result;
+        result.push(<ProjectItem idx={i} key={i} {...node} />);
+        return result;
+      }, [] as JSX.Element[]),
     [markdownData],
   );
 

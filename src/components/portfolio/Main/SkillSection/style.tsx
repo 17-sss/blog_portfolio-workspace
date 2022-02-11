@@ -1,21 +1,21 @@
 import { HTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { Button, Card, CardProps } from '@material-ui/core';
-import { InnerContainer, NormalGridList, Paragraph, TitleBox } from 'components/portfolio/Common';
-import { PORTFOLIO_HEADER } from 'utils/constants';
-import { getMediaQueries, setFlex } from 'utils/style';
+import { InnerContainer, NormalGridList, Paragraph, TitleBox } from 'src/components/portfolio/Common';
+import { getMediaQueries, setFlex } from 'src/utils/style';
+import { PORTFOLIO_HEADER_HEIGHT } from 'src/utils/constants';
 
 export const SkillSectionLayout = styled.section`
   background-color: ${({ theme }) => theme.sectionColors.skills};
 
-  padding: ${`${PORTFOLIO_HEADER.height}px`} 48px ${`${Math.floor(PORTFOLIO_HEADER.height / 2)}px`};
+  padding: ${`${PORTFOLIO_HEADER_HEIGHT}px`} 48px ${`${Math.floor(PORTFOLIO_HEADER_HEIGHT / 2)}px`};
   ${getMediaQueries({type: 'mobile'})} {
-    padding: ${`${PORTFOLIO_HEADER.height}px`} 12px ${`${Math.floor(PORTFOLIO_HEADER.height / 2)}px`};
+    padding: ${`${PORTFOLIO_HEADER_HEIGHT}px`} 12px ${`${Math.floor(PORTFOLIO_HEADER_HEIGHT / 2)}px`};
   }
 `;
 
 export const SkillSectionInnerBox = styled(InnerContainer)`
-  min-height: ${`calc(100vh - ${PORTFOLIO_HEADER.height}px)`};
+  min-height: ${`calc(100vh - ${PORTFOLIO_HEADER_HEIGHT}px)`};
   ${setFlex({ justifyContent: 'center', alignItems: 'center', flexDirection: 'column' })}
 `;
 

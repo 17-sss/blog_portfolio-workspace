@@ -1,7 +1,7 @@
 // react-responsive 라이브러리 활용
 import { FunctionComponent, Fragment } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { getMediaQueries } from 'utils/style';
+import { getMediaQueries } from 'src/utils/style';
 
 export const TabletDesktop: FunctionComponent = function ({ children }) {
   const isTabletDesktop = useMediaQuery({ query: getMediaQueries({ type: 'tabletDesktop', isAtMedia: false }) });

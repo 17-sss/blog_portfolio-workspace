@@ -1,11 +1,11 @@
 import { FunctionComponent, useMemo } from 'react';
-import { PortfolioImage } from 'utils/types';
+import { PortfolioImageType } from 'src/queries';
 import * as S from './style';
 
 export type WaveGraphicProps = {
   waveImages: {
-    waveImg: PortfolioImage | null;
-    waveBackImg: PortfolioImage | null;
+    waveImg: PortfolioImageType | null;
+    waveBackImg: PortfolioImageType | null;
   }
 };
 

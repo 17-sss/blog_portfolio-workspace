@@ -1,44 +1,28 @@
 import { FunctionComponent, useEffect } from 'react';
 
-import Template, { TemplateProps } from './Template';
-import { Header, Footer, MainContainer, GlobalStyle } from 'components/portfolio/Common';
+import Template from './Template';
+import { GlobalStyle } from 'src/components/portfolio/Common';
 
-import { usePortfolioDispatch } from 'utils/contexts/PortfolioContext';
-import { PortfolioImage, PortfolioMarkdownData } from 'utils/types';
+import { usePortfolioDispatch } from 'src/utils/contexts/PortfolioContext';
+import { getPortfolioMarkdown, getPortfolioMetaData } from 'src/queries';
 
-type PortfolioTemplateProps = TemplateProps & {
-  markdownData: PortfolioMarkdownData[];
-  waveImages: {
-    waveImg: PortfolioImage | null;
-    waveBackImg: PortfolioImage | null;
-  };
-};
-
-const PortfolioTemplate: FunctionComponent<PortfolioTemplateProps> = ({
-  title,
-  description,
-  url,
-  image,
-  markdownData,
-  waveImages,
-  children,
-  ...props
-}) => {
+const PortfolioTemplate: FunctionComponent = ({ children }) => {
+  const markdownData = getPortfolioMarkdown();
+  const { waveBackImg, waveImg, profileImg, metaData } = getPortfolioMetaData();
   const portfolioDispatch = usePortfolioDispatch();
+
   useEffect(() => {
     portfolioDispatch({
       type: 'SET_WAVE_IMG_URL',
-      payload: waveImages,
+      payload: { waveImg, waveBackImg },
     });
     portfolioDispatch({ type: 'SET_MARKDOWN_DATA', payload: markdownData });
   }, [markdownData]);
 
   return (
-    <Template title={title} description={description} url={url} image={image} {...props}>
+    <Template {...{ ...metaData, image: profileImg.publicURL }}>
       <GlobalStyle />
-      <Header />
-      <MainContainer>{children}</MainContainer>
-      <Footer />
+      {children}
     </Template>
   );
 };

@@ -1,13 +1,13 @@
 import { FunctionComponent, useMemo } from 'react';
 
+import { IconButton } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
-import { Paragraph } from 'components/portfolio/Common';
-import { IconButton } from '@material-ui/core';
-import { ProfileCardTypes as ProfileCardProps } from 'utils/constants';
-import { changeFirstCharUpperCase } from 'utils/functions';
+import { Paragraph } from 'src/components/portfolio/Common';
+import { changeFirstCharUpperCase } from 'src/utils/functions';
+import { ProfileCardType as ProfileCardProps } from 'src/queries';
 
 import * as S from './style';
 

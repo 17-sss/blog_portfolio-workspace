@@ -1,18 +1,18 @@
 import { createContext, Dispatch, useReducer, useContext, FunctionComponent } from 'react';
-import { PortfolioImage, PortfolioMarkdownData } from 'utils/types';
+import { PortfolioImageType, PortfolioMarkdownNodeEdges } from 'src/queries';
 
 type WaveImageProps = {
-  waveImg: PortfolioImage | null;
-  waveBackImg: PortfolioImage | null;
+  waveImg: PortfolioImageType | null;
+  waveBackImg: PortfolioImageType | null;
 };
 // ---
 
 type PortfolioState = {
   waveImages: {
-    waveImg: PortfolioImage | null;
-    waveBackImg: PortfolioImage | null;
+    waveImg: PortfolioImageType | null;
+    waveBackImg: PortfolioImageType | null;
   };
-  markdownData: PortfolioMarkdownData[];
+  markdownData: PortfolioMarkdownNodeEdges[];
 };
 
 const initState: PortfolioState = {
@@ -31,7 +31,7 @@ type PortfolioAction =
     }
   | {
       type: 'SET_MARKDOWN_DATA';
-      payload: PortfolioMarkdownData[];
+      payload: PortfolioMarkdownNodeEdges[];
     };
 type PortfolioDispatch = Dispatch<PortfolioAction>;
 const PortfolioDispatchContext = createContext<PortfolioDispatch | undefined>(undefined);

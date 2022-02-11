@@ -5,17 +5,34 @@ import CircularSkillItem from '../CircularSkillItem';
 import SkillContainer from '../SkillContainer';
 import SkillItem from '../SkillItem';
 
-import { usePortfolioState } from 'utils/contexts/PortfolioContext';
-import { useCheckMediaQuery, useScrollAnimations } from 'hooks';
-import { TabletDesktop } from 'components/common';
-import { DetailRenderer } from 'components/portfolio/Common';
-import { PORTFOLIO_SECTION_INFO, SkillCategoryNames } from 'utils/constants';
-import { findIconName } from 'components/portfolio/Common/CustomIcon';
+import { usePortfolioState } from 'src/utils/contexts/PortfolioContext';
+import { useCheckMediaQuery, useScrollAnimations } from 'src/hooks';
+import { TabletDesktop } from 'src/components/common';
+import { DetailRenderer } from 'src/components/portfolio/Common';
+import { findIconName } from 'src/components/portfolio/Common/CustomIcon';
+
 import * as S from './style';
 
-type SkillItemsType = { [name in SkillCategoryNames]: React.ReactNode };
-const SkillSection: FunctionComponent = function ({ ...props }) {
-  const { layoutId, subTitle, skillList, isUseTopSkillCards } = PORTFOLIO_SECTION_INFO.skills;
+const skillNames = ['backend', 'communication', 'frontend', 'tools'] as const;
+type SkillNames = typeof skillNames[number];
+type SkillItemsType = { [name in SkillNames]: React.ReactNode };
+
+interface SkillSectionProps {
+  layoutId: string;
+  text: string;
+  skillList: {
+    [name in SkillNames]: { name: string; color: string }[];
+  };
+  isUseTopSkillCards: boolean;
+  topSkillList: {
+    name: string;
+    color: string;
+    percent: number;
+  }[];
+}
+
+const SkillSection: FunctionComponent<SkillSectionProps> = function ({ ...props }) {
+  const { layoutId, text: subTitle, skillList, isUseTopSkillCards, topSkillList } = props;
   const { markdownData } = usePortfolioState();
 
   const [isTopSkillHover, setIsTopSkillHover] = useState<boolean>(false);
@@ -27,7 +44,8 @@ const SkillSection: FunctionComponent = function ({ ...props }) {
 
   // 접해봤던 기술들
   const skillContainers = useMemo(() => {
-    const skillListKeys = Object.keys(skillList) as SkillCategoryNames[];
+    const skillListKeys = Object.keys(skillList) as SkillNames[];
+
     const result = skillListKeys.reduce((result, keyName, i) => {
       const currData = skillList[keyName];
       const arrEle = currData.map(({ name, color }, i) => {
@@ -47,9 +65,8 @@ const SkillSection: FunctionComponent = function ({ ...props }) {
   // 주 사용 기술 (isUseTopSkillCards가 true일 경우에만 표시) =================================
   // 주 사용 기술 Items
   const topSkillItems = useMemo(() => {
-    const frontendSkills = skillList['Front-end'];
     const SIZE = isDesktop ? 160 : 150;
-    return frontendSkills.slice(0, 5).map((v, i) => {
+    return topSkillList.slice(0, 5).map((v, i) => {
       const { name, color, percent } = v;
       const value = percent ?? 0;
       return <CircularSkillItem key={i} size={SIZE} {...{ name, value, color }} />;
@@ -90,7 +107,7 @@ const SkillSection: FunctionComponent = function ({ ...props }) {
         )}
 
         <S.SkillContainerBox>
-          {(Object.keys(skillContainers) as SkillCategoryNames[]).map((key, i) => (
+          {(Object.keys(skillContainers) as SkillNames[]).map((key, i) => (
             <Fragment key={i}>{skillContainers[key]}</Fragment>
           ))}
         </S.SkillContainerBox>

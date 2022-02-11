@@ -1,20 +1,21 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import { Helmet } from 'react-helmet';
-import { META_DATA } from 'utils/constants';
 
-export type TemplateProps = {
+import { getCommonMetaData } from 'src/queries';
+
+export interface TemplateProps {
   title: string;
   description: string;
-  url: string;
+  siteUrl: string;
   image: string;
   children: ReactNode;
-};
+}
 
-const Template: FunctionComponent<TemplateProps> = function ({ title, description, image, url, children }) {
+const Template: FunctionComponent<TemplateProps> = function ({ title, description, image, siteUrl, children }) {
   const {
     twitter: { site, creator },
     webMasterKeys: { google, naver },
-  } = META_DATA;
+  } = getCommonMetaData();
 
   return (
     <>
@@ -29,7 +30,7 @@ const Template: FunctionComponent<TemplateProps> = function ({ title, descriptio
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
-        <meta property="og:url" content={url} />
+        <meta property="og:url" content={siteUrl} />
         <meta property="og:site_name" content={title} />
 
         <meta name="twitter:card" content="summary" />

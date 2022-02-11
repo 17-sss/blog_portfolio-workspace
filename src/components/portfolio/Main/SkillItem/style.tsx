@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { getMediaQueries, setFlex } from 'utils/style';
+import { getMediaQueries, setFlex } from 'src/utils/style';
 import { SkillItemProps } from '.';
 
 export const SkillItemLayout = styled.li<Pick<SkillItemProps, 'color'>>`

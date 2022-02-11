@@ -2,20 +2,22 @@ import React, { FunctionComponent, useCallback } from 'react';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
 import WaveGraphic from '../WaveGraphic';
-import { usePortfolioState } from 'utils/contexts/PortfolioContext';
+import { usePortfolioState } from 'src/utils/contexts/PortfolioContext';
 
-import { PORTFOLIO_SECTION_INFO } from 'utils/constants';
 import * as S from './style';
 
-const HomeSection: FunctionComponent = function ({ ...props }) {
-  const { waveImages } = usePortfolioState();
-  const { layoutId, greetingText } = PORTFOLIO_SECTION_INFO.home;
+interface HomeSectionProps {
+  layoutId: string;
+  text: string;
+}
 
-  const handleScrollDownButtonClick = useCallback((e : React.MouseEvent<HTMLButtonElement>) => {
-    const closestTarget = (e.target as HTMLElement).closest("button");
+const HomeSection: FunctionComponent<HomeSectionProps> = function ({ layoutId, text, ...props }) {
+  const { waveImages } = usePortfolioState();
+
+  const handleScrollDownButtonClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    const closestTarget = (e.target as HTMLElement).closest('button');
     if (!closestTarget) return;
 
-    const layoutId = PORTFOLIO_SECTION_INFO["introduce"].layoutId;
     const sectionEle = document.querySelector(`#${layoutId}`) as HTMLElement;
     if (!sectionEle) return;
 
@@ -32,7 +34,7 @@ const HomeSection: FunctionComponent = function ({ ...props }) {
       </S.WaveGraphicBox>
 
       <S.HomeSectionInnerBox>
-        <S.IntroParagraph align="center">{greetingText}</S.IntroParagraph>
+        <S.IntroParagraph align="center">{text}</S.IntroParagraph>
         <S.ScrollInfoBox>
           <span>Scroll Down</span>
           <S.ScrollDownButton onClick={handleScrollDownButtonClick} aria-label={'Scroll Down'}>

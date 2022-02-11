@@ -10,17 +10,15 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "components/*": ["./components/*"],
-      "utils/*": ["./utils/*"],
-      "hooks/*": ["./hooks/*"]
+      "src": ["./src/*"]
     },
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }

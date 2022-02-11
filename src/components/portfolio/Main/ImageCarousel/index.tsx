@@ -2,10 +2,13 @@ import { FunctionComponent, HTMLAttributes, useMemo } from 'react';
 import { TCarouselProps } from 'rano-react-carousel'; // 내가 만든 캐러셀 적용
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import { PortfolioImage } from 'utils/types';
+import { PortfolioImageType } from 'src/queries';
 import * as S from './style';
 
-export type ImageCarouselProps = HTMLAttributes<HTMLDivElement> & { title: string; images: PortfolioImage[] };
+interface ImageCarouselProps extends HTMLAttributes<HTMLDivElement> {
+  title: string;
+  images: PortfolioImageType[];
+}
 const ImageCarousel: FunctionComponent<ImageCarouselProps> = function ({ title, images, ...props }) {
   const carouselImages = useMemo(() => {
     if (!images || !images.length) return;
