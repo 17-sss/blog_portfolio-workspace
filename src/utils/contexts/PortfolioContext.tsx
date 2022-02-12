@@ -1,5 +1,5 @@
 import { createContext, Dispatch, useReducer, useContext, FunctionComponent } from 'react';
-import { PortfolioImageType, PortfolioMarkdownNodeEdges } from 'src/queries';
+import { PortfolioImageType, PortfolioMarkdownNodeEdges } from '@hooks/queries';
 
 type WaveImageProps = {
   waveImg: PortfolioImageType | null;

@@ -5,11 +5,11 @@ import CircularSkillItem from '../CircularSkillItem';
 import SkillContainer from '../SkillContainer';
 import SkillItem from '../SkillItem';
 
-import { usePortfolioState } from 'src/utils/contexts/PortfolioContext';
-import { useCheckMediaQuery, useScrollAnimations } from 'src/hooks';
-import { TabletDesktop } from 'src/components/common';
-import { DetailRenderer } from 'src/components/portfolio/Common';
-import { findIconName } from 'src/components/portfolio/Common/CustomIcon';
+import { usePortfolioState } from '@utils/contexts/PortfolioContext';
+import { useCheckMediaQuery, useScrollAnimations } from '@hooks/common';
+import { TabletDesktop } from '@components/common';
+import { DetailRenderer } from '@components/portfolio/Common';
+import { findIconName } from '@components/portfolio/Common/CustomIcon';
 
 import * as S from './style';
 

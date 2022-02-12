@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { throttle } from 'src/utils/functions';
+import { throttle } from '@utils/functions';
 
 const useIsHeaderTop = function (delay: number = 100) {
   const [isHeaderTop, setIsHeaderTop] = useState<boolean>(false);

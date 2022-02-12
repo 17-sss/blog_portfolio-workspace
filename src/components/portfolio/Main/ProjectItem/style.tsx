@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Card, CardContent } from '@material-ui/core';
-import { Paragraph } from 'src/components/portfolio/Common';
-import { getMediaQueries, setFlex } from 'src/utils/style';
+import { Paragraph } from '@components/portfolio/Common';
+import { getMediaQueries, setFlex } from '@utils/style';
 
 export const ProjectItemLayout = styled(({ ...props }) => <Card component="li" elevation={2} {...props} />)`
   padding: 24px;

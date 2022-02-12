@@ -1,9 +1,9 @@
 import { FunctionComponent, useMemo } from 'react';
 import styled from '@emotion/styled';
-import PostItem from 'src/components/blog/Main/PostItem';
-import { PostListItemType } from 'src/utils/types';
-import useInfiniteScroll from 'src/hooks/useInfiniteScroll';
-import { BLOG_EXCLUDE_CATEGORIES } from 'src/utils/constants';
+import PostItem from '@components/blog/Main/PostItem';
+import { PostListItemType } from '@utils/types';
+import { useInfiniteScroll } from '@hooks/common';
+import { BLOG_EXCLUDE_CATEGORIES } from '@utils/constants';
 
 type PostListProps = {
   selectedCategory: string;

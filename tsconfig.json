@@ -10,9 +10,25 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
-      "src": ["./src/*"]
+      "@components": ["./components"],
+      "@components/*": ["./components/*"],
+
+      "@compositions": ["./compositions"],
+      "@compositions/*": ["./compositions/*"],
+
+      "@hooks": ["./hooks"],
+      "@hooks/*": ["./hooks/*"],
+
+      "@pages": ["./pages"],
+      "@pages/*": ["./pages/*"],
+
+      "@templates": ["./templates"],
+      "@templates/*": ["./templates/*"],
+
+      "@utils": ["./utils"],
+      "@utils/*": ["./utils/*"],
     },
     "esModuleInterop": true,
     "skipLibCheck": true,

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Card, CardContent } from '@material-ui/core';
-import { setFlex, getMediaQueries } from 'src/utils/style';
+import { setFlex, getMediaQueries } from '@utils/style';
 import { IntroduceItemProps } from '.';
 
 type IntroduceItemLayoutProps = Pick<IntroduceItemProps, 'idx' | 'duration'>;

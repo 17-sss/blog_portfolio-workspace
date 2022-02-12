@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import { Helmet } from 'react-helmet';
 
-import { getCommonMetaData } from 'src/queries';
+import { useCommonMetaData } from '@hooks/queries';
 
 export interface TemplateProps {
   title: string;
@@ -15,7 +15,7 @@ const Template: FunctionComponent<TemplateProps> = function ({ title, descriptio
   const {
     twitter: { site, creator },
     webMasterKeys: { google, naver },
-  } = getCommonMetaData();
+  } = useCommonMetaData();
 
   return (
     <>

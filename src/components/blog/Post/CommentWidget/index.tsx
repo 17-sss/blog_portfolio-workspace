@@ -1,5 +1,5 @@
 import React, { createRef, FunctionComponent, useEffect } from 'react';
-import { BLOG_UTTERANCES_ATTR } from 'src/utils/constants';
+import { BLOG_UTTERANCES_ATTR } from '@utils/constants';
 import * as S from './style';
 
 const CommentWidget: FunctionComponent = function () {

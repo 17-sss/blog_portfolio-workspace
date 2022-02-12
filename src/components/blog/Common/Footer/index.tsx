@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import styled from '@emotion/styled';
-import { BLOG_FOOTER_DESCRIPTION } from 'src/utils/constants';
+import { BLOG_FOOTER_DESCRIPTION } from '@utils/constants';
 
 type FooterProps = {
   text?: string;

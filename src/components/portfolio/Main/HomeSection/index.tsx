@@ -2,7 +2,7 @@ import React, { FunctionComponent, useCallback } from 'react';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
 import WaveGraphic from '../WaveGraphic';
-import { usePortfolioState } from 'src/utils/contexts/PortfolioContext';
+import { usePortfolioState } from '@utils/contexts/PortfolioContext';
 
 import * as S from './style';
 

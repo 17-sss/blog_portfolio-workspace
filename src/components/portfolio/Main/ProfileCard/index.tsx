@@ -5,9 +5,9 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
-import { Paragraph } from 'src/components/portfolio/Common';
-import { changeFirstCharUpperCase } from 'src/utils/functions';
-import { ProfileCardType as ProfileCardProps } from 'src/queries';
+import { Paragraph } from '@components/portfolio/Common';
+import { changeFirstCharUpperCase } from '@utils/functions';
+import { ProfileCardType as ProfileCardProps } from '@hooks/queries';
 
 import * as S from './style';
 

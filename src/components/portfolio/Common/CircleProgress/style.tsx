@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { CircularProgress, CircularProgressProps } from '@material-ui/core';
-import { setFlex } from 'src/utils/style';
+import { setFlex } from '@utils/style';
 import { Paragraph } from '..';
 
 export const CircleProgressLayout = styled.div`

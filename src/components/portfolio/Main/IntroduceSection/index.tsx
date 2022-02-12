@@ -7,9 +7,9 @@ import DirectionsBikeRoundedIcon from '@material-ui/icons/DirectionsBikeRounded'
 import IntroduceItem from '../IntroduceItem';
 import ProfileCard from '../ProfileCard';
 
-import { useScrollAnimations } from 'src/hooks';
-import { NormalGridList } from 'src/components/portfolio/Common';
-import { PortfolioIntroduceType } from 'src/queries';
+import { useScrollAnimations } from '@hooks/common';
+import { NormalGridList } from '@components/portfolio/Common';
+import { PortfolioIntroduceType } from '@hooks/queries';
 
 import * as S from './style';
 

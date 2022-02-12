@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { getMediaQueries, MediaTypes } from 'src/utils/style';
+import { getMediaQueries, MediaTypes } from '@utils/style';
 
 const useCheckMediaQuery = function (type: MediaTypes) {
   const [isOK, setIsOK] = useState<boolean>(false);

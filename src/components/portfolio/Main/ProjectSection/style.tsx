@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { InnerContainer } from 'src/components/portfolio/Common';
-import { PORTFOLIO_HEADER_HEIGHT } from 'src/utils/constants';
-import { setFlex, getMediaQueries } from 'src/utils/style';
+import { InnerContainer } from '@components/portfolio/Common';
+import { PORTFOLIO_HEADER_HEIGHT } from '@utils/constants';
+import { setFlex, getMediaQueries } from '@utils/style';
 
 export const ProjectSectionLayout = styled.section`
   background-color: ${({ theme }) => theme.sectionColors.projects};

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Button } from '@material-ui/core';
-import { InnerContainer, Paragraph } from 'src/components/portfolio/Common';
-import { setFlex, getMediaQueries, theme } from 'src/utils/style';
+import { InnerContainer, Paragraph } from '@components/portfolio/Common';
+import { setFlex, getMediaQueries, theme } from '@utils/style';
 
 export const HomeSectionLayout = styled.section`
   padding: 0 48px;

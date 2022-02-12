@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { PostFrontmatterType } from 'src/utils/types';
+import { PostFrontmatterType } from '@utils/types';
 import * as S from './style';
 
 type PostItemProps = PostFrontmatterType & { link: string };

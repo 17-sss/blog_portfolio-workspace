@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import GlobalStyle from 'src/components/blog/Common/GlobalStyle';
-import { NOTFOUND_DESCRIPTION, NOTFOUND_TEXTS } from 'src/utils/constants';
+import GlobalStyle from '@components/blog/Common/GlobalStyle';
+import { NOTFOUND_DESCRIPTION, NOTFOUND_TEXTS } from '@utils/constants';
 
 const NotFoundPage: FunctionComponent = function () {
   const defaultDesc = useMemo(() => NOTFOUND_DESCRIPTION.map((text, idx) => <p key={idx}>{text}</p>), []);

@@ -3,7 +3,7 @@ import { PortfolioMetaDataQuery } from './types';
 
 export * from './types';
 
-export const getPortfolioMetaData = function () {
+export const usePortfolioMetaData = function () {
   const {
     profileImg,
     site: {

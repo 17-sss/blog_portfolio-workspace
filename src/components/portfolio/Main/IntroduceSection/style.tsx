@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { InnerContainer, TitleBox } from 'src/components/portfolio/Common';
-import { setFlex, getMediaQueries } from 'src/utils/style';
-import { PORTFOLIO_HEADER_HEIGHT } from 'src/utils/constants';
+import { InnerContainer, TitleBox } from '@components/portfolio/Common';
+import { setFlex, getMediaQueries } from '@utils/style';
+import { PORTFOLIO_HEADER_HEIGHT } from '@utils/constants';
 
 // IntroduceSection : Default
 export const IntroduceSectionLayout = styled.section`

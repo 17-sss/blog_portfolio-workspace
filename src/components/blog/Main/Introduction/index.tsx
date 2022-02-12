@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
-import ProfileImage from 'src/components/blog/Main/ProfileImage';
-import { BLOG_INTRODUCTION_TEXTS } from 'src/utils/constants';
+import ProfileImage from '@components/blog/Main/ProfileImage';
+import { BLOG_INTRODUCTION_TEXTS } from '@utils/constants';
 import * as S from './style';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 

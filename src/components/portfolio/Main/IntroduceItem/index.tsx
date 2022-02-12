@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { Paragraph } from 'src/components/portfolio/Common';
+import { Paragraph } from '@components/portfolio/Common';
 import * as S from './style';
 
 export interface IntroduceItemProps {

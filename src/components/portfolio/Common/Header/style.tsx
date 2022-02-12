@@ -3,8 +3,8 @@ import { css, Theme } from '@emotion/react';
 import { AppBar, Button, Menu, MenuItem } from '@material-ui/core';
 
 import InnerContainer from '../InnerContainer';
-import { setFlex, theme } from 'src/utils/style';
-import { PORTFOLIO_HEADER_HEIGHT } from 'src/utils/constants';
+import { setFlex, theme } from '@utils/style';
+import { PORTFOLIO_HEADER_HEIGHT } from '@utils/constants';
 
 type HeaderLayoutProps = {
   isHeaderTop: boolean;

@@ -1,14 +1,14 @@
 import { FunctionComponent, useEffect } from 'react';
 
 import Template from './Template';
-import { GlobalStyle } from 'src/components/portfolio/Common';
+import { GlobalStyle } from '@components/portfolio/Common';
 
-import { usePortfolioDispatch } from 'src/utils/contexts/PortfolioContext';
-import { getPortfolioMarkdown, getPortfolioMetaData } from 'src/queries';
+import { usePortfolioDispatch } from '@utils/contexts/PortfolioContext';
+import { usePortfolioMarkdownData, usePortfolioMetaData } from '@hooks/queries';
 
 const PortfolioTemplate: FunctionComponent = ({ children }) => {
-  const markdownData = getPortfolioMarkdown();
-  const { waveBackImg, waveImg, profileImg, metaData } = getPortfolioMetaData();
+  const markdownData = usePortfolioMarkdownData();
+  const { waveBackImg, waveImg, profileImg, metaData } = usePortfolioMetaData();
   const portfolioDispatch = usePortfolioDispatch();
 
   useEffect(() => {

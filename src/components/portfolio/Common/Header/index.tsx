@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import { Mobile, TabletDesktop } from 'src/components/common/MediaQuery';
-import { useIsHeaderTop } from 'src/hooks';
-import { changeFirstCharUpperCase } from 'src/utils/functions';
-import { PortfolioSectionNameType, portfolioSectionNames, portfolioSectionIdInfo } from 'src/utils/constants';
+import { Mobile, TabletDesktop } from '@components/common/MediaQuery';
+import { useIsHeaderTop } from '@hooks/common';
+import { changeFirstCharUpperCase } from '@utils/functions';
+import { PortfolioSectionNameType, portfolioSectionNames, portfolioSectionIdInfo } from '@utils/constants';
 
 import * as S from './style';
 

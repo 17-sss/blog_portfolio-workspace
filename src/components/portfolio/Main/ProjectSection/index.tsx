@@ -1,7 +1,7 @@
 import { FunctionComponent, MutableRefObject, useMemo, useRef } from 'react';
-import { TitleBox } from 'src/components/portfolio/Common';
-import { usePortfolioState } from 'src/utils/contexts/PortfolioContext';
-import { useScrollAnimations, ScrollAnimationsProps } from 'src/hooks';
+import { TitleBox } from '@components/portfolio/Common';
+import { usePortfolioState } from '@utils/contexts/PortfolioContext';
+import { useScrollAnimations, ScrollAnimationsProps } from '@hooks/common';
 import ProjectItem from '../ProjectItem';
 import * as S from './style';
 

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { setWaveAnimation } from 'src/utils/style';
+import { setWaveAnimation } from '@utils/style';
 
 // WaveGraphicLayout
 export const WaveGraphicLayout = styled.div`

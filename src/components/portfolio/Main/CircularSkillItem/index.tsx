@@ -1,6 +1,6 @@
 import { FunctionComponent, useMemo } from 'react';
-import CircleProgress, { CircleProgressProps } from 'src/components/portfolio/Common/CircleProgress';
-import { findIconName } from 'src/components/portfolio/Common/CustomIcon';
+import CircleProgress, { CircleProgressProps } from '@components/portfolio/Common/CircleProgress';
+import { findIconName } from '@components/portfolio/Common/CustomIcon';
 import * as S from './style';
 
 type CircularSkillItemProps = Pick<CircleProgressProps, 'size' | 'value'> & { name: string; color: string };

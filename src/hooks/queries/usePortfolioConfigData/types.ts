@@ -65,7 +65,7 @@ export interface PortfolioConfigQuery {
             projects: {
               /*
                   각 프로젝트의 내용 데이터는 "./contents/_portfolio" 안에 있는 Markdown파일들을 불러옴  
-                  (hooks/queries의 getPortfolioMarkdown() 참고)
+                  (hooks/queries의 usePortfolioMarkdownData() 참고)
                 */
               text: string;
             };

@@ -3,7 +3,7 @@ import { PortfolioMarkdownQuery } from './types';
 
 export * from './types';
 
-export const getPortfolioMarkdown = function () {
+export const usePortfolioMarkdownData = function () {
   const {
     allMarkdownRemark: { edges: markdownData },
   } = useStaticQuery<PortfolioMarkdownQuery>(graphql`

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { getMediaQueries, setFlex } from 'src/utils/style';
+import { getMediaQueries, setFlex } from '@utils/style';
 
 export const CircularSkillItemLayout = styled.li`
   ${setFlex({ alignItems: 'center', justifyContent: 'center' })}

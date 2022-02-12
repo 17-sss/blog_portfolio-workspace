@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { MarkdownRenderer } from 'src/components/common';
-import { getMediaQueries } from 'src/utils/style';
+import { MarkdownRenderer } from '@components/common';
+import { getMediaQueries } from '@utils/style';
 
 export const DetailRendererLayout = styled(MarkdownRenderer)`
   padding: 0;

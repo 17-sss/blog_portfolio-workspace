@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import CustomIcon, { IconNameType } from 'src/components/portfolio/Common/CustomIcon';
+import CustomIcon, { IconNameType } from '@components/portfolio/Common/CustomIcon';
 import * as S from './style';
 
 export type SkillItemProps = { iconType?: IconNameType, color?: string; };

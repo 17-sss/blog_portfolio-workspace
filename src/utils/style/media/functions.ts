@@ -1,5 +1,5 @@
-import { MAX_WIDTH_INFO } from 'src/utils/constants';
-import { isNullOrUndefined } from 'src/utils/functions';
+import { MAX_WIDTH_INFO } from '@utils/constants';
+import { isNullOrUndefined } from '@utils/functions';
 
 type CreateResponseType = {
   minWidth?: number;

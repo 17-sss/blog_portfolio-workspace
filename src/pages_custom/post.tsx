@@ -2,10 +2,10 @@
 import React, { FunctionComponent, useEffect } from 'react';
 import { graphql } from 'gatsby';
 
-import BlogTemplate from 'src/templates/BlogTemplate';
-import { MarkdownRenderer } from 'src/components/common';
-import { PostHead, CommentWidget } from 'src/components/blog/Post';
-import { PostPageItemType } from 'src/utils/types';
+import BlogTemplate from '@templates/BlogTemplate';
+import { MarkdownRenderer } from '@components/common';
+import { PostHead, CommentWidget } from '@components/blog/Post';
+import { PostPageItemType } from '@utils/types';
 
 type PostPageProps = {
   data: {

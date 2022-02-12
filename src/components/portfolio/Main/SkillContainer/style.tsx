@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { Card } from '@material-ui/core';
 
-import { Paragraph } from 'src/components/portfolio/Common';
-import { getMediaQueries } from 'src/utils/style';
+import { Paragraph } from '@components/portfolio/Common';
+import { getMediaQueries } from '@utils/style';
 
 import { SkillContainerProps } from '.';
 

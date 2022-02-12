@@ -3,12 +3,12 @@ import queryString, { ParsedQuery } from 'query-string';
 import { graphql } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
-import BlogTemplate from 'src/templates/BlogTemplate';
-import { BlogComposition } from 'src/compositions';
+import BlogTemplate from '@templates/BlogTemplate';
+import { BlogComposition } from '@compositions';
 
-import { CategoryListProps } from 'src/components/blog/Main';
-import { PostListItemType } from 'src/utils/types';
-import { BLOG_EXCLUDE_CATEGORIES } from 'src/utils/constants';
+import { CategoryListProps } from '@components/blog/Main';
+import { PostListItemType } from '@utils/types';
+import { BLOG_EXCLUDE_CATEGORIES } from '@utils/constants';
 
 type IndexPageProps = {
   location: {

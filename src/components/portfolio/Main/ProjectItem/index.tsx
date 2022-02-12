@@ -1,8 +1,8 @@
 import { FunctionComponent, useMemo } from 'react';
 import ImageCarousel from '../ImageCarousel';
-import { AccordionDetailRenderer, Paragraph } from 'src/components/portfolio/Common';
-import { changeFirstCharUpperCase } from 'src/utils/functions';
-import { PortfolioMarkdownNode } from 'src/queries';
+import { AccordionDetailRenderer, Paragraph } from '@components/portfolio/Common';
+import { changeFirstCharUpperCase } from '@utils/functions';
+import { PortfolioMarkdownNode } from '@hooks/queries';
 import * as S from './style';
 
 export interface ProjectItemProps extends PortfolioMarkdownNode {

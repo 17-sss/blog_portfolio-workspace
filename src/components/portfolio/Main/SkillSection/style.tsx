@@ -1,9 +1,9 @@
 import { HTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 import { Button, Card, CardProps } from '@material-ui/core';
-import { InnerContainer, NormalGridList, Paragraph, TitleBox } from 'src/components/portfolio/Common';
-import { getMediaQueries, setFlex } from 'src/utils/style';
-import { PORTFOLIO_HEADER_HEIGHT } from 'src/utils/constants';
+import { InnerContainer, NormalGridList, Paragraph, TitleBox } from '@components/portfolio/Common';
+import { getMediaQueries, setFlex } from '@utils/style';
+import { PORTFOLIO_HEADER_HEIGHT } from '@utils/constants';
 
 export const SkillSectionLayout = styled.section`
   background-color: ${({ theme }) => theme.sectionColors.skills};

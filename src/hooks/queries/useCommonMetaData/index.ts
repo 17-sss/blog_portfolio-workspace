@@ -3,7 +3,7 @@ import { CommonMetaDataQuery } from './types';
 
 export * from './types';
 
-export const getCommonMetaData = function () {
+export const useCommonMetaData = function () {
   const {
     site: {
       siteMetadata: {

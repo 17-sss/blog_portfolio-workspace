@@ -3,7 +3,7 @@ import { PortfolioConfigQuery } from './types';
 
 export * from './types';
 
-export const getPortfolioConfig = function () {
+export const usePortfolioConfigData = function () {
   const {
     site: {
       siteMetadata: {

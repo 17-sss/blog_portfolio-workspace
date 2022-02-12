@@ -1,11 +1,11 @@
 import { FunctionComponent } from 'react';
 import { ThemeProvider } from '@emotion/react';
 import { StylesProvider } from '@material-ui/core/styles';
-import { PortfolioContextProvider } from 'src/utils/contexts/PortfolioContext';
+import { PortfolioContextProvider } from '@utils/contexts/PortfolioContext';
 
-import PortfolioTemplate from 'src/templates/PortfolioTemplate';
-import { PortfolioComposition } from 'src/compositions';
-import { theme } from 'src/utils/style';
+import PortfolioTemplate from '@templates/PortfolioTemplate';
+import { PortfolioComposition } from '@compositions';
+import { theme } from '@utils/style';
 
 const PortfolioPage: FunctionComponent = function () {
   return (

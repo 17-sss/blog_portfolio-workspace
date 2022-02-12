@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import { CircularProgressProps } from '@material-ui/core/CircularProgress';
 import CustomIcon, { IconNameType } from '../CustomIcon';
-import { getSeparateNumStr } from 'src/utils/functions';
+import { getSeparateNumStr } from '@utils/functions';
 import * as S from './style';
 
 export interface CircleProgressProps extends CircularProgressProps {
