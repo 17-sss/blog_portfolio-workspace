@@ -1,16 +1,17 @@
 import { createContext, Dispatch, useReducer, useContext, FunctionComponent } from 'react';
-import { PortfolioImageType, PortfolioMarkdownNodeEdges } from '@hooks/queries';
+import { PortfolioMarkdownNodeEdges } from '@hooks/queries';
+import { ImageType } from '@utils/types';
 
 type WaveImageProps = {
-  waveImg: PortfolioImageType | null;
-  waveBackImg: PortfolioImageType | null;
+  waveImg: ImageType | null;
+  waveBackImg: ImageType | null;
 };
 // ---
 
 type PortfolioState = {
   waveImages: {
-    waveImg: PortfolioImageType | null;
-    waveBackImg: PortfolioImageType | null;
+    waveImg: ImageType | null;
+    waveBackImg: ImageType | null;
   };
   markdownData: PortfolioMarkdownNodeEdges[];
 };
