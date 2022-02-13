@@ -44,5 +44,5 @@ export const usePortfolioMetaData = function () {
     }
   `);
 
-  return { profileImg, metaData, waveBackImg, waveImg };
+  return { metaData, profileImg , waveBackImg, waveImg };
 };

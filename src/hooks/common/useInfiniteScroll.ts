@@ -1,22 +1,16 @@
 import { MutableRefObject, useEffect, useMemo, useRef, useState } from 'react';
-import { BLOG_NUM_ITEMS_PER_PAGE } from '@utils/constants';
-import { PostListItemType } from '@utils/types';
+import { PostNodeType } from '@hooks/queries';
 
-export type useInfiniteScrollType = {
-  containerRef: MutableRefObject<HTMLDivElement | null>;
-  postList: PostListItemType[];
-};
-
-const useInfiniteScroll = function (selectedCategory: string, posts: PostListItemType[]) {
+const useInfiniteScroll = function (selectedCategory: string, posts: PostNodeType[], numItemsPerPage: number = 10) {
   const containerRef: MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement>(null);
   const observer: MutableRefObject<IntersectionObserver | null> = useRef<IntersectionObserver>(null);
   const [count, setCount] = useState<number>(1);
 
   // 현재 카테고리에 부합하는 데이터 반환
-  const postListByCategory = useMemo<PostListItemType[]>(
+  const postListByCategory = useMemo<PostNodeType[]>(
     () =>
       selectedCategory !== 'All'
-        ? posts.filter((postListItemData: PostListItemType) => {
+        ? posts.filter((postListItemData: PostNodeType) => {
             const { node: { frontmatter: { categories, options } } } = postListItemData;
 
             const isHide = options?.hide;
@@ -53,7 +47,7 @@ const useInfiniteScroll = function (selectedCategory: string, posts: PostListIte
 
   // 마지막 요소 관찰 (IntersectionObserver)
   useEffect(() => {
-    const LAST_SIZE = BLOG_NUM_ITEMS_PER_PAGE * count;
+    const LAST_SIZE = numItemsPerPage * count;
     const isOverSize = LAST_SIZE >= postListByCategory.length;
     if (!containerRef.current || !containerRef.current.children.length || !observer.current || isOverSize) return;
 
@@ -62,7 +56,7 @@ const useInfiniteScroll = function (selectedCategory: string, posts: PostListIte
     observer.current.observe(lastChild);
   }, [count, selectedCategory]);
 
-  const postList = postListByCategory.slice(0, count * BLOG_NUM_ITEMS_PER_PAGE);
+  const postList = postListByCategory.slice(0, count * numItemsPerPage);
   return { containerRef, postList };
 };
 

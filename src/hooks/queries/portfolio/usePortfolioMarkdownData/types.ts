@@ -1,4 +1,4 @@
-import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { ImageType } from "@utils/types";
 
 interface PortfolioDurationType {
   startDate: string;
@@ -10,13 +10,6 @@ interface PortfolioLinkType {
   href: string;
 }
 
-export interface PortfolioImageType {
-  childImageSharp: {
-    gatsbyImageData: IGatsbyImageData;
-  };
-  publicURL: string;
-}
-
 export interface PortfolioInfoType {
   sectionType: string;
   title: string;
@@ -25,11 +18,11 @@ export interface PortfolioInfoType {
   memberInfo: string;
   skills: string[];
   links: PortfolioLinkType[];
-  images: PortfolioImageType[];
+  images: ImageType[];
   type: string;
 }
 
-// --
+// -----------------------------------------------------
 
 export interface PortfolioMarkdownNode {
   frontmatter: {
@@ -41,6 +34,8 @@ export interface PortfolioMarkdownNode {
 export interface PortfolioMarkdownNodeEdges {
   node: PortfolioMarkdownNode;
 }
+
+// =====================================================
 
 export interface PortfolioMarkdownQuery {
   allMarkdownRemark: {

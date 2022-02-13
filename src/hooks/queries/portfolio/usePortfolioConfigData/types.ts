@@ -1,6 +1,6 @@
 // [getPortfoiloConfig] - types
 
-// introduce ===========
+// introduce ----------------
 export interface ProfileCardType {
   antecedents: string[];
   contactInfo: {
@@ -27,7 +27,7 @@ export interface PortfolioIntroduceType {
   profileCard: ProfileCardType;
 }
 
-// skill ===========
+// skill ----------------
 
 const skillNames = ['backend', 'communication', 'frontend', 'tools'] as const;
 type SkillNames = typeof skillNames[number];
@@ -44,39 +44,41 @@ interface TopSkillValues extends SkillValues {
 }
 type TopSkillListType = TopSkillValues[];
 
-// ----------------------------------------------
+// =====================================================
+
+export interface PortfolioConfigType {
+  header: {
+    text: string;
+  };
+  footer: {
+    text: string;
+  };
+  sections: {
+    home: {
+      text: string;
+    };
+    introduce: PortfolioIntroduceType;
+    projects: {
+      /*
+          각 프로젝트의 내용 데이터는 "./contents/_portfolio" 안에 있는 Markdown파일들을 불러옴  
+          (hooks/queries의 usePortfolioMarkdownData() 참고)
+        */
+      text: string;
+    };
+    skills: {
+      skillList: SkillListType;
+      isUseTopSkillCards: boolean;
+      topSkillList: TopSkillListType;
+      text: string;
+    };
+  };
+}
 
 export interface PortfolioConfigQuery {
   site: {
     siteMetadata: {
       portfolio: {
-        config: {
-          header: {
-            text: string;
-          };
-          footer: {
-            text: string;
-          };
-          sections: {
-            home: {
-              text: string;
-            };
-            introduce: PortfolioIntroduceType;
-            projects: {
-              /*
-                  각 프로젝트의 내용 데이터는 "./contents/_portfolio" 안에 있는 Markdown파일들을 불러옴  
-                  (hooks/queries의 usePortfolioMarkdownData() 참고)
-                */
-              text: string;
-            };
-            skills: {
-              skillList: SkillListType;
-              isUseTopSkillCards: boolean;
-              topSkillList: TopSkillListType;
-              text: string;
-            };
-          };
-        };
+        config: PortfolioConfigType;
       };
     };
   };

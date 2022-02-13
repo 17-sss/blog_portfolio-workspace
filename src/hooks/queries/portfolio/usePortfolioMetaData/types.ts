@@ -1,4 +1,4 @@
-import { PortfolioImageType } from '..';
+import { ImageType } from '@utils/types';
 
 export interface PortfolioMetaDataQuery {
   site: {
@@ -15,6 +15,6 @@ export interface PortfolioMetaDataQuery {
   profileImg: {
     publicURL: string;
   };
-  waveImg: PortfolioImageType;
-  waveBackImg: PortfolioImageType;
+  waveImg: ImageType;
+  waveBackImg: ImageType;
 }
