@@ -1,4 +1,6 @@
 module.exports = {
+  siteUrl: 'https://17-sss.github.io/', // siteMetadata에 이거 없으면 build 불가. 필수로 넣어주기.
+
   // [+] 공통
   common: {
     // 1. 공통 metaData
