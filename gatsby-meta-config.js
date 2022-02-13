@@ -26,15 +26,26 @@ module.exports = {
       description: `꾸준함이라는 덕목이 최고의 미덕이라고 생각하는 주니어 개발자입니다.`,
     },
 
-    // 2. 댓글 위젯 옵션
-    utterances: {
-      src: 'https://utteranc.es/client.js',
-      repo: '17-sss/17-sss.github.io',
-      'issue-term': 'pathname',
-      label: 'Comment',
-      theme: `github-light`,
-      crossorigin: 'anonymous',
-      async: 'true',
+    // 2. 블로그 구성 데이터
+    config: {
+      introduce: {
+        text: `Nice to Meet You,\nI'm Junior Frontend Developer Hoyoung.`,
+      },
+      footer: {
+        text: `Thank You for Visiting My Blog, Have a Good Day 😆\n© 2022 Rano, Powered By Gatsby.`,
+      },
+
+      excludeCategories: [''], // 특정 카테고리를 비공개 할 경우 사용
+      utterances: {
+        // 댓글 위젯 옵션
+        src: 'https://utteranc.es/client.js',
+        repo: '17-sss/17-sss.github.io',
+        issue_term: 'pathname',
+        label: 'Comment',
+        theme: `github-light`,
+        crossorigin: 'anonymous',
+        async: 'true',
+      },
     },
   },
 
@@ -49,7 +60,7 @@ module.exports = {
       description: `주니어 개발자 손호영의 포트폴리오 입니다.`,
     },
 
-    // 2. 페이지 구성 데이터
+    // 2. 포트폴리오 구성 데이터
     config: {
       // + Header
       header: {

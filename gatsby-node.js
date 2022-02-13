@@ -20,7 +20,6 @@ exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
     resolve: {
       alias: {
         '@components': path.resolve(__dirname, 'src/components'),
-        '@compositions': path.resolve(__dirname, 'src/compositions'),
         '@hooks': path.resolve(__dirname, 'src/hooks'),
         '@pages': path.resolve(__dirname, 'src/pages'),
         '@templates': path.resolve(__dirname, 'src/templates'),
@@ -68,8 +67,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return;
   }
 
-  // Import Post Page Component
-  const PostPageComponent = path.resolve(__dirname, 'src/pages_custom/post.tsx');
+  // Import Post Page Component (Custom)
+  const PostPageComponent = path.resolve(__dirname, 'src/pages/_custom/post.tsx');
 
   // Page Generating Function
   const generatePostPage = ({

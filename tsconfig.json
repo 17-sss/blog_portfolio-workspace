@@ -15,9 +15,6 @@
       "@components": ["./components"],
       "@components/*": ["./components/*"],
 
-      "@compositions": ["./compositions"],
-      "@compositions/*": ["./compositions/*"],
-
       "@hooks": ["./hooks"],
       "@hooks/*": ["./hooks/*"],
 
