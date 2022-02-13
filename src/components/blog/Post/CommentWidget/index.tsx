@@ -1,14 +1,20 @@
 import React, { createRef, FunctionComponent, useEffect } from 'react';
-import { BLOG_UTTERANCES_ATTR } from '@utils/constants';
+import { UtterancesAttributesType } from '@utils/types';
 import * as S from './style';
 
-const CommentWidget: FunctionComponent = function () {
+interface CommentWidgetProps {
+  utterancesAttr: UtterancesAttributesType;
+}
+
+const CommentWidget: FunctionComponent<CommentWidgetProps> = function ({ utterancesAttr }) {
   const element = createRef<HTMLDivElement>();
 
   useEffect(() => {
     if (element.current === null) return;
     const utterances: HTMLScriptElement = document.createElement('script');
-    Object.entries(BLOG_UTTERANCES_ATTR).forEach(([key, value]) => utterances.setAttribute(key, value));
+    Object.entries(utterancesAttr).forEach(([key, value]) =>
+      utterances.setAttribute(key.replace(/[\_]+/g, '-'), value),
+    );
     element.current.appendChild(utterances);
   }, []);
 

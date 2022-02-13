@@ -1,6 +1,44 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
-const PostHeadInfoLayout = styled.div`
+interface PostInfoLayoutProps {
+  thumbnail?: IGatsbyImageData;
+}
+export const PostInfoLayout = styled.div<PostInfoLayoutProps>`
+  position: relative;
+  width: 100%;
+  height: 400px;
+  ${({ thumbnail }) =>
+    !thumbnail &&
+    css`
+      background-color: #000;
+    `}
+
+  @media (max-width: 768px) {
+    height: 300px;
+  }
+`;
+
+export interface GatsbyImgProps {
+  image: IGatsbyImageData;
+  alt: string;
+  className?: string;
+}
+export const BackgroundImage = styled((props: GatsbyImgProps) => (<GatsbyImage {...props} style={{ position: 'absolute' }} />))`
+  z-index: -1;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  filter: brightness(0.25);
+
+  @media (max-width: 768px) {
+    height: 300px;
+  }
+`;
+
+// ---------------
+export const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 768px;
@@ -15,7 +53,7 @@ const PostHeadInfoLayout = styled.div`
   }
 `;
 
-const PrevPageIcon = styled.div`
+export const PrevPageIcon = styled.div`
   display: grid;
   place-items: center;
   width: 40px;
@@ -34,7 +72,7 @@ const PrevPageIcon = styled.div`
   }
 `;
 
-const Title = styled.div`
+export const Title = styled.div`
   display: -webkit-box;
   overflow: hidden;
   overflow-wrap: break-word;
@@ -51,7 +89,7 @@ const Title = styled.div`
   }
 `;
 
-const PostData = styled.div`
+export const Contents = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,5 +104,3 @@ const PostData = styled.div`
     font-weight: 400;
   }
 `;
-
-export { PostHeadInfoLayout, PrevPageIcon, Title, PostData };

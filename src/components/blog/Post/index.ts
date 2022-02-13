@@ -1,5 +1,5 @@
-import PostHead from './PostHead';
-import PostHeadInfo from './PostHeadInfo';
+import PostInfo, { PostInfoProps } from './PostInfo';
 import CommentWidget from './CommentWidget';
 
-export { PostHead, PostHeadInfo, CommentWidget };
+export { PostInfo, CommentWidget };
+export type { PostInfoProps };
