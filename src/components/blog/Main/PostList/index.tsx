@@ -1,25 +1,26 @@
 import { FunctionComponent, useMemo } from 'react';
 import styled from '@emotion/styled';
+
 import PostItem from '@components/blog/Main/PostItem';
-import { PostListItemType } from '@utils/types';
 import { useInfiniteScroll } from '@hooks/common';
-import { BLOG_EXCLUDE_CATEGORIES } from '@utils/constants';
+import { PostNodeType } from '@hooks/queries';
 
-type PostListProps = {
+interface PostListProps {
   selectedCategory: string;
-  posts: PostListItemType[];
-};
+  postData: PostNodeType[];
+  excludeCategories: string[];
+}
 
-const PostList: FunctionComponent<PostListProps> = function ({ selectedCategory, posts }) {
-  const { containerRef, postList } = useInfiniteScroll(selectedCategory, posts);
+const PostList: FunctionComponent<PostListProps> = function ({ selectedCategory, postData, excludeCategories }) {
+  const { containerRef, postList } = useInfiniteScroll(selectedCategory, postData);
   const postItems = useMemo(
     () =>
-      postList.map(({ node }: PostListItemType) => {
+      postList.map(({ node }: PostNodeType) => {
         const { id, frontmatter, fields } = node;
         const { options, categories } = frontmatter;
         const isHide = options?.hide;
         const isExcludedCategory =
-          categories && categories.some(category => BLOG_EXCLUDE_CATEGORIES.includes(category));
+          categories && categories.some(category => category && excludeCategories.includes(category));
         if (isHide || isExcludedCategory) return;
 
         const link = `/posts${fields.slug}`;

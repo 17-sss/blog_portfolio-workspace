@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import { CategoryItemProps } from '.';
 
-const CategoryListLayout = styled.div`
+export const CategoryListLayout = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 768px;
@@ -15,8 +14,15 @@ const CategoryListLayout = styled.div`
   }
 `;
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const CategoryItemLayout = styled(({ active, to, ...props }: CategoryItemProps) => <Link to={to} {...props} />)<Pick<CategoryItemProps, 'active'>>`
+export interface CategoryItemProps {
+  active: boolean;
+  to: string;
+  children: React.ReactNode;
+  className?: string;
+}
+export const CategoryItem = styled(({ active, to, ...props }: CategoryItemProps) => <Link to={to} {...props} />)<
+  Pick<CategoryItemProps, 'active'>
+>`
   margin-right: 20px;
   padding: 5px 0;
   font-size: 18px;
@@ -31,5 +37,3 @@ const CategoryItemLayout = styled(({ active, to, ...props }: CategoryItemProps) 
     font-size: 15px;
   }
 `;
-
-export { CategoryListLayout, CategoryItemLayout };

@@ -1,23 +1,23 @@
 import { FunctionComponent } from 'react';
 import ProfileImage from '@components/blog/Main/ProfileImage';
-import { BLOG_INTRODUCTION_TEXTS } from '@utils/constants';
-import * as S from './style';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
+import * as S from './style';
 
-type IntroductionProps = {
-  title?: string;
-  subTitle?: string;
-  profileImage: IGatsbyImageData;
+export interface IntroductionProps {
+  text: string;
+  gatsbyImageData: IGatsbyImageData;
 };
 
-const Introduction: FunctionComponent<IntroductionProps> = function ({ subTitle, title, profileImage }) {
+const Introduction: FunctionComponent<IntroductionProps> = function ({ text, gatsbyImageData }) {
+  const [subTitle, title] = text.split('\n');
+
   return (
     <S.IntroductionLayout>
       <S.IntroductionBox>
-        <ProfileImage profileImage={profileImage} />
+        <ProfileImage profileImage={gatsbyImageData} />
         <S.TextBox>
-          <S.SubTitleText>{subTitle ?? BLOG_INTRODUCTION_TEXTS.subTitle}</S.SubTitleText>
-          <S.TitleText>{title ?? BLOG_INTRODUCTION_TEXTS.title}</S.TitleText>
+          <S.SubTitleText>{subTitle}</S.SubTitleText>
+          <S.TitleText>{title}</S.TitleText>
         </S.TextBox>
       </S.IntroductionBox>
     </S.IntroductionLayout>

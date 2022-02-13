@@ -1,8 +1,10 @@
 import { FunctionComponent } from 'react';
-import { PostFrontmatterType } from '@utils/types';
+import { PostFrontmatterType } from '@hooks/queries';
 import * as S from './style';
 
-type PostItemProps = PostFrontmatterType & { link: string };
+interface PostItemProps extends PostFrontmatterType {
+  link: string;
+}
 
 const PostItem: FunctionComponent<PostItemProps> = function ({ title, date, categories, summary, thumbnail, link }) {
   const gatsbyImageData = thumbnail?.childImageSharp.gatsbyImageData;
