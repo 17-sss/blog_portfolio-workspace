@@ -1,14 +1,12 @@
-import React, { FunctionComponent, useMemo } from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
-import { BLOG_FOOTER_DESCRIPTION } from '@utils/constants';
 
-type FooterProps = {
-  text?: string;
+export interface FooterProps {
+  text: string;
 };
 
 const Footer: FunctionComponent<FooterProps> = function ({ text }) {
-  const defaultDesc = useMemo(() => BLOG_FOOTER_DESCRIPTION.map((text, idx) => <p key={idx}>{text}</p>), []);
-  return <FooterLayout>{text ?? defaultDesc}</FooterLayout>;
+  return <FooterLayout>{text}</FooterLayout>;
 };
 
 export default Footer;
@@ -21,6 +19,8 @@ const FooterLayout = styled.footer`
   font-size: 15px;
   text-align: center;
   line-height: 1.5;
+
+  white-space: pre-line;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;

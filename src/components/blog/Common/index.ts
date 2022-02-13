@@ -1,4 +1,6 @@
-import Footer from './Footer';
+import Footer, { FooterProps } from './Footer';
 import GlobalStyle from './GlobalStyle';
+import MainContainer from './MainContainer';
 
-export { Footer, GlobalStyle };
+export type { FooterProps };
+export { Footer, GlobalStyle, MainContainer };
