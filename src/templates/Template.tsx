@@ -1,21 +1,20 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import { Helmet } from 'react-helmet';
-
-import { useCommonMetaData } from '@hooks/queries';
+import { CommonMetaDataType } from '@hooks/queries';
 
 export interface TemplateProps {
   title: string;
   description: string;
   siteUrl: string;
-  image: string;
-  children: ReactNode;
+  twitter: CommonMetaDataType["twitter"];
+  webMasterKeys: CommonMetaDataType["webMasterKeys"];
+  image?: string;
+  children?: ReactNode;
 }
 
-const Template: FunctionComponent<TemplateProps> = function ({ title, description, image, siteUrl, children }) {
-  const {
-    twitter: { site, creator },
-    webMasterKeys: { google, naver },
-  } = useCommonMetaData();
+const Template: FunctionComponent<TemplateProps> = function ({ title, description, image, siteUrl, twitter, webMasterKeys,  children }) {
+  const { site, creator } = twitter;
+  const { google, naver } = webMasterKeys;
 
   return (
     <>

@@ -1,23 +1,46 @@
 import { FunctionComponent } from 'react';
-import styled from '@emotion/styled';
 
-import { GlobalStyle, Footer } from '@components/blog/Common';
 import Template, { TemplateProps } from './Template';
 
-const BlogTemplate: FunctionComponent<TemplateProps> = ({ title, description, siteUrl, image, children, ...props }) => (
-  <BlogTemplateLayout {...props}>
-    <Template title={title} description={description} siteUrl={siteUrl} image={image}>
+import { Footer, GlobalStyle, MainContainer } from '@components/blog/Common';
+import { CategoryList, Introduction, PostList } from '@components/blog/Main';
+import { PostNodeType, BlogConfigType } from '@hooks/queries';
+import { ImageType } from '@utils/types';
+
+interface BlogTemplateProps extends Omit<TemplateProps, 'image'> {
+  postData: PostNodeType[];
+  selectedCategory: string;
+  profileImg: ImageType;
+  configData: BlogConfigType;
+}
+
+const BlogTemplate: FunctionComponent<BlogTemplateProps> = ({
+  postData,
+  selectedCategory,
+  profileImg,
+  configData,
+  ...props
+}) => {
+  const {
+    childImageSharp: { gatsbyImageData },
+    publicURL: image,
+  } = profileImg;
+  const { introduce, footer, excludeCategories } = configData;
+
+  const introductionProps = { ...introduce, gatsbyImageData };
+  const listProps = { selectedCategory, postData, excludeCategories };
+
+  return (
+    <Template {...{ ...props, image }}>
       <GlobalStyle />
-      {children}
-      <Footer />
+      <MainContainer>
+        <Introduction {...introductionProps} />
+        <CategoryList {...listProps} />
+        <PostList {...listProps} />
+      </MainContainer>
+      <Footer {...footer} />
     </Template>
-  </BlogTemplateLayout>
-);
+  );
+};
 
 export default BlogTemplate;
-
-const BlogTemplateLayout = styled.main`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-`;

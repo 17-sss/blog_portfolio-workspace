@@ -1,28 +1,53 @@
 import { FunctionComponent, useEffect } from 'react';
 
-import Template from './Template';
-import { GlobalStyle } from '@components/portfolio/Common';
+import Template, { TemplateProps } from './Template';
+import { GlobalStyle, Header, MainContainer } from '@components/portfolio/Common';
+import { HomeSection, IntroduceSection, ProjectSection, SkillSection } from '@components/portfolio/Main';
+import { Footer } from '@components/blog/Common';
 
+import { PortfolioMarkdownNodeEdges, PortfolioMetaDataQuery, PortfolioConfigType } from '@hooks/queries';
+import { portfolioSectionIdInfo as IdInfo } from '@utils/constants';
 import { usePortfolioDispatch } from '@utils/contexts/PortfolioContext';
-import { usePortfolioMarkdownData, usePortfolioMetaData } from '@hooks/queries';
 
-const PortfolioTemplate: FunctionComponent = ({ children }) => {
-  const markdownData = usePortfolioMarkdownData();
-  const { waveBackImg, waveImg, profileImg, metaData } = usePortfolioMetaData();
+type PortfolioImageTypes = Omit<Omit<PortfolioMetaDataQuery, 'site'>, 'profileImg'>;
+
+interface PortfolioTemplateProps extends TemplateProps, PortfolioImageTypes {
+  configData: PortfolioConfigType;
+  markdownData: PortfolioMarkdownNodeEdges[]; // Section - Projects (Markdown Data)
+}
+
+const PortfolioTemplate: FunctionComponent<PortfolioTemplateProps> = ({
+  configData,
+  waveBackImg,
+  waveImg,
+  markdownData,
+  ...props
+}) => {
+  const { sections, footer, header } = configData;
+
   const portfolioDispatch = usePortfolioDispatch();
 
-  useEffect(() => {
-    portfolioDispatch({
-      type: 'SET_WAVE_IMG_URL',
-      payload: { waveImg, waveBackImg },
-    });
-    portfolioDispatch({ type: 'SET_MARKDOWN_DATA', payload: markdownData });
-  }, [markdownData]);
+  useEffect(() => portfolioDispatch({ type: 'SET_MARKDOWN_DATA', payload: markdownData }), [markdownData]);
+  useEffect(
+    () =>
+      portfolioDispatch({
+        type: 'SET_WAVE_IMG_URL',
+        payload: { waveImg, waveBackImg },
+      }),
+    [waveImg, waveBackImg],
+  );
 
   return (
-    <Template {...{ ...metaData, image: profileImg.publicURL }}>
+    <Template {...{ ...props }}>
       <GlobalStyle />
-      {children}
+      <Header {...header} />
+      <MainContainer>
+        <HomeSection layoutId={IdInfo.home} {...sections.home} />
+        <IntroduceSection layoutId={IdInfo.introduce} {...sections.introduce} />
+        <SkillSection layoutId={IdInfo.skills} {...sections.skills} />
+        <ProjectSection layoutId={IdInfo.projects} {...sections.projects} />
+      </MainContainer>
+      <Footer {...footer} />
     </Template>
   );
 };
