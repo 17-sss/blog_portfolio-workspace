@@ -1,15 +1,13 @@
 import { Fragment } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import { CustomIconProps, iconList } from '.';
 
-import { iconList } from './icons';
-import { CustomIconProps } from '.';
-
-type IconLayoutProps = Required<Pick<CustomIconProps, "type">> & Omit<CustomIconProps, "type">;
-export const IconLayout = styled(({ color, type, ...props }: IconLayoutProps) => {
-  const Icon = iconList[type];
-  return (typeof Icon !== "object") ? <Icon {...props} /> : <Fragment />;
+export const CustomIconLayout = styled(({ iconType, ...props }: CustomIconProps) => {
+  const Current = iconList[iconType ?? "JavaScript"];
+  const isObject = typeof Current === "object";
+  return isObject ? <Fragment /> : <Current {...props} />;
 })`
-  ${({ color }) => color && css` fill: ${color};`};
-  ${({ size }) => size && css`width: ${size}; height: ${size}`};
+  ${({ iconColor }) => iconColor && css` fill: ${iconColor};`};
+  ${({ iconSize }) => iconSize && css`width: ${iconSize}; height: ${iconSize}`};
 `;

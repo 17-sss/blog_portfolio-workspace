@@ -42,7 +42,7 @@ const CircleProgress: FunctionComponent<CircleProgressProps> = function ({ iconN
         {...props}
       />
       <S.ProgressInfoBox>
-        {iconName && <CustomIcon type={iconName} color={customColor?.progress} size={sizeInfo?.iconSize} />}
+        {iconName && <CustomIcon iconType={iconName} iconColor={customColor?.progress} iconSize={sizeInfo?.iconSize} />}
         <S.InfoParagraph fontSize={sizeInfo?.fontSize} customColor={customColor?.text}>
           {`${Math.round(value)}%`}
         </S.InfoParagraph>
