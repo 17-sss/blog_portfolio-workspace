@@ -1,25 +1,31 @@
 import { FunctionComponent } from 'react';
-import ProfileImage from '@components/blog/Main/ProfileImage';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { ProfileImage, LinkList } from '@components/blog/Main';
+import { AdditionalLinkInfo } from '@hooks/queries';
 import * as S from './style';
 
 export interface IntroductionProps {
   text: string;
+  links: AdditionalLinkInfo[];
   gatsbyImageData: IGatsbyImageData;
-};
+}
 
-const Introduction: FunctionComponent<IntroductionProps> = function ({ text, gatsbyImageData }) {
+const Introduction: FunctionComponent<IntroductionProps> = function ({ text, links, gatsbyImageData }) {
   const [subTitle, title] = text.split('\n');
 
   return (
     <S.IntroductionLayout>
-      <S.IntroductionBox>
-        <ProfileImage profileImage={gatsbyImageData} />
-        <S.TextBox>
+      <div className="inner">
+        <S.BetweenRow>
+          <ProfileImage profileImage={gatsbyImageData} />
+          <LinkList links={links} />
+        </S.BetweenRow>
+
+        <S.NormalCol>
           <S.SubTitleText>{subTitle}</S.SubTitleText>
           <S.TitleText>{title}</S.TitleText>
-        </S.TextBox>
-      </S.IntroductionBox>
+        </S.NormalCol>
+      </div>
     </S.IntroductionLayout>
   );
 };

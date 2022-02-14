@@ -1,30 +1,40 @@
 import styled from '@emotion/styled';
+import { setFlex } from '@utils/style';
 
-const IntroductionLayout = styled.div`
+export const IntroductionLayout = styled.div`
   width: 100%;
   background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
   color: #ffffff;
-`;
 
-const TextBox = styled.div``;
+  .inner {
+    ${setFlex({ flexDirection: 'column', justifyContent: 'center' })};
+    width: 768px;
+    height: 400px;
+    margin: 0 auto;
 
-const IntroductionBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  width: 768px;
-  height: 400px;
-  margin: 0 auto;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    height: 300px;
-    padding: 0 20px;
+    @media (max-width: 768px) {
+      width: 100%;
+      height: 300px;
+      padding: 0 20px;
+    }
   }
 `;
 
-const SubTitleText = styled.p`
+const DefaultRow = styled.div`
+  display: flex;
+  padding: 12px 0;
+`;
+
+export const BetweenRow = styled(DefaultRow)`
+  justify-content: space-between;
+  align-items: center;
+`;
+export const NormalCol = styled(DefaultRow)`
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const SubTitleText = styled.p`
   font-size: 20px;
   font-weight: 400;
 
@@ -33,7 +43,7 @@ const SubTitleText = styled.p`
   }
 `;
 
-const TitleText = styled.p`
+export const TitleText = styled.p`
   margin-top: 5px;
   font-size: 35px;
   font-weight: 700;
@@ -42,5 +52,3 @@ const TitleText = styled.p`
     font-size: 25px;
   }
 `;
-
-export { IntroductionLayout, TextBox, IntroductionBox, SubTitleText, TitleText };
