@@ -32,6 +32,10 @@ module.exports = {
     config: {
       introduce: {
         text: `Nice to Meet You,\nI'm Junior Frontend Developer Hoyoung.`,
+        links: [
+          { text: `Learning Record`, href: 'https://boiled-feather-1c7.notion.site/Learning-Record-114a6d7a9cea451a8cde60f128c3ca13' },
+          { text: `Portfolio`, href: '/portfolio/', isGatsbyLink: true },
+        ],
       },
       footer: {
         text: `Thank You for Visiting My Blog, Have a Good Day 😆\n© 2022 Rano, Powered By Gatsby.`,

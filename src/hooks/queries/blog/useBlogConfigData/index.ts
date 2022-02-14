@@ -18,6 +18,11 @@ export const useBlogConfigData = function () {
             config {
               introduce {
                 text
+                links {
+                  text
+                  href
+                  isGatsbyLink
+                }
               }
               footer {
                 text

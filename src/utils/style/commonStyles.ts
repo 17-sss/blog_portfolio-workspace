@@ -57,7 +57,7 @@ const resetStyle = css`
 type FlexCommonType = "inherit" | "initial" | "unset";
 type FlexSortCommonType = FlexCommonType | "baseline" | "flex-start" | "flex-end" | "center" | "stretch";
 
-type SetFlexProps = {
+interface SetFlexProps {
   flexDirection?: FlexCommonType | "row" | "row-reverse" | "column" | "column-reverse";
   alignItems?: FlexSortCommonType;
   justifyContent?: FlexSortCommonType | "first baseline" | "last baseline" | "left" | "right" | "start" | "end" 
