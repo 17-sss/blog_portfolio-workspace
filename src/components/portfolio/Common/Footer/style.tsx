@@ -3,9 +3,8 @@ import { Card } from '@material-ui/core';
 import { getMediaQueries, setFlex } from '@utils/style';
 import { Paragraph } from '..';
 
-export const FooterLayout = styled(({ ...props }) => <Card elevation={2} component="footer" {...props} />)`
+export const FooterLayout = styled(({ ...props }) => <Card elevation={3} component="footer" {...props} />)`
   ${setFlex({ justifyContent: 'center', alignItems: 'center' })};
-  margin-top: 36px;
   padding: 36px 0;
 `;
 

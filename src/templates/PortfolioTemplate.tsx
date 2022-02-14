@@ -1,9 +1,8 @@
 import { FunctionComponent, useEffect } from 'react';
 
 import Template, { TemplateProps } from './Template';
-import { GlobalStyle, Header, MainContainer } from '@components/portfolio/Common';
+import { GlobalStyle, Header, Footer, MainContainer } from '@components/portfolio/Common';
 import { HomeSection, IntroduceSection, ProjectSection, SkillSection } from '@components/portfolio/Main';
-import { Footer } from '@components/blog/Common';
 
 import { PortfolioMarkdownNodeEdges, PortfolioMetaDataQuery, PortfolioConfigType } from '@hooks/queries';
 import { portfolioSectionIdInfo as IdInfo } from '@utils/constants';
