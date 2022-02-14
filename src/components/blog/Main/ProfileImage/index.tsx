@@ -13,9 +13,12 @@ const ProfileImage: FunctionComponent<ProfileImageProps> = function ({ profileIm
 export default ProfileImage;
 
 const ProfileImageLayout = styled(GatsbyImage)`
+  min-width: 80px;
+  min-height: 80px;
+  margin: 4px;
+
   width: 120px;
   height: 120px;
-  margin-bottom: 30px;
   border-radius: 50%;
   @media (max-width: 768px) {
     width: 80px;
