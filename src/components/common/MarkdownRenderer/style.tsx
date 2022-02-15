@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const MarkdownRenderer = styled.div`
+export const MarkdownRenderer = styled.div`
   // Renderer Style
   display: flex;
   flex-direction: column;
@@ -117,6 +117,17 @@ const MarkdownRenderer = styled.div`
     tab-size: 2;
   }
 
+  // code element design
+  *:not(pre) > code[class*='language-'] {
+    font-family: 'SFMono-Regular', Menlo, Consolas, 'PT Mono', 'Liberation Mono', Courier, monospace;
+    line-height: normal;
+    background-color: rgba(135, 131, 120, 0.15);
+    color: #eb5757;
+    border-radius: 3px;
+    font-size: 85%;
+    padding: 0.2em 0.4em;
+  }
+
   tr {
     background-color: #fefefe;
   }
@@ -133,6 +144,35 @@ const MarkdownRenderer = styled.div`
 
   th {
     font-weight: 600;
+  }
+
+  // background color
+  .bg {
+    &--gray { background-color: rgb(241, 241, 239) !important; }
+    &--brown { background-color: rgb(244, 238, 238) !important; }
+    &--orange { background-color: rgb(251, 236, 221) !important; }
+    &--yellow { background-color: rgb(251, 243, 219) !important; }
+    &--green { background-color: rgb(237, 243, 236) !important; }
+    &--blue { background-color: rgb(231, 243, 248) !important; }
+    &--purple { background-color: rgba(244, 240, 247, 0.8) !important; }
+    &--pink { background-color: rgba(249, 238, 243, 0.8) !important; }
+    &--red { background-color: rgb(253, 235, 236) !important; }
+  }
+
+  // text colors, bold & italic
+  .text {
+    &--gray { color: rgba(120, 119, 116, 1) !important; }
+    &--brown { color: rgba(159, 107, 83, 1) !important; }
+    &--orange { color: rgba(217, 115, 13, 1) !important; }
+    &--yellow { color: rgba(203, 145, 47, 1) !important; }
+    &--green { color: rgba(68, 131, 97, 1) !important; }
+    &--blue { color: rgba(51, 126, 169, 1) !important; }
+    &--purple { color: rgba(144, 101, 176, 1) !important; }
+    &--pink { color: rgba(193, 76, 138, 1) !important; }
+    &--red { color: rgba(212, 76, 71, 1) !important; }
+
+    &--italic { font-style: italic; };
+    &--bold { font-weight: 600; };
   }
 
   // Markdown Responsive Design
@@ -175,5 +215,3 @@ const MarkdownRenderer = styled.div`
     }
   }
 `;
-
-export { MarkdownRenderer };

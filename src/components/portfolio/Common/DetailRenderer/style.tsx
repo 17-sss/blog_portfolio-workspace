@@ -7,9 +7,11 @@ export const DetailRendererLayout = styled(MarkdownRenderer)`
   font-family: 'Noto Sans KR', 'Roboto', 'Helvetica', 'Arial', sans-serif, serif;
   width: 100%;
 
-  ul,
-  li {
+  ul, ol {
     list-style: revert;
+  }
+  ol {
+    list-style: auto;
   }
 
   * + h1,
