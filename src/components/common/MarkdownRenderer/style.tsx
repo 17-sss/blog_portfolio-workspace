@@ -87,12 +87,24 @@ export const MarkdownRenderer = styled.div`
     border: none;
     box-shadow: 0 0 0 0.1px #000;
     margin: 30px 0;
+
+    &.thin {
+      box-shadow: 0 0 0 0.04px #000;
+      margin: 8px 0;
+    }
   }
 
   // Adjust Link Element Style
   a {
-    color: #4263eb;
-    text-decoration: underline;
+    /* color: #4263eb;
+    text-decoration: underline; */
+
+    color: #484653;
+    font-weight: 500;
+    text-decoration: none;
+    outline: none;
+    border-bottom: 0.05em solid #484653;
+    opacity: 0.7;
   }
 
   // Adjust Code Style
