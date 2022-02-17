@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Card, CardContent } from '@material-ui/core';
-import { Paragraph } from '@components/portfolio/Common';
+import { Paragraph, Code } from '@components/portfolio/Common';
 import { getMediaQueries, setFlex } from '@utils/style';
 
 export const ProjectItemLayout = styled(({ ...props }) => <Card component="li" elevation={2} {...props} />)`
@@ -125,14 +125,11 @@ export const ValueText = styled(NameText)`
 `;
 
 // 3-1-1) skills의 item들 디자인
-export const Code = styled.code`
-  font-family: 'SFMono-Regular', Menlo, Consolas, 'PT Mono', 'Liberation Mono', Courier, monospace;
-  line-height: normal;
-  background: rgba(135, 131, 120, 0.15);
-  color: #eb5757;
-  border-radius: 3px;
-  font-size: 85%;
-  padding: 0.2em 0.4em;
+export const CodeItem = styled(Code)`
+  font-size: ${({ theme }) => theme.fontSizes['14']};
+  ${getMediaQueries({ type: 'mobile' })} {
+    font-size: ${({ theme }) => theme.fontSizes['12']};
+  }
 
   & + & {
     margin-left: 4px;
@@ -141,12 +138,12 @@ export const Code = styled.code`
 
 // 3-1-2) links의 item들 디자인
 export const ExternalLink = styled.a`
-  color: ${({theme}) => theme.grayScaleColors.font};
+  color: ${({ theme }) => theme.grayScaleColors.font};
   font-weight: 500;
   text-decoration: none;
   outline: none;
 
-  border-bottom: 0.05em solid ${({theme}) => theme.grayScaleColors.font};
+  border-bottom: 0.05em solid ${({ theme }) => theme.grayScaleColors.font};
   opacity: 0.7;
 
   & + & {

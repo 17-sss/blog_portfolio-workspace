@@ -9,10 +9,14 @@ export interface ProjectItemProps extends PortfolioMarkdownNode {
   idx?: number;
 }
 const ProjectItem: FunctionComponent<ProjectItemProps> = function ({ idx, ...props }) {
-  const { frontmatter: { portfolioInfo }, html } = props;
+  const {
+    frontmatter: { portfolioInfo },
+    html,
+  } = props;
   const { title, subTitle, duration, memberInfo, skills, images, type, links } = portfolioInfo;
+  const { startDate, endDate, isIng } = duration;
 
-  const skillItems = useMemo(() => skills.map((v, i) => <S.Code key={i}>{v}</S.Code>), [skills]);
+  const skillItems = useMemo(() => skills.map((v, i) => <S.CodeItem key={i}>{v}</S.CodeItem>), [skills]);
   const linkItems = useMemo(
     () =>
       links.map(({ name, href }, i) => (
@@ -41,7 +45,12 @@ const ProjectItem: FunctionComponent<ProjectItemProps> = function ({ idx, ...pro
           <S.MemberInfoText>{`(${memberInfo})`}</S.MemberInfoText>
           <S.TextBox>
             <S.NameText>기간</S.NameText>
-            <S.ValueText>{`${duration.startDate} ~ ${duration.endDate || 'ing'}`}</S.ValueText>
+            <S.CodeItem color="orange">{`${startDate} ~ ${endDate ?? 'ing'}`}</S.CodeItem>
+            {isIng && (
+              <S.NameText>
+                {'/'}&nbsp;<S.CodeItem color="orange" isBold>{`~ing`}</S.CodeItem>
+              </S.NameText>
+            )}
           </S.TextBox>
           <S.TextBox>
             <S.NameText>사용 기술</S.NameText>

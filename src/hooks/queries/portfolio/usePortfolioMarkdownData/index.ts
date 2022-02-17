@@ -23,6 +23,7 @@ export const usePortfolioMarkdownData = function () {
                 duration {
                   startDate
                   endDate
+                  isIng
                 }
                 memberInfo
                 skills

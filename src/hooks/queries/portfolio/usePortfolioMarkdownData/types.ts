@@ -3,6 +3,7 @@ import { ImageType } from "@utils/types";
 interface PortfolioDurationType {
   startDate: string;
   endDate?: string;
+  isIng?: boolean;
 }
 
 interface PortfolioLinkType {
