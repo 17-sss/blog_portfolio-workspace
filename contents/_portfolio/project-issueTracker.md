@@ -104,7 +104,7 @@ options: { isPortfolio: true, hide: true }
           >인자(배열) 값은 <code class="language--text">useFetch</code>내에서 쓰이는 <strong>useEffect</strong> 훅의
           2번째 인자에 들어가게 됨</span
         ><br />
-        <span>(배열 내의 모든 상태 값들이 falsy한 상태가 아니라면 데이터를 불러오도록 로직을 작성함)</span>
+        <span>(배열 내의 모든 상태 값들이 <span class="text--pink text--italic">falsy</span>한 상태가 아니라면 데이터를 불러오도록 로직을 작성함)</span>
       </li>
     </ul>
   </li>

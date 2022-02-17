@@ -87,7 +87,7 @@ options: { isPortfolio: true, hide: true }
     <p>
       <code class="language--text text--brown text--bold">문제</code>
       <span
-        >그려진 canvas의 width를 기준으로 이동하는 요금 조정 버튼의 위치가 변경될 때 요금 범위 상태가 동적으로 변해야
+        >그려진 canvas의 width를 기준으로 이동하는 요금 조정 버튼의 위치가 변경될 때 <u>요금 범위 상태</u>가 동적으로 변해야
         함</span
       >
     </p>
