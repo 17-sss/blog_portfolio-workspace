@@ -140,6 +140,11 @@ export const MarkdownRenderer = styled.div`
     padding: 0.2em 0.4em;
   }
 
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
   tr {
     background-color: #fefefe;
   }
@@ -151,7 +156,7 @@ export const MarkdownRenderer = styled.div`
   th,
   td {
     padding: 6px 13px;
-    border: 1px solid #d0d7de;
+    border: 1px solid #212e3a39;
   }
 
   th {
