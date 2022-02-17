@@ -13,7 +13,7 @@ portfolioInfo:
         { name: 'Github Repository ', href: 'https://github.com/17-sss/blog_portfolio-workspace' },
         {
           name: '개발일지',
-          href: 'https://boiled-feather-1c7.notion.site/b4fe56b733a64255aba72d3cce8defab?v=044c094f5c9f4bf1a8fa66248cf3e095',
+          href: 'https://boiled-feather-1c7.notion.site/Rano-s-Blog-Portfolio-8ec62a21b87e4c4c97a05b160c990e09',
         },
       ],
     images:
