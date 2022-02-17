@@ -14,25 +14,93 @@ portfolioInfo:
 options: { isPortfolio: true, hide: true }
 ---
 
-#### 🤝 협업
+<h4 class="bg--gray text--bold">🤝&nbsp;&nbsp;협업</h4>
 
 - 지속적인 팀원분들과의 소통을 위하여 매일 회고를 작성하였습니다.
 - 요구사항을 보고 회의하며 Task를 할당하여 작업하였습니다.
 
-#### 🧚🏻 구현
+<h4 class="bg--gray text--bold">🧚🏻&nbsp;&nbsp;구현 요약</h4>
 
 - 처음으로 TypeScript를 적용한 프로젝트입니다.
 - CRA를 사용하지 않고, Webpack으로 개발환경을 구성하였습니다.
-- useReducer & ContextAPI를 활용하여 상태 관리를 하였습니다.
+- React의 useReducer & Context API를 활용하여 상태 관리를 하였습니다.
 - Range Slider를 개발하여 요금 조정 모달을 제작하였습니다.
 
-#### 🤔 고민한 점
+<h4 class="bg--gray text--bold">🤔&nbsp;&nbsp;고민한 점</h4>
 
-- **Webpack 개발 환경**
+<p>
+  <strong>개발 서버 실행 및 빌드 시 많은 시간이 소요</strong>
+  <span>⇒</span>
+  <span class="text--italic text--bold text--gray">webpack을 통해 직접 개발환경 구성</span>
+</p>
+<hr class="thin" />
+<ol>
+  <li>
+    <p>
+      <code class="language--text text--brown text--bold">문제</code>
+      <span>매번 CRA를 통한 개발환경을 구성하였는데, 개발 서버 실행 및 빌드 시 많은 시간이 소요됨</span>
+    </p>
+    <p>
+      <code class="language--text text--purple text--bold">해결</code>
+      <span>내부적으로 어떤 라이브러리를 사용하고 있는지 분석하기위해 <strong>eject</strong> 명령을 사용</span>
+    </p>
+    <ul class="pl--24 alpha">
+      <li>이 프로젝트에서 쓰이지 않을 많은 Webpack 플러그인, 로더들이 다수 존재</li>
+      <li>필수적으로 쓰여야 할 플러그인, 로더만을 포함하여 개발환경을 구성하여 해결.</li>
+    </ul>
+  </li>
+</ol>
 
-  - 구성 이전에는 항상 CRA로 React 프로젝트를 구성하였습니다.  
-    매번 개발 서버 실행 및 빌드 시 많은 시간이 소요되어 원인을 알고자 eject 명령을 사용하여 CRA의 구조를 보았으며 현 프로젝트에서는 쓰이지 않을 무수히 많은 플러그인, 로더들이 포함되어 있었으며, 현 프로젝트에서 필요로 하는 플러그인, 로더만을 사용하기 위해 직접 웹팩을 통해 개발 환경을 구성했던 경험이 있습니다.
+<hr class="thin" />
+<br/>
 
-- **요금 조정 모달 : Range Slider에서의 그래프**
-  - 해당 프로젝트에서는 직접 만든 Range Slider를 통해 요금을 조정할 수 있어야 했습니다.  
-    먼저, 받아온 요금 데이터를 기반으로 Canvas를 활용해 그래프를 그려내며 그려진 부분을 제외하고 색상을 투명하게 설정한 후에 조금 불투명한 배경색을 가진 div 태그를 그려진 그래프 위에 겹쳐 렌더링하였습니다. 이후, Range Slider의 2개의 버튼의 위치의 간격만큼 div 태그의 크기를 설정한 후 버튼의 위치에 따라 div 태그도 동적으로 크기가 변경되도록하며 요금 조정 모달을 완성할 수 있었습니다.
+<p>
+  <strong>요금 조정 모달 컴포넌트를 제작하는데 최선의 방법은?</strong>
+  <span>⇒</span>
+  <span class="text--italic text--bold text--gray">DOM 요소들의 활용</span>
+</p>
+<hr class="thin" />
+<ol>
+  <li>
+    <p>
+      <code class="language--text text--brown text--bold">문제</code>
+      <span>라이브러리를 전혀 사용하지 않고 그래프를 그려야 함.</span>
+    </p>
+    <p>
+      <code class="language--text text--purple text--bold">해결</code>
+      <span>다수의 요금 데이터를 기반으로 div 요소들을를 생성하여 그래프 제작</span>
+    </p>
+    <hr class="thin" />
+  </li>
+  <li>
+    <p>
+      <code class="language--text text--brown text--bold">문제</code>
+      <span>div 요소들을 활용한 그래프는 DOM 트리가 복잡해진다고 생각하게 됨</span>
+    </p>
+    <p>
+      <code class="language--text text--purple text--bold">해결</code>
+      <span>canvas 요소를 활용하여 그래프를 제작</span>
+    </p>
+    <hr class="thin" />
+  </li>
+  <li>
+    <p>
+      <code class="language--text text--brown text--bold">문제</code>
+      <span
+        >그려진 canvas의 width를 기준으로 이동하는 요금 조정 버튼의 위치가 변경될 때 요금 범위 상태가 동적으로 변해야
+        함</span
+      >
+    </p>
+    <p>
+      <code class="language--text text--purple text--bold">해결</code>
+      <span
+        ><strong>canvas</strong>의 <u>전체 width</u>를 <u>데이터 갯수 기준</u>으로 <strong>나눈 후</strong>에
+        그래프내에서 변경되는 <u>요금 조정 버튼</u>들의 <u>위치</u> 값을 계산</span
+      >
+    </p>
+    <p class="pl--24">⇒ 요금 조정 버튼들의 위치를 기반으로 요금 범위 값을 계산</p>
+  </li>
+</ol>
+
+<hr class="thin" />
+

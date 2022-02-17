@@ -22,12 +22,12 @@ portfolioInfo:
 options: { isPortfolio: true, hide: true }
 ---
 
-#### 🐣 구현사항 요약
+<h4 class="bg--gray text--bold">🧚🏻&nbsp;&nbsp;구현 요약</h4>
 
 - TypeScript를 활용하여 제작하였습니다
 - 불러오는 부분에서 다양한 옵션을 설정할 수 있도록 하였습니다.
 
-#### ⚙️ 기능 (옵션) 요약
+<h4 class="bg--gray text--bold">⚙️&nbsp;&nbsp;기능 (옵션) 요약</h4>
 
 - 일반 / 무한 캐러셀 동작 설정
 - 버튼 크기, 버튼 표시, 버튼 디자인 변경 기능
