@@ -124,9 +124,32 @@ options: { isPortfolio: true, hide: true }
       <code class="language--text text--purple text--bold">해결</code>
       <span
         >자식 <u>컴포넌트</u>에 <strong>forwardRef</strong>를 <u>적용</u>하여 자식 컴포넌트를 렌더링하는 컴포넌트에서
-        ref 참조할 수 있도록 함</span
+        <strong>ref</strong> 참조할 수 있도록 함</span
       >
     </p>
   </li>
 </ol>
+
+<hr class="thin" />
+<br/>
+
+<p>
+  <strong>페이지 컴포넌트에 적용된 쿼리문에 의해 가독성 저하</strong>
+  <span>⇒</span>
+  <span class="text--italic text--bold text--gray">커스텀 훅을 작성하여 분리</span>
+</p>
+<hr class="thin" />
+<ol>
+  <li>
+    <p>
+      <code class="language--text text--brown text--bold">문제</code>
+      <span>각 페이지에 필요한 정적 데이터들은 기본적으로 페이지 컴포넌트에서만 쿼리문을 작성하여 불러올 수 있음 (<code class="language--text">Gatsby</code> 프레임워크의 특징)</span>
+    </p>
+    <p>
+      <code class="language--text text--purple text--bold">해결</code>
+      <span><code class="language--text">Gatsby</code>의 <code class="language--text">useStaticQuery</code>를 활용한 커스텀 훅을 작성하여 쿼리문을 분리한 후 필요한 곳에서만 불러옴</span>
+    </p>
+  </li>
+</ol>
+
 <hr class="thin" />

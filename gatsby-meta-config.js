@@ -90,8 +90,8 @@ module.exports = {
             antecedents: [
               '2021.07 ~ 2021.08|네이버 부스트캠프 (웹 풀스택 : 챌린지) 교육과정 수료',
               '2021.01 ~ 2021.06|코드스쿼드 마스터즈 코스 (프론트엔드) 교육과정 수료',
-              '2018.11 ~ 2020.12|프로그램 유지보수 개발자',
-              '2017.11 ~ 2018.04|Java & SpringFramework 기반 국비지원 교육과정 수료',
+              '2018.11 ~ 2020.12|소프트웨어 유지보수 개발자',
+              // '2017.11 ~ 2018.04|Java & SpringFramework 기반 국비지원 교육과정 수료',
             ],
             imageInfo: { staticSrc: '/profile-image.jpeg', alt: `Hoyoung's profile image` },
             contactInfo: {
