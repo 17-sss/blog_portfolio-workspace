@@ -1,4 +1,4 @@
-import { FunctionComponent, useMemo } from 'react';
+import { Fragment, FunctionComponent, useMemo } from 'react';
 import ImageCarousel from '../ImageCarousel';
 import { AccordionDetailRenderer, Paragraph } from '@components/portfolio/Common';
 import { changeFirstCharUpperCase } from '@utils/functions';
@@ -14,9 +14,11 @@ const ProjectItem: FunctionComponent<ProjectItemProps> = function ({ idx, ...pro
     html,
   } = props;
   const { title, subTitle, duration, memberInfo, skills, images, type, links } = portfolioInfo;
-  const { startDate, endDate, isIng } = duration;
 
+  // 스킬
   const skillItems = useMemo(() => skills.map((v, i) => <S.CodeItem key={i}>{v}</S.CodeItem>), [skills]);
+
+  // 링크
   const linkItems = useMemo(
     () =>
       links.map(({ name, href }, i) => (
@@ -26,6 +28,25 @@ const ProjectItem: FunctionComponent<ProjectItemProps> = function ({ idx, ...pro
       )),
     [links],
   );
+
+  // 기간
+  const durationItems = useMemo(() => {
+    if (!duration) return;
+    const { startDate, endDate, isIng } = duration;
+    return (
+      <Fragment>
+        <S.CodeItem color="orange">{startDate}</S.CodeItem>
+        <span>&nbsp;{'~'}&nbsp;</span>
+        {endDate && <S.CodeItem color="orange">{endDate}</S.CodeItem>}
+        {isIng && (
+          <Fragment>
+            <span>&nbsp;{'/'}&nbsp;</span>
+            <S.CodeItem color="orange" isBold>{`~ing`}</S.CodeItem>
+          </Fragment>
+        )}
+      </Fragment>
+    );
+  }, [duration]);
 
   return (
     <S.ProjectItemLayout idx={idx}>
@@ -45,12 +66,7 @@ const ProjectItem: FunctionComponent<ProjectItemProps> = function ({ idx, ...pro
           <S.MemberInfoText>{`(${memberInfo})`}</S.MemberInfoText>
           <S.TextBox>
             <S.NameText>기간</S.NameText>
-            <S.CodeItem color="orange">{`${startDate} ~ ${endDate ?? 'ing'}`}</S.CodeItem>
-            {isIng && (
-              <S.NameText>
-                {'/'}&nbsp;<S.CodeItem color="orange" isBold>{`~ing`}</S.CodeItem>
-              </S.NameText>
-            )}
+            <S.ValueText>{durationItems}</S.ValueText>
           </S.TextBox>
           <S.TextBox>
             <S.NameText>사용 기술</S.NameText>

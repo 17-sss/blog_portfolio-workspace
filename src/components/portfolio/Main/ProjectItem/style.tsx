@@ -115,13 +115,11 @@ export const NameText = styled(CommonParagraph)`
   ${getMediaQueries({ type: 'mobile' })} {
     font-size: ${({ theme }) => theme.fontSizes['14']};
   }
+  min-width: 30px;
 `;
 
 export const ValueText = styled(NameText)`
   font-weight: 400;
-  &.type {
-    color: ${({ theme }) => theme.grayScaleColors.lightFont};
-  }
 `;
 
 // 3-1-1) skills의 item들 디자인
