@@ -9,8 +9,8 @@ portfolioInfo:
     skills: [React, TypeScript],
     links:
       [
-        { name: '배포 링크 - npm', href: 'https://www.npmjs.com/package/rano-react-carousel' },
-        { name: 'Github Repository ', href: 'https://github.com/17-sss/rano-carousel' },
+        { name: 'npm', href: 'https://www.npmjs.com/package/rano-react-carousel' },
+        { name: 'GitHub Repository ', href: 'https://github.com/17-sss/rano-carousel' },
         {
           name: '개발일지',
           href: 'https://boiled-feather-1c7.notion.site/Rano-Carousel-f930ab78752e4f78b05c8c86c907622d',

@@ -1,6 +1,6 @@
 ---
 date: '2021-11-05'
-title: 'Github 블로그 제작 완료!'
+title: 'GitHub 블로그 제작 완료!'
 categories: ['일반']
 summary: '티스토리 블로그에서 이동하였습니다!'
 thumbnail: './2021-11-05_Github_Blog_Complete.jpeg'

@@ -91,7 +91,7 @@ $ git push origin searchUI-step1 --force
 
 -   remote
     -   [리모트 저장소 저장소 추가하는 법](https://velog.io/@leyuri/Git-remote-리모트-저장소-저장소-추가하는-법)
-    -   [Github 깃허브 원격 remote origin 삭제하는 방법](https://0urtrees.tistory.com/41)
+    -   [GitHub 깃허브 원격 remote origin 삭제하는 방법](https://0urtrees.tistory.com/41)
     -   [1.5: upstream 원격 저장소 설정하기](https://nochoco-lee.tistory.com/6)
 -   pull
     -   [[git 기본 ] git pull 시 특정 branch 를 pull 해오기](https://potensj.tistory.com/90)

@@ -7,7 +7,7 @@ portfolioInfo:
     duration: { startDate: '2021-05-17', endDate: '2021-06-04' },
     memberInfo: '프론트엔드 2명, 백엔드 2명',
     skills: [React, TypeScript, Webpack],
-    links: [{ name: 'Github Repository', href: 'https://github.com/bibi6666667/airbnb/tree/FE/dev' }],
+    links: [{ name: 'GitHub Repository', href: 'https://github.com/bibi6666667/airbnb/tree/FE/dev' }],
     images: ['./airbnb/01.gif', './airbnb/02.gif'],
     type: 'project',
   }

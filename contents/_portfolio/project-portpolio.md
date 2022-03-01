@@ -10,7 +10,7 @@ portfolioInfo:
     links:
       [
         { name: '배포 링크', href: 'https://17-sss.github.io/portfolio' },
-        { name: 'Github Repository ', href: 'https://github.com/17-sss/blog_portfolio-workspace' },
+        { name: 'GitHub Repository ', href: 'https://github.com/17-sss/blog_portfolio-workspace' },
         {
           name: '개발일지',
           href: 'https://boiled-feather-1c7.notion.site/Rano-s-Blog-Portfolio-8ec62a21b87e4c4c97a05b160c990e09',

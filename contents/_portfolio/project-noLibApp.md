@@ -4,22 +4,11 @@ portfolioInfo:
     sectionType: 'projects',
     title: 'No Library App',
     subTitle: '라이브러리, 프레임워크 없이 SPA 만들기',
-    duration: { startDate: '2022-01-16', endDate: '2022-02-06', isIng: true },
+    duration: { startDate: '2022-01-16', endDate: '2022-02-06' },
     memberInfo: '개인 프로젝트',
     skills: [TypeScript, Sass],
-    links:
-      [
-        { name: 'Github Repository', href: 'https://github.com/17-sss/no-lib-App' },
-        { name: 'Github Repository - Board', href: 'https://github.com/17-sss/no-lib-App/tree/main/3_app/board' },
-      ],
-    images:
-      [
-        './noLibApp/01.gif',
-        './noLibApp/02.gif',
-        './noLibApp/03.gif',
-        './noLibApp/04.gif',
-        './noLibApp/05.gif',
-      ],
+    links: [{ name: 'GitHub Repository', href: 'https://github.com/17-sss/no-lib-App' }]
+    images: ['./noLibApp/01.gif', './noLibApp/02.gif', './noLibApp/03.gif', './noLibApp/04.gif', './noLibApp/05.gif'],
     type: 'project',
   }
 options: { isPortfolio: true, hide: true }
@@ -123,5 +112,3 @@ options: { isPortfolio: true, hide: true }
 </ol>
 
 <hr class="thin" />
-
-
