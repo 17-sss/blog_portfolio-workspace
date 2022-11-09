@@ -4,7 +4,7 @@ portfolioInfo:
     sectionType: 'projects',
     title: 'Rano Portfolio',
     subTitle: '나만의 포트폴리오 프로젝트',
-    duration: { startDate: '2021-11-08', endDate: '2021-11-20', isIng: true },
+    duration: { startDate: '2021-11-08', endDate: '2021-11-20' },
     memberInfo: '개인 프로젝트',
     skills: [Gatsby, React, TypeScript, Material UI],
     links:

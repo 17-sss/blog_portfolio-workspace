@@ -7,6 +7,7 @@ export interface AdditionalLinkInfo {
 }
 
 export interface BlogConfigType {
+  information: { text: string; description: string };
   introduce: { text: string; links: AdditionalLinkInfo[] };
   footer: { text: string };
   excludeCategories: string[];

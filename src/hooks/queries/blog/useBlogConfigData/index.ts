@@ -16,6 +16,10 @@ export const useBlogConfigData = function () {
         siteMetadata {
           blog {
             config {
+              information {
+                text
+                description
+              }
               introduce {
                 text
                 links {

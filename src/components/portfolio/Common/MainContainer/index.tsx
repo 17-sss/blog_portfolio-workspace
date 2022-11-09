@@ -1,7 +1,10 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import * as S from './style';
 
-const MainContainer: FunctionComponent = function ({ children }) {
+interface MainContainerProps {
+  children?: React.ReactNode;
+}
+const MainContainer: FunctionComponent<MainContainerProps> = function ({ children }) {
   return <S.MainContainerLayout>{children}</S.MainContainerLayout>;
 };
 

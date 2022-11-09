@@ -3,7 +3,7 @@ import { FunctionComponent } from 'react';
 import Template, { TemplateProps } from './Template';
 
 import { Footer, GlobalStyle, MainContainer } from '@components/blog/Common';
-import { CategoryList, Introduction, PostList } from '@components/blog/Main';
+import { CategoryList, Information, Introduction, PostList } from '@components/blog/Main';
 import { PostNodeType, BlogConfigType } from '@hooks/queries';
 import { ImageType } from '@utils/types';
 
@@ -25,7 +25,7 @@ const BlogTemplate: FunctionComponent<BlogTemplateProps> = ({
     childImageSharp: { gatsbyImageData },
     publicURL: image,
   } = profileImg;
-  const { introduce, footer, excludeCategories } = configData;
+  const { information: informationProps, introduce, footer, excludeCategories } = configData;
 
   const introductionProps = { ...introduce, gatsbyImageData };
   const listProps = { selectedCategory, postData, excludeCategories };
@@ -34,6 +34,7 @@ const BlogTemplate: FunctionComponent<BlogTemplateProps> = ({
     <Template {...{ ...props, image }}>
       <GlobalStyle />
       <MainContainer>
+        <Information {...informationProps} />
         <Introduction {...introductionProps} />
         <CategoryList {...listProps} />
         <PostList {...listProps} />
