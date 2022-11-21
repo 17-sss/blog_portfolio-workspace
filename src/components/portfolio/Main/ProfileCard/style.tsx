@@ -92,4 +92,7 @@ export const IconButtonBox = styled.div`
     font-size: ${({ theme }) => theme.fontSizes['32']};
     color: ${({ theme }) => theme.grayScaleColors.font};
   }
+  button:disabled svg {
+    color: inherit;
+  }
 `;

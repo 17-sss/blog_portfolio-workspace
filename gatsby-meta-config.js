@@ -104,7 +104,7 @@ module.exports = {
             imageInfo: { staticSrc: '/profile-image.jpeg', alt: `Hoyoung's profile image` },
             contactInfo: {
               github: `https://github.com/17-sss`,
-              instagram: `https://www.instagram.com/17__sss/`,
+              instagram: ``,
               email: `mailto:xzxking17@gmail.com`,
             },
           },

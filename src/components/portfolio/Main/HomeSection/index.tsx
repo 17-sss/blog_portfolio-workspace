@@ -3,6 +3,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
 import WaveGraphic from '../WaveGraphic';
 import { usePortfolioState } from '@utils/contexts/PortfolioContext';
+import { portfolioSectionIdInfo } from '@utils/constants';
 
 import * as S from './style';
 
@@ -18,11 +19,12 @@ const HomeSection: FunctionComponent<HomeSectionProps> = function ({ layoutId, t
     const closestTarget = (e.target as HTMLElement).closest('button');
     if (!closestTarget) return;
 
-    const sectionEle = document.querySelector(`#${layoutId}`) as HTMLElement;
-    if (!sectionEle) return;
+    const { introduce } = portfolioSectionIdInfo;
+    const introduceSectionEle = document.querySelector(`#${introduce}`) as HTMLElement;
+    if (!introduceSectionEle) return;
 
     window.scrollTo({
-      top: sectionEle.offsetTop,
+      top: introduceSectionEle.offsetTop,
       behavior: 'smooth',
     });
   }, []);

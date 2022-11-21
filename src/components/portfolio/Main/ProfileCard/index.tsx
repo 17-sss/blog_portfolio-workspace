@@ -41,7 +41,7 @@ const ProfileCard: FunctionComponent<ProfileCardProps> = function ({ imageInfo, 
       Object.entries(contactInfo).map(([name, href], i) => {
         const label = `${changeFirstCharUpperCase(name)} Icon`;
         return (
-          <IconButton key={i} href={href} aria-label={label}>
+          <IconButton key={i} href={href} aria-label={label} disabled={!href}>
             {contactIcons[name as IconKeys]}
           </IconButton>
         );
