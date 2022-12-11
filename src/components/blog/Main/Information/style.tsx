@@ -16,7 +16,12 @@ export const InformationInnerLayout = styled.div`
     font-size: 14px;
   }
 
-  .description {
+  .link {
+    color: #5c6370;
+    text-decoration: underline;
+    font-weight: 600;
+    opacity: 0.7;
+
     font-size: 14px;
     @media (max-width: 768px) {
       font-size: 13px;

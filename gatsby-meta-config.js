@@ -31,8 +31,11 @@ module.exports = {
     // 2. 블로그 구성 데이터
     config: {
       information: {
-        text: `추후 Next.js 블로그로 이전할 예정입니다!`,
-        description: '(2022.11.03 ~ ing)',
+        text: `Next.js 블로그로 이전했습니다!`,
+        externalLink: {
+          text: 'hoyoung.dev',
+          href: 'https://hoyoung.dev',
+        },
       },
       introduce: {
         text: `Nice to Meet You,\nI'm Junior Frontend Developer Hoyoung.`,

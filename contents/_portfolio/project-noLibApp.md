@@ -6,7 +6,7 @@ portfolioInfo:
     subTitle: '라이브러리, 프레임워크 없이 SPA 만들기',
     duration: { startDate: '2022-01-16', endDate: '2022-02-06' },
     memberInfo: '개인 프로젝트',
-    skills: [TypeScript, Sass],
+    skills: [HTML, CSS, JavaScript, TypeScript],
     links: [{ name: 'GitHub Repository', href: 'https://github.com/17-sss/no-lib-App' }],
     images: ['./noLibApp/01.gif', './noLibApp/02.gif', './noLibApp/03.gif', './noLibApp/04.gif', './noLibApp/05.gif'],
     type: 'project',

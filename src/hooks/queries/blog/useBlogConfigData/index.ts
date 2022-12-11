@@ -18,7 +18,10 @@ export const useBlogConfigData = function () {
             config {
               information {
                 text
-                description
+                externalLink {
+                  text
+                  href
+                }
               }
               introduce {
                 text
