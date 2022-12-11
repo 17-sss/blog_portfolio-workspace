@@ -8,8 +8,11 @@ import { PORTFOLIO_HEADER_HEIGHT } from '@utils/constants';
 
 type HeaderLayoutProps = {
   isHeaderTop: boolean;
+  children?: React.ReactNode;
 };
-export const HeaderLayout = styled(({ isHeaderTop, ...props }: HeaderLayoutProps) => <AppBar position="fixed" elevation={2} {...props} />)`
+export const HeaderLayout = styled(({ isHeaderTop, ...props }: HeaderLayoutProps) => (
+  <AppBar position="fixed" elevation={2} {...props} />
+))`
   padding: 0 48px;
   background-color: ${({ isHeaderTop, theme }) => (isHeaderTop ? 'transparent' : theme.grayScaleColors.offWhite)};
   transition: background-color 0.7s;
@@ -17,10 +20,13 @@ export const HeaderLayout = styled(({ isHeaderTop, ...props }: HeaderLayoutProps
     isHeaderTop &&
     css`
       box-shadow: none;
-      div, li, svg {
+      div,
+      li,
+      svg {
         color: ${theme.grayScaleColors.offWhite};
       }
-      div, li {
+      div,
+      li {
         text-shadow: 0.5px 1px 3px black;
       }
       svg {
@@ -29,7 +35,7 @@ export const HeaderLayout = styled(({ isHeaderTop, ...props }: HeaderLayoutProps
     `}
 
   * {
-    font-family:'Comfortaa', 'Noto Sans KR', 'Roboto', 'Helvetica', 'Arial', sans-serif, serif;
+    font-family: 'Comfortaa', 'Noto Sans KR', 'Roboto', 'Helvetica', 'Arial', sans-serif, serif;
   }
 `;
 

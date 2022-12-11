@@ -48,7 +48,11 @@ const portfolioReducer = (state: PortfolioState, action: PortfolioAction): Portf
   }
 };
 
-export const PortfolioContextProvider: FunctionComponent = ({ children }) => {
+interface PortfolioContextProviderProps {
+  children?: React.ReactNode;
+}
+
+export const PortfolioContextProvider: FunctionComponent<PortfolioContextProviderProps> = ({ children }) => {
   const [portfolioState, portfolioDispatch] = useReducer(portfolioReducer, initState);
 
   return (
