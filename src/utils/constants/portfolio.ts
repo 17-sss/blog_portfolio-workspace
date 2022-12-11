@@ -1,6 +1,6 @@
 export const PORTFOLIO_HEADER_HEIGHT = 60;
 
-export const portfolioSectionNames = ['home', 'introduce', 'skills', 'projects'] as const;
+export const portfolioSectionNames = ['home', 'introduce', /* 'skills', */ 'projects'] as const;
 export type PortfolioSectionNameType = typeof portfolioSectionNames[number];
 type PortfolioSectionIdInfoType = {
   [name in PortfolioSectionNameType]: string;
@@ -9,6 +9,6 @@ type PortfolioSectionIdInfoType = {
 export const portfolioSectionIdInfo: PortfolioSectionIdInfoType = {
   home: 'section--home',
   introduce: 'section--introduce',
-  skills: 'section--skills',
+  /* skills: 'section--skills', */
   projects: 'section--projects',
 };

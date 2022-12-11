@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect } from 'react';
 
 import Template, { TemplateProps } from './Template';
 import { GlobalStyle, Header, Footer, MainContainer } from '@components/portfolio/Common';
-import { HomeSection, IntroduceSection, ProjectSection, SkillSection } from '@components/portfolio/Main';
+import { HomeSection, IntroduceSection, ProjectSection, /* SkillSection */ } from '@components/portfolio/Main';
 
 import { PortfolioMarkdownNodeEdges, PortfolioMetaDataQuery, PortfolioConfigType } from '@hooks/queries';
 import { portfolioSectionIdInfo as IdInfo } from '@utils/constants';
@@ -43,7 +43,7 @@ const PortfolioTemplate: FunctionComponent<PortfolioTemplateProps> = ({
       <MainContainer>
         <HomeSection layoutId={IdInfo.home} {...sections.home} />
         <IntroduceSection layoutId={IdInfo.introduce} {...sections.introduce} />
-        <SkillSection layoutId={IdInfo.skills} {...sections.skills} />
+        {/* <SkillSection layoutId={IdInfo.skills} {...sections.skills} /> */}
         <ProjectSection layoutId={IdInfo.projects} {...sections.projects} />
       </MainContainer>
       <Footer {...footer} />
