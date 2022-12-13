@@ -7,27 +7,28 @@ const useInfiniteScroll = function (selectedCategory: string, posts: PostNodeTyp
   const [count, setCount] = useState<number>(1);
 
   // 현재 카테고리에 부합하는 데이터 반환
-  const postListByCategory = useMemo<PostNodeType[]>(
-    () =>
-      selectedCategory !== 'All'
-        ? posts.filter((postListItemData: PostNodeType) => {
-            const { node: { frontmatter: { categories, options } } } = postListItemData;
-
-            const isHide = options?.hide;
-            if (isHide) return false;
-
-            const categoryTmp = categories.reduce((result, category) => {
-              if (result) result += `/${category}`;
-              else result = `${category}`;
-              return result;
-            }, '');
-
-            const isSameCategory = categoryTmp === selectedCategory;
-            return isSameCategory || categories.includes(selectedCategory);
-          })
-        : posts,
-    [selectedCategory],
-  );
+  const postListByCategory = useMemo<PostNodeType[]>(() => {
+    if (selectedCategory === 'All') {
+      const result = posts.filter(({ node }) => {
+        const { options } = node.frontmatter;
+        return !options?.hide && !options?.isPortfolio;
+      });
+      return result;
+    }
+    return posts.filter((postListItemData: PostNodeType) => {
+      const { categories, options } = postListItemData.node.frontmatter;
+      if (options?.hide || options?.isPortfolio) {
+        return false;
+      }
+      const categoryTmp = categories.reduce((result, category) => {
+        if (result) result += `/${category}`;
+        else result = `${category}`;
+        return result;
+      }, '');
+      const isSameCategory = categoryTmp === selectedCategory;
+      return isSameCategory || categories.includes(selectedCategory);
+    });
+  }, [selectedCategory]);
 
   // IntersectionObserver 설정
   // (gatsby는 기본적으로 빌드 시 node.js 환경에서 진행됨, 브라우저 API들을 사용할 수 없으니 useEffect를 통해 Ref에 생성해주고 지정 )
