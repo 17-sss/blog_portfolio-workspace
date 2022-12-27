@@ -40,11 +40,12 @@ module.exports = {
       introduce: {
         text: `Nice to Meet You,\nI'm Junior Frontend Developer Hoyoung.`,
         links: [
-          {
-            text: `Learning Record`,
-            href: 'https://boiled-feather-1c7.notion.site/Learning-Record-114a6d7a9cea451a8cde60f128c3ca13',
-          },
           { text: `Portfolio`, href: '/portfolio/', isGatsbyLink: true },
+          // {
+          //   text: `Learning Record`,
+          //   href: 'https://boiled-feather-1c7.notion.site/Learning-Record-114a6d7a9cea451a8cde60f128c3ca13',
+          // },
+          // { text: `Portfolio`, href: '/portfolio/', isGatsbyLink: true },
         ],
       },
       footer: {
