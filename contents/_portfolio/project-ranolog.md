@@ -23,7 +23,7 @@ options: { isPortfolio: true, hide: true }
 <h4 class="bg--gray text--bold"> 🧚🏻&nbsp;&nbsp;구현 요약</h4>
 
 - 컴포넌트의 재사용화를 위해 커스텀 훅으로 비즈니스 로직 분리했습니다.
-- 개발 시 컴포넌트 단위로 테스트하며 작업하기 위해 `Storybook`을 활용하였습니다.
+- 컴포넌트 작성 시 특정 페이지에만 의존하지 않도록 `Storybook`을 활용하여 개발하였습니다.
 - `emotion`, `Styled System`을 활용하여 반응형 작업을 하였습니다.
 
 <h4 class="bg--gray text--bold">🤔&nbsp;&nbsp;고민한 점</h4>
@@ -67,11 +67,43 @@ options: { isPortfolio: true, hide: true }
   <li>
     <p>
       <code class="language--text text--brown text--bold">문제</code>
-      <span>블로그 글 검색 시, 입력할 때마다 이벤트 발생</span>
+      <span>블로그 글 검색 시, 사용자가 입력할 때마다 이벤트 발생</span>
     </p>
     <p>
       <code class="language--text text--purple text--bold">해결</code>
       <span>입력할 때마다 이벤트가 호출되는 것이 아닌 마지막 호출에서 1초가 지난 후 함수의 기능이 동작하도록 함</span>
+    </p>
+  </li>
+</ol>
+
+<hr class="thin" />
+<br/>
+
+<p>
+  <strong>다양한 Markdown의 Frontmatter 정보를 쉽게 입력하려면?</strong>
+  <span>⇒</span>
+  <span class="text--italic text--bold text--gray">Docs Maker(CLI) 제작</span>
+</p>
+<hr class="thin" />
+<ol>
+  <li>
+    <p>
+      <code class="language--text text--brown text--bold">문제</code>
+      <span>문서 형식이 전부 다름 (<span class="text--gray">Blog</span>(Post), <span class="text--gray">Projects</span>, <span class="text--gray">Resume</span>)</span>
+    </p>
+    <p>
+      <code class="language--text text--purple text--bold">해결</code>
+      <span>사용자로부터 문서의 타입과 데이터를 입력 받음</span>
+    </p>
+  </li>
+  <li>
+    <p>
+      <code class="language--text text--brown text--bold">문제</code>
+      <span>사용자에게 모든 데이터를 입력 받아 JSON으로 생성 → frontmatter로 변환</span>
+    </p>
+    <p>
+      <code class="language--text text--purple text--bold">해결</code>
+      <span>정규표현식을 활용하여 frontmatter 형식에 맞춰 변환</span>
     </p>
   </li>
 </ol>
