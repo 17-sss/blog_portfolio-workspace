@@ -38,7 +38,7 @@ module.exports = {
         },
       },
       introduce: {
-        text: `Nice to Meet You,\nI'm Junior Frontend Developer Hoyoung.`,
+        text: `Nice to Meet You,\nI'm Frontend Engineer Hoyoung.`,
         links: [
           { text: `Portfolio`, href: '/portfolio/', isGatsbyLink: true },
           // {
@@ -72,9 +72,9 @@ module.exports = {
   portfolio: {
     // 1. 포트폴리오 metaData
     metaData: {
-      title: `Developer Hoyoung's portfolio`,
+      title: `Hoyoung's portfolio`,
       siteUrl: `https://17-sss.github.io/portfolio`,
-      description: `주니어 개발자 손호영의 포트폴리오 입니다.`,
+      description: `프론트엔드 개발자 손호영의 포트폴리오 입니다.`,
     },
 
     // 2. 포트폴리오 구성 데이터
@@ -85,25 +85,24 @@ module.exports = {
       },
       // + Footer
       footer: {
-        text: `© 2022. Hoyoung Son <Rano>. All rights reserved.`,
+        text: `© 2023. Hoyoung Son <Rano>. All rights reserved.`,
       },
       // + Sections
       sections: {
         // 1) Home (메인)
         home: {
-          text: `Developer Hoyoung's portfolio.`,
+          text: `Hoyoung's portfolio.`,
         },
         // 2) introduce (소개)
         introduce: {
-          text: '꾸준함이라는 덕목이 최고의 미덕이라고 생각하는 주니어 개발자입니다.',
+          text: '편리한 가치를 만드는 개발자 손호영입니다.',
           profileCard: {
             name: '손호영',
             antecedents: [
-              '2022.03 ~ 2022.11|하우빌드 - 주니어 프론트엔드 개발자',
-              '2021.07 ~ 2021.08|네이버 부스트캠프 (웹 풀스택 / 챌린지) 교육과정 수료',
-              '2021.01 ~ 2021.06|코드스쿼드 마스터즈 코스 (프론트엔드) 교육과정 수료',
-              '2018.11 ~ 2020.12|한국폼텍 - 소프트웨어 유지보수 개발자',
-              // '2017.11 ~ 2018.04|Java & SpringFramework 기반 국비지원 교육과정 수료',
+              '2022.03 ~ 2022.11|하우빌드 : 주니어 프론트엔드 개발자',
+              '2021.01 ~ 2021.06|코드스쿼드 마스터즈 코스 : Frontend 과정 수료',
+              '2018.11 ~ 2020.12|한국폼텍 : 소프트웨어 개발자',
+              '2017.11 ~ 2018.04|쌍용강북교육센터 : Web 풀스택 과정 수료',
             ],
             imageInfo: { staticSrc: '/profile-image.jpeg', alt: `Hoyoung's profile image` },
             contactInfo: {
@@ -121,15 +120,13 @@ module.exports = {
             },
             goal: {
               subject: '목표',
-              contents: `그저 흥미로 시작했고 지금도 여전히 좋아하는 분야입니다. 
-                현재 프론트엔드 개발자가 되기 위해 다양한 교육과정을 수료했으며, 
-                프론트엔드 개발자라는 꿈을 이루고 더 나아가 풀스택 개발자가 되는 것이 목표입니다.`,
+              contents: `지난 2년간 관련 교육 수료와 프론트엔드 개발자로서 서비스를 개발하며 역량을 쌓아오고 있습니다.
+              세상의 다양한 문제를 해결할 수 있는 개발자가 되는 것이 목표입니다.`,
             },
             direction: {
               subject: '방향',
               contents: `무엇보다 꾀 많은 토끼보다는 포기하지 않는 거북이가 옳다고 생각합니다. 
-              지금처럼 꾸준하게 학습하며 프론트엔드 개발자라는 하나의 목표가 이루어지고 
-              더욱 성장하기 위해 필요 지식을 습득하여 다음 목표를 향해 나아갈 것입니다.`,
+              매 순간 열정을 놓지 않고, 경험하며 노력하고 있습니다.`,
             },
           },
         },
