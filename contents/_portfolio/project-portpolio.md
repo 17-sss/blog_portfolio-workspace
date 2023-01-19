@@ -16,14 +16,7 @@ portfolioInfo:
           href: 'https://boiled-feather-1c7.notion.site/Rano-s-Blog-Portfolio-8ec62a21b87e4c4c97a05b160c990e09',
         },
       ],
-    images:
-      [
-        './portfolio/01.webp',
-        './portfolio/02.webp',
-        './portfolio/03.webp',
-        './portfolio/04.webp',
-        './portfolio/05.webp',
-      ],
+    images: ['./portfolio/01.webp', './portfolio/02.webp', './portfolio/03.webp', './portfolio/04.webp'],
     type: 'project',
   }
 options: { isPortfolio: true, hide: true }
@@ -33,8 +26,8 @@ options: { isPortfolio: true, hide: true }
 
 - 모든 컴포넌트, 로직들을 재사용성을 생각하여 분리하는데 초점을 두었습니다.
 - 반응형과 애니메이션을 처음으로 깊이 있게 고민하며 제작한 프로젝트입니다.
-- Intersection Observer를 활용하여 현재 보고있는 화면이 각 요소에 접근 시 애니메이션이 실행되도록 하였습니다.
-- Context API를 활용하여 전역 상태관리를 하였습니다.
+- React Context API를 활용하여 전역 상태관리를 하였습니다.
+- `Intersection Observer`를 활용하여 현재 보고있는 화면이 각 요소에 접근 시 **Animation**이 실행되도록 하였습니다.
 
 <h4 class="bg--gray text--bold">🤔&nbsp;&nbsp;고민한 점</h4>
 

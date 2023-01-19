@@ -23,46 +23,23 @@ options: { isPortfolio: true, hide: true }
 <h4 class="bg--gray text--bold"> 🧚🏻&nbsp;&nbsp;구현 요약</h4>
 
 - 컴포넌트의 재사용화를 위해 커스텀 훅으로 비즈니스 로직 분리했습니다.
-- 컴포넌트 작성 시 특정 페이지에만 의존하지 않도록 `Storybook`을 활용하여 개발하였습니다.
-- `emotion`, `Styled System`을 활용하여 반응형 작업을 하였습니다.
+- 컴포넌트 작성 시 특정 페이지에만 의존하지 않도록 `Storybook`을 활용하여 개발하였습니다.
+- **디자인** 및 **목차(Toc)** 기능 등 라이브러리를 사용하지 않고 개발하였습니다.
+
+<h6 class="text--bold">글 작성 편의를 위한 CLI 제작</h6>
+
+- 현 프로젝트에서의 문서 타입은 `Post`, `Project`, `Resume`가 존재합니다. (모두 **frontmatter** 형태가 다릅니다)
+- CLI를 통해 사용자가 문서 타입을 선택하고, 정보를 입력하면..  
+  → 이에 부합하는 **frontmatter** 데이터를 가진 Markdown이 생성됩니다.
 
 <h4 class="bg--gray text--bold">🤔&nbsp;&nbsp;고민한 점</h4>
 
 <p>
-  <strong>컴포넌트의 부모 컴포넌트에서 컴포넌트의 상태 변경</strong>
-  <span>⇒</span>
-  <span class="text--italic text--bold text--gray">useImperativeHandle 활용</span>
-</p>
-<hr class="thin" />
-<ol>
-  <li>
-    <p>
-      <code class="language--text text--brown text--bold">문제</code>
-      <span>컴포넌트의 부모 컴포넌트에서 컴포넌트의 상태 변경</span>
-    </p>
-    <p>
-      <code class="language--text text--purple text--bold">해결</code>
-      <span class="bg--green text--italic">👇 <strong>내용 참고</strong></span>
-    </p>
-    <ul class="pl--24 alpha">
-      <li>컴포넌트에 <code class="language--text ">forwardRef</code> & <code class="language--text ">useImperativeHandle</code> 적용</li>
-      <li>컴포넌트의 <code class="language--text ">useImperativeHandle</code>에 컴포넌트 상태를 변경하는 함수 정의</li>
-      <li>부모 컴포넌트에서 컴포넌트에 <strong>ref</strong>를 전달</li>
-      <li>부모 컴포넌트에서 <strong>ref</strong>를 통해 컴포넌트에 정의한 함수 사용</li>
-    </ul>
-  </li>
-</ol>
-
-<hr class="thin" />
-<br/>
-
-<p>
-  <strong>검색 시 많은 이벤트 호출</strong>
+  <strong>글 검색 시 많은 이벤트 호출</strong>
   <span>⇒</span>
   <span class="text--italic text--bold text--gray">Debounce 활용하여 제어</span>
 </p>
 <hr class="thin" />
-
 <ol>
   <li>
     <p>
@@ -80,31 +57,30 @@ options: { isPortfolio: true, hide: true }
 <br/>
 
 <p>
-  <strong>다양한 Markdown의 Frontmatter 정보를 쉽게 입력하려면?</strong>
+  <strong>부모 컴포넌트에서 자식 컴포넌트의 상태를 업데이트하려면?</strong>
   <span>⇒</span>
-  <span class="text--italic text--bold text--gray">Docs Maker(CLI) 제작</span>
+  <span class="text--italic text--bold text--gray">useImperativeHandle 활용</span>
 </p>
 <hr class="thin" />
 <ol>
   <li>
     <p>
       <code class="language--text text--brown text--bold">문제</code>
-      <span>문서 형식이 전부 다름 (<span class="text--gray">Blog</span>(Post), <span class="text--gray">Projects</span>, <span class="text--gray">Resume</span>)</span>
+      <span>부모의 상태를 업데이트할 때, 자식 컴포넌트 내부 상태도 업데이트 되어야 함.</span>
     </p>
     <p>
       <code class="language--text text--purple text--bold">해결</code>
-      <span>사용자로부터 문서의 타입과 데이터를 입력 받음</span>
+      <span class="bg--green text--italic">👇 <strong>내용 참고</strong></span>
     </p>
-  </li>
-  <li>
-    <p>
-      <code class="language--text text--brown text--bold">문제</code>
-      <span>사용자에게 모든 데이터를 입력 받아 JSON으로 생성 → frontmatter로 변환</span>
-    </p>
-    <p>
-      <code class="language--text text--purple text--bold">해결</code>
-      <span>정규표현식을 활용하여 frontmatter 형식에 맞춰 변환</span>
-    </p>
+    <ul class="pl--24 alpha">
+      <li>
+        <span>전역 상태 관리를 통해서 문제를 해결하려 했지만, 단 하나의 자식만 업데이트되면 됨.</span><br/>
+        <span>(효율적이지 않다고 생각)</span>
+      </li>
+      <li>자식 컴포넌트에 <code class="language--text ">forwardRef</code> & <code class="language--text ">useImperativeHandle</code> 적용
+      <li>자식 컴포넌트의 <code class="language--text ">useImperativeHandle</code>에 컴포넌트 상태를 변경하는 함수 정의</li>
+      <li>부모 컴포넌트에서 <strong>ref</strong>를 통해 자식 컴포넌트에 정의한 함수 사용</li>
+    </ul>
   </li>
 </ol>
 

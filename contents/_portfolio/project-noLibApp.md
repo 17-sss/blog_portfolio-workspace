@@ -16,10 +16,11 @@ options: { isPortfolio: true, hide: true }
 
 <h4 class="bg--gray text--bold"> 🧚🏻&nbsp;&nbsp;구현 요약</h4>
 
-- `HTML`, `CSS`, `JS` 와 `Webpack` 을 활용하여 **Single Page Application**를 제작합니다.
+- `HTML`, `CSS`, `JavaScript`를 활용하여 **Single Page Application**를 제작하였습니다.
 - 상태 변경에 따라 렌더링하는 HTML 요소들도 업데이트 할 수 있도록 DIFF 알고리즘을 활용하였습니다.
 - 많은 이벤트가 등록되는 현상을 피하기 위해 이벤트 델리게이션 기법을 활용하였습니다.
 - 로컬 스토리지를 활용하여 새로고침이 되어도 현재 작성하고 있는 정보들이 유지되도록 하였습니다.
+- `Node.js`, `Express`를 활용하여 RESTFul API 서버를 구현하였습니다.
 
 <h4 class="bg--gray text--bold">🤔&nbsp;&nbsp;고민한 점</h4>
 
